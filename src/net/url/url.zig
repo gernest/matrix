@@ -22,7 +22,7 @@ fn shouldEscape(c : u8, mode: encoding) bool{
     }
     switch(c){
         '-', '_', '.', '~' => return false,
-        '$', '&', '+', ',', '/', ':', ';', '=', '?', '@' => blk: {
+        '$', '&', '+', ',', '/', ':', ';', '=', '?', '@' => {
             switch(mode){
                 encoding.path =>return c=='?',
                 encoding.pathSegment => return c == '/' or c == ';' or c == ',' or c == '?',
@@ -30,7 +30,7 @@ fn shouldEscape(c : u8, mode: encoding) bool{
                 encoding.queryComponent => return true,
                 encoding.fragment => return false,
                 else => {},
-            } break :blk ;
+            }
         },
         else => {},
     }
