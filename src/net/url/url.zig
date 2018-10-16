@@ -1,4 +1,5 @@
 const std=@import("std");
+const debug =std.debug;
 const assert = std.debug.assert;
 const mem =std.mem;
 
@@ -160,4 +161,65 @@ pub fn QueryUnEscape(a : *std.Buffer, s: []const u8) !void{
 
 pub fn PathUnescape(a : *std.Buffer, s: []const u8) !void{
     return unescape(s, encoding.path);
+}
+
+pub fn PathEscape(a: *std.Buffer, s: []const u8)!void{
+    return escape(a,s, encoding.path);
+}
+
+pub fn QueryEscape(a: *std.Buffer, s: []const u8)!void{
+    return escape(a,s, encoding.queryComponent);
+}
+
+fn escape(a: *std.Buffer, s: []const u8, mode:encoding) !void{
+    var spaceCount: usize =0;
+    var hexCount: usize =0;
+    for (s) |c| {
+        if (shouldEscape(c,mode)){
+            if (c== ' ' and mode==encoding.queryComponent){
+                spaceCount=spaceCount+1;
+            } else{
+                hexCount=hexCount+1;
+            }
+        }
+    }
+    if (spaceCount==0 and hexCount==0){
+        try a.append(s);
+    } else {
+        const required =s.len+2*hexCount;
+        try a.resize(required);
+        var t = a.toSlice();
+        var i: usize=0;
+        if (hexCount==0){
+            while (i<s.len){
+                if (s[i]==' '){
+                    t[i]='+';
+                }else{
+                    t[i]=s[i];
+                }
+                i=i+1;
+            }
+        } else{
+            i=0;
+            var j: usize=0;
+            const alpha: []const u8 ="0123456789ABCDEF";
+            while (i<s.len){
+               const c= s[i];
+               if (c==' ' and mode==encoding.queryComponent){
+                   t[j]='+' ;
+                   j=j+1;
+               } else if (shouldEscape(c,mode)){
+                   t[j]='%';
+                   t[j+1]=alpha[c>>4];
+                   t[j+2]=alpha[c&15];
+                   j= j+3 ;
+               } else{
+                   t[j]=s[i];
+                   j=j+1;
+               }
+               i=i+1;
+            }
+        }
+
+    }
 }

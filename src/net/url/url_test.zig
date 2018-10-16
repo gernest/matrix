@@ -100,3 +100,45 @@ test "QueryUnEscape" {
         buf.shrink(0);
     }
 }
+
+fn queryEscapeTests() []const EscapeTest{
+    const ts= []EscapeTest{
+        EscapeTest{
+            .in= "",
+            .out="",
+            .err =null,
+        },
+        EscapeTest{
+            .in= "abc",
+            .out="abc",
+            .err =null,
+        },
+        EscapeTest{
+            .in= "one two",
+            .out="one+two",
+            .err =null,
+        },
+        EscapeTest{
+            .in= "10%",
+            .out="10%25",
+            .err =null,
+        },
+        EscapeTest{
+            .in=" ?&=#+%!<>#\"{}|\\^[]`☺\t:/@$'()*,;", 
+            .out="+%3F%26%3D%23%2B%25%21%3C%3E%23%22%7B%7D%7C%5C%5E%5B%5D%60%E2%98%BA%09%3A%2F%40%24%27%28%29%2A%2C%3B",
+            .err=null,
+        },
+    };
+    return ts[0..];
+}
+
+test "QueryEscape" {
+    var buffer = try std.Buffer.init(debug.global_allocator, "");
+    var buf =&buffer;
+    defer buf.deinit();
+    for (queryEscapeTests()) |ts|{
+        try url.QueryEscape(buf, ts.in);
+        assert(buf.eql(ts.out));
+        buf.shrink(0);
+    }
+}
