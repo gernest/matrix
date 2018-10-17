@@ -4,45 +4,45 @@ const assert = std.debug.assert;
 const mem =std.mem;
 const debug =std.debug;
 
-const EscapeTest =struct{
+const EscapeTest =struct.{
     in : []const u8,
     out : []const u8,
     err: ?url.Error,
 };
 
 fn unescapePassingTests() []const EscapeTest{
-    const ts= []EscapeTest{
-        EscapeTest{
+    const ts= []EscapeTest.{
+        EscapeTest.{
             .in= "",
             .out="",
             .err =null,
         },
-        EscapeTest{
+        EscapeTest.{
             .in= "1%41",
             .out="1A",
             .err =null,
         },
-        EscapeTest{
+        EscapeTest.{
             .in= "1%41%42%43",
             .out="1ABC",
             .err =null,
         },
-        EscapeTest{
+        EscapeTest.{
             .in= "%4a",
             .out="J",
             .err =null,
         },
-        EscapeTest{
+        EscapeTest.{
             .in ="%6F",
             .out ="o",
             .err =null,
         },
-        EscapeTest{
+        EscapeTest.{
             .in ="a+b",
             .out ="a b",
             .err =null,
         },
-        EscapeTest{
+        EscapeTest.{
             .in ="a%20b",
             .out ="a b",
             .err =null,
@@ -52,28 +52,28 @@ fn unescapePassingTests() []const EscapeTest{
 }
 
 fn unescapeFailingTests() []const EscapeTest{
-    const ts= []EscapeTest{
-        EscapeTest{
+    const ts= []EscapeTest.{
+        EscapeTest.{
             .in= "%",
             .out="",
             .err =url.Error.EscapeError,
         },
-        EscapeTest{
+        EscapeTest.{
             .in= "%a",
             .out="",
             .err =url.Error.EscapeError,
         },
-        EscapeTest{
+        EscapeTest.{
             .in= "%1",
             .out="",
             .err =url.Error.EscapeError,
         },
-        EscapeTest{
+        EscapeTest.{
             .in= "123%45%6",
             .out="",
             .err =url.Error.EscapeError,
         },
-        EscapeTest{
+        EscapeTest.{
             .in= "%zzzzz",
             .out="",
             .err =url.Error.EscapeError,
@@ -102,28 +102,28 @@ test "QueryUnEscape" {
 }
 
 fn queryEscapeTests() []const EscapeTest{
-    const ts= []EscapeTest{
-        EscapeTest{
+    const ts= []EscapeTest.{
+        EscapeTest.{
             .in= "",
             .out="",
             .err =null,
         },
-        EscapeTest{
+        EscapeTest.{
             .in= "abc",
             .out="abc",
             .err =null,
         },
-        EscapeTest{
+        EscapeTest.{
             .in= "one two",
             .out="one+two",
             .err =null,
         },
-        EscapeTest{
+        EscapeTest.{
             .in= "10%",
             .out="10%25",
             .err =null,
         },
-        EscapeTest{
+        EscapeTest.{
             .in=" ?&=#+%!<>#\"{}|\\^[]`☺\t:/@$'()*,;", 
             .out="+%3F%26%3D%23%2B%25%21%3C%3E%23%22%7B%7D%7C%5C%5E%5B%5D%60%E2%98%BA%09%3A%2F%40%24%27%28%29%2A%2C%3B",
             .err=null,

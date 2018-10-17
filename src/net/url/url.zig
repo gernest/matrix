@@ -3,7 +3,7 @@ const debug =std.debug;
 const assert = std.debug.assert;
 const mem =std.mem;
 
-const encoding =enum{
+const encoding =enum.{
     path,
     pathSegment,
     host,
@@ -13,14 +13,11 @@ const encoding =enum{
     fragment,
 };
 
-pub const Error = error{
+pub const Error = error.{
     EscapeError,
     InvalidHostError,
 };
 
-fn escapeErr(err:error)UnescapedValue{
-    return UnescapedValue{.Error =errors.New(err,null)};
-}
 
 fn shouldEscape(c : u8, mode: encoding) bool{
     if ('A' <= c and c <= 'Z' or 'a' <= c and c <= 'z' or '0' <= c and c <= '9'){
