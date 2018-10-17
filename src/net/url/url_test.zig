@@ -142,3 +142,8 @@ test "QueryEscape" {
         buf.shrink(0);
     }
 }
+
+
+test "URL" {
+    _=url.URL.init(debug.global_allocator);
+}

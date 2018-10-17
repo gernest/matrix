@@ -220,3 +220,54 @@ fn escape(a: *std.Buffer, s: []const u8, mode:encoding) !void{
 
     }
 }
+
+// A URL represents a parsed URL (technically, a URI reference).
+//
+// The general form represented is:
+//
+//	[scheme:][//[userinfo@]host][/]path[?query][#fragment]
+//
+// URLs that do not start with a slash after the scheme are interpreted as:
+//
+//	scheme:opaque[?query][#fragment]
+//
+// Note that the Path field is stored in decoded form: /%47%6f%2f becomes /Go/.
+// A consequence is that it is impossible to tell which slashes in the Path were
+// slashes in the raw URL and which were %2f. This distinction is rarely important,
+// but when it is, code must not use Path directly.
+// The Parse function sets both Path and RawPath in the URL it returns,
+// and URL's String method uses RawPath if it is a valid encoding of Path,
+// by calling the EscapedPath method.
+pub const URL =struct.{
+    scheme :? []const u8,
+    opaque :?[]const u8,
+    user :?*UserInfo,
+    host   :?[]const u8,
+    path   :?[]const u8,
+    raw_path   :?[]const u8,
+    force_query   : bool,
+    raw_query   :?[]const u8,
+    fragment   :?[]const u8,
+    alloc: *mem.Allocator,
+
+    fn init(allocator : *mem.Allocator)URL{
+        return URL.{
+            .scheme=null,
+            .opaque=null,
+            .user=null,
+            .host=null,
+            .path=null,
+            .raw_path=null,
+            .force_query=false,
+            .raw_query=null,
+            .fragment=null,
+            .alloc=allocator,
+        };
+    }
+};
+
+pub const UserInfo =struct.{
+    useername: ?[]const u8,
+    password: ?[]const u8,
+    password_set: bool,
+};
