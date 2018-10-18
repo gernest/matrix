@@ -152,19 +152,19 @@ fn unescape(a : *std.Buffer, s :[]const u8, mode :encoding) !void{
 }
 
 
-pub fn QueryUnEscape(a : *std.Buffer, s: []const u8) !void{
+pub fn queryUnEscape(a : *std.Buffer, s: []const u8) !void{
     return unescape(a,s, encoding.queryComponent);
 }
 
-pub fn PathUnescape(a : *std.Buffer, s: []const u8) !void{
+pub fn pathUnescape(a : *std.Buffer, s: []const u8) !void{
     return unescape(s, encoding.path);
 }
 
-pub fn PathEscape(a: *std.Buffer, s: []const u8)!void{
+pub fn pathEscape(a: *std.Buffer, s: []const u8)!void{
     return escape(a,s, encoding.pathSegment);
 }
 
-pub fn QueryEscape(a: *std.Buffer, s: []const u8)!void{
+pub fn queryEscape(a: *std.Buffer, s: []const u8)!void{
     return escape(a,s, encoding.queryComponent);
 }
 
