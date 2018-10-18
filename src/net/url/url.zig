@@ -161,7 +161,7 @@ pub fn PathUnescape(a : *std.Buffer, s: []const u8) !void{
 }
 
 pub fn PathEscape(a: *std.Buffer, s: []const u8)!void{
-    return escape(a,s, encoding.path);
+    return escape(a,s, encoding.pathSegment);
 }
 
 pub fn QueryEscape(a: *std.Buffer, s: []const u8)!void{
