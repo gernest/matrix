@@ -248,7 +248,7 @@ pub const URL =struct.{
     force_query   : bool,
     raw_query   :?[]const u8,
     fragment   :?[]const u8,
-    alloc: *mem.Allocator,
+    allocator: *mem.Allocator,
 
     fn init(allocator : *mem.Allocator)URL{
         return URL.{
@@ -261,13 +261,131 @@ pub const URL =struct.{
             .force_query=false,
             .raw_query=null,
             .fragment=null,
-            .alloc=allocator,
+            .allocator=allocator,
         };
+    }
+
+    fn deinit(u: *URL) void{
+        if (u.scheme!=null){
+            u.allocator.free(u.scheme.?);
+        }
+        if (u.scheme!=null){
+            u.allocator.free(u.scheme.?);
+        }
+        if (u.opaque!=null){
+            u.allocator.free(u.opaque.?);
+        }
+        if (u.user!=null){
+            if(u.user.?.username!=null){
+                u.allocator.free(u.user.?.username.?);
+            }
+            if (u.user.?.password!=null){
+                u.allocator.free(u.user.?.password.?);
+            }
+        }
+        if(u.host!=null){
+            u.allocator.free(u.host.?);
+        }
+        if(u.path!=null){
+            u.allocator.free(u.path.?);
+        }
+        if(u.raw_path!=null){
+            u.allocator.free(u.raw_path.?);
+        }
+        if (u.raw_query!=null){
+            u.allocator.free(u.raw_query.?);
+        }
+        if (u.fragment!=null){
+            u.allocator.free(u.fragment.?);
+        }
+    }
+
+    fn getScheme(u: *URI, raw: []const u8) !void{
+        var i: usize=0;
+        while(i<raw.len){
+            const c=raw[i];
+            if ('a' <= c and c <= 'z' or 'A' <= c and c <= 'Z'){
+                // do nothing
+            } else if ('0' <= c and c <= '9' and c == '+' and c == '-' and c == '.'){
+                if (i==0){
+                    const path= try u.allocator.alloc(u8,raw.len);
+                    mem.copy(u8,path,raw);
+                    u.path=path;
+                    return;
+                }
+            } else if (c == ':'){
+                if (i==0){
+                    return error.MissingProtocolScheme;
+                }
+                var a=raw[0..i];
+                const scheme= try u.allocator.alloc(u8,a.len);
+                mem.copy(u8,scheme,a);
+                u.scheme=scheme;
+                var b=raw[i+1..];
+                const path= try u.allocator.alloc(u8,b.len);
+                mem.copy(u8,path,b);
+                u.path=path;
+            } else{
+                //  we have encountered an invalid character,
+                //  so there is no valid scheme
+                const path= try u.allocator.alloc(u8,raw.len);
+                mem.copy(u8,path,raw);
+                u.path=path;
+                return;
+            }
+            i=i+1;
+        }
+        const path= try u.allocator.alloc(u8,raw.len);
+        mem.copy(u8,path,raw);
+        u.path=path;
+    }
+
+    fn parse(u: URL,raw_url []const u8, via_request: bool)!void{
+        if (raw_url=="" and via_request){
+            return error.EmptyURL;
+        }
+        if (raw_url=="*"){
+            u.path="*";
+            return;
+        }
+        try u.getScheme(raw_url);
+        //TODO : lowercase scheme
+        if (u.path!=null){
+            const path= try u.allocator.alloc(u8,u.?.path.len);
+            mem.copy(u8,path,u.?.path);
+        }
     }
 };
 
+
 pub const UserInfo =struct.{
-    useername: ?[]const u8,
+    username: ?[]const u8,
     password: ?[]const u8,
     password_set: bool,
+
+    fn init(name: []const u8) UserInfo{
+        return UserInfo.{
+            .username=name,
+            .password=null,
+            .password_set=false,
+        };
+    }
+
+    fn initWithPassword(name: []const u8,password:[]const u8)UserInfo{
+        return UserInfo.{
+            .username=name,
+            .password=password,
+            .password_set=true,
+        };
+    }
+
+    fn encode(u: *UserInfo, buf: *std.Buffer) !void{
+        if(u.username!=null){
+            try escape(buf, u.username.?, encoding.userPassword);
+        }
+        if (u.password_set){
+            try buf.appendByte(':');
+            try escape(buf, u.username.?, encoding.userPassword);
+        }
+    }
 };

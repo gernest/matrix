@@ -191,5 +191,6 @@ test "PathEscape" {
 }
 
 test "URL" {
-    _=url.URL.init(debug.global_allocator);
+    var u=url.URL.init(debug.global_allocator);
+    defer u.deinit();
 }
