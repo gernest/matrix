@@ -35,7 +35,11 @@ pub const RGBA = struct.{
     b: u8,
     a: u8,
 
-    fn toColor(c: RGBA) Value {
+    fn toColor(c: RGBA) Color {
+        return Color.{ .rgb = c.toValue() };
+    }
+
+    fn toValue(c: RGBA) Value {
         var r: u32 = c.r;
         r |= r << 8;
         var g: u32 = c.g;
