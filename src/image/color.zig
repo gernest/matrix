@@ -1,7 +1,7 @@
 /// Color can convert itself to alpha-premultiplied 16-bits per channel RGBA.
 /// The conversion may be lossy.
 pub const Color = struct.{
-    rgb: fn () Value,
+    rgb: Value,
 };
 
 /// Value is the alpha-premultiplied red, green, blue and alpha values
@@ -21,11 +21,7 @@ pub const Value = struct.{
 /// Model can convert any Color to one from its own color model. The conversion
 /// may be lossy.
 pub const Model = struct.{
-    convert: fn (c: Color) Color,
-
-    pub fn modelFn(f: fn (c: Color) Color) Model {
-        return Model.{ .convert = f };
-    }
+    convert: fn (c: ModelType) Color,
 };
 
 /// RGBA represents a traditional 32-bit alpha-premultiplied color, having 8
@@ -207,6 +203,24 @@ pub const ModelType = union.{
     alpha16: Alpha16,
     gray: Gray,
     gray16: Gray16,
+    color: Color,
+
+    pub fn rgbaModel(m: ModelType) Color {
+        return switch (m) {
+            ModelType.rgba => |c| c.toColor(),
+            ModelType.color => |c| {
+                return Color.{
+                    .rgb = Value.{
+                        .r = c.rgb.r >> 8,
+                        .g = c.rgb.g >> 8,
+                        .b = c.rgb.b >> 8,
+                        .a = c.rgb.a >> 8,
+                    },
+                };
+            },
+            else => unreachanle,
+        };
+    }
 };
 
 pub const Black = Gray.{ .y = 0 };
