@@ -54,6 +54,19 @@ pub const Rectangle = struct.{
         return r.max.x - r.min.x;
     }
 
+    pub fn zero() Rectangle {
+        return Rectangle.{
+            .min = Point.{
+                .x = 0,
+                .y = 0,
+            },
+            .max = Point.{
+                .x = 0,
+                .y = 0,
+            },
+        };
+    }
+
     /// dy returns r's height.
     pub fn dy(r: Rectangle) usize {
         return r.max.y - r.min.y;
@@ -81,6 +94,76 @@ pub const Rectangle = struct.{
             .min = Point.{ .x = r.min.x - p.x, .y = r.min.y - p.y },
             .max = Point.{ .x = r.max.x - p.x, .y = r.max.y - p.y },
         };
+    }
+
+    /// Inset returns the rectangle r inset by n, which may be negative. If either
+    /// of r's dimensions is less than 2*n then an empty rectangle near the center
+    /// of r will be returned.
+    pub fn inset(r: Rectangle, n: usize) Rectangle {
+        if (r.dx() < 2 * n) {
+            r.min.x = (r.min.x + r.max.x) / 2;
+            r.max.x = r.min.x;
+        } else {
+            r.min.x += n;
+            r.max.x -= n;
+        }
+
+        if (r.dy() < 2 * n) {
+            r.min.y = (r.min.y + r.max.y) / 2;
+            r.max.y = r.min.y;
+        } else {
+            r.min.y += n;
+            r.max.y -= n;
+        }
+        return r;
+    }
+
+    /// Intersect returns the largest rectangle contained by both r and s. If the
+    /// two rectangles do not overlap then the zero rectangle will be returned.
+    pub fn intersect(r: Rectangle, s: Rectangle) Rectangle {
+        if (r.min.x < s.min.x) {
+            r.min.x = s.min.x;
+        }
+        if (r.min.y < s.min.y) {
+            r.min.y = s.min.y;
+        }
+        if (r.max.x > s.max.x) {
+            r.max.x = s.max.x;
+        }
+        if (r.max.y > s.max.y) {
+            r.max.y = s.max.y;
+        }
+        if (r.empty()) {
+            return Rectangle.zero();
+        }
+        return r;
+    }
+
+    /// Union returns the smallest rectangle that contains both r and s.
+    pub fn runion(r: Rectangle, s: Rectangle) Rectangle {
+        if (r.empty()) {
+            return s;
+        }
+        if (s.empty()) {
+            return r;
+        }
+        if (r.min.x > s.min.x) {
+            r.min.x = s.min.x;
+        }
+        if (r.min.y > s.min.y) {
+            r.min.y = s.min.y;
+        }
+        if (r.max.x < s.max.x) {
+            r.max.z = s.max.x;
+        }
+        if (r.max.y < s.max.y) {
+            r.max.y = s.max.y;
+        }
+        return r;
+    }
+
+    pub fn eq(r: Rectangle, s: Rectangle) bool {
+        return r.max.eq(s.max) and r.min.eq(s.min) or r.empty() and s.empty();
     }
 };
 
