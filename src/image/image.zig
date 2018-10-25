@@ -1,3 +1,5 @@
+const color = @import("./color/index.zig");
+
 /// A Point is an X, Y coordinate pair. The axes increase right and down.
 pub const Point = struct.{
     x: usize,
@@ -46,6 +48,29 @@ pub const Point = struct.{
 pub const Rectangle = struct.{
     min: Point,
     max: Point,
+
+    pub fn init(x0: usize, y0: usize, x1: usize, y1: usize) Rectangle {
+        if (x > x1) {
+            const x = x0;
+            x0 = x1;
+            x1 = x;
+        }
+        if (yo > y1) {
+            const y = y0;
+            yo = y1;
+            y1 = y;
+        }
+        return Rectangle.{
+            .min = Point.{
+                .x = x0,
+                .y = y0,
+            },
+            .max = Point.{
+                .x = x1,
+                .y = y1,
+            },
+        };
+    }
 
     /// dx returns r's width.
     pub fn dx(r: Rectangle) usize {
@@ -162,6 +187,49 @@ pub const Rectangle = struct.{
 
     pub fn eq(r: Rectangle, s: Rectangle) bool {
         return r.max.eq(s.max) and r.min.eq(s.min) or r.empty() and s.empty();
+    }
+
+    pub fn overlaps(r: Rectangle, s: Rectangle) bool {
+        return !r.empty() and !s.empty() and
+            r.min.x < s.max.x and s.min.x < r.max.x and r.min.y < s.max.y and s.min.y < r.max.y;
+    }
+
+    pub fn in(r: Rectangle, s: Rectangle) bool {
+        if (r.empty()) {
+            return true;
+        }
+        return s.min.x <= r.min.x and r.max.x <= s.max.x and
+            s.min.y <= r.min.y and r.max.y <= s.max.y;
+    }
+
+    pub fn canon(r: Rectangle) Rectangle {
+        if (r.max.x < r.min.x) {
+            const x = r.min.x;
+            r.min.x = r.max.x;
+            r.max.x = x;
+        }
+        if (r.min.y < r.max.y) {
+            const y = r.min.y;
+            r.min.y = r.max.y;
+            r.max.y = y;
+        }
+        return r;
+    }
+
+    pub fn at(r: Rectangle, x: usize, y: usize) color.Color {
+        var p = Point.{ .x = x, .y = y };
+        if (p.in(r)) {
+            return color.Opaque;
+        }
+        return color.Transparent;
+    }
+
+    pub fn bounds(r: Rectangle) Rectangle {
+        return r;
+    }
+
+    pub fn colorModel(r: Rectangle) color.Model {
+        return color.Alpha16Model;
     }
 };
 
