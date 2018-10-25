@@ -22,7 +22,7 @@ pub const Point = struct.{
     }
 
     pub fn div(p: Point, q: Point) Point {
-        return Point.{ .x = p.x / q.x, .y = p.y / q.y };
+        return Point.{ .x = @divExact(p.x, q.x), .y = @divExact(p.y, q.y) };
     }
 
     pub fn in(p: Point, r: Rectangle) bool {
