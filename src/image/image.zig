@@ -129,43 +129,50 @@ pub const Rectangle = struct.{
     /// of r's dimensions is less than 2*n then an empty rectangle near the center
     /// of r will be returned.
     pub fn inset(r: Rectangle, n: isize) Rectangle {
+        var x0 = r.min.x;
+        var x1 = r.min.x;
         if (r.dx() < 2 * n) {
-            r.min.x = (r.min.x + r.max.x) / 2;
-            r.max.x = r.min.x;
+            x0 = @divExact((r.min.x + r.max.x), 2);
+            x1 = x0;
         } else {
-            r.min.x += n;
-            r.max.x -= n;
+            x0 += n;
+            x1 -= n;
         }
-
+        var y0 = r.min.y;
+        var y1 = r.max.y;
         if (r.dy() < 2 * n) {
-            r.min.y = (r.min.y + r.max.y) / 2;
-            r.max.y = r.min.y;
+            y0 = @divExact((r.min.y + r.max.y), 2);
+            y1 = y0;
         } else {
-            r.min.y += n;
-            r.max.y -= n;
+            y0 += n;
+            y1 -= n;
         }
-        return r;
+        return Rectangle.init(x0, y0, x1, y1);
     }
 
     /// Intersect returns the largest rectangle contained by both r and s. If the
     /// two rectangles do not overlap then the zero rectangle will be returned.
     pub fn intersect(r: Rectangle, s: Rectangle) Rectangle {
-        if (r.min.x < s.min.x) {
-            r.min.x = s.min.x;
+        var x0 = r.min.x;
+        var y0 = r.min.y;
+        var x1 = r.max.x;
+        var y1 = r.max.y;
+        if (x0 < s.min.x) {
+            x0 = s.min.x;
         }
-        if (r.min.y < s.min.y) {
-            r.min.y = s.min.y;
+        if (y0 < s.min.y) {
+            y0 = s.min.y;
         }
-        if (r.max.x > s.max.x) {
-            r.max.x = s.max.x;
+        if (x1 > s.max.x) {
+            x1 = s.max.x;
         }
-        if (r.max.y > s.max.y) {
-            r.max.y = s.max.y;
+        if (y1 > s.max.y) {
+            y1 = s.max.y;
         }
         if (r.empty()) {
             return Rectangle.zero();
         }
-        return r;
+        return Rectangle.init(x0, y0, x1, y1);
     }
 
     /// Union returns the smallest rectangle that contains both r and s.
@@ -176,19 +183,20 @@ pub const Rectangle = struct.{
         if (s.empty()) {
             return r;
         }
-        if (r.min.x > s.min.x) {
-            r.min.x = s.min.x;
+        var a = []isize.{ r.min.x, r.min.y, r.max.x, r.max.y };
+        if (a[0] > s.min.x) {
+            a[0] = s.min.x;
         }
-        if (r.min.y > s.min.y) {
-            r.min.y = s.min.y;
+        if (a[1] > s.min.y) {
+            a[1] = s.min.y;
         }
-        if (r.max.x < s.max.x) {
-            r.max.z = s.max.x;
+        if (a[2] < s.max.x) {
+            a[2] = s.max.x;
         }
-        if (r.max.y < s.max.y) {
-            r.max.y = s.max.y;
+        if (a[3] < s.max.y) {
+            a[3] = s.max.y;
         }
-        return r;
+        return Rectangle.init(a[0], a[1], a[2], a[3]);
     }
 
     pub fn eq(r: Rectangle, s: Rectangle) bool {
@@ -209,25 +217,29 @@ pub const Rectangle = struct.{
     }
 
     pub fn canon(r: Rectangle) Rectangle {
+        var x0 = r.min.x;
+        var x1 = r.max.x;
         if (r.max.x < r.min.x) {
             const x = r.min.x;
-            r.min.x = r.max.x;
-            r.max.x = x;
+            x0 = r.max.x;
+            x1 = x;
         }
+        var y0 = r.min.x;
+        var y1 = r.min.x;
         if (r.min.y < r.max.y) {
-            const y = r.min.y;
-            r.min.y = r.max.y;
-            r.max.y = y;
+            const y = y0;
+            y0 = y1;
+            y1 = y;
         }
-        return r;
+        return Rectangle.init(x0, y0, x1, y1);
     }
 
     pub fn at(r: Rectangle, x: isize, y: isize) color.Color {
         var p = Point.{ .x = x, .y = y };
         if (p.in(r)) {
-            return color.Opaque;
+            return color.Opaque.toColor();
         }
-        return color.Transparent;
+        return color.Transparent.toColor();
     }
 
     pub fn bounds(r: Rectangle) Rectangle {

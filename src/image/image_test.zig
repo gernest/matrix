@@ -38,7 +38,9 @@ test "Rectangle" {
         for (rectangles) |s| {
             const got = r.in(s);
             const want = in(r, s) and in(s, r);
-            try t.terrorf("\n expected {} got {} {} \n", want, got, s);
+            if (got != want) {
+                try t.terrorf("\nexpected {} to be in {}\n", r, s);
+            }
         }
     }
 }

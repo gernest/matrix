@@ -78,7 +78,7 @@ pub const RGBA64 = struct.{
 };
 
 /// NRGBA represents a non-alpha-premultiplied 32-bit color.
-pub const NBRGBA = struct.{
+pub const NRGBA = struct.{
     r: u8,
     g: u8,
     b: u8,
@@ -141,7 +141,10 @@ pub const NBRGBA64 = struct.{
 pub const Alpha = struct.{
     a: u8,
 
-    fn toColor(c: Alpha) Value {
+    fn toColor(c: Alpha) Color {
+        return Color.{ .rgb = c.toValue() };
+    }
+    fn toValue(c: Alpha) Value {
         var a: u32 = c.a;
         a |= a << 8;
         return Value.{
@@ -156,7 +159,10 @@ pub const Alpha = struct.{
 pub const Alpha16 = struct.{
     a: u16,
 
-    fn toColor(c: Alpha16) Value {
+    fn toColor(c: Alpha16) Color {
+        return Color.{ .rgb = c.toValue() };
+    }
+    fn toValue(c: Alpha16) Value {
         var a: u32 = c.a;
         a |= a << 8;
         return Value.{
@@ -198,11 +204,13 @@ pub const Gray16 = struct.{
     }
 };
 
-pub const ModelType = union.{
+pub const Alpha16Model = Model.{ .convert = ModelType.rgbaModel };
+
+pub const ModelType = union(enum).{
     rgba: RGBA,
     rgba64: RGBA64,
     nrgba: NRGBA,
-    nrgba64: nrgba64,
+    nrgba64: NBRGBA64,
     alpha: Alpha,
     alpha16: Alpha16,
     gray: Gray,
@@ -222,7 +230,7 @@ pub const ModelType = union.{
                     },
                 };
             },
-            else => unreachanle,
+            else => unreachable,
         };
     }
 };
