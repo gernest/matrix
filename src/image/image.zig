@@ -2,8 +2,12 @@ const color = @import("./color/index.zig");
 
 /// A Point is an X, Y coordinate pair. The axes increase right and down.
 pub const Point = struct.{
-    x: usize,
-    y: usize,
+    x: isize,
+    y: isize,
+
+    pub fn init(x: isize, y: isize) Point {
+        return Point.{ .x = x, .y = y };
+    }
 
     pub fn add(p: Point, q: Point) Point {
         return Point.{ .x = p.x + q.x, .y = p.y + q.y };
@@ -49,18 +53,8 @@ pub const Rectangle = struct.{
     min: Point,
     max: Point,
 
-    pub fn init(x0: usize, y0: usize, x1: usize, y1: usize) Rectangle {
-        if (x > x1) {
-            const x = x0;
-            x0 = x1;
-            x1 = x;
-        }
-        if (yo > y1) {
-            const y = y0;
-            yo = y1;
-            y1 = y;
-        }
-        return Rectangle.{
+    pub fn init(x0: isize, y0: isize, x1: isize, y1: isize) Rectangle {
+        var r = Rectangle.{
             .min = Point.{
                 .x = x0,
                 .y = y0,
@@ -70,10 +64,21 @@ pub const Rectangle = struct.{
                 .y = y1,
             },
         };
+        if (x0 > x1) {
+            const x = x0;
+            r.min.x = x1;
+            r.max.x = x;
+        }
+        if (y0 > y1) {
+            const y = y0;
+            r.min.y = y1;
+            r.max.y = y;
+        }
+        return r;
     }
 
     /// dx returns r's width.
-    pub fn dx(r: Rectangle) usize {
+    pub fn dx(r: Rectangle) isize {
         return r.max.x - r.min.x;
     }
 
@@ -91,7 +96,7 @@ pub const Rectangle = struct.{
     }
 
     /// dy returns r's height.
-    pub fn dy(r: Rectangle) usize {
+    pub fn dy(r: Rectangle) isize {
         return r.max.y - r.min.y;
     }
 
@@ -122,7 +127,7 @@ pub const Rectangle = struct.{
     /// Inset returns the rectangle r inset by n, which may be negative. If either
     /// of r's dimensions is less than 2*n then an empty rectangle near the center
     /// of r will be returned.
-    pub fn inset(r: Rectangle, n: usize) Rectangle {
+    pub fn inset(r: Rectangle, n: isize) Rectangle {
         if (r.dx() < 2 * n) {
             r.min.x = (r.min.x + r.max.x) / 2;
             r.max.x = r.min.x;
@@ -216,7 +221,7 @@ pub const Rectangle = struct.{
         return r;
     }
 
-    pub fn at(r: Rectangle, x: usize, y: usize) color.Color {
+    pub fn at(r: Rectangle, x: isize, y: isize) color.Color {
         var p = Point.{ .x = x, .y = y };
         if (p.in(r)) {
             return color.Opaque;
@@ -235,12 +240,12 @@ pub const Rectangle = struct.{
 
 pub const Config = struct.{
     color_model: color.Model,
-    width: usize,
-    height: usize,
+    width: isize,
+    height: isize,
 };
 
 pub const Image = struct.{
     colorModel: color.Model,
     bounds: Rectangle,
-    at: fn (x: usize, y: usize) color.Color,
+    at: fn (x: isize, y: isize) color.Color,
 };
