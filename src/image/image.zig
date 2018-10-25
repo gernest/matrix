@@ -1,5 +1,3 @@
-const coor = @import("./color.zig");
-
 /// A Point is an X, Y coordinate pair. The axes increase right and down.
 pub const Point = struct.{
     x: usize,
