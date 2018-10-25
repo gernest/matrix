@@ -20,6 +20,29 @@ pub const Point = struct.{
     pub fn div(p: Point, q: Point) Point {
         return Point.{ .x = p.x / q.x, .y = p.y / q.y };
     }
+
+    pub fn in(p: Point, r: Rectangle) bool {
+        return r.min.x <= p.x and p.x < r.max.x and r.min.y <= p.y and p.y < r.max.y;
+    }
+
+    pub fn mod(p: Point, r: Rectangle) Point {
+        const w = r.dx();
+        const h = r.dy();
+        const point = p.sub(r.min);
+        point.x = point.x % w;
+        if (point.x < 0) {
+            point.x += w;
+        }
+        point.y = point.y % h;
+        if (point.y < 0) {
+            point.y += h;
+        }
+        return point.add(r.min);
+    }
+
+    pub fn eq(p: Point, q: Point) bool {
+        return p.x == q.x and p.y == q.y;
+    }
 };
 
 pub const Rectangle = struct.{
