@@ -1,6 +1,6 @@
 const debug = @import("std").debug;
 
-pub fn terror(comptime fmt: []const 8) !void {
+pub fn terror(comptime fmt: []const u8) !void {
     debug.warn("{}\n", fmt);
     return error.TestFailed;
 }

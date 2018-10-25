@@ -26,20 +26,32 @@ const rectangles = []image.Rectangle.{
     image.Rectangle.init(4, 6, 10, 10),
     image.Rectangle.init(2, 3, 12, 5),
     image.Rectangle.init(-1, -2, 0, 0),
-    // image.Rectangle.init(-1, -2, 4, 6),
-    // image.Rectangle.init(-10, -20, 30, 40),
-    // image.Rectangle.init(8, 8, 8, 8),
-    // image.Rectangle.init(88, 88, 88, 88),
-    // image.Rectangle.init(6, 5, 4, 3),
+    image.Rectangle.init(-1, -2, 4, 6),
+    image.Rectangle.init(-10, -20, 30, 40),
+    image.Rectangle.init(8, 8, 8, 8),
+    image.Rectangle.init(88, 88, 88, 88),
+    image.Rectangle.init(6, 5, 4, 3),
 };
 
 test "Rectangle" {
     for (rectangles) |r| {
         for (rectangles) |s| {
-            const got = r.in(s);
+            const got = r.eq(s);
             const want = in(r, s) and in(s, r);
             if (got != want) {
-                try t.terrorf("\nexpected {} to be in {}\n", r, s);
+                try t.terrorf("\n {}:{} expected {} to be in {}\n", got, want, r, s);
+            }
+        }
+    }
+
+    for (rectangles) |r| {
+        for (rectangles) |s| {
+            const a = r.intersect(s);
+            if (!in(a, r)) {
+                _ = t.terrorf("\nexpected {} to be in {}\n", a, r);
+            }
+            if (!in(a, s)) {
+                _ = t.terrorf("\nexpected {} to be in {}\n", a, s);
             }
         }
     }
