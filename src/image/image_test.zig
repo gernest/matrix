@@ -1,5 +1,5 @@
 const image = @import("./image.zig");
-const assert = @import("std").debug.assert;
+const t = @import("../testing/index.zig");
 
 fn in(f: image.Rectangle, g: image.Rectangle) bool {
     if (!f.in(g)) {
@@ -38,7 +38,7 @@ test "Rectangle" {
         for (rectangles) |s| {
             const got = r.in(s);
             const want = in(r, s) and in(s, r);
-            assert(got == want);
+            try t.terrorf("\n expected {} got {} {} \n", want, got, s);
         }
     }
 }
