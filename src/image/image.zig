@@ -33,15 +33,16 @@ pub const Point = struct.{
         const w = r.dx();
         const h = r.dy();
         const point = p.sub(r.min);
-        point.x = point.x % w;
-        if (point.x < 0) {
-            point.x += w;
+        var x = @mod(point.x, w);
+        if (x < 0) {
+            x += w;
         }
-        point.y = point.y % h;
-        if (point.y < 0) {
-            point.y += h;
+        var y = @mod(point.y, h);
+        if (y < 0) {
+            y += h;
         }
-        return point.add(r.min);
+        const np = Point.init(x, y);
+        return np.add(r.min);
     }
 
     pub fn eq(p: Point, q: Point) bool {
