@@ -5,6 +5,7 @@
 const std = @import("std");
 const debug = std.debug;
 const mem = std.mem;
+const io = std.io;
 
 // A single token slice into the parent string.
 //
@@ -1008,7 +1009,7 @@ pub const Value = union(enum).{
     Array: ArrayList(Value),
     Object: ObjectMap,
 
-    pub fn dump(self: Value) void {
+    pub fn dump(self: Value, out: *io.BufferOutStream.Stream) void {
         switch (self) {
             Value.Null => {
                 debug.warn("null");
@@ -1033,7 +1034,7 @@ pub const Value = union(enum).{
                         debug.warn(",");
                     }
                     not_first = true;
-                    value.dump();
+                    value.dump(out);
                 }
                 debug.warn("]");
             },
@@ -1048,22 +1049,22 @@ pub const Value = union(enum).{
                     }
                     not_first = true;
                     debug.warn("\"{}\":", entry.key);
-                    entry.value.dump();
+                    entry.value.dump(out);
                 }
                 debug.warn("}}");
             },
         }
     }
 
-    pub fn dumpIndent(self: Value, indent: usize) void {
+    pub fn dumpIndent(self: Value, indent: usize, out: *io.BufferOutStream.Stream) void {
         if (indent == 0) {
-            self.dump();
+            self.dump(out);
         } else {
-            self.dumpIndentLevel(indent, 0);
+            self.dumpIndentLevel(indent, 0, out);
         }
     }
 
-    fn dumpIndentLevel(self: Value, indent: usize, level: usize) void {
+    fn dumpIndentLevel(self: Value, indent: usize, level: usize, out: *io.BufferOutStream.Stream) void {
         switch (self) {
             Value.Null => {
                 debug.warn("null");
@@ -1089,11 +1090,11 @@ pub const Value = union(enum).{
                         debug.warn(",\n");
                     }
                     not_first = true;
-                    padSpace(level + indent);
-                    value.dumpIndentLevel(indent, level + indent);
+                    padSpace(level + indent, out);
+                    value.dumpIndentLevel(indent, level + indent, out);
                 }
                 debug.warn("\n");
-                padSpace(level);
+                padSpace(level, out);
                 debug.warn("]");
             },
             Value.Object => |inner| {
@@ -1106,24 +1107,34 @@ pub const Value = union(enum).{
                         debug.warn(",\n");
                     }
                     not_first = true;
-                    padSpace(level + indent);
+                    padSpace(level + indent, out);
                     debug.warn("\"{}\": ", entry.key);
-                    entry.value.dumpIndentLevel(indent, level + indent);
+                    entry.value.dumpIndentLevel(indent, level + indent, out);
                 }
                 debug.warn("\n");
-                padSpace(level);
+                padSpace(level, out);
                 debug.warn("}}");
             },
         }
     }
 
-    fn padSpace(indent: usize) void {
+    fn padSpace(indent: usize, out: *io.BufferOutStream.Stream) void {
         var i: usize = 0;
         while (i < indent) : (i += 1) {
             debug.warn(" ");
         }
     }
 };
+
+test "Value" {
+    const v = Value.{ .Integer = 13 };
+    var b = try std.Buffer.init(debug.global_allocator, "");
+    var buf = &b;
+    defer buf.deinit();
+    var stream = &io.BufferOutStream.init(buf).stream;
+    v.dump(stream);
+    v.dumpIndent(2, stream);
+}
 
 // A non-stream JSON parser which constructs a tree of Value's.
 pub const Parser = struct.{
