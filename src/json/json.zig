@@ -1009,119 +1009,119 @@ pub const Value = union(enum).{
     Array: ArrayList(Value),
     Object: ObjectMap,
 
-    pub fn dump(self: Value, out: *io.BufferOutStream.Stream) void {
+    pub fn dump(self: Value, out: *io.BufferOutStream.Stream) error!void {
         switch (self) {
             Value.Null => {
-                debug.warn("null");
+                try out.print("null");
             },
             Value.Bool => |inner| {
-                debug.warn("{}", inner);
+                try out.print("{}", inner);
             },
             Value.Integer => |inner| {
-                debug.warn("{}", inner);
+                try out.print("{}", inner);
             },
             Value.Float => |inner| {
-                debug.warn("{.5}", inner);
+                try out.print("{.5}", inner);
             },
             Value.String => |inner| {
-                debug.warn("\"{}\"", inner);
+                try out.print("\"{}\"", inner);
             },
             Value.Array => |inner| {
                 var not_first = false;
-                debug.warn("[");
+                try out.print("[");
                 for (inner.toSliceConst()) |value| {
                     if (not_first) {
-                        debug.warn(",");
+                        try out.print(",");
                     }
                     not_first = true;
-                    value.dump(out);
+                    try value.dump(out);
                 }
-                debug.warn("]");
+                try out.print("]");
             },
             Value.Object => |inner| {
                 var not_first = false;
-                debug.warn("{{");
+                try out.print("{{");
                 var it = inner.iterator();
 
                 while (it.next()) |entry| {
                     if (not_first) {
-                        debug.warn(",");
+                        try out.print(",");
                     }
                     not_first = true;
-                    debug.warn("\"{}\":", entry.key);
-                    entry.value.dump(out);
+                    try out.print("\"{}\":", entry.key);
+                    try entry.value.dump(out);
                 }
-                debug.warn("}}");
+                try out.print("}}");
             },
         }
     }
 
-    pub fn dumpIndent(self: Value, indent: usize, out: *io.BufferOutStream.Stream) void {
+    pub fn dumpIndent(self: Value, indent: usize, out: *io.BufferOutStream.Stream) error!void {
         if (indent == 0) {
-            self.dump(out);
+            try self.dump(out);
         } else {
-            self.dumpIndentLevel(indent, 0, out);
+            try self.dumpIndentLevel(indent, 0, out);
         }
     }
 
-    fn dumpIndentLevel(self: Value, indent: usize, level: usize, out: *io.BufferOutStream.Stream) void {
+    fn dumpIndentLevel(self: Value, indent: usize, level: usize, out: *io.BufferOutStream.Stream) error!void {
         switch (self) {
             Value.Null => {
-                debug.warn("null");
+                try out.print("null");
             },
             Value.Bool => |inner| {
-                debug.warn("{}", inner);
+                try out.print("{}", inner);
             },
             Value.Integer => |inner| {
-                debug.warn("{}", inner);
+                try out.print("{}", inner);
             },
             Value.Float => |inner| {
-                debug.warn("{.5}", inner);
+                try out.print("{.5}", inner);
             },
             Value.String => |inner| {
-                debug.warn("\"{}\"", inner);
+                try out.print("\"{}\"", inner);
             },
             Value.Array => |inner| {
                 var not_first = false;
-                debug.warn("[\n");
+                try out.print("[\n");
 
                 for (inner.toSliceConst()) |value| {
                     if (not_first) {
-                        debug.warn(",\n");
+                        try out.print(",\n");
                     }
                     not_first = true;
-                    padSpace(level + indent, out);
-                    value.dumpIndentLevel(indent, level + indent, out);
+                    try padSpace(level + indent, out);
+                    try value.dumpIndentLevel(indent, level + indent, out);
                 }
-                debug.warn("\n");
-                padSpace(level, out);
-                debug.warn("]");
+                try out.print("\n");
+                try padSpace(level, out);
+                try out.print("]");
             },
             Value.Object => |inner| {
                 var not_first = false;
-                debug.warn("{{\n");
+                try out.print("{{\n");
                 var it = inner.iterator();
 
                 while (it.next()) |entry| {
                     if (not_first) {
-                        debug.warn(",\n");
+                        try out.print(",\n");
                     }
                     not_first = true;
-                    padSpace(level + indent, out);
-                    debug.warn("\"{}\": ", entry.key);
-                    entry.value.dumpIndentLevel(indent, level + indent, out);
+                    try padSpace(level + indent, out);
+                    try out.print("\"{}\": ", entry.key);
+                    try entry.value.dumpIndentLevel(indent, level + indent, out);
                 }
-                debug.warn("\n");
-                padSpace(level, out);
-                debug.warn("}}");
+                try out.print("\n");
+                try padSpace(level, out);
+                try out.print("}}");
             },
         }
     }
 
-    fn padSpace(indent: usize, out: *io.BufferOutStream.Stream) void {
+    fn padSpace(indent: usize, out: *io.BufferOutStream.Stream) error!void {
         var i: usize = 0;
         while (i < indent) : (i += 1) {
-            debug.warn(" ");
+            try out.print(" ");
         }
     }
 };
@@ -1132,8 +1132,8 @@ test "Value" {
     var buf = &b;
     defer buf.deinit();
     var stream = &io.BufferOutStream.init(buf).stream;
-    v.dump(stream);
-    v.dumpIndent(2, stream);
+    try v.dump(stream);
+    debug.warn("\nJSON {}\n", buf.toSlice());
 }
 
 // A non-stream JSON parser which constructs a tree of Value's.
