@@ -142,3 +142,9 @@ test "Rectangle" {
         }
     }
 }
+
+test "RGBA" {
+    var rgba = image.RGBA.init();
+    const m = rgba.image();
+    _ = t.terrorf("{}", m.bounds);
+}

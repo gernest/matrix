@@ -275,7 +275,11 @@ pub const Image = struct.{
     /// at returns the color of the pixel at (x, y).
     /// At(Bounds().Min.X, Bounds().Min.Y) returns the upper-left pixel of the grid.
     /// At(Bounds().Max.X-1, Bounds().Max.Y-1) returns the lower-right one.
-    at: fn (x: isize, y: isize) color.Color,
+    at: AtFn,
+};
+
+pub const AtFn = struct.{
+    at_fn: fn (self: *AtFn, x: isize, y: isize) color.Color,
 };
 
 /// PalettedImage is an image whose colors may come from a limited palette.
@@ -286,4 +290,59 @@ pub const Image = struct.{
 pub const PalettedImage = struct.{
     image: Image,
     color_index_at: fn (x: usize, y: usize) u8,
+};
+
+pub const Pix = struct.{
+    r: u8,
+    g: u8,
+    b: u8,
+    a: u8,
+    pub fn init() Pix {
+        return Pix.{
+            .r = 0,
+            .g = 0,
+            .b = 0,
+            .a = 0,
+        };
+    }
+};
+
+pub const RGBA = struct.{
+    pix: Pix,
+    stride: isize,
+    rect: Rectangle,
+    at_fn: AtFn,
+    pub fn init() RGBA {
+        return RGBA.{
+            .pix = Pix.init(),
+            .stride = 0,
+            .rect = Rectangle.zero(),
+            .at_fn = AtFn.{ .at_fn = at },
+        };
+    }
+
+    pub fn colorModel(r: RGBA) color.Model {
+        return color.RGBAModel;
+    }
+
+    pub fn rgbaAt(r: RGBA, x: isize, y: isize) color.RGBA {
+        const p = Point.init(x, y);
+        if (p.in(r.rect)) {
+            return color.RGBA.{ .r = 0, .g = 0, .b = 0, .a = 0 };
+        }
+        return color.RGBA.{ .r = r.pix.r, .g = r.pix.g, .b = r.pix.b, .a = r.pix.a };
+    }
+
+    pub fn at(r: *AtFn, x: isize, y: isize) color.Color {
+        const self = @fieldParentPtr(RGBA, "at_fn", r);
+        return self.rgbaAt(x, y).toColor();
+    }
+
+    pub fn pixOffset(r: RGBA, x: isize, y: isize) isize {
+        return (y - p.rect.min.y) * p.stride + (x - p.rect.min.x) * 4;
+    }
+
+    pub fn image(r: RGBA) Image {
+        return Image.{ .color_model = r.colorModel(), .at = r.at_fn, .bounds = r.rect };
+    }
 };
