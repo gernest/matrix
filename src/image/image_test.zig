@@ -95,4 +95,50 @@ test "Rectangle" {
             }
         }
     }
+
+    for (rectangles) |r| {
+        for (rectangles) |s| {
+            const a = r.runion(s);
+            if (!in(r, a)) {
+                try t.terrorf("\nUnion: r={}, s={}, a={} r not in a ", r, s, a);
+            }
+            if (!in(s, a)) {
+                try t.terrorf("\nUnion: r={}, s={}, a={} s not in a ", r, s, a);
+            }
+            if (a.empty()) {
+                continue;
+            }
+            const smaller_than_a = []image.Rectangle.{
+                image.Rectangle.init(
+                    a.min.x + 1,
+                    a.min.y,
+                    a.max.x,
+                    a.max.y,
+                ),
+                image.Rectangle.init(
+                    a.min.x,
+                    a.min.y + 1,
+                    a.max.x,
+                    a.max.y,
+                ),
+                image.Rectangle.init(
+                    a.min.x,
+                    a.min.y,
+                    a.max.x - 1,
+                    a.max.y,
+                ),
+                image.Rectangle.init(
+                    a.min.x,
+                    a.min.y,
+                    a.max.x,
+                    a.max.y - 1,
+                ),
+            };
+            for (smaller_than_a) |b| {
+                if (in(r, b) and in(s, b)) {
+                    try t.terrorf("\nUnion: r={}, s={}, a={}, b={}: union could be smaller ", r, s, a, b);
+                }
+            }
+        }
+    }
 }
