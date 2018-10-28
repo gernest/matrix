@@ -144,7 +144,7 @@ test "Rectangle" {
 }
 
 test "RGBA" {
-    var rgba = image.RGBA.init();
+    var rgba = &image.RGBA.init("", 0, image.Rectangle.zero());
     const m = rgba.image();
     _ = t.terrorf("{}", m.bounds);
 }

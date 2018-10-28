@@ -308,29 +308,42 @@ pub const Pix = struct.{
 };
 
 pub const RGBA = struct.{
-    pix: Pix,
+    /// Pix holds the image's pixels, in R, G, B, A order. The pixel at
+    /// (x, y) starts at Pix[(y-Rect.Min.Y)*Stride + (x-Rect.Min.X)*4].
+    pix: []const u8,
+
+    /// Stride is the Pix stride (in bytes) between vertically adjacent pixels.
     stride: isize,
+
+    /// Rect is the image's bounds.
     rect: Rectangle,
     at_fn: AtFn,
-    pub fn init() RGBA {
+    pub fn init(pix: []const u8, stride: isize, rect: Rectangle) RGBA {
         return RGBA.{
-            .pix = Pix.init(),
-            .stride = 0,
-            .rect = Rectangle.zero(),
+            .pix = pix,
+            .stride = stride,
+            .rect = rect,
             .at_fn = AtFn.{ .at_fn = at },
         };
     }
 
-    pub fn colorModel(r: RGBA) color.Model {
+    pub fn zero() RGBA {
+        return RGBA.init("", 0, Rectangle.zero());
+    }
+
+    pub fn colorModel(r: *RGBA) color.Model {
         return color.RGBAModel;
     }
 
-    pub fn rgbaAt(r: RGBA, x: isize, y: isize) color.RGBA {
+    pub fn rgbaAt(r: *RGBA, x: isize, y: isize) color.RGBA {
         const p = Point.init(x, y);
         if (p.in(r.rect)) {
             return color.RGBA.{ .r = 0, .g = 0, .b = 0, .a = 0 };
         }
-        return color.RGBA.{ .r = r.pix.r, .g = r.pix.g, .b = r.pix.b, .a = r.pix.a };
+        const i = r.pixOffset(x, y);
+        const size = @intCast(usize, i);
+        const s = r.pix[size .. size + 4];
+        return color.RGBA.{ .r = s[0], .g = s[1], .b = s[2], .a = s[3] };
     }
 
     pub fn at(r: *AtFn, x: isize, y: isize) color.Color {
@@ -338,11 +351,75 @@ pub const RGBA = struct.{
         return self.rgbaAt(x, y).toColor();
     }
 
-    pub fn pixOffset(r: RGBA, x: isize, y: isize) isize {
-        return (y - p.rect.min.y) * p.stride + (x - p.rect.min.x) * 4;
+    pub fn pixOffset(r: *RGBA, x: isize, y: isize) isize {
+        return (y - r.rect.min.y) * r.stride + (x - r.rect.min.x) * 4;
     }
 
-    pub fn image(r: RGBA) Image {
+    pub fn image(r: *RGBA) Image {
         return Image.{ .color_model = r.colorModel(), .at = r.at_fn, .bounds = r.rect };
+    }
+
+    pub fn set(r: *RGBA, x: isize, y: isize, c: color.ModelType) void {
+        const p = Point.init(x, y);
+        if (p.in(r.rect)) {
+            return;
+        }
+        const v = color.RGBAModel.convert(c);
+        const i = r.pixOffset(x, y);
+        const size = @intCast(usize, i);
+        const s = r.pix[size .. size + 4];
+        s[0] = v.rgb.r;
+        s[1] = v.rgb.g;
+        s[2] = v.rgb.b;
+        s[3] = v.rgb.a;
+    }
+
+    pub fn setRGBA(r: *RGBA, x: isize, y: isize, c: color.RGBA) void {
+        const p = Point.init(x, y);
+        if (p.in(r.rect)) {
+            return;
+        }
+        const i = r.pixOffset(x, y);
+        const size = @intCast(usize, i);
+        const s = r.pix[size .. size + 4];
+        s[0] = c.r;
+        s[1] = c.g;
+        s[2] = c.b;
+        s[3] = c.a;
+    }
+
+    /// subImage returns an image representing the portion of the image p visible
+    /// through rec. The returned value shares pixels with the original image.
+    pub fn subImage(r: *RGBA, rec: Rectangle) RGBA {
+        const ri = rec.intersect(r.rect);
+
+        if (ri.empty()) {
+            return RGBA.zero();
+        }
+        const i = r.pixOffset(x, y);
+        const size = @intCast(usize, i);
+        return RGBA.init(r.pix[size..], r.stride, ri);
+    }
+
+    pub fn opaque(r: *RGBA) bool {
+        if (r.rect.empty()) {
+            return true;
+        }
+        var i0: usize = 0;
+        var i1: usize = r.rect.dx() * 4;
+        var y: usize = r.rect.min.y;
+        while (y < p.rect.max.y) {
+            var i: usize = i0;
+            while (i < i1) {
+                if (r.pix[i] == 0xff) {
+                    return false;
+                }
+                i += 4;
+            }
+            i0 += r.stride;
+            i1 += r.stride;
+            y += 1;
+        }
+        return true;
     }
 };
