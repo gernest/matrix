@@ -272,14 +272,18 @@ pub const Image = struct.{
     /// The bounds do not necessarily contain the point (0, 0).
     bounds: Rectangle,
 
+    image_fn: ImageFuncs,
+};
+
+/// ImageFuncs are futcion which statisfies different interfaces. Some are
+/// optional others are a must.
+pub const ImageFuncs = struct.{
     /// at returns the color of the pixel at (x, y).
     /// At(Bounds().Min.X, Bounds().Min.Y) returns the upper-left pixel of the grid.
     /// At(Bounds().Max.X-1, Bounds().Max.Y-1) returns the lower-right one.
-    at: AtFn,
-};
-
-pub const AtFn = struct.{
-    at_fn: fn (self: *AtFn, x: isize, y: isize) color.Color,
+    at_fn: fn (self: *ImageFuncs, x: isize, y: isize) color.Color,
+    opaque_fn: ?fn (self: *ImageFuncs) bool,
+    set_fn: ?fn (self: *ImageFuncs, x: isize, y: isize, c: color.ModelType) void,
 };
 
 /// PalettedImage is an image whose colors may come from a limited palette.
@@ -310,20 +314,24 @@ pub const Pix = struct.{
 pub const RGBA = struct.{
     /// Pix holds the image's pixels, in R, G, B, A order. The pixel at
     /// (x, y) starts at Pix[(y-Rect.Min.Y)*Stride + (x-Rect.Min.X)*4].
-    pix: []const u8,
+    pix: []u8,
 
     /// Stride is the Pix stride (in bytes) between vertically adjacent pixels.
     stride: isize,
 
     /// Rect is the image's bounds.
     rect: Rectangle,
-    at_fn: AtFn,
-    pub fn init(pix: []const u8, stride: isize, rect: Rectangle) RGBA {
+    image_fn: ImageFuncs,
+    pub fn init(pix: []u8, stride: isize, rect: Rectangle) RGBA {
         return RGBA.{
             .pix = pix,
             .stride = stride,
             .rect = rect,
-            .at_fn = AtFn.{ .at_fn = at },
+            .image_fn = ImageFuncs.{
+                .at_fn = at,
+                .opaque_fn = opaqueFn,
+                .set_fn = setFn,
+            },
         };
     }
 
@@ -346,9 +354,24 @@ pub const RGBA = struct.{
         return color.RGBA.{ .r = s[0], .g = s[1], .b = s[2], .a = s[3] };
     }
 
-    pub fn at(r: *AtFn, x: isize, y: isize) color.Color {
-        const self = @fieldParentPtr(RGBA, "at_fn", r);
+    pub fn at(r: *ImageFuncs, x: isize, y: isize) color.Color {
+        const self = @fieldParentPtr(RGBA, "image_fn", r);
         return self.rgbaAt(x, y).toColor();
+    }
+
+    pub fn opaqueFn(r: *ImageFuncs) bool {
+        const self = @fieldParentPtr(RGBA, "image_fn", r);
+        return self.opaque();
+    }
+
+    pub fn subImageFn(r: *ImageFuncs, rec: Rectangle) Image {
+        const self = @fieldParentPtr(RGBA, "image_fn", r);
+        return self.subImage(rec).image();
+    }
+
+    pub fn setFn(r: *ImageFuncs, x: isize, y: isize, c: color.ModelType) void {
+        const self = @fieldParentPtr(RGBA, "image_fn", r);
+        return self.set(x, y, c);
     }
 
     pub fn pixOffset(r: *RGBA, x: isize, y: isize) isize {
@@ -356,7 +379,11 @@ pub const RGBA = struct.{
     }
 
     pub fn image(r: *RGBA) Image {
-        return Image.{ .color_model = r.colorModel(), .at = r.at_fn, .bounds = r.rect };
+        return Image.{
+            .color_model = r.colorModel(),
+            .image_fn = r.image_fn,
+            .bounds = r.rect,
+        };
     }
 
     pub fn set(r: *RGBA, x: isize, y: isize, c: color.ModelType) void {
@@ -367,11 +394,11 @@ pub const RGBA = struct.{
         const v = color.RGBAModel.convert(c);
         const i = r.pixOffset(x, y);
         const size = @intCast(usize, i);
-        const s = r.pix[size .. size + 4];
-        s[0] = v.rgb.r;
-        s[1] = v.rgb.g;
-        s[2] = v.rgb.b;
-        s[3] = v.rgb.a;
+        var s = r.pix[size .. size + 4];
+        s[0] = @intCast(u8, v.rgb.r);
+        s[1] = @intCast(u8, v.rgb.g);
+        s[2] = @intCast(u8, v.rgb.b);
+        s[3] = @intCast(u8, v.rgb.a);
     }
 
     pub fn setRGBA(r: *RGBA, x: isize, y: isize, c: color.RGBA) void {
@@ -405,19 +432,20 @@ pub const RGBA = struct.{
         if (r.rect.empty()) {
             return true;
         }
-        var i0: usize = 0;
-        var i1: usize = r.rect.dx() * 4;
-        var y: usize = r.rect.min.y;
-        while (y < p.rect.max.y) {
-            var i: usize = i0;
-            while (i < i1) {
-                if (r.pix[i] == 0xff) {
+        var x0: isize = 0;
+        var x1 = r.rect.dx() * 4;
+        var y = r.rect.min.y;
+        while (y < r.rect.max.y) {
+            var i = x0;
+            while (i < x1) {
+                const idx = @intCast(usize, i);
+                if (r.pix[idx] == 0xff) {
                     return false;
                 }
                 i += 4;
             }
-            i0 += r.stride;
-            i1 += r.stride;
+            x0 += r.stride;
+            x1 += r.stride;
             y += 1;
         }
         return true;
