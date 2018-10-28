@@ -57,9 +57,3 @@ test "Rectangle" {
         }
     }
 }
-
-// test "case" {
-//     var a = image.Rectangle.rect(0, 0, 10, 10);
-//     var b = image.Rectangle.rect(88, 88, 88, 88);
-//     _ = t.terrorf("\n {}\n", a.intersect(b));
-// }
