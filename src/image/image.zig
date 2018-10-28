@@ -55,6 +55,19 @@ pub const Rectangle = struct.{
     max: Point,
 
     pub fn init(x0: isize, y0: isize, x1: isize, y1: isize) Rectangle {
+        return Rectangle.{
+            .min = Point.{
+                .x = x0,
+                .y = y0,
+            },
+            .max = Point.{
+                .x = x1,
+                .y = y1,
+            },
+        };
+    }
+
+    pub fn rect(x0: isize, y0: isize, x1: isize, y1: isize) Rectangle {
         var r = Rectangle.{
             .min = Point.{
                 .x = x0,
@@ -84,16 +97,7 @@ pub const Rectangle = struct.{
     }
 
     pub fn zero() Rectangle {
-        return Rectangle.{
-            .min = Point.{
-                .x = 0,
-                .y = 0,
-            },
-            .max = Point.{
-                .x = 0,
-                .y = 0,
-            },
-        };
+        return Rectangle.init(0, 0, 0, 0);
     }
 
     /// dy returns r's height.
@@ -169,10 +173,11 @@ pub const Rectangle = struct.{
         if (y1 > s.max.y) {
             y1 = s.max.y;
         }
-        if (r.empty()) {
+        const rec = Rectangle.init(x0, y0, x1, y1);
+        if (rec.empty()) {
             return Rectangle.zero();
         }
-        return Rectangle.init(x0, y0, x1, y1);
+        return rec;
     }
 
     /// Union returns the smallest rectangle that contains both r and s.
