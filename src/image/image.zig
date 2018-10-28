@@ -262,8 +262,28 @@ pub const Config = struct.{
     height: isize,
 };
 
+/// Image is a finite rectangular grid of color.Color values taken from a color
+/// model.
 pub const Image = struct.{
-    colorModel: color.Model,
+    /// color_model is the Image's color model.
+    color_model: color.Model,
+
+    /// bounds is the domain for which At can return non-zero color.
+    /// The bounds do not necessarily contain the point (0, 0).
     bounds: Rectangle,
+
+    /// at returns the color of the pixel at (x, y).
+    /// At(Bounds().Min.X, Bounds().Min.Y) returns the upper-left pixel of the grid.
+    /// At(Bounds().Max.X-1, Bounds().Max.Y-1) returns the lower-right one.
     at: fn (x: isize, y: isize) color.Color,
+};
+
+/// PalettedImage is an image whose colors may come from a limited palette.
+/// If m is a PalettedImage and m.ColorModel() returns a color.Palette p,
+/// then m.At(x, y) should be equivalent to p[m.ColorIndexAt(x, y)]. If m's
+/// color model is not a color.Palette, then ColorIndexAt's behavior is
+/// undefined.
+pub const PalettedImage = struct.{
+    image: Image,
+    color_index_at: fn (x: usize, y: usize) u8,
 };
