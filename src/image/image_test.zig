@@ -49,10 +49,49 @@ test "Rectangle" {
         for (rectangles) |s| {
             const a = r.intersect(s);
             if (!in(a, r)) {
-                _ = t.terrorf("\n {} {} {}\n", r, s, a);
+                try t.terrorf("\n {} {} {}\n", r, s, a);
             }
             if (!in(a, s)) {
-                _ = t.terrorf("\nexpected {} to be in {}\n", a, s);
+                try t.terrorf("\nexpected {} to be in {}\n", a, s);
+            }
+            const is_zero = a.eq(image.Rectangle.zero());
+            const overlaps = r.overlaps(s);
+            if (is_zero == overlaps) {
+                try t.terrorf("\n Intersect: r={}, s={}, a={}: is_zero={} same as overlaps={}\n", r, s, a, is_zero, overlaps);
+            }
+            const larger_than_a = []image.Rectangle.{
+                image.Rectangle.init(
+                    a.min.x - 1,
+                    a.min.y,
+                    a.max.x,
+                    a.max.y,
+                ),
+                image.Rectangle.init(
+                    a.min.x,
+                    a.min.y - 1,
+                    a.max.x,
+                    a.max.y,
+                ),
+                image.Rectangle.init(
+                    a.min.x,
+                    a.min.y,
+                    a.max.x + 1,
+                    a.max.y,
+                ),
+                image.Rectangle.init(
+                    a.min.x,
+                    a.min.y,
+                    a.max.x,
+                    a.max.y + 1,
+                ),
+            };
+            for (larger_than_a) |b| {
+                if (b.empty()) {
+                    continue;
+                }
+                if (in(b, r) and in(b, s)) {
+                    try t.terrorf("\n Intersect: r={}, s={}, a={}, b={} :intersection could be larger\n", r, s, a, b);
+                }
             }
         }
     }
