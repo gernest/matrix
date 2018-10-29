@@ -1,5 +1,6 @@
 const image = @import("./image.zig");
 const t = @import("../testing/index.zig");
+const std = @import("std");
 
 fn in(f: image.Rectangle, g: image.Rectangle) bool {
     if (!f.in(g)) {
@@ -143,8 +144,36 @@ test "Rectangle" {
     }
 }
 
+const TestImage = struct.{
+    name: []const u8,
+    image: image.Image,
+    mem: []u8,
+};
+
+fn newRGBA(a: *std.mem.Allocator, r: image.Rectangle) !TestImage {
+    const w = @intCast(usize, r.dx());
+    const h = @intCast(usize, r.dy());
+    const size = 4 * w * h;
+    var u = try a.alloc(u8, size);
+    var m = &image.RGBA.init(u, 4 * r.dx(), r);
+    return TestImage.{
+        .name = "RGBA",
+        .image = m.image(),
+        .mem = u,
+    };
+}
+
 test "RGBA" {
-    var rgba = &image.RGBA.init("", 0, image.Rectangle.zero());
-    const m = rgba.image();
-    _ = t.terrorf("{}", m.bounds);
+    var allocator = std.debug.global_allocator;
+    const rgb = try newRGBA(allocator, image.Rectangle.rect(0, 0, 10, 10));
+    defer allocator.free(rgb.mem);
+
+    const test_images = []TestImage.{rgb};
+
+    for (test_images) |tc| {
+        const r = image.Rectangle.rect(0, 0, 10, 10);
+        if (!r.eq(tc.image.bounds)) {
+            try t.terrorf("\n want bounds={} got {}\n", r, tc.image.bounds);
+        }
+    }
 }
