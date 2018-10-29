@@ -1,6 +1,6 @@
 # matrix
 
-Port of go's standard library to zig.
+Port of  useful go library  and utilities to zig.
 
 package | status 
 --------|--------
