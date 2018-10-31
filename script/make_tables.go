@@ -30,13 +30,13 @@ func main() {
 	loadChars() // always needed
 	loadCasefold()
 	printCategories()
-	printScriptOrProperty(false)
-	printScriptOrProperty(true)
-	printCases()
-	printLatinProperties()
-	printCasefold()
-	printSizes()
-	flushOutput()
+	// printScriptOrProperty(false)
+	// printScriptOrProperty(true)
+	// printCases()
+	// printLatinProperties()
+	// printCasefold()
+	// printSizes()
+	// flushOutput()
 }
 
 func defaultVersion() string {
