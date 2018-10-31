@@ -501,7 +501,7 @@ func printCategories() {
 			varDecl = "const Other = _C;// Other/C is the set of Unicode control and special characters, category C.\n"
 			varDecl += "const C = _C;\n"
 		case "L":
-			varDecl = "constLetter = _L;// Letter/L is the set of Unicode letters, category L.\n"
+			varDecl = "const Letter = _L;// Letter/L is the set of Unicode letters, category L.\n"
 			varDecl += "const L = _L;\n"
 		case "M":
 			varDecl = "const Mark = _M;// Mark/M is the set of Unicode mark characters, category M.\n"
