@@ -13,12 +13,19 @@ pub const Range16 = struct.{
     lo: u16,
     hi: u16,
     stride: u16,
+
+    pub fn init(lo: u16, hi: u16, stride: u16) Range16 {
+        return Range16.{ .lo = lo, .hi = hi, .stride = stride };
+    }
 };
 
 pub const Range32 = struct.{
     lo: u32,
     hi: u32,
     stride: u32,
+    pub fn init(lo: u32, hi: u32, stride: u32) Range32 {
+        return Range32.{ .lo = lo, .hi = hi, .stride = stride };
+    }
 };
 
 const linear_max: usize = 18;
