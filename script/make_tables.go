@@ -452,6 +452,8 @@ const progHeader = `// Copyright 2013 The Go Authors. All rights reserved.
 // To regenerate, run:
 //	maketables --tables=%s --data=%s --casefolding=%s
 
+package unicode
+
 `
 
 func printCategories() {
@@ -467,10 +469,10 @@ func printCategories() {
 		fullCategoryTest(list)
 		return
 	}
-	printf(progHeader, *tablelist, *dataURL, *casefoldingURL)
+	// printf(progHeader, *tablelist, *dataURL, *casefoldingURL)
 
 	println("// Version is the Unicode edition from which the tables are derived.")
-	printf("const Version = %q\n\n", version())
+	printf("const Version = %q;\n\n", version())
 
 	if *tablelist == "all" {
 		println("// Categories is the set of Unicode category tables.")
