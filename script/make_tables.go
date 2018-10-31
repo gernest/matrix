@@ -32,7 +32,7 @@ func main() {
 	loadChars() // always needed
 	loadCasefold()
 	printCategories()
-	printScriptOrProperty(false)
+	// printScriptOrProperty(false)
 	// printScriptOrProperty(true)
 	// printCases()
 	// printLatinProperties()
@@ -476,13 +476,25 @@ func printCategories() {
 
 	if *tablelist == "all" {
 		println("// Categories is the set of Unicode category tables.")
-		println("pub fn categories (name: []const u8) !*RangeTable {")
-		println("  return switch (name){")
+		println("pub const Category=enum.{")
 		for _, k := range allCategories() {
-			printf("    %q=> %s,\n", k, k)
+			printf("    %s,\n", k)
+		}
+		println("pub fn table (self: Category) !*RangeTable {")
+		println("  return switch (self){")
+		for _, k := range allCategories() {
+			printf("    Category.%s=> %s,\n", k, k)
 		}
 		println("     else=> error.UnknownCategory,")
 		print("  };\n}\n\n")
+		print("\n};\n\n")
+		// println("pub fn categories (name: []const u8) !*RangeTable {")
+		// println("  return switch (name){")
+		// for _, k := range allCategories() {
+		// 	printf("    %q=> %s,\n", k, k)
+		// }
+		// println("     else=> error.UnknownCategory,")
+		// print("  };\n}\n\n")
 	}
 
 	decl := make(sort.StringSlice, len(list))
