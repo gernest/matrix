@@ -498,38 +498,38 @@ func printCategories() {
 		varDecl := ""
 		switch name {
 		case "C":
-			varDecl = "const Other = _C;	// Other/C is the set of Unicode control and special characters, category C.\n"
-			varDecl += "const C = _C\n"
+			varDecl = "const Other = _C;// Other/C is the set of Unicode control and special characters, category C.\n"
+			varDecl += "const C = _C;\n"
 		case "L":
-			varDecl = "constLetter = _L;	// Letter/L is the set of Unicode letters, category L.\n"
-			varDecl += "const L = _L\n"
+			varDecl = "constLetter = _L;// Letter/L is the set of Unicode letters, category L.\n"
+			varDecl += "const L = _L;\n"
 		case "M":
-			varDecl = "const Mark = _M;	// Mark/M is the set of Unicode mark characters, category M.\n"
-			varDecl += "const M = _M\n"
+			varDecl = "const Mark = _M;// Mark/M is the set of Unicode mark characters, category M.\n"
+			varDecl += "const M = _M;\n"
 		case "N":
-			varDecl = "const Number = _N;	// Number/N is the set of Unicode number characters, category N.\n"
-			varDecl += "const N = _N\n"
+			varDecl = "const Number = _N;// Number/N is the set of Unicode number characters, category N.\n"
+			varDecl += "const N = _N;\n"
 		case "P":
-			varDecl = "const Punct = _P;	// Punct/P is the set of Unicode punctuation characters, category P.\n"
-			varDecl += "const P = _P\n"
+			varDecl = "const Punct = _P;// Punct/P is the set of Unicode punctuation characters, category P.\n"
+			varDecl += "const P = _P;\n"
 		case "S":
-			varDecl = "const Symbol = _S;	// Symbol/S is the set of Unicode symbol characters, category S.\n"
-			varDecl += "const S = _S\n"
+			varDecl = "const Symbol = _S;// Symbol/S is the set of Unicode symbol characters, category S.\n"
+			varDecl += "const S = _S;\n"
 		case "Z":
-			varDecl = "const Space = _Z;	// Space/Z is the set of Unicode space characters, category Z.\n"
-			varDecl += "const Z = _Z\n"
+			varDecl = "const Space = _Z;// Space/Z is the set of Unicode space characters, category Z.\n"
+			varDecl += "const Z = _Z;\n"
 		case "Nd":
-			varDecl = "const Digit = _Nd;	// Digit is the set of Unicode characters with the \"decimal digit\" property.\n"
+			varDecl = "const Digit = _Nd;// Digit is the set of Unicode characters with the \"decimal digit\" property.\n"
 		case "Lu":
-			varDecl = "const Upper = _Lu;	// Upper is the set of Unicode upper case letters.\n"
+			varDecl = "const Upper = _Lu;// Upper is the set of Unicode upper case letters.\n"
 		case "Ll":
-			varDecl = "const Lower = _Ll;	// Lower is the set of Unicode lower case letters.\n"
+			varDecl = "const Lower = _Ll;// Lower is the set of Unicode lower case letters.\n"
 		case "Lt":
-			varDecl = "const Title = _Lt;	// Title is the set of Unicode title case letters.\n"
+			varDecl = "const Title = _Lt;// Title is the set of Unicode title case letters.\n"
 		}
 		if len(name) > 1 {
 			varDecl += fmt.Sprintf(
-				"const %s = _%s;	// %s is the set of Unicode characters in category %s.\n",
+				"const %s = _%s;// %s is the set of Unicode characters in category %s.\n",
 				name, name, name, name)
 		}
 		decl[ndecl] = varDecl
@@ -648,7 +648,11 @@ func dumpRangeCategory(header string, inCategory Op) {
 		}
 		if next >= rune(len(chars)) {
 			// no more characters
-			printf(format, lo, hi, stride)
+			if size == 32 {
+				printf(format32, lo, hi, stride)
+			} else {
+				printf(format16, lo, hi, stride)
+			}
 			break
 		}
 		// set stride
