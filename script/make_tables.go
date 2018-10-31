@@ -2,8 +2,6 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-// +build ignore
-
 // Unicode table generator.
 // Data read from the web.
 
@@ -564,7 +562,7 @@ func dumpRange(header string, inCategory Op) {
 	latinOffset := 0
 	print("\tR16: []Range16{\n")
 	// one Range for each iteration
-	count := &range16Count
+	count := &counts.range16Count
 	size := 16
 	for {
 		// look for start of range
@@ -636,7 +634,7 @@ func printRange(lo, hi, stride uint32, size int, count *int) (int, *int) {
 		print("\t},\n")
 		print("\tR32: []Range32{\n")
 		size = 32
-		count = &range32Count
+		count = &counts.range32Count
 	}
 	printf(format, lo, hi, stride)
 	*count++
@@ -838,7 +836,7 @@ func printScriptOrProperty(doProps bool) {
 		ranges := foldAdjacent(table[name])
 		print("\tR16: []Range16{\n")
 		size := 16
-		count := &range16Count
+		count := &counts.range16Count
 		for _, s := range ranges {
 			size, count = printRange(s.Lo, s.Hi, s.Stride, size, count)
 		}
@@ -1332,7 +1330,7 @@ func printCaseOrbit() {
 		c := &chars[i]
 		if c.caseOrbit != 0 {
 			printf("\t{0x%04X, 0x%04X},\n", i, c.caseOrbit)
-			foldPairCount++
+			counts.foldPairCount++
 		}
 	}
 	printf("}\n\n")
@@ -1394,19 +1392,23 @@ func printCatFold(name string, m map[string]map[rune]bool) {
 	}
 }
 
-var range16Count = 0  // Number of entries in the 16-bit range tables.
-var range32Count = 0  // Number of entries in the 32-bit range tables.
-var foldPairCount = 0 // Number of fold pairs in the exception tables.
+type counter struct {
+	range16Count  int // Number of entries in the 16-bit range tables.
+	range32Count  int // Number of entries in the 32-bit range tables.
+	foldPairCount int // Number of fold pairs in the exception tables.
+}
+
+var counts = &counter{}
 
 func printSizes() {
 	if *test {
 		return
 	}
 	println()
-	printf("// Range entries: %d 16-bit, %d 32-bit, %d total.\n", range16Count, range32Count, range16Count+range32Count)
-	range16Bytes := range16Count * 3 * 2
-	range32Bytes := range32Count * 3 * 4
+	printf("// Range entries: %d 16-bit, %d 32-bit, %d total.\n", counts.range16Count, counts.range32Count, counts.range16Count+counts.range32Count)
+	range16Bytes := counts.range16Count * 3 * 2
+	range32Bytes := counts.range32Count * 3 * 4
 	printf("// Range bytes: %d 16-bit, %d 32-bit, %d total.\n", range16Bytes, range32Bytes, range16Bytes+range32Bytes)
 	println()
-	printf("// Fold orbit bytes: %d pairs, %d bytes\n", foldPairCount, foldPairCount*2*2)
+	printf("// Fold orbit bytes: %d pairs, %d bytes\n", counts.foldPairCount, counts.foldPairCount*2*2)
 }
