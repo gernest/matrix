@@ -452,8 +452,6 @@ const progHeader = `// Copyright 2013 The Go Authors. All rights reserved.
 // To regenerate, run:
 //	maketables --tables=%s --data=%s --casefolding=%s
 
-package unicode
-
 `
 
 func printCategories() {
@@ -477,12 +475,12 @@ func printCategories() {
 	if *tablelist == "all" {
 		println("// Categories is the set of Unicode category tables.")
 		println("pub fn categories (name: []const u8) !*RangeTable {")
-		println("\treturn switch (name){")
+		println("  return switch (name){")
 		for _, k := range allCategories() {
-			printf("\t\t%q=> %s,\n", k, k)
+			printf("    %q=> %s,\n", k, k)
 		}
-		println("\t\t else=> error.UnknownCategory,")
-		print("\t};\n}\n\n")
+		println("     else=> error.UnknownCategory,")
+		print("  };\n}\n\n")
 	}
 
 	decl := make(sort.StringSlice, len(list))
@@ -553,15 +551,15 @@ func printCategories() {
 
 type Op func(code rune) bool
 
-const format = "\t\t{0x%04x, 0x%04x, %d},\n"
-const format32 = "\t\t Range32.init(0x%04x, 0x%04x, %d),\n"
-const format16 = "\t\tRange16.init(0x%04x, 0x%04x, %d),\n"
+const format = "    {0x%04x, 0x%04x, %d},\n"
+const format32 = "     Range32.init(0x%04x, 0x%04x, %d),\n"
+const format16 = "    Range16.init(0x%04x, 0x%04x, %d),\n"
 
 func dumpRange(header string, inCategory Op) {
 	print(header)
 	next := rune(0)
 	latinOffset := 0
-	print("\tR16: []Range16{\n")
+	print("  R16: []Range16{\n")
 	// one Range for each iteration
 	count := &counts.range16Count
 	size := 16
@@ -611,9 +609,9 @@ func dumpRange(header string, inCategory Op) {
 		// next range: start looking where this range ends
 		next = hi + 1
 	}
-	print("\t},\n")
+	print("  },\n")
 	if latinOffset > 0 {
-		printf("\tLatinOffset: %d,\n", latinOffset)
+		printf("  LatinOffset: %d,\n", latinOffset)
 	}
 	print("}\n\n")
 }
@@ -622,7 +620,7 @@ func dumpRangeCategory(header string, inCategory Op) {
 	print(header)
 	next := rune(0)
 	latinOffset := 0
-	print("\t.r16= []Range16.{\n")
+	print("  .r16= []Range16.{\n")
 	// one Range for each iteration
 	count := &counts.range16Count
 	size := 16
@@ -672,9 +670,9 @@ func dumpRangeCategory(header string, inCategory Op) {
 		// next range: start looking where this range ends
 		next = hi + 1
 	}
-	print("\t},\n")
+	print("  },\n")
 	if latinOffset > 0 {
-		printf("\t.latin_offset= %d,\n", latinOffset)
+		printf("  .latin_offset= %d,\n", latinOffset)
 	}
 	print("};\n\n")
 }
@@ -697,8 +695,8 @@ func printRange(lo, hi, stride uint32, size int, count *int) (int, *int) {
 			stride = 1
 			*count++
 		}
-		print("\t},\n")
-		print("\t.r32= []Range32.{\n")
+		print("  },\n")
+		print("  .r32= []Range32.{\n")
 		size = 32
 		count = &counts.range32Count
 	}
@@ -875,9 +873,9 @@ func printScriptOrProperty(doProps bool) {
 			println("var Scripts = map[string] *RangeTable{")
 		}
 		for _, k := range all(table) {
-			printf("\t%q: %s,\n", k, k)
+			printf("  %q: %s,\n", k, k)
 			if alias, ok := deprecatedAliases[k]; ok {
-				printf("\t%q: %s,\n", alias, k)
+				printf("  %q: %s,\n", alias, k)
 			}
 		}
 		print("}\n\n")
@@ -888,31 +886,31 @@ func printScriptOrProperty(doProps bool) {
 	for _, name := range list {
 		if doProps {
 			decl[ndecl] = fmt.Sprintf(
-				"\t%s = _%s;\t// %s is the set of Unicode characters with property %s.\n",
+				"  %s = _%s;  // %s is the set of Unicode characters with property %s.\n",
 				name, name, name, name)
 		} else {
 			decl[ndecl] = fmt.Sprintf(
-				"\t%s = _%s;\t// %s is the set of Unicode characters in script %s.\n",
+				"  %s = _%s;  // %s is the set of Unicode characters in script %s.\n",
 				name, name, name, name)
 		}
 		ndecl++
 		if alias, ok := deprecatedAliases[name]; ok {
 			decl[ndecl] = fmt.Sprintf(
-				"\t%[1]s = _%[2]s;\t// %[1]s is an alias for %[2]s.\n",
+				"  %[1]s = _%[2]s;  // %[1]s is an alias for %[2]s.\n",
 				alias, name)
 			ndecl++
 		}
 		printf("var _%s = &RangeTable {\n", name)
 		ranges := foldAdjacent(table[name])
-		print("\tR16: []Range16{\n")
+		print("  R16: []Range16{\n")
 		size := 16
 		count := &counts.range16Count
 		for _, s := range ranges {
 			size, count = printRange(s.Lo, s.Hi, s.Stride, size, count)
 		}
-		print("\t},\n")
+		print("  },\n")
 		if off := findLatinOffset(ranges); off > 0 {
-			printf("\tLatinOffset: %d,\n", off)
+			printf("  LatinOffset: %d,\n", off)
 		}
 		print("}\n\n")
 	}
@@ -1120,14 +1118,14 @@ func printCaseRange(lo, hi *caseState) {
 	}
 	switch {
 	case hi.point > lo.point && lo.isUpperLower():
-		printf("\t{0x%04X, 0x%04X, d{UpperLower, UpperLower, UpperLower}},\n",
+		printf("  {0x%04X, 0x%04X, d{UpperLower, UpperLower, UpperLower}},\n",
 			lo.point, hi.point)
 	case hi.point > lo.point && lo.isLowerUpper():
 		logger.Fatalf("LowerUpper sequence: should not happen: %U.  If it's real, need to fix To()", lo.point)
-		printf("\t{0x%04X, 0x%04X, d{LowerUpper, LowerUpper, LowerUpper}},\n",
+		printf("  {0x%04X, 0x%04X, d{LowerUpper, LowerUpper, LowerUpper}},\n",
 			lo.point, hi.point)
 	default:
-		printf("\t{0x%04X, 0x%04X, d{%d, %d, %d}},\n",
+		printf("  {0x%04X, 0x%04X, d{%d, %d, %d}},\n",
 			lo.point, hi.point,
 			lo.deltaToUpper, lo.deltaToLower, lo.deltaToTitle)
 	}
@@ -1195,7 +1193,7 @@ func printLatinProperties() {
 		if code == ' ' {
 			property = "pZ | pp"
 		}
-		printf("\t0x%02X: %s, // %q\n", code, property, code)
+		printf("  0x%02X: %s, // %q\n", code, property, code)
 	}
 	printf("}\n\n")
 }
@@ -1368,7 +1366,7 @@ func printAsciiFold() {
 				f = i
 			}
 		}
-		printf("\t0x%04X,\n", f)
+		printf("  0x%04X,\n", f)
 	}
 	printf("}\n\n")
 }
@@ -1399,7 +1397,7 @@ func printCaseOrbit() {
 	for i := range chars {
 		c := &chars[i]
 		if c.caseOrbit != 0 {
-			printf("\t{0x%04X, 0x%04X},\n", i, c.caseOrbit)
+			printf("  {0x%04X, 0x%04X},\n", i, c.caseOrbit)
 			counts.foldPairCount++
 		}
 	}
@@ -1451,7 +1449,7 @@ func printCatFold(name string, m map[string]map[rune]bool) {
 	print(comment[name])
 	printf("var %s = map[string]*RangeTable{\n", name)
 	for _, name := range allCatFold(m) {
-		printf("\t%q: fold%s,\n", name, name)
+		printf("  %q: fold%s,\n", name, name)
 	}
 	printf("}\n\n")
 	for _, name := range allCatFold(m) {
