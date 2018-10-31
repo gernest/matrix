@@ -29,8 +29,8 @@ func main() {
 	setupOutput()
 	loadChars() // always needed
 	loadCasefold()
-	printCategories()
-	// printScriptOrProperty(false)
+	// printCategories()
+	printScriptOrProperty(false)
 	// printScriptOrProperty(true)
 	// printCases()
 	// printLatinProperties()
@@ -873,18 +873,24 @@ func printScriptOrProperty(doProps bool) {
 	if flaglist == "all" {
 		if doProps {
 			println("// Properties is the set of Unicode property tables.")
-			println("var Properties = map[string] *RangeTable{")
+			println("pub fn properties(name: []const u8)!*RangeTable{")
 		} else {
 			println("// Scripts is the set of Unicode script tables.")
-			println("var Scripts = map[string] *RangeTable{")
+			println("pub fn scripts(name: []const u8)!*RangeTable{")
 		}
+		println("  return switch(name){")
 		for _, k := range all(table) {
-			printf("  %q: %s,\n", k, k)
+			printf("    %q=> %s,\n", k, k)
 			if alias, ok := deprecatedAliases[k]; ok {
-				printf("  %q: %s,\n", alias, k)
+				printf("    %q=> %s,\n", alias, k)
 			}
 		}
-		print("}\n\n")
+		if doProps {
+			print("    else=> error.UnknownProperty,\n")
+		} else {
+			print("    else=> error.UnknownScript,\n")
+		}
+		print("  };\n}\n\n")
 	}
 
 	decl := make(sort.StringSlice, len(list)+len(deprecatedAliases))
@@ -892,23 +898,23 @@ func printScriptOrProperty(doProps bool) {
 	for _, name := range list {
 		if doProps {
 			decl[ndecl] = fmt.Sprintf(
-				"  %s = _%s;  // %s is the set of Unicode characters with property %s.\n",
+				"const %s = _%s;  // %s is the set of Unicode characters with property %s.\n",
 				name, name, name, name)
 		} else {
 			decl[ndecl] = fmt.Sprintf(
-				"  %s = _%s;  // %s is the set of Unicode characters in script %s.\n",
+				"const  %s = _%s;  // %s is the set of Unicode characters in script %s.\n",
 				name, name, name, name)
 		}
 		ndecl++
 		if alias, ok := deprecatedAliases[name]; ok {
 			decl[ndecl] = fmt.Sprintf(
-				"  %[1]s = _%[2]s;  // %[1]s is an alias for %[2]s.\n",
+				"const  %[1]s = _%[2]s;  // %[1]s is an alias for %[2]s.\n",
 				alias, name)
 			ndecl++
 		}
-		printf("var _%s = &RangeTable {\n", name)
+		printf("const _%s = &RangeTable.{\n", name)
 		ranges := foldAdjacent(table[name])
-		print("  R16: []Range16{\n")
+		print("  .r16= []Range16.{\n")
 		size := 16
 		count := &counts.range16Count
 		for _, s := range ranges {
@@ -916,17 +922,15 @@ func printScriptOrProperty(doProps bool) {
 		}
 		print("  },\n")
 		if off := findLatinOffset(ranges); off > 0 {
-			printf("  LatinOffset: %d,\n", off)
+			printf("  .latin_offset= %d,\n", off)
 		}
-		print("}\n\n")
+		print("};\n\n")
 	}
 	decl.Sort()
 	println("// These variables have type *RangeTable.")
-	println("var (")
 	for _, d := range decl {
 		print(d)
 	}
-	print(")\n\n")
 }
 
 func findLatinOffset(ranges []unicode.Range32) int {
