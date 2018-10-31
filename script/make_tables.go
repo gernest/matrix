@@ -480,12 +480,23 @@ func printCategories() {
 		for _, k := range allCategories() {
 			printf("    %s,\n", k)
 		}
-		println("pub fn table (self: Category) *RangeTable {")
+		println("\npub fn table (self: Category) *RangeTable {")
 		println("  return switch (self){")
 		for _, k := range allCategories() {
 			printf("    Category.%s=> %s,\n", k, k)
 		}
 		println("     else=> unreachable,")
+		print("  };\n}\n\n")
+		println("\npub fn list () []Category {")
+		println("  return []Category.{")
+		for i, k := range allCategories() {
+			if i == 0 {
+				printf("Category.%s", k)
+
+			} else {
+				printf(",Category.%s", k)
+			}
+		}
 		print("  };\n}\n\n")
 		print("\n};\n\n")
 		// println("pub fn categories (name: []const u8) !*RangeTable {")
