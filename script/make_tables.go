@@ -72,7 +72,7 @@ var localFiles = flag.Bool("local",
 	false,
 	"data files have been copied to current directory; for debugging only")
 var outputFile = flag.String("output",
-	"table.zig",
+	"tables.zig",
 	"output file for generated tables; default stdout")
 
 var scriptRe = regexp.MustCompile(`^([0-9A-F]+)(\.\.[0-9A-F]+)? *; ([A-Za-z_]+)$`)
