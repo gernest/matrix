@@ -6,7 +6,7 @@ pub const max_latin1 = 0xff;
 pub const RangeTable = struct.{
     r16: []Range16,
     r32: []Range32,
-    latim_offset: usize,
+    latin_offset: usize,
 };
 
 pub const Range16 = struct.{
