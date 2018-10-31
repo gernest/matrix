@@ -9,9 +9,11 @@ package main
 
 import (
 	"bufio"
+	"bytes"
 	"flag"
 	"fmt"
 	"io"
+	"io/ioutil"
 	"log"
 	"net/http"
 	"os"
@@ -29,14 +31,14 @@ func main() {
 	setupOutput()
 	loadChars() // always needed
 	loadCasefold()
-	// printCategories()
+	printCategories()
 	printScriptOrProperty(false)
 	// printScriptOrProperty(true)
 	// printCases()
 	// printLatinProperties()
 	// printCasefold()
 	// printSizes()
-	// flushOutput()
+	flushOutput()
 }
 
 func defaultVersion() string {
@@ -70,16 +72,16 @@ var localFiles = flag.Bool("local",
 	false,
 	"data files have been copied to current directory; for debugging only")
 var outputFile = flag.String("output",
-	"",
+	"table.zig",
 	"output file for generated tables; default stdout")
 
 var scriptRe = regexp.MustCompile(`^([0-9A-F]+)(\.\.[0-9A-F]+)? *; ([A-Za-z_]+)$`)
 var logger = log.New(os.Stderr, "", log.Lshortfile)
 
-var output *bufio.Writer // points to os.Stdout or to "gofmt > outputFile"
+var output *bytes.Buffer // points to os.Stdout or to "gofmt > outputFile"
 
 func setupOutput() {
-	output = bufio.NewWriter(os.Stdout)
+	output = &bytes.Buffer{}
 }
 
 // startGofmt connects output to a gofmt process if -output is set.
@@ -107,9 +109,9 @@ func startGofmt() io.Writer {
 }
 
 func flushOutput() {
-	err := output.Flush()
+	err := ioutil.WriteFile(*outputFile, output.Bytes(), 0600)
 	if err != nil {
-		logger.Fatal(err)
+		log.Fatal(err)
 	}
 }
 
