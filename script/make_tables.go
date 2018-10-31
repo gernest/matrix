@@ -476,11 +476,13 @@ func printCategories() {
 
 	if *tablelist == "all" {
 		println("// Categories is the set of Unicode category tables.")
-		println("var Categories = map[string] *RangeTable {")
+		println("pub fn categories (name: []const u8) !*RangeTable {")
+		println("\treturn switch (name){")
 		for _, k := range allCategories() {
-			printf("\t%q: %s,\n", k, k)
+			printf("\t\t%q=> %s,\n", k, k)
 		}
-		print("}\n\n")
+		println("\t\t else=> error.UnknownCategory,")
+		print("\t};\n}\n\n")
 	}
 
 	decl := make(sort.StringSlice, len(list))
