@@ -23,6 +23,7 @@ pub const Range32 = struct.{
     lo: u32,
     hi: u32,
     stride: u32,
+
     pub fn init(lo: u32, hi: u32, stride: u32) Range32 {
         return Range32.{ .lo = lo, .hi = hi, .stride = stride };
     }
