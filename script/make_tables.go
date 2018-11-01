@@ -31,13 +31,14 @@ func main() {
 	loadChars() // always needed
 	loadCasefold()
 	printCategories()
-	// printScriptOrProperty(false)
+	printScriptOrProperty(false)
 	// printScriptOrProperty(true)
 	// printCases()
 	// printLatinProperties()
 	// printCasefold()
 	// printSizes()
 	flushOutput()
+	formatOutput()
 }
 
 func defaultVersion() string {
@@ -88,7 +89,10 @@ func flushOutput() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	err = exec.Command("nzig", "fmt", *outputFile).Run()
+}
+
+func formatOutput() {
+	err := exec.Command("nzig", "fmt", *outputFile).Run()
 	if err != nil {
 		log.Fatal(err)
 	}
