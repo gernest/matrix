@@ -7770,3 +7770,8 @@ const foldInherited = &RangeTable.{ .r16 = []Range16.{
     Range16.init(0x0399, 0x03b9, 32),
     Range16.init(0x1fbe, 0x1fbe, 1),
 } };
+
+// Range entries: 3587 16-bit, 1554 32-bit, 5141 total.
+// Range bytes: 21522 16-bit, 18648 32-bit, 40170 total.
+
+// Fold orbit bytes: 88 pairs, 352 bytes

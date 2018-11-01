@@ -36,7 +36,7 @@ func main() {
 	printCases()
 	printLatinProperties()
 	printCasefold()
-	// printSizes()
+	printSizes()
 	flushOutput()
 	formatOutput()
 }
