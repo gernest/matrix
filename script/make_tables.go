@@ -32,7 +32,7 @@ func main() {
 	loadCasefold()
 	printCategories()
 	printScriptOrProperty(false)
-	// printScriptOrProperty(true)
+	printScriptOrProperty(true)
 	// printCases()
 	// printLatinProperties()
 	// printCasefold()
@@ -876,7 +876,7 @@ func printScriptOrProperty(doProps bool) {
 	if flaglist == "all" {
 		if doProps {
 			println("// Properties is the set of Unicode property tables.")
-			println("pub fn properties(name: []const u8)!*RangeTable{")
+			println("pub const Property=enum.{")
 		} else {
 			println("// Scripts is the set of Unicode script tables.")
 			println("pub const Script=enum.{")
@@ -889,31 +889,66 @@ func printScriptOrProperty(doProps bool) {
 			}
 		}
 
-		println("\npub fn table(self: Script)*RangeTable{")
-		println("  return switch(name){")
+		if doProps {
+			println("\npub fn table(self: Property)*RangeTable{")
+
+		} else {
+			println("\npub fn table(self: Script)*RangeTable{")
+		}
+		println("  return switch(self){")
 		for _, k := range all(table) {
-			printf("    Script.%s=> %s,\n", k, k)
-			if alias, ok := deprecatedAliases[k]; ok {
-				printf("    Script.%s=> %s,\n", alias, k)
+			if doProps {
+				printf("    Property.%s=> %s,\n", k, k)
+				if alias, ok := deprecatedAliases[k]; ok {
+					printf("    Property.%s=> %s,\n", alias, k)
+				}
+			} else {
+				printf("    Script.%s=> %s,\n", k, k)
+				if alias, ok := deprecatedAliases[k]; ok {
+					printf("    Script.%s=> %s,\n", alias, k)
+				}
 			}
+
 		}
 		print("    else=> unreachable,\n")
 		print("  };\n}\n\n")
-		println("\npub fn list(self: Script)[]Script{")
-		println("  return []Script.{")
+		if doProps {
+			println("\npub fn list(self: Property)[]Property{")
+			println("  return []Property.{")
+
+		} else {
+			println("\npub fn list(self: Script)[]Script{")
+			println("  return []Script.{")
+		}
 		for i, k := range all(table) {
-			if i == 0 {
-				printf("Script.%s", k)
-			} else {
-				printf(",Script.%s\n", k)
-			}
-			if alias, ok := deprecatedAliases[k]; ok {
+			if doProps {
 				if i == 0 {
-					printf("Script.%s", alias)
+					printf("Property.%s", k)
 				} else {
-					printf(",Script.%s", alias)
+					printf(",Property.%s\n", k)
+				}
+				if alias, ok := deprecatedAliases[k]; ok {
+					if i == 0 {
+						printf("Property.%s", alias)
+					} else {
+						printf(",Property.%s", alias)
+					}
+				}
+			} else {
+				if i == 0 {
+					printf("Script.%s", k)
+				} else {
+					printf(",Script.%s\n", k)
+				}
+				if alias, ok := deprecatedAliases[k]; ok {
+					if i == 0 {
+						printf("Script.%s", alias)
+					} else {
+						printf(",Script.%s", alias)
+					}
 				}
 			}
+
 		}
 		print("  };\n}\n\n")
 		print("};\n\n")
