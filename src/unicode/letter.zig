@@ -1,6 +1,6 @@
 const base = @import("base.zig");
 
-fn is16(ranges: []const base.Range16, r: u16) bool {
+pub fn is16(ranges: []const base.Range16, r: u16) bool {
     if (ranges.len <= base.linear_max or r <= base.linear_max) {
         var i: usize = 0;
         while (i < ranges.len) {
@@ -31,7 +31,7 @@ fn is16(ranges: []const base.Range16, r: u16) bool {
     return false;
 }
 
-fn is32(ranges: []base.Range32, r: u32) bool {
+pub fn is32(ranges: []base.Range32, r: u32) bool {
     if (ranges.len <= base.linear_max or r <= base.max_latin1) {
         var i: usize = 0;
         while (i < ranges.len) {
@@ -63,7 +63,7 @@ fn is32(ranges: []base.Range32, r: u32) bool {
     return false;
 }
 
-fn Is(range_tab: *base.RangeTable, r: u32) bool {
+pub fn is(range_tab: *base.RangeTable, r: u32) bool {
     if (range_tab.r16.len > 0 and r <= range_tab.r16[range_tab.r16.len - 1].hi) {
         var x: u16 = r;
         return is16(range_tab.r16, x);
