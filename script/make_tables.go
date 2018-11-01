@@ -459,7 +459,7 @@ func printCategories() {
 	printf(progHeader, *tablelist, *dataURL, *casefoldingURL)
 
 	println("// Version is the Unicode edition from which the tables are derived.")
-	printf("const Version = %q;\n\n", version())
+	printf("pub const Version = %q;\n\n", version())
 
 	if *tablelist == "all" {
 		println("// Categories is the set of Unicode category tables.")
