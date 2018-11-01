@@ -486,13 +486,6 @@ func printCategories() {
 		}
 		print("  };\n}\n\n")
 		print("\n};\n\n")
-		// println("pub fn categories (name: []const u8) !*RangeTable {")
-		// println("  return switch (name){")
-		// for _, k := range allCategories() {
-		// 	printf("    %q=> %s,\n", k, k)
-		// }
-		// println("     else=> error.UnknownCategory,")
-		// print("  };\n}\n\n")
 	}
 
 	decl := make(sort.StringSlice, len(list))
