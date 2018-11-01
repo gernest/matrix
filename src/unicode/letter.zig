@@ -29,6 +29,19 @@ pub const Range32 = struct.{
     }
 };
 
+pub const Case = enum(usize).{
+    Upper,
+    Lower,
+    Title,
+    Max,
+};
+
+pub const CaseRange = struct.{
+    lo: u32,
+    hi: u32,
+    delta: []const u8,
+};
+
 const linear_max: usize = 18;
 
 fn is16(ranges: []const Range16, r: u16) bool {
