@@ -1,7 +1,7 @@
-pub const max_rune = 0x10ffff;
+pub const max_rune: u32 = 0x10ffff;
 pub const replacement_char = 0xfffd;
-pub const max_ascii = 0x7f;
-pub const max_latin1 = 0xff;
+pub const max_ascii: u32 = 0x7f;
+pub const max_latin1: u32 = 0xff;
 
 pub const RangeTable = struct.{
     r16: []Range16,
