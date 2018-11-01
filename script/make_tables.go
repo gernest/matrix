@@ -1245,29 +1245,29 @@ func printLatinProperties() {
 		var property string
 		switch chars[code].category {
 		case "Cc", "": // NUL has no category.
-			property = "pC"
+			property = "base.pC"
 		case "Cf": // soft hyphen, unique category, not printable.
 			property = "0"
 		case "Ll":
-			property = "pLl | pp"
+			property = "base.pLl | base.pp"
 		case "Lo":
-			property = "pLo | pp"
+			property = "base.pLo | base.pp"
 		case "Lu":
-			property = "pLu | pp"
+			property = "base.pLu | base.pp"
 		case "Nd", "No":
-			property = "pN | pp"
+			property = "base.pN | base.pp"
 		case "Pc", "Pd", "Pe", "Pf", "Pi", "Po", "Ps":
-			property = "pP | pp"
+			property = "base.pP | base.pp"
 		case "Sc", "Sk", "Sm", "So":
-			property = "pS | pp"
+			property = "base.pS | base.pp"
 		case "Zs":
-			property = "pZ"
+			property = "base.pZ"
 		default:
 			logger.Fatalf("%U has unknown category %q", code, chars[code].category)
 		}
 		// Special case
 		if code == ' ' {
-			property = "pZ | pp"
+			property = "base.pZ | base.pp"
 		}
 		printf("s[0x%02X]= %s; // %q\n", code, property, code)
 	}
