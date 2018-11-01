@@ -886,21 +886,44 @@ func printScriptOrProperty(doProps bool) {
 			println("pub fn properties(name: []const u8)!*RangeTable{")
 		} else {
 			println("// Scripts is the set of Unicode script tables.")
-			println("pub fn scripts(name: []const u8)!*RangeTable{")
+			println("pub const Script=enum.{")
+			// println("pub fn scripts(name: []const u8)!*RangeTable{")
 		}
-		println("  return switch(name){")
 		for _, k := range all(table) {
-			printf("    %q=> %s,\n", k, k)
+			printf("  %s,\n", k)
 			if alias, ok := deprecatedAliases[k]; ok {
-				printf("    %q=> %s,\n", alias, k)
+				printf("  %s,\n", alias)
 			}
 		}
-		if doProps {
-			print("    else=> error.UnknownProperty,\n")
-		} else {
-			print("    else=> error.UnknownScript,\n")
+
+		println("\npub fn table(self: Script)*RangeTable{")
+		println("  return switch(name){")
+		for _, k := range all(table) {
+			printf("    Script.%s=> %s,\n", k, k)
+			if alias, ok := deprecatedAliases[k]; ok {
+				printf("    Script.%s=> %s,\n", alias, k)
+			}
+		}
+		print("    else=> unreachable,\n")
+		print("  };\n}\n\n")
+		println("\npub fn list(self: Script)[]Script{")
+		println("  return []Script.{")
+		for i, k := range all(table) {
+			if i == 0 {
+				printf("Script.%s", k)
+			} else {
+				printf(",Script.%s\n", k)
+			}
+			if alias, ok := deprecatedAliases[k]; ok {
+				if i == 0 {
+					printf("Script.%s", alias)
+				} else {
+					printf(",Script.%s", alias)
+				}
+			}
 		}
 		print("  };\n}\n\n")
+		print("};\n\n")
 	}
 
 	decl := make(sort.StringSlice, len(list)+len(deprecatedAliases))
