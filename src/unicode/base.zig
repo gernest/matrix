@@ -3,6 +3,11 @@ pub const replacement_char = 0xfffd;
 pub const max_ascii: u32 = 0x7f;
 pub const max_latin1: u32 = 0xff;
 
+/// If the Delta field of a CaseRange is UpperLower, it means
+/// this CaseRange represents a sequence of the form (say)
+/// Upper Lower Upper Lower.
+pub const upper_lower: u32 = max_rune + 1;
+
 pub const RangeTable = struct.{
     r16: []Range16,
     r32: []Range32,
@@ -40,6 +45,10 @@ pub const CaseRange = struct.{
     lo: u32,
     hi: u32,
     delta: []const u32,
+
+    pub fn init(lo: u32, hi: u32, delta: []const u32) CaseRange {
+        return CaseRange.{ .lo = lo, .hi = hi, .delta = delta };
+    }
 };
 
 const linear_max: usize = 18;
