@@ -454,6 +454,10 @@ const progHeader = `// Copyright 2013 The Go Authors. All rights reserved.
 // To regenerate, run:
 //  maketables --tables=%s --data=%s --casefolding=%s
 
+const letter=@import("letter.zig");
+const RangeTable=letter.RangeTable;
+const Range16=letter.Range16;
+const Range32=letter.Range32;
 `
 
 func printCategories() {
