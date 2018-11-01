@@ -39,7 +39,7 @@ pub const Case = enum(usize).{
 pub const CaseRange = struct.{
     lo: u32,
     hi: u32,
-    delta: []const u8,
+    delta: []const u32,
 };
 
 const linear_max: usize = 18;
