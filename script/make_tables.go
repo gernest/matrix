@@ -35,7 +35,7 @@ func main() {
 	printScriptOrProperty(true)
 	printCases()
 	printLatinProperties()
-	// printCasefold()
+	printCasefold()
 	// printSizes()
 	flushOutput()
 	formatOutput()
@@ -1430,7 +1430,7 @@ var comment = map[string]string{
 }
 
 func printAsciiFold() {
-	printf("var asciiFold = [MaxASCII + 1]uint16{\n")
+	printf("pub const asciiFold = []u16.{\n")
 	for i := rune(0); i <= unicode.MaxASCII; i++ {
 		c := chars[i]
 		f := c.caseOrbit
@@ -1445,7 +1445,7 @@ func printAsciiFold() {
 		}
 		printf("  0x%04X,\n", f)
 	}
-	printf("}\n\n")
+	printf("};\n\n")
 }
 
 func printCaseOrbit() {
@@ -1470,15 +1470,15 @@ func printCaseOrbit() {
 		return
 	}
 
-	printf("var caseOrbit = []foldPair{\n")
+	printf("pub const caseOrbit = []base.FoldPair.{\n")
 	for i := range chars {
 		c := &chars[i]
 		if c.caseOrbit != 0 {
-			printf("  {0x%04X, 0x%04X},\n", i, c.caseOrbit)
+			printf("  base.FoldPair.init(0x%04X, 0x%04X),\n", i, c.caseOrbit)
 			counts.foldPairCount++
 		}
 	}
-	printf("}\n\n")
+	printf("};\n\n")
 }
 
 func printCatFold(name string, m map[string]map[rune]bool) {
@@ -1524,15 +1524,33 @@ func printCatFold(name string, m map[string]map[rune]bool) {
 	}
 
 	print(comment[name])
-	printf("var %s = map[string]*RangeTable{\n", name)
+	printf("pub const %s = enum.{\n", name)
 	for _, name := range allCatFold(m) {
-		printf("  %q: fold%s,\n", name, name)
+		printf("  %s,\n", name)
 	}
-	printf("}\n\n")
+	printf("\npub fn list(self:%s) []%s{\n", name, name)
+	printf("return []%s.{", name)
+	nx := 0
+	for _, n := range allCatFold(m) {
+		if nx == 0 {
+			printf("%s.%s", name, n)
+		} else {
+			printf(",%s.%s", name, n)
+		}
+		nx++
+	}
+	printf("};\n}\n")
+	printf("\npub fn table(self:%s) *baseRangeTable{\n", name)
+	println("return switch(self){")
+	for _, n := range allCatFold(m) {
+		printf("  %s.%s=> fold%s,\n", name, n, n)
+	}
+	printf("  else=>unreachable,\n  };\n}\n")
+	printf("};\n\n")
 	for _, name := range allCatFold(m) {
 		class := m[name]
-		dumpRange(
-			fmt.Sprintf("var fold%s = &RangeTable{\n", name),
+		dumpRangeCategory(
+			fmt.Sprintf("const fold%s = &RangeTable.{\n", name),
 			func(code rune) bool { return class[code] })
 	}
 }
