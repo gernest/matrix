@@ -72,7 +72,7 @@ var localFiles = flag.Bool("local",
 	false,
 	"data files have been copied to current directory; for debugging only")
 var outputFile = flag.String("output",
-	"tables.zig",
+	"src/unicode/tables.zig",
 	"output file for generated tables; default stdout")
 
 var scriptRe = regexp.MustCompile(`^([0-9A-F]+)(\.\.[0-9A-F]+)? *; ([A-Za-z_]+)$`)
@@ -110,6 +110,10 @@ func startGofmt() io.Writer {
 
 func flushOutput() {
 	err := ioutil.WriteFile(*outputFile, output.Bytes(), 0600)
+	if err != nil {
+		log.Fatal(err)
+	}
+	err = exec.Command("nzig", "fmt", *outputFile).Run()
 	if err != nil {
 		log.Fatal(err)
 	}

@@ -6,6 +6,10 @@
 // To regenerate, run:
 //  maketables --tables=all --data=http://www.unicode.org/Public/10.0.0/ucd/UnicodeData.txt --casefolding=http://www.unicode.org/Public/10.0.0/ucd/CaseFolding.txt
 
+const letter = @import("letter.zig");
+const RangeTable = letter.RangeTable;
+const Range16 = letter.Range16;
+const Range32 = letter.Range32;
 // Version is the Unicode edition from which the tables are derived.
 const Version = "10.0.0";
 
