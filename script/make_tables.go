@@ -34,7 +34,7 @@ func main() {
 	printScriptOrProperty(false)
 	printScriptOrProperty(true)
 	printCases()
-	// printLatinProperties()
+	printLatinProperties()
 	// printCasefold()
 	// printSizes()
 	flushOutput()
@@ -1235,7 +1235,12 @@ func printLatinProperties() {
 	if *test {
 		return
 	}
-	println("var properties = [MaxLatin1+1]uint8{")
+	genProp := `pub const properties =init:{
+    var s=[]u8.{0}**%d;
+`
+	max := unicode.MaxRune + 1
+	printf(genProp, max)
+
 	for code := 0; code <= unicode.MaxLatin1; code++ {
 		var property string
 		switch chars[code].category {
@@ -1264,9 +1269,10 @@ func printLatinProperties() {
 		if code == ' ' {
 			property = "pZ | pp"
 		}
-		printf("  0x%02X: %s, // %q\n", code, property, code)
+		printf("s[0x%02X]= %s; // %q\n", code, property, code)
 	}
-	printf("}\n\n")
+	println("break :init s;")
+	printf("};\n\n")
 }
 
 func printCasefold() {
