@@ -12,7 +12,6 @@ import (
 	"bytes"
 	"flag"
 	"fmt"
-	"io"
 	"io/ioutil"
 	"log"
 	"net/http"
@@ -84,30 +83,6 @@ func setupOutput() {
 	output = &bytes.Buffer{}
 }
 
-// startGofmt connects output to a gofmt process if -output is set.
-func startGofmt() io.Writer {
-	if *outputFile == "" {
-		return os.Stdout
-	}
-	stdout, err := os.Create(*outputFile)
-	if err != nil {
-		logger.Fatal(err)
-	}
-	// Pipe output to gofmt.
-	gofmt := exec.Command("gofmt")
-	fd, err := gofmt.StdinPipe()
-	if err != nil {
-		logger.Fatal(err)
-	}
-	gofmt.Stdout = stdout
-	gofmt.Stderr = os.Stderr
-	err = gofmt.Start()
-	if err != nil {
-		logger.Fatal(err)
-	}
-	return fd
-}
-
 func flushOutput() {
 	err := ioutil.WriteFile(*outputFile, output.Bytes(), 0600)
 	if err != nil {
@@ -151,7 +126,7 @@ func open(url string) *reader {
 		logger.Fatal(err)
 	}
 	if resp.StatusCode != 200 {
-		logger.Fatalf("bad GET status for %s: %d", file, resp.Status)
+		logger.Fatalf("bad GET status for %s: %s", file, resp.Status)
 	}
 	return &reader{bufio.NewReader(resp.Body), nil, resp}
 
