@@ -913,11 +913,11 @@ func printScriptOrProperty(doProps bool) {
 		print("    else=> unreachable,\n")
 		print("  };\n}\n\n")
 		if doProps {
-			println("\npub fn list(self: Property)[]Property{")
+			println("\npub fn list ()[]Property{")
 			println("  return []Property.{")
 
 		} else {
-			println("\npub fn list(self: Script)[]Script{")
+			println("\npub fn list ()[]Script{")
 			println("  return []Script.{")
 		}
 		for i, k := range all(table) {
@@ -1528,7 +1528,7 @@ func printCatFold(name string, m map[string]map[rune]bool) {
 	for _, name := range allCatFold(m) {
 		printf("  %s,\n", name)
 	}
-	printf("\npub fn list(self:%s) []%s{\n", name, name)
+	printf("\npub fn list () []%s{\n", name)
 	printf("return []%s.{", name)
 	nx := 0
 	for _, n := range allCatFold(m) {

@@ -3742,7 +3742,7 @@ pub const Script = enum.{
         };
     }
 
-    pub fn list(self: Script) []Script {
+    pub fn list() []Script {
         return []Script.{
             Script.Adlam, Script.Ahom, Script.Anatolian_Hieroglyphs, Script.Arabic, Script.Armenian, Script.Avestan, Script.Balinese, Script.Bamum, Script.Bassa_Vah, Script.Batak, Script.Bengali, Script.Bhaiksuki, Script.Bopomofo, Script.Brahmi, Script.Braille, Script.Buginese, Script.Buhid, Script.Canadian_Aboriginal, Script.Carian, Script.Caucasian_Albanian, Script.Chakma, Script.Cham, Script.Cherokee, Script.Common, Script.Coptic, Script.Cuneiform, Script.Cypriot, Script.Cyrillic, Script.Deseret, Script.Devanagari, Script.Duployan, Script.Egyptian_Hieroglyphs, Script.Elbasan, Script.Ethiopic, Script.Georgian, Script.Glagolitic, Script.Gothic, Script.Grantha, Script.Greek, Script.Gujarati, Script.Gurmukhi, Script.Han, Script.Hangul, Script.Hanunoo, Script.Hatran, Script.Hebrew, Script.Hiragana, Script.Imperial_Aramaic, Script.Inherited, Script.Inscriptional_Pahlavi, Script.Inscriptional_Parthian, Script.Javanese, Script.Kaithi, Script.Kannada, Script.Katakana, Script.Kayah_Li, Script.Kharoshthi, Script.Khmer, Script.Khojki, Script.Khudawadi, Script.Lao, Script.Latin, Script.Lepcha, Script.Limbu, Script.Linear_A, Script.Linear_B, Script.Lisu, Script.Lycian, Script.Lydian, Script.Mahajani, Script.Malayalam, Script.Mandaic, Script.Manichaean, Script.Marchen, Script.Masaram_Gondi, Script.Meetei_Mayek, Script.Mende_Kikakui, Script.Meroitic_Cursive, Script.Meroitic_Hieroglyphs, Script.Miao, Script.Modi, Script.Mongolian, Script.Mro, Script.Multani, Script.Myanmar, Script.Nabataean, Script.New_Tai_Lue, Script.Newa, Script.Nko, Script.Nushu, Script.Ogham, Script.Ol_Chiki, Script.Old_Hungarian, Script.Old_Italic, Script.Old_North_Arabian, Script.Old_Permic, Script.Old_Persian, Script.Old_South_Arabian, Script.Old_Turkic, Script.Oriya, Script.Osage, Script.Osmanya, Script.Pahawh_Hmong, Script.Palmyrene, Script.Pau_Cin_Hau, Script.Phags_Pa, Script.Phoenician, Script.Psalter_Pahlavi, Script.Rejang, Script.Runic, Script.Samaritan, Script.Saurashtra, Script.Sharada, Script.Shavian, Script.Siddham, Script.SignWriting, Script.Sinhala, Script.Sora_Sompeng, Script.Soyombo, Script.Sundanese, Script.Syloti_Nagri, Script.Syriac, Script.Tagalog, Script.Tagbanwa, Script.Tai_Le, Script.Tai_Tham, Script.Tai_Viet, Script.Takri, Script.Tamil, Script.Tangut, Script.Telugu, Script.Thaana, Script.Thai, Script.Tibetan, Script.Tifinagh, Script.Tirhuta, Script.Ugaritic, Script.Vai, Script.Warang_Citi, Script.Yi, Script.Zanabazar_Square,
         };
@@ -5454,7 +5454,7 @@ pub const Property = enum.{
         };
     }
 
-    pub fn list(self: Property) []Property {
+    pub fn list() []Property {
         return []Property.{
             Property.ASCII_Hex_Digit, Property.Bidi_Control, Property.Dash, Property.Deprecated, Property.Diacritic, Property.Extender, Property.Hex_Digit, Property.Hyphen, Property.IDS_Binary_Operator, Property.IDS_Trinary_Operator, Property.Ideographic, Property.Join_Control, Property.Logical_Order_Exception, Property.Noncharacter_Code_Point, Property.Other_Alphabetic, Property.Other_Default_Ignorable_Code_Point, Property.Other_Grapheme_Extend, Property.Other_ID_Continue, Property.Other_ID_Start, Property.Other_Lowercase, Property.Other_Math, Property.Other_Uppercase, Property.Pattern_Syntax, Property.Pattern_White_Space, Property.Prepended_Concatenation_Mark, Property.Quotation_Mark, Property.Radical, Property.Regional_Indicator, Property.Sentence_Terminal, Property.STerm, Property.Soft_Dotted, Property.Terminal_Punctuation, Property.Unified_Ideograph, Property.Variation_Selector, Property.White_Space,
         };
@@ -7468,7 +7468,7 @@ pub const FoldCategory = enum.{
     M,
     Mn,
 
-    pub fn list(self: FoldCategory) []FoldCategory {
+    pub fn list() []FoldCategory {
         return []FoldCategory.{ FoldCategory.L, FoldCategory.Ll, FoldCategory.Lt, FoldCategory.Lu, FoldCategory.M, FoldCategory.Mn };
     }
 
@@ -7748,7 +7748,7 @@ pub const FoldScript = enum.{
     Greek,
     Inherited,
 
-    pub fn list(self: FoldScript) []FoldScript {
+    pub fn list() []FoldScript {
         return []FoldScript.{ FoldScript.Common, FoldScript.Greek, FoldScript.Inherited };
     }
 
