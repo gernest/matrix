@@ -959,17 +959,17 @@ func printScriptOrProperty(doProps bool) {
 	for _, name := range list {
 		if doProps {
 			decl[ndecl] = fmt.Sprintf(
-				"const %s = _%s;  // %s is the set of Unicode characters with property %s.\n",
+				"pub const %s = _%s;  // %s is the set of Unicode characters with property %s.\n",
 				name, name, name, name)
 		} else {
 			decl[ndecl] = fmt.Sprintf(
-				"const  %s = _%s;  // %s is the set of Unicode characters in script %s.\n",
+				"pub const  %s = _%s;  // %s is the set of Unicode characters in script %s.\n",
 				name, name, name, name)
 		}
 		ndecl++
 		if alias, ok := deprecatedAliases[name]; ok {
 			decl[ndecl] = fmt.Sprintf(
-				"const  %[1]s = _%[2]s;  // %[1]s is an alias for %[2]s.\n",
+				"pub const  %[1]s = _%[2]s;  // %[1]s is an alias for %[2]s.\n",
 				alias, name)
 			ndecl++
 		}
