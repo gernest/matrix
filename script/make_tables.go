@@ -29,16 +29,16 @@ func main() {
 	flag.Parse()
 	setupOutput()
 	loadChars() // always needed
-	loadCasefold()
+	// loadCasefold()
 	printCategories()
-	printScriptOrProperty(false)
-	printScriptOrProperty(true)
-	printCases()
-	printLatinProperties()
-	printCasefold()
-	printSizes()
+	// printScriptOrProperty(false)
+	// printScriptOrProperty(true)
+	// printCases()
+	// printLatinProperties()
+	// printCasefold()
+	// printSizes()
 	flushOutput()
-	formatOutput()
+	// formatOutput()
 }
 
 func defaultVersion() string {
@@ -538,14 +538,14 @@ func printCategories() {
 		decl[ndecl] = varDecl
 		ndecl++
 		if len(name) == 1 { // unified categories
-			decl := fmt.Sprintf("const _%s = &RangeTable.{\n", name)
+			decl := fmt.Sprintf("const _%s", name)
 			dumpRangeCategory(
 				decl,
 				func(code rune) bool { return categoryOp(code, name[0]) })
 			continue
 		}
 		dumpRangeCategory(
-			fmt.Sprintf("const _%s = &RangeTable.{\n", name),
+			fmt.Sprintf("const _%s", name),
 			func(code rune) bool { return chars[code].category == name })
 	}
 	decl.Sort()
@@ -556,76 +556,38 @@ func printCategories() {
 
 type Op func(code rune) bool
 
-const format = "    {0x%04x, 0x%04x, %d},\n"
 const format32 = "     Range32.init(0x%04x, 0x%04x, %d),\n"
 const format16 = "    Range16.init(0x%04x, 0x%04x, %d),\n"
 
-func dumpRange(header string, inCategory Op) {
-	print(header)
-	next := rune(0)
-	latinOffset := 0
-	print("  R16: []Range16{\n")
-	// one Range for each iteration
-	count := &counts.range16Count
-	size := 16
-	for {
-		// look for start of range
-		for next < rune(len(chars)) && !inCategory(next) {
-			next++
+func dumpRangeTable(name string, table *unicode.RangeTable) {
+	printf("%s = &RangeTable.{\n", name)
+	if len(table.R16) != 0 {
+		println("  .r16=Range16.{")
+		for _, v := range table.R16 {
+			printf(format16, v.Lo, v.Hi, v.Stride)
 		}
-		if next >= rune(len(chars)) {
-			// no characters remain
-			break
-		}
-
-		// start of range
-		lo := next
-		hi := next
-		stride := rune(1)
-		// accept lo
-		next++
-		// look for another character to set the stride
-		for next < rune(len(chars)) && !inCategory(next) {
-			next++
-		}
-		if next >= rune(len(chars)) {
-			// no more characters
-			printf(format, lo, hi, stride)
-			break
-		}
-		// set stride
-		stride = next - lo
-		// check for length of run. next points to first jump in stride
-		for i := next; i < rune(len(chars)); i++ {
-			if inCategory(i) == (((i - lo) % stride) == 0) {
-				// accept
-				if inCategory(i) {
-					hi = i
-				}
-			} else {
-				// no more characters in this run
-				break
-			}
-		}
-		if uint32(hi) <= unicode.MaxLatin1 {
-			latinOffset++
-		}
-		size, count = printRange(uint32(lo), uint32(hi), uint32(stride), size, count)
-		// next range: start looking where this range ends
-		next = hi + 1
+		println("},")
+	} else {
+		println("  .r16=Range16.{};")
 	}
-	print("  },\n")
-	if latinOffset > 0 {
-		printf("  LatinOffset: %d,\n", latinOffset)
+	if len(table.R32) != 0 {
+		println("  .r32=Range32.{")
+		for _, v := range table.R32 {
+			printf(format32, v.Lo, v.Hi, v.Stride)
+		}
+		println("},")
+	} else {
+		println("  .r32=Range32.{},")
 	}
-	print("}\n\n")
+	println("};")
 }
 
 func dumpRangeCategory(header string, inCategory Op) {
-	print(header)
+	// print(header)
 	next := rune(0)
 	latinOffset := 0
-	print("  .r16= []Range16.{\n")
+	// print("  .r16= []Range16.{\n")
+	table := &unicode.RangeTable{}
 	// one Range for each iteration
 	count := &counts.range16Count
 	size := 16
@@ -652,9 +614,19 @@ func dumpRangeCategory(header string, inCategory Op) {
 		if next >= rune(len(chars)) {
 			// no more characters
 			if size == 32 {
-				printf(format32, lo, hi, stride)
+				// printf(format32, lo, hi, stride)
+				table.R32 = append(table.R32, unicode.Range32{
+					Lo:     uint32(lo),
+					Hi:     uint32(hi),
+					Stride: uint32(stride),
+				})
 			} else {
-				printf(format16, lo, hi, stride)
+				// printf(format16, lo, hi, stride)
+				table.R16 = append(table.R16, unicode.Range16{
+					Lo:     uint16(lo),
+					Hi:     uint16(hi),
+					Stride: uint16(stride),
+				})
 			}
 			break
 		}
@@ -675,18 +647,19 @@ func dumpRangeCategory(header string, inCategory Op) {
 		if uint32(hi) <= unicode.MaxLatin1 {
 			latinOffset++
 		}
-		size, count = printRange(uint32(lo), uint32(hi), uint32(stride), size, count)
+		size, count = printRange(table, uint32(lo), uint32(hi), uint32(stride), size, count)
 		// next range: start looking where this range ends
 		next = hi + 1
 	}
-	print("  },\n")
+	// print("  },\n")
 	if latinOffset > 0 {
-		printf("  .latin_offset= %d,\n", latinOffset)
+		// printf("  .latin_offset= %d,\n", latinOffset)
 	}
-	print("};\n\n")
+	// print("};\n\n")
+	dumpRangeTable(header, table)
 }
 
-func printRange(lo, hi, stride uint32, size int, count *int) (int, *int) {
+func printRange(table *unicode.RangeTable, lo, hi, stride uint32, size int, count *int) (int, *int) {
 	if size == 16 && hi >= 1<<16 {
 		if lo < 1<<16 {
 			if lo+stride != hi {
@@ -696,23 +669,43 @@ func printRange(lo, hi, stride uint32, size int, count *int) (int, *int) {
 			// the range into two entries. That way we can maintain
 			// the invariant that R32 contains only >= 1<<16.
 			if size == 32 {
-				printf(format32, lo, lo, 1)
+				// printf(format32, lo, lo, 1)
+				table.R32 = append(table.R32, unicode.Range32{
+					Lo:     uint32(lo),
+					Hi:     uint32(lo),
+					Stride: 1,
+				})
 			} else {
-				printf(format16, lo, lo, 1)
+				// printf(format16, lo, lo, 1)
+				table.R16 = append(table.R16, unicode.Range16{
+					Lo:     uint16(lo),
+					Hi:     uint16(lo),
+					Stride: 1,
+				})
 			}
 			lo = hi
 			stride = 1
 			*count++
 		}
-		print("  },\n")
-		print("  .r32= []Range32.{\n")
+		// print("  },\n")
+		// print("  .r32= []Range32.{\n")
 		size = 32
 		count = &counts.range32Count
 	}
 	if size == 32 {
-		printf(format32, lo, hi, stride)
+		// printf(format32, lo, hi, stride)
+		table.R32 = append(table.R32, unicode.Range32{
+			Lo:     uint32(lo),
+			Hi:     uint32(hi),
+			Stride: uint32(stride),
+		})
 	} else {
-		printf(format16, lo, hi, stride)
+		// printf(format16, lo, hi, stride)
+		table.R16 = append(table.R16, unicode.Range16{
+			Lo:     uint16(lo),
+			Hi:     uint16(hi),
+			Stride: uint16(stride),
+		})
 	}
 	*count++
 	return size, count
@@ -974,12 +967,13 @@ func printScriptOrProperty(doProps bool) {
 			ndecl++
 		}
 		printf("const _%s = &RangeTable.{\n", name)
+		rtable := &unicode.RangeTable{}
 		ranges := foldAdjacent(table[name])
 		print("  .r16= []Range16.{\n")
 		size := 16
 		count := &counts.range16Count
 		for _, s := range ranges {
-			size, count = printRange(s.Lo, s.Hi, s.Stride, size, count)
+			size, count = printRange(rtable, s.Lo, s.Hi, s.Stride, size, count)
 		}
 		print("  },\n")
 		if off := findLatinOffset(ranges); off > 0 {
@@ -1550,7 +1544,7 @@ func printCatFold(name string, m map[string]map[rune]bool) {
 	for _, name := range allCatFold(m) {
 		class := m[name]
 		dumpRangeCategory(
-			fmt.Sprintf("const fold%s = &RangeTable.{\n", name),
+			fmt.Sprintf("const fold%s", name),
 			func(code rune) bool { return class[code] })
 	}
 }
