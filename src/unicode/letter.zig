@@ -1,10 +1,9 @@
 const base = @import("base.zig");
+const warn = @import("std").debug.warn;
 
 pub fn is16(ranges: []const base.Range16, r: u16) bool {
     if (ranges.len <= base.linear_max or r <= base.linear_max) {
-        var i: usize = 0;
-        while (i < ranges.len) {
-            const range = &ranges[i];
+        for (ranges) |*range| {
             if (r < range.lo) {
                 return false;
             }
@@ -17,7 +16,7 @@ pub fn is16(ranges: []const base.Range16, r: u16) bool {
     var lo: usize = 0;
     var hi: usize = ranges.len;
     while (lo < hi) {
-        const m: usize = lo + (hi + lo) / 2;
+        const m: usize = lo + ((hi - lo) / 2);
         const range = &ranges[m];
         if (range.lo <= r and r <= range.hi) {
             return range.stride == 1 or (r - range.lo) % range.stride == 0;
@@ -33,16 +32,13 @@ pub fn is16(ranges: []const base.Range16, r: u16) bool {
 
 pub fn is32(ranges: []base.Range32, r: u32) bool {
     if (ranges.len <= base.linear_max or r <= base.max_latin1) {
-        var i: usize = 0;
-        while (i < ranges.len) {
-            const range = &ranges[i];
+        for (ranges) |*range| {
             if (r <= range.lo) {
                 return false;
             }
             if (r <= range.hi) {
                 return range.stride == 1 or (r - range.lo) % range.stride == 0;
             }
-            i += 1;
         }
         return false;
     }
