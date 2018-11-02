@@ -501,38 +501,38 @@ func printCategories() {
 		varDecl := ""
 		switch name {
 		case "C":
-			varDecl = "pub const Other = _C;// Other/C is the set of Unicode control and special characters, category C.\n"
-			varDecl += "pub const C = _C;\n"
+			varDecl = "pub const Other = &_C;// Other/C is the set of Unicode control and special characters, category C.\n"
+			varDecl += "pub const C = &_C;\n"
 		case "L":
-			varDecl = "pub const Letter = _L;// Letter/L is the set of Unicode letters, category L.\n"
-			varDecl += "pub const L = _L;\n"
+			varDecl = "pub const Letter = &_L;// Letter/L is the set of Unicode letters, category L.\n"
+			varDecl += "pub const L = &_L;\n"
 		case "M":
-			varDecl = "pub const Mark = _M;// Mark/M is the set of Unicode mark characters, category M.\n"
-			varDecl += "pub const M = _M;\n"
+			varDecl = "pub const Mark = &_M;// Mark/M is the set of Unicode mark characters, category M.\n"
+			varDecl += "pub const M = &_M;\n"
 		case "N":
-			varDecl = "pub const Number = _N;// Number/N is the set of Unicode number characters, category N.\n"
-			varDecl += "pub const N = _N;\n"
+			varDecl = "pub const Number = &_N;// Number/N is the set of Unicode number characters, category N.\n"
+			varDecl += "pub const N = &_N;\n"
 		case "P":
-			varDecl = "pub const Punct = _P;// Punct/P is the set of Unicode punctuation characters, category P.\n"
-			varDecl += "pub const P = _P;\n"
+			varDecl = "pub const Punct = &_P;// Punct/P is the set of Unicode punctuation characters, category P.\n"
+			varDecl += "pub const P = &_P;\n"
 		case "S":
-			varDecl = "pub const Symbol = _S;// Symbol/S is the set of Unicode symbol characters, category S.\n"
-			varDecl += "pub const S = _S;\n"
+			varDecl = "pub const Symbol = &_S;// Symbol/S is the set of Unicode symbol characters, category S.\n"
+			varDecl += "pub const S = &_S;\n"
 		case "Z":
-			varDecl = "pub const Space = _Z;// Space/Z is the set of Unicode space characters, category Z.\n"
-			varDecl += "pub const Z = _Z;\n"
+			varDecl = "pub const Space = &_Z;// Space/Z is the set of Unicode space characters, category Z.\n"
+			varDecl += "pub const Z = &_Z;\n"
 		case "Nd":
-			varDecl = "pub const Digit = _Nd;// Digit is the set of Unicode characters with the \"decimal digit\" property.\n"
+			varDecl = "pub const Digit = &_Nd;// Digit is the set of Unicode characters with the \"decimal digit\" property.\n"
 		case "Lu":
-			varDecl = "pub const Upper = _Lu;// Upper is the set of Unicode upper case letters.\n"
+			varDecl = "pub const Upper = &_Lu;// Upper is the set of Unicode upper case letters.\n"
 		case "Ll":
-			varDecl = "pub const Lower = _Ll;// Lower is the set of Unicode lower case letters.\n"
+			varDecl = "pub const Lower = &_Ll;// Lower is the set of Unicode lower case letters.\n"
 		case "Lt":
-			varDecl = "pub const Title = _Lt;// Title is the set of Unicode title case letters.\n"
+			varDecl = "pub const Title = &_Lt;// Title is the set of Unicode title case letters.\n"
 		}
 		if len(name) > 1 {
 			varDecl += fmt.Sprintf(
-				"pub const %s = _%s;// %s is the set of Unicode characters in category %s.\n",
+				"pub const %s = &_%s;// %s is the set of Unicode characters in category %s.\n",
 				name, name, name, name)
 		}
 		decl[ndecl] = varDecl
@@ -560,21 +560,27 @@ const format32 = "     Range32.init(0x%04x, 0x%04x, %d),\n"
 const format16 = "    Range16.init(0x%04x, 0x%04x, %d),\n"
 
 func dumpRangeTable(name string, table *unicode.RangeTable) {
-	printf("%s = &RangeTable.{\n", name)
+	printf("%s = RangeTable.{\n", name)
 	if len(table.R16) != 0 {
-		println("  .r16=[]Range16.{")
+		println("  .r16=init:{")
+		println("  var r=[]Range16.{")
 		for _, v := range table.R16 {
 			printf(format16, v.Lo, v.Hi, v.Stride)
 		}
+		println("};")
+		println("break :init r[0..];")
 		println("},")
 	} else {
 		println("  .r16=[]Range16.{},")
 	}
 	if len(table.R32) != 0 {
-		println("  .r32=[]Range32.{")
+		println("  .r32=init:{")
+		println("  var r=[]Range32.{")
 		for _, v := range table.R32 {
-			printf(format32, v.Lo, v.Hi, v.Stride)
+			printf(format16, v.Lo, v.Hi, v.Stride)
 		}
+		println("};")
+		println("break :init r[0..];")
 		println("},")
 	} else {
 		println("  .r32=[]Range32.{},")
@@ -938,36 +944,31 @@ func printScriptOrProperty(doProps bool) {
 	for _, name := range list {
 		if doProps {
 			decl[ndecl] = fmt.Sprintf(
-				"pub const %s = _%s;  // %s is the set of Unicode characters with property %s.\n",
+				"pub const %s = &_%s;  // %s is the set of Unicode characters with property %s.\n",
 				name, name, name, name)
 		} else {
 			decl[ndecl] = fmt.Sprintf(
-				"pub const  %s = _%s;  // %s is the set of Unicode characters in script %s.\n",
+				"pub const  %s = &_%s;  // %s is the set of Unicode characters in script %s.\n",
 				name, name, name, name)
 		}
 		ndecl++
 		if alias, ok := deprecatedAliases[name]; ok {
 			decl[ndecl] = fmt.Sprintf(
-				"pub const  %[1]s = _%[2]s;  // %[1]s is an alias for %[2]s.\n",
+				"pub const  %[1]s = &_%[2]s;  // %[1]s is an alias for %[2]s.\n",
 				alias, name)
 			ndecl++
 		}
-		// printf("const _%s", name)
 		rtable := &unicode.RangeTable{}
 		ranges := foldAdjacent(table[name])
-		// print("  .r16= []Range16.{\n")
 		size := 16
 		count := &counts.range16Count
 		for _, s := range ranges {
 			size, count = printRange(rtable, s.Lo, s.Hi, s.Stride, size, count)
 		}
-		// print("  },\n")
 		if off := findLatinOffset(ranges); off > 0 {
 			rtable.LatinOffset = off
-			// printf("  .latin_offset= %d,\n", off)
 		}
 		dumpRangeTable(fmt.Sprintf("const _%s", name), rtable)
-		// print("};\n\n")
 	}
 	decl.Sort()
 	println("// These variables have type *RangeTable.")
@@ -1139,7 +1140,7 @@ func printCases() {
 			"// CaseRanges is the table describing case mappings for all letters with\n"+
 			"// non-self mappings.\n"+
 			"pub const CaseRanges = _CaseRanges;\n"+
-			"const _CaseRanges = []CaseRange.{\n",
+			"const _CaseRanges = init:{\n var cs=[]CaseRange.{\n",
 		*dataURL, *casefoldingURL)
 
 	var startState *caseState    // the start of a run; nil for not active
@@ -1158,6 +1159,8 @@ func printCases() {
 		}
 		prevState = state
 	}
+	print("};\n")
+	println("break :init cs[0..];")
 	print("};\n")
 }
 
@@ -1522,7 +1525,7 @@ func printCatFold(name string, m map[string]map[rune]bool) {
 		nx++
 	}
 	printf("};\n}\n")
-	printf("\npub fn table(self:%s) *baseRangeTable{\n", name)
+	printf("\npub fn table(self:%s) *RangeTable{\n", name)
 	println("return switch(self){")
 	for _, n := range allCatFold(m) {
 		printf("  %s.%s=> fold%s,\n", name, n, n)
