@@ -29,16 +29,16 @@ func main() {
 	flag.Parse()
 	setupOutput()
 	loadChars() // always needed
-	// loadCasefold()
+	loadCasefold()
 	printCategories()
-	// printScriptOrProperty(false)
-	// printScriptOrProperty(true)
-	// printCases()
-	// printLatinProperties()
-	// printCasefold()
-	// printSizes()
+	printScriptOrProperty(false)
+	printScriptOrProperty(true)
+	printCases()
+	printLatinProperties()
+	printCasefold()
+	printSizes()
 	flushOutput()
-	// formatOutput()
+	formatOutput()
 }
 
 func defaultVersion() string {
@@ -568,7 +568,7 @@ func dumpRangeTable(name string, table *unicode.RangeTable) {
 		}
 		println("},")
 	} else {
-		println("  .r16=Range16.{};")
+		println("  .r16=Range16.{},")
 	}
 	if len(table.R32) != 0 {
 		println("  .r32=Range32.{")
@@ -583,10 +583,8 @@ func dumpRangeTable(name string, table *unicode.RangeTable) {
 }
 
 func dumpRangeCategory(header string, inCategory Op) {
-	// print(header)
 	next := rune(0)
 	latinOffset := 0
-	// print("  .r16= []Range16.{\n")
 	table := &unicode.RangeTable{}
 	// one Range for each iteration
 	count := &counts.range16Count
@@ -614,14 +612,12 @@ func dumpRangeCategory(header string, inCategory Op) {
 		if next >= rune(len(chars)) {
 			// no more characters
 			if size == 32 {
-				// printf(format32, lo, hi, stride)
 				table.R32 = append(table.R32, unicode.Range32{
 					Lo:     uint32(lo),
 					Hi:     uint32(hi),
 					Stride: uint32(stride),
 				})
 			} else {
-				// printf(format16, lo, hi, stride)
 				table.R16 = append(table.R16, unicode.Range16{
 					Lo:     uint16(lo),
 					Hi:     uint16(hi),
@@ -648,14 +644,10 @@ func dumpRangeCategory(header string, inCategory Op) {
 			latinOffset++
 		}
 		size, count = printRange(table, uint32(lo), uint32(hi), uint32(stride), size, count)
-		// next range: start looking where this range ends
 		next = hi + 1
 	}
-	// print("  },\n")
 	if latinOffset > 0 {
-		// printf("  .latin_offset= %d,\n", latinOffset)
 	}
-	// print("};\n\n")
 	dumpRangeTable(header, table)
 }
 
@@ -669,14 +661,12 @@ func printRange(table *unicode.RangeTable, lo, hi, stride uint32, size int, coun
 			// the range into two entries. That way we can maintain
 			// the invariant that R32 contains only >= 1<<16.
 			if size == 32 {
-				// printf(format32, lo, lo, 1)
 				table.R32 = append(table.R32, unicode.Range32{
 					Lo:     uint32(lo),
 					Hi:     uint32(lo),
 					Stride: 1,
 				})
 			} else {
-				// printf(format16, lo, lo, 1)
 				table.R16 = append(table.R16, unicode.Range16{
 					Lo:     uint16(lo),
 					Hi:     uint16(lo),
@@ -687,20 +677,16 @@ func printRange(table *unicode.RangeTable, lo, hi, stride uint32, size int, coun
 			stride = 1
 			*count++
 		}
-		// print("  },\n")
-		// print("  .r32= []Range32.{\n")
 		size = 32
 		count = &counts.range32Count
 	}
 	if size == 32 {
-		// printf(format32, lo, hi, stride)
 		table.R32 = append(table.R32, unicode.Range32{
 			Lo:     uint32(lo),
 			Hi:     uint32(hi),
 			Stride: uint32(stride),
 		})
 	} else {
-		// printf(format16, lo, hi, stride)
 		table.R16 = append(table.R16, unicode.Range16{
 			Lo:     uint16(lo),
 			Hi:     uint16(hi),
@@ -966,20 +952,22 @@ func printScriptOrProperty(doProps bool) {
 				alias, name)
 			ndecl++
 		}
-		printf("const _%s = &RangeTable.{\n", name)
+		// printf("const _%s", name)
 		rtable := &unicode.RangeTable{}
 		ranges := foldAdjacent(table[name])
-		print("  .r16= []Range16.{\n")
+		// print("  .r16= []Range16.{\n")
 		size := 16
 		count := &counts.range16Count
 		for _, s := range ranges {
 			size, count = printRange(rtable, s.Lo, s.Hi, s.Stride, size, count)
 		}
-		print("  },\n")
+		// print("  },\n")
 		if off := findLatinOffset(ranges); off > 0 {
-			printf("  .latin_offset= %d,\n", off)
+			rtable.LatinOffset = off
+			// printf("  .latin_offset= %d,\n", off)
 		}
-		print("};\n\n")
+		dumpRangeTable(fmt.Sprintf("const _%s", name), rtable)
+		// print("};\n\n")
 	}
 	decl.Sort()
 	println("// These variables have type *RangeTable.")

@@ -100,7 +100,7 @@ pub const Category = enum.{
 };
 
 const _C = &RangeTable.{
-    .r16 = []Range16.{
+    .r16 = Range16.{
         Range16.init(0x0000, 0x001f, 1),
         Range16.init(0x007f, 0x009f, 1),
         Range16.init(0x00ad, 0x0600, 1363),
@@ -116,7 +116,7 @@ const _C = &RangeTable.{
         Range16.init(0xfeff, 0xfff9, 250),
         Range16.init(0xfffa, 0xfffb, 1),
     },
-    .r32 = []Range32.{
+    .r32 = Range32.{
         Range32.init(0x110bd, 0x1bca0, 44003),
         Range32.init(0x1bca1, 0x1bca3, 1),
         Range32.init(0x1d173, 0x1d17a, 1),
@@ -125,19 +125,16 @@ const _C = &RangeTable.{
         Range32.init(0xf0000, 0xffffd, 1),
         Range32.init(0x100000, 0x10fffd, 1),
     },
-    .latin_offset = 2,
 };
-
 const _Cc = &RangeTable.{
-    .r16 = []Range16.{
+    .r16 = Range16.{
         Range16.init(0x0000, 0x001f, 1),
         Range16.init(0x007f, 0x009f, 1),
     },
-    .latin_offset = 2,
+    .r32 = Range32.{},
 };
-
 const _Cf = &RangeTable.{
-    .r16 = []Range16.{
+    .r16 = Range16.{
         Range16.init(0x00ad, 0x0600, 1363),
         Range16.init(0x0601, 0x0605, 1),
         Range16.init(0x061c, 0x06dd, 193),
@@ -150,7 +147,7 @@ const _Cf = &RangeTable.{
         Range16.init(0xfeff, 0xfff9, 250),
         Range16.init(0xfffa, 0xfffb, 1),
     },
-    .r32 = []Range32.{
+    .r32 = Range32.{
         Range32.init(0x110bd, 0x1bca0, 44003),
         Range32.init(0x1bca1, 0x1bca3, 1),
         Range32.init(0x1d173, 0x1d17a, 1),
@@ -158,19 +155,19 @@ const _Cf = &RangeTable.{
         Range32.init(0xe0021, 0xe007f, 1),
     },
 };
-
 const _Co = &RangeTable.{
-    .r16 = []Range16.{Range16.init(0xe000, 0xf8ff, 1)},
-    .r32 = []Range32.{
+    .r16 = Range16.{Range16.init(0xe000, 0xf8ff, 1)},
+    .r32 = Range32.{
         Range32.init(0xf0000, 0xffffd, 1),
         Range32.init(0x100000, 0x10fffd, 1),
     },
 };
-
-const _Cs = &RangeTable.{ .r16 = []Range16.{Range16.init(0xd800, 0xdfff, 1)} };
-
+const _Cs = &RangeTable.{
+    .r16 = Range16.{Range16.init(0xd800, 0xdfff, 1)},
+    .r32 = Range32.{},
+};
 const _L = &RangeTable.{
-    .r16 = []Range16.{
+    .r16 = Range16.{
         Range16.init(0x0041, 0x005a, 1),
         Range16.init(0x0061, 0x007a, 1),
         Range16.init(0x00aa, 0x00b5, 11),
@@ -531,7 +528,7 @@ const _L = &RangeTable.{
         Range16.init(0xffd2, 0xffd7, 1),
         Range16.init(0xffda, 0xffdc, 1),
     },
-    .r32 = []Range32.{
+    .r32 = Range32.{
         Range32.init(0x10000, 0x1000b, 1),
         Range32.init(0x1000d, 0x10026, 1),
         Range32.init(0x10028, 0x1003a, 1),
@@ -722,11 +719,9 @@ const _L = &RangeTable.{
         Range32.init(0x2ceb0, 0x2ebe0, 1),
         Range32.init(0x2f800, 0x2fa1d, 1),
     },
-    .latin_offset = 6,
 };
-
 const _Ll = &RangeTable.{
-    .r16 = []Range16.{
+    .r16 = Range16.{
         Range16.init(0x0061, 0x007a, 1),
         Range16.init(0x00b5, 0x00df, 42),
         Range16.init(0x00e0, 0x00f6, 1),
@@ -845,7 +840,7 @@ const _Ll = &RangeTable.{
         Range16.init(0xfb13, 0xfb17, 1),
         Range16.init(0xff41, 0xff5a, 1),
     },
-    .r32 = []Range32.{
+    .r32 = Range32.{
         Range32.init(0x10428, 0x1044f, 1),
         Range32.init(0x104d8, 0x104fb, 1),
         Range32.init(0x10cc0, 0x10cf2, 1),
@@ -880,11 +875,9 @@ const _Ll = &RangeTable.{
         Range32.init(0x1d7cb, 0x1e922, 4439),
         Range32.init(0x1e923, 0x1e943, 1),
     },
-    .latin_offset = 4,
 };
-
 const _Lm = &RangeTable.{
-    .r16 = []Range16.{
+    .r16 = Range16.{
         Range16.init(0x02b0, 0x02c1, 1),
         Range16.init(0x02c6, 0x02d1, 1),
         Range16.init(0x02e0, 0x02e4, 1),
@@ -926,16 +919,15 @@ const _Lm = &RangeTable.{
         Range16.init(0xff70, 0xff9e, 46),
         Range16.init(0xff9f, 0xff9f, 1),
     },
-    .r32 = []Range32.{
+    .r32 = Range32.{
         Range32.init(0x16b40, 0x16b40, 1),
         Range32.init(0x16b41, 0x16b43, 1),
         Range32.init(0x16f93, 0x16f9f, 1),
         Range32.init(0x16fe0, 0x16fe1, 1),
     },
 };
-
 const _Lo = &RangeTable.{
-    .r16 = []Range16.{
+    .r16 = Range16.{
         Range16.init(0x00aa, 0x00ba, 16),
         Range16.init(0x01bb, 0x01c0, 5),
         Range16.init(0x01c1, 0x01c3, 1),
@@ -1219,7 +1211,7 @@ const _Lo = &RangeTable.{
         Range16.init(0xffd2, 0xffd7, 1),
         Range16.init(0xffda, 0xffdc, 1),
     },
-    .r32 = []Range32.{
+    .r32 = Range32.{
         Range32.init(0x10000, 0x1000b, 1),
         Range32.init(0x1000d, 0x10026, 1),
         Range32.init(0x10028, 0x1003a, 1),
@@ -1371,21 +1363,21 @@ const _Lo = &RangeTable.{
         Range32.init(0x2ceb0, 0x2ebe0, 1),
         Range32.init(0x2f800, 0x2fa1d, 1),
     },
-    .latin_offset = 1,
 };
-
-const _Lt = &RangeTable.{ .r16 = []Range16.{
-    Range16.init(0x01c5, 0x01cb, 3),
-    Range16.init(0x01f2, 0x1f88, 7574),
-    Range16.init(0x1f89, 0x1f8f, 1),
-    Range16.init(0x1f98, 0x1f9f, 1),
-    Range16.init(0x1fa8, 0x1faf, 1),
-    Range16.init(0x1fbc, 0x1fcc, 16),
-    Range16.init(0x1ffc, 0x1ffc, 1),
-} };
-
+const _Lt = &RangeTable.{
+    .r16 = Range16.{
+        Range16.init(0x01c5, 0x01cb, 3),
+        Range16.init(0x01f2, 0x1f88, 7574),
+        Range16.init(0x1f89, 0x1f8f, 1),
+        Range16.init(0x1f98, 0x1f9f, 1),
+        Range16.init(0x1fa8, 0x1faf, 1),
+        Range16.init(0x1fbc, 0x1fcc, 16),
+        Range16.init(0x1ffc, 0x1ffc, 1),
+    },
+    .r32 = Range32.{},
+};
 const _Lu = &RangeTable.{
-    .r16 = []Range16.{
+    .r16 = Range16.{
         Range16.init(0x0041, 0x005a, 1),
         Range16.init(0x00c0, 0x00d6, 1),
         Range16.init(0x00d8, 0x00de, 1),
@@ -1490,7 +1482,7 @@ const _Lu = &RangeTable.{
         Range16.init(0xa7b6, 0xff21, 22379),
         Range16.init(0xff22, 0xff3a, 1),
     },
-    .r32 = []Range32.{
+    .r32 = Range32.{
         Range32.init(0x10400, 0x10427, 1),
         Range32.init(0x104b0, 0x104d3, 1),
         Range32.init(0x10c80, 0x10cb2, 1),
@@ -1527,11 +1519,9 @@ const _Lu = &RangeTable.{
         Range32.init(0x1d7ca, 0x1e900, 4406),
         Range32.init(0x1e901, 0x1e921, 1),
     },
-    .latin_offset = 3,
 };
-
 const _M = &RangeTable.{
-    .r16 = []Range16.{
+    .r16 = Range16.{
         Range16.init(0x0300, 0x036f, 1),
         Range16.init(0x0483, 0x0489, 1),
         Range16.init(0x0591, 0x05bd, 1),
@@ -1711,7 +1701,7 @@ const _M = &RangeTable.{
         Range16.init(0xfe01, 0xfe0f, 1),
         Range16.init(0xfe20, 0xfe2f, 1),
     },
-    .r32 = []Range32.{
+    .r32 = Range32.{
         Range32.init(0x101fd, 0x102e0, 227),
         Range32.init(0x10376, 0x1037a, 1),
         Range32.init(0x10a01, 0x10a03, 1),
@@ -1791,9 +1781,8 @@ const _M = &RangeTable.{
         Range32.init(0xe0100, 0xe01ef, 1),
     },
 };
-
 const _Mc = &RangeTable.{
-    .r16 = []Range16.{
+    .r16 = Range16.{
         Range16.init(0x0903, 0x093b, 56),
         Range16.init(0x093e, 0x0940, 1),
         Range16.init(0x0949, 0x094c, 1),
@@ -1892,7 +1881,7 @@ const _Mc = &RangeTable.{
         Range16.init(0xabe7, 0xabe9, 2),
         Range16.init(0xabea, 0xabec, 2),
     },
-    .r32 = []Range32.{
+    .r32 = Range32.{
         Range32.init(0x11000, 0x11002, 2),
         Range32.init(0x11082, 0x110b0, 46),
         Range32.init(0x110b1, 0x110b2, 1),
@@ -1938,17 +1927,18 @@ const _Mc = &RangeTable.{
         Range32.init(0x1d16d, 0x1d172, 1),
     },
 };
-
-const _Me = &RangeTable.{ .r16 = []Range16.{
-    Range16.init(0x0488, 0x0489, 1),
-    Range16.init(0x1abe, 0x20dd, 1567),
-    Range16.init(0x20de, 0x20e0, 1),
-    Range16.init(0x20e2, 0x20e4, 1),
-    Range16.init(0xa670, 0xa672, 1),
-} };
-
+const _Me = &RangeTable.{
+    .r16 = Range16.{
+        Range16.init(0x0488, 0x0489, 1),
+        Range16.init(0x1abe, 0x20dd, 1567),
+        Range16.init(0x20de, 0x20e0, 1),
+        Range16.init(0x20e2, 0x20e4, 1),
+        Range16.init(0xa670, 0xa672, 1),
+    },
+    .r32 = Range32.{},
+};
 const _Mn = &RangeTable.{
-    .r16 = []Range16.{
+    .r16 = Range16.{
         Range16.init(0x0300, 0x036f, 1),
         Range16.init(0x0483, 0x0487, 1),
         Range16.init(0x0591, 0x05bd, 1),
@@ -2126,7 +2116,7 @@ const _Mn = &RangeTable.{
         Range16.init(0xfe00, 0xfe0f, 1),
         Range16.init(0xfe20, 0xfe2f, 1),
     },
-    .r32 = []Range32.{
+    .r32 = Range32.{
         Range32.init(0x101fd, 0x102e0, 227),
         Range32.init(0x10376, 0x1037a, 1),
         Range32.init(0x10a01, 0x10a03, 1),
@@ -2220,9 +2210,8 @@ const _Mn = &RangeTable.{
         Range32.init(0xe0100, 0xe01ef, 1),
     },
 };
-
 const _N = &RangeTable.{
-    .r16 = []Range16.{
+    .r16 = Range16.{
         Range16.init(0x0030, 0x0039, 1),
         Range16.init(0x00b2, 0x00b3, 1),
         Range16.init(0x00b9, 0x00bc, 3),
@@ -2290,7 +2279,7 @@ const _N = &RangeTable.{
         Range16.init(0xabf0, 0xabf9, 1),
         Range16.init(0xff10, 0xff19, 1),
     },
-    .r32 = []Range32.{
+    .r32 = Range32.{
         Range32.init(0x10107, 0x10133, 1),
         Range32.init(0x10140, 0x10178, 1),
         Range32.init(0x1018a, 0x1018b, 1),
@@ -2340,11 +2329,9 @@ const _N = &RangeTable.{
         Range32.init(0x1e950, 0x1e959, 1),
         Range32.init(0x1f100, 0x1f10c, 1),
     },
-    .latin_offset = 4,
 };
-
 const _Nd = &RangeTable.{
-    .r16 = []Range16.{
+    .r16 = Range16.{
         Range16.init(0x0030, 0x0039, 1),
         Range16.init(0x0660, 0x0669, 1),
         Range16.init(0x06f0, 0x06f9, 1),
@@ -2383,7 +2370,7 @@ const _Nd = &RangeTable.{
         Range16.init(0xabf0, 0xabf9, 1),
         Range16.init(0xff10, 0xff19, 1),
     },
-    .r32 = []Range32.{
+    .r32 = Range32.{
         Range32.init(0x104a0, 0x104a9, 1),
         Range32.init(0x11066, 0x1106f, 1),
         Range32.init(0x110f0, 0x110f9, 1),
@@ -2403,11 +2390,9 @@ const _Nd = &RangeTable.{
         Range32.init(0x1d7ce, 0x1d7ff, 1),
         Range32.init(0x1e950, 0x1e959, 1),
     },
-    .latin_offset = 1,
 };
-
 const _Nl = &RangeTable.{
-    .r16 = []Range16.{
+    .r16 = Range16.{
         Range16.init(0x16ee, 0x16f0, 1),
         Range16.init(0x2160, 0x2182, 1),
         Range16.init(0x2185, 0x2188, 1),
@@ -2416,16 +2401,15 @@ const _Nl = &RangeTable.{
         Range16.init(0x3038, 0x303a, 1),
         Range16.init(0xa6e6, 0xa6ef, 1),
     },
-    .r32 = []Range32.{
+    .r32 = Range32.{
         Range32.init(0x10140, 0x10174, 1),
         Range32.init(0x10341, 0x1034a, 9),
         Range32.init(0x103d1, 0x103d5, 1),
         Range32.init(0x12400, 0x1246e, 1),
     },
 };
-
 const _No = &RangeTable.{
-    .r16 = []Range16.{
+    .r16 = Range16.{
         Range16.init(0x00b2, 0x00b3, 1),
         Range16.init(0x00b9, 0x00bc, 3),
         Range16.init(0x00bd, 0x00be, 1),
@@ -2455,7 +2439,7 @@ const _No = &RangeTable.{
         Range16.init(0x32b1, 0x32bf, 1),
         Range16.init(0xa830, 0xa835, 1),
     },
-    .r32 = []Range32.{
+    .r32 = Range32.{
         Range32.init(0x10107, 0x10133, 1),
         Range32.init(0x10175, 0x10178, 1),
         Range32.init(0x1018a, 0x1018b, 1),
@@ -2488,11 +2472,9 @@ const _No = &RangeTable.{
         Range32.init(0x1e8c7, 0x1e8cf, 1),
         Range32.init(0x1f100, 0x1f10c, 1),
     },
-    .latin_offset = 3,
 };
-
 const _P = &RangeTable.{
-    .r16 = []Range16.{
+    .r16 = Range16.{
         Range16.init(0x0021, 0x0023, 1),
         Range16.init(0x0025, 0x002a, 1),
         Range16.init(0x002c, 0x002f, 1),
@@ -2606,7 +2588,7 @@ const _P = &RangeTable.{
         Range16.init(0xff5d, 0xff5f, 2),
         Range16.init(0xff60, 0xff65, 1),
     },
-    .r32 = []Range32.{
+    .r32 = Range32.{
         Range32.init(0x10100, 0x10102, 1),
         Range32.init(0x1039f, 0x103d0, 49),
         Range32.init(0x1056f, 0x10857, 744),
@@ -2646,33 +2628,35 @@ const _P = &RangeTable.{
         Range32.init(0x1da87, 0x1da8b, 1),
         Range32.init(0x1e95e, 0x1e95f, 1),
     },
-    .latin_offset = 11,
 };
-
-const _Pc = &RangeTable.{ .r16 = []Range16.{
-    Range16.init(0x005f, 0x203f, 8160),
-    Range16.init(0x2040, 0x2054, 20),
-    Range16.init(0xfe33, 0xfe34, 1),
-    Range16.init(0xfe4d, 0xfe4f, 1),
-    Range16.init(0xff3f, 0xff3f, 1),
-} };
-
-const _Pd = &RangeTable.{ .r16 = []Range16.{
-    Range16.init(0x002d, 0x058a, 1373),
-    Range16.init(0x05be, 0x1400, 3650),
-    Range16.init(0x1806, 0x2010, 2058),
-    Range16.init(0x2011, 0x2015, 1),
-    Range16.init(0x2e17, 0x2e1a, 3),
-    Range16.init(0x2e3a, 0x2e3b, 1),
-    Range16.init(0x2e40, 0x301c, 476),
-    Range16.init(0x3030, 0x30a0, 112),
-    Range16.init(0xfe31, 0xfe32, 1),
-    Range16.init(0xfe58, 0xfe63, 11),
-    Range16.init(0xff0d, 0xff0d, 1),
-} };
-
+const _Pc = &RangeTable.{
+    .r16 = Range16.{
+        Range16.init(0x005f, 0x203f, 8160),
+        Range16.init(0x2040, 0x2054, 20),
+        Range16.init(0xfe33, 0xfe34, 1),
+        Range16.init(0xfe4d, 0xfe4f, 1),
+        Range16.init(0xff3f, 0xff3f, 1),
+    },
+    .r32 = Range32.{},
+};
+const _Pd = &RangeTable.{
+    .r16 = Range16.{
+        Range16.init(0x002d, 0x058a, 1373),
+        Range16.init(0x05be, 0x1400, 3650),
+        Range16.init(0x1806, 0x2010, 2058),
+        Range16.init(0x2011, 0x2015, 1),
+        Range16.init(0x2e17, 0x2e1a, 3),
+        Range16.init(0x2e3a, 0x2e3b, 1),
+        Range16.init(0x2e40, 0x301c, 476),
+        Range16.init(0x3030, 0x30a0, 112),
+        Range16.init(0xfe31, 0xfe32, 1),
+        Range16.init(0xfe58, 0xfe63, 11),
+        Range16.init(0xff0d, 0xff0d, 1),
+    },
+    .r32 = Range32.{},
+};
 const _Pe = &RangeTable.{
-    .r16 = []Range16.{
+    .r16 = Range16.{
         Range16.init(0x0029, 0x005d, 52),
         Range16.init(0x007d, 0x0f3b, 3774),
         Range16.init(0x0f3d, 0x169c, 1887),
@@ -2696,28 +2680,31 @@ const _Pe = &RangeTable.{
         Range16.init(0xff09, 0xff3d, 52),
         Range16.init(0xff5d, 0xff63, 3),
     },
-    .latin_offset = 1,
+    .r32 = Range32.{},
 };
-
-const _Pf = &RangeTable.{ .r16 = []Range16.{
-    Range16.init(0x00bb, 0x2019, 8030),
-    Range16.init(0x201d, 0x203a, 29),
-    Range16.init(0x2e03, 0x2e05, 2),
-    Range16.init(0x2e0a, 0x2e0d, 3),
-    Range16.init(0x2e1d, 0x2e21, 4),
-} };
-
-const _Pi = &RangeTable.{ .r16 = []Range16.{
-    Range16.init(0x00ab, 0x2018, 8045),
-    Range16.init(0x201b, 0x201c, 1),
-    Range16.init(0x201f, 0x2039, 26),
-    Range16.init(0x2e02, 0x2e04, 2),
-    Range16.init(0x2e09, 0x2e0c, 3),
-    Range16.init(0x2e1c, 0x2e20, 4),
-} };
-
+const _Pf = &RangeTable.{
+    .r16 = Range16.{
+        Range16.init(0x00bb, 0x2019, 8030),
+        Range16.init(0x201d, 0x203a, 29),
+        Range16.init(0x2e03, 0x2e05, 2),
+        Range16.init(0x2e0a, 0x2e0d, 3),
+        Range16.init(0x2e1d, 0x2e21, 4),
+    },
+    .r32 = Range32.{},
+};
+const _Pi = &RangeTable.{
+    .r16 = Range16.{
+        Range16.init(0x00ab, 0x2018, 8045),
+        Range16.init(0x201b, 0x201c, 1),
+        Range16.init(0x201f, 0x2039, 26),
+        Range16.init(0x2e02, 0x2e04, 2),
+        Range16.init(0x2e09, 0x2e0c, 3),
+        Range16.init(0x2e1c, 0x2e20, 4),
+    },
+    .r32 = Range32.{},
+};
 const _Po = &RangeTable.{
-    .r16 = []Range16.{
+    .r16 = Range16.{
         Range16.init(0x0021, 0x0023, 1),
         Range16.init(0x0025, 0x0027, 1),
         Range16.init(0x002a, 0x002e, 2),
@@ -2828,7 +2815,7 @@ const _Po = &RangeTable.{
         Range16.init(0xff61, 0xff64, 3),
         Range16.init(0xff65, 0xff65, 1),
     },
-    .r32 = []Range32.{
+    .r32 = Range32.{
         Range32.init(0x10100, 0x10100, 1),
         Range32.init(0x10101, 0x10102, 1),
         Range32.init(0x1039f, 0x103d0, 49),
@@ -2869,11 +2856,9 @@ const _Po = &RangeTable.{
         Range32.init(0x1da87, 0x1da8b, 1),
         Range32.init(0x1e95e, 0x1e95f, 1),
     },
-    .latin_offset = 8,
 };
-
 const _Ps = &RangeTable.{
-    .r16 = []Range16.{
+    .r16 = Range16.{
         Range16.init(0x0028, 0x005b, 51),
         Range16.init(0x007b, 0x0f3a, 3775),
         Range16.init(0x0f3c, 0x169b, 1887),
@@ -2900,11 +2885,10 @@ const _Ps = &RangeTable.{
         Range16.init(0xff5b, 0xff5f, 4),
         Range16.init(0xff62, 0xff62, 1),
     },
-    .latin_offset = 1,
+    .r32 = Range32.{},
 };
-
 const _S = &RangeTable.{
-    .r16 = []Range16.{
+    .r16 = Range16.{
         Range16.init(0x0024, 0x002b, 7),
         Range16.init(0x003c, 0x003e, 1),
         Range16.init(0x005e, 0x0060, 2),
@@ -3032,7 +3016,7 @@ const _S = &RangeTable.{
         Range16.init(0xffe8, 0xffee, 1),
         Range16.init(0xfffc, 0xfffd, 1),
     },
-    .r32 = []Range32.{
+    .r32 = Range32.{
         Range32.init(0x10137, 0x1013f, 1),
         Range32.init(0x10179, 0x10189, 1),
         Range32.init(0x1018c, 0x1018e, 1),
@@ -3096,11 +3080,9 @@ const _S = &RangeTable.{
         Range32.init(0x1f9c0, 0x1f9d0, 16),
         Range32.init(0x1f9d1, 0x1f9e6, 1),
     },
-    .latin_offset = 10,
 };
-
 const _Sc = &RangeTable.{
-    .r16 = []Range16.{
+    .r16 = Range16.{
         Range16.init(0x0024, 0x00a2, 126),
         Range16.init(0x00a3, 0x00a5, 1),
         Range16.init(0x058f, 0x060b, 124),
@@ -3114,11 +3096,10 @@ const _Sc = &RangeTable.{
         Range16.init(0xffe0, 0xffe1, 1),
         Range16.init(0xffe5, 0xffe6, 1),
     },
-    .latin_offset = 2,
+    .r32 = Range32.{},
 };
-
 const _Sk = &RangeTable.{
-    .r16 = []Range16.{
+    .r16 = Range16.{
         Range16.init(0x005e, 0x0060, 2),
         Range16.init(0x00a8, 0x00af, 7),
         Range16.init(0x00b4, 0x00b8, 4),
@@ -3143,15 +3124,13 @@ const _Sk = &RangeTable.{
         Range16.init(0xff3e, 0xff40, 2),
         Range16.init(0xffe3, 0xffe3, 1),
     },
-    .r32 = []Range32.{
+    .r32 = Range32.{
         Range32.init(0x1f3fb, 0x1f3fb, 1),
         Range32.init(0x1f3fc, 0x1f3ff, 1),
     },
-    .latin_offset = 3,
 };
-
 const _Sm = &RangeTable.{
-    .r16 = []Range16.{
+    .r16 = Range16.{
         Range16.init(0x002b, 0x003c, 17),
         Range16.init(0x003d, 0x003e, 1),
         Range16.init(0x007c, 0x007e, 2),
@@ -3196,7 +3175,7 @@ const _Sm = &RangeTable.{
         Range16.init(0xffe2, 0xffe9, 7),
         Range16.init(0xffea, 0xffec, 1),
     },
-    .r32 = []Range32.{
+    .r32 = Range32.{
         Range32.init(0x1d6c1, 0x1d6db, 26),
         Range32.init(0x1d6fb, 0x1d715, 26),
         Range32.init(0x1d735, 0x1d74f, 26),
@@ -3204,11 +3183,9 @@ const _Sm = &RangeTable.{
         Range32.init(0x1d7a9, 0x1d7c3, 26),
         Range32.init(0x1eef0, 0x1eef1, 1),
     },
-    .latin_offset = 5,
 };
-
 const _So = &RangeTable.{
-    .r16 = []Range16.{
+    .r16 = Range16.{
         Range16.init(0x00a6, 0x00a9, 3),
         Range16.init(0x00ae, 0x00b0, 2),
         Range16.init(0x0482, 0x058d, 267),
@@ -3310,7 +3287,7 @@ const _So = &RangeTable.{
         Range16.init(0xffee, 0xfffc, 14),
         Range16.init(0xfffd, 0xfffd, 1),
     },
-    .r32 = []Range32.{
+    .r32 = Range32.{
         Range32.init(0x10137, 0x10137, 1),
         Range32.init(0x10138, 0x1013f, 1),
         Range32.init(0x10179, 0x10189, 1),
@@ -3370,11 +3347,9 @@ const _So = &RangeTable.{
         Range32.init(0x1f9c0, 0x1f9d0, 16),
         Range32.init(0x1f9d1, 0x1f9e6, 1),
     },
-    .latin_offset = 2,
 };
-
 const _Z = &RangeTable.{
-    .r16 = []Range16.{
+    .r16 = Range16.{
         Range16.init(0x0020, 0x00a0, 128),
         Range16.init(0x1680, 0x2000, 2432),
         Range16.init(0x2001, 0x200a, 1),
@@ -3382,24 +3357,26 @@ const _Z = &RangeTable.{
         Range16.init(0x202f, 0x205f, 48),
         Range16.init(0x3000, 0x3000, 1),
     },
-    .latin_offset = 1,
+    .r32 = Range32.{},
 };
-
-const _Zl = &RangeTable.{ .r16 = []Range16.{Range16.init(0x2028, 0x2028, 1)} };
-
-const _Zp = &RangeTable.{ .r16 = []Range16.{Range16.init(0x2029, 0x2029, 1)} };
-
+const _Zl = &RangeTable.{
+    .r16 = Range16.{Range16.init(0x2028, 0x2028, 1)},
+    .r32 = Range32.{},
+};
+const _Zp = &RangeTable.{
+    .r16 = Range16.{Range16.init(0x2029, 0x2029, 1)},
+    .r32 = Range32.{},
+};
 const _Zs = &RangeTable.{
-    .r16 = []Range16.{
+    .r16 = Range16.{
         Range16.init(0x0020, 0x00a0, 128),
         Range16.init(0x1680, 0x2000, 2432),
         Range16.init(0x2001, 0x200a, 1),
         Range16.init(0x202f, 0x205f, 48),
         Range16.init(0x3000, 0x3000, 1),
     },
-    .latin_offset = 1,
+    .r32 = Range32.{},
 };
-
 pub const Cc = _Cc; // Cc is the set of Unicode characters in category Cc.
 pub const Cf = _Cf; // Cf is the set of Unicode characters in category Cf.
 pub const Co = _Co; // Co is the set of Unicode characters in category Co.
@@ -3750,30 +3727,27 @@ pub const Script = enum.{
 };
 
 const _Adlam = &RangeTable.{
-    .r16 = []Range16.{},
-    .r32 = []Range32.{
+    .r16 = Range16.{},
+    .r32 = Range32.{
         Range32.init(0x1e900, 0x1e94a, 1),
         Range32.init(0x1e950, 0x1e959, 1),
         Range32.init(0x1e95e, 0x1e95f, 1),
     },
 };
-
 const _Ahom = &RangeTable.{
-    .r16 = []Range16.{},
-    .r32 = []Range32.{
+    .r16 = Range16.{},
+    .r32 = Range32.{
         Range32.init(0x11700, 0x11719, 1),
         Range32.init(0x1171d, 0x1172b, 1),
         Range32.init(0x11730, 0x1173f, 1),
     },
 };
-
 const _Anatolian_Hieroglyphs = &RangeTable.{
-    .r16 = []Range16.{},
-    .r32 = []Range32.{Range32.init(0x14400, 0x14646, 1)},
+    .r16 = Range16.{},
+    .r32 = Range32.{Range32.init(0x14400, 0x14646, 1)},
 };
-
 const _Arabic = &RangeTable.{
-    .r16 = []Range16.{
+    .r16 = Range16.{
         Range16.init(0x0600, 0x0604, 1),
         Range16.init(0x0606, 0x060b, 1),
         Range16.init(0x060d, 0x061a, 1),
@@ -3797,7 +3771,7 @@ const _Arabic = &RangeTable.{
         Range16.init(0xfe70, 0xfe74, 1),
         Range16.init(0xfe76, 0xfefc, 1),
     },
-    .r32 = []Range32.{
+    .r32 = Range32.{
         Range32.init(0x10e60, 0x10e7e, 1),
         Range32.init(0x1ee00, 0x1ee03, 1),
         Range32.init(0x1ee05, 0x1ee1f, 1),
@@ -3835,139 +3809,152 @@ const _Arabic = &RangeTable.{
         Range32.init(0x1eef0, 0x1eef1, 1),
     },
 };
-
-const _Armenian = &RangeTable.{ .r16 = []Range16.{
-    Range16.init(0x0531, 0x0556, 1),
-    Range16.init(0x0559, 0x055f, 1),
-    Range16.init(0x0561, 0x0587, 1),
-    Range16.init(0x058a, 0x058a, 1),
-    Range16.init(0x058d, 0x058f, 1),
-    Range16.init(0xfb13, 0xfb17, 1),
-} };
-
+const _Armenian = &RangeTable.{
+    .r16 = Range16.{
+        Range16.init(0x0531, 0x0556, 1),
+        Range16.init(0x0559, 0x055f, 1),
+        Range16.init(0x0561, 0x0587, 1),
+        Range16.init(0x058a, 0x058a, 1),
+        Range16.init(0x058d, 0x058f, 1),
+        Range16.init(0xfb13, 0xfb17, 1),
+    },
+    .r32 = Range32.{},
+};
 const _Avestan = &RangeTable.{
-    .r16 = []Range16.{},
-    .r32 = []Range32.{
+    .r16 = Range16.{},
+    .r32 = Range32.{
         Range32.init(0x10b00, 0x10b35, 1),
         Range32.init(0x10b39, 0x10b3f, 1),
     },
 };
-
-const _Balinese = &RangeTable.{ .r16 = []Range16.{
-    Range16.init(0x1b00, 0x1b4b, 1),
-    Range16.init(0x1b50, 0x1b7c, 1),
-} };
-
-const _Bamum = &RangeTable.{
-    .r16 = []Range16.{Range16.init(0xa6a0, 0xa6f7, 1)},
-    .r32 = []Range32.{Range32.init(0x16800, 0x16a38, 1)},
+const _Balinese = &RangeTable.{
+    .r16 = Range16.{
+        Range16.init(0x1b00, 0x1b4b, 1),
+        Range16.init(0x1b50, 0x1b7c, 1),
+    },
+    .r32 = Range32.{},
 };
-
+const _Bamum = &RangeTable.{
+    .r16 = Range16.{Range16.init(0xa6a0, 0xa6f7, 1)},
+    .r32 = Range32.{Range32.init(0x16800, 0x16a38, 1)},
+};
 const _Bassa_Vah = &RangeTable.{
-    .r16 = []Range16.{},
-    .r32 = []Range32.{
+    .r16 = Range16.{},
+    .r32 = Range32.{
         Range32.init(0x16ad0, 0x16aed, 1),
         Range32.init(0x16af0, 0x16af5, 1),
     },
 };
-
-const _Batak = &RangeTable.{ .r16 = []Range16.{
-    Range16.init(0x1bc0, 0x1bf3, 1),
-    Range16.init(0x1bfc, 0x1bff, 1),
-} };
-
-const _Bengali = &RangeTable.{ .r16 = []Range16.{
-    Range16.init(0x0980, 0x0983, 1),
-    Range16.init(0x0985, 0x098c, 1),
-    Range16.init(0x098f, 0x0990, 1),
-    Range16.init(0x0993, 0x09a8, 1),
-    Range16.init(0x09aa, 0x09b0, 1),
-    Range16.init(0x09b2, 0x09b2, 1),
-    Range16.init(0x09b6, 0x09b9, 1),
-    Range16.init(0x09bc, 0x09c4, 1),
-    Range16.init(0x09c7, 0x09c8, 1),
-    Range16.init(0x09cb, 0x09ce, 1),
-    Range16.init(0x09d7, 0x09d7, 1),
-    Range16.init(0x09dc, 0x09dd, 1),
-    Range16.init(0x09df, 0x09e3, 1),
-    Range16.init(0x09e6, 0x09fd, 1),
-} };
-
+const _Batak = &RangeTable.{
+    .r16 = Range16.{
+        Range16.init(0x1bc0, 0x1bf3, 1),
+        Range16.init(0x1bfc, 0x1bff, 1),
+    },
+    .r32 = Range32.{},
+};
+const _Bengali = &RangeTable.{
+    .r16 = Range16.{
+        Range16.init(0x0980, 0x0983, 1),
+        Range16.init(0x0985, 0x098c, 1),
+        Range16.init(0x098f, 0x0990, 1),
+        Range16.init(0x0993, 0x09a8, 1),
+        Range16.init(0x09aa, 0x09b0, 1),
+        Range16.init(0x09b2, 0x09b2, 1),
+        Range16.init(0x09b6, 0x09b9, 1),
+        Range16.init(0x09bc, 0x09c4, 1),
+        Range16.init(0x09c7, 0x09c8, 1),
+        Range16.init(0x09cb, 0x09ce, 1),
+        Range16.init(0x09d7, 0x09d7, 1),
+        Range16.init(0x09dc, 0x09dd, 1),
+        Range16.init(0x09df, 0x09e3, 1),
+        Range16.init(0x09e6, 0x09fd, 1),
+    },
+    .r32 = Range32.{},
+};
 const _Bhaiksuki = &RangeTable.{
-    .r16 = []Range16.{},
-    .r32 = []Range32.{
+    .r16 = Range16.{},
+    .r32 = Range32.{
         Range32.init(0x11c00, 0x11c08, 1),
         Range32.init(0x11c0a, 0x11c36, 1),
         Range32.init(0x11c38, 0x11c45, 1),
         Range32.init(0x11c50, 0x11c6c, 1),
     },
 };
-
-const _Bopomofo = &RangeTable.{ .r16 = []Range16.{
-    Range16.init(0x02ea, 0x02eb, 1),
-    Range16.init(0x3105, 0x312e, 1),
-    Range16.init(0x31a0, 0x31ba, 1),
-} };
-
+const _Bopomofo = &RangeTable.{
+    .r16 = Range16.{
+        Range16.init(0x02ea, 0x02eb, 1),
+        Range16.init(0x3105, 0x312e, 1),
+        Range16.init(0x31a0, 0x31ba, 1),
+    },
+    .r32 = Range32.{},
+};
 const _Brahmi = &RangeTable.{
-    .r16 = []Range16.{},
-    .r32 = []Range32.{
+    .r16 = Range16.{},
+    .r32 = Range32.{
         Range32.init(0x11000, 0x1104d, 1),
         Range32.init(0x11052, 0x1106f, 1),
         Range32.init(0x1107f, 0x1107f, 1),
     },
 };
-
-const _Braille = &RangeTable.{ .r16 = []Range16.{Range16.init(0x2800, 0x28ff, 1)} };
-
-const _Buginese = &RangeTable.{ .r16 = []Range16.{
-    Range16.init(0x1a00, 0x1a1b, 1),
-    Range16.init(0x1a1e, 0x1a1f, 1),
-} };
-
-const _Buhid = &RangeTable.{ .r16 = []Range16.{Range16.init(0x1740, 0x1753, 1)} };
-
-const _Canadian_Aboriginal = &RangeTable.{ .r16 = []Range16.{
-    Range16.init(0x1400, 0x167f, 1),
-    Range16.init(0x18b0, 0x18f5, 1),
-} };
-
-const _Carian = &RangeTable.{
-    .r16 = []Range16.{},
-    .r32 = []Range32.{Range32.init(0x102a0, 0x102d0, 1)},
+const _Braille = &RangeTable.{
+    .r16 = Range16.{Range16.init(0x2800, 0x28ff, 1)},
+    .r32 = Range32.{},
 };
-
+const _Buginese = &RangeTable.{
+    .r16 = Range16.{
+        Range16.init(0x1a00, 0x1a1b, 1),
+        Range16.init(0x1a1e, 0x1a1f, 1),
+    },
+    .r32 = Range32.{},
+};
+const _Buhid = &RangeTable.{
+    .r16 = Range16.{Range16.init(0x1740, 0x1753, 1)},
+    .r32 = Range32.{},
+};
+const _Canadian_Aboriginal = &RangeTable.{
+    .r16 = Range16.{
+        Range16.init(0x1400, 0x167f, 1),
+        Range16.init(0x18b0, 0x18f5, 1),
+    },
+    .r32 = Range32.{},
+};
+const _Carian = &RangeTable.{
+    .r16 = Range16.{},
+    .r32 = Range32.{Range32.init(0x102a0, 0x102d0, 1)},
+};
 const _Caucasian_Albanian = &RangeTable.{
-    .r16 = []Range16.{},
-    .r32 = []Range32.{
+    .r16 = Range16.{},
+    .r32 = Range32.{
         Range32.init(0x10530, 0x10563, 1),
         Range32.init(0x1056f, 0x1056f, 1),
     },
 };
-
 const _Chakma = &RangeTable.{
-    .r16 = []Range16.{},
-    .r32 = []Range32.{
+    .r16 = Range16.{},
+    .r32 = Range32.{
         Range32.init(0x11100, 0x11134, 1),
         Range32.init(0x11136, 0x11143, 1),
     },
 };
-
-const _Cham = &RangeTable.{ .r16 = []Range16.{
-    Range16.init(0xaa00, 0xaa36, 1),
-    Range16.init(0xaa40, 0xaa4d, 1),
-    Range16.init(0xaa50, 0xaa59, 1),
-    Range16.init(0xaa5c, 0xaa5f, 1),
-} };
-
-const _Cherokee = &RangeTable.{ .r16 = []Range16.{
-    Range16.init(0x13a0, 0x13f5, 1),
-    Range16.init(0x13f8, 0x13fd, 1),
-    Range16.init(0xab70, 0xabbf, 1),
-} };
-
+const _Cham = &RangeTable.{
+    .r16 = Range16.{
+        Range16.init(0xaa00, 0xaa36, 1),
+        Range16.init(0xaa40, 0xaa4d, 1),
+        Range16.init(0xaa50, 0xaa59, 1),
+        Range16.init(0xaa5c, 0xaa5f, 1),
+    },
+    .r32 = Range32.{},
+};
+const _Cherokee = &RangeTable.{
+    .r16 = Range16.{
+        Range16.init(0x13a0, 0x13f5, 1),
+        Range16.init(0x13f8, 0x13fd, 1),
+        Range16.init(0xab70, 0xabbf, 1),
+    },
+    .r32 = Range32.{},
+};
 const _Common = &RangeTable.{
-    .r16 = []Range16.{
+    .r16 = Range16.{
         Range16.init(0x0000, 0x0040, 1),
         Range16.init(0x005b, 0x0060, 1),
         Range16.init(0x007b, 0x00a9, 1),
@@ -4061,7 +4048,7 @@ const _Common = &RangeTable.{
         Range16.init(0xffe8, 0xffee, 1),
         Range16.init(0xfff9, 0xfffd, 1),
     },
-    .r32 = []Range32.{
+    .r32 = Range32.{
         Range32.init(0x10100, 0x10102, 1),
         Range32.init(0x10107, 0x10133, 1),
         Range32.init(0x10137, 0x1013f, 1),
@@ -4135,28 +4122,27 @@ const _Common = &RangeTable.{
         Range32.init(0xe0001, 0xe0001, 1),
         Range32.init(0xe0020, 0xe007f, 1),
     },
-    .latin_offset = 7,
 };
-
-const _Coptic = &RangeTable.{ .r16 = []Range16.{
-    Range16.init(0x03e2, 0x03ef, 1),
-    Range16.init(0x2c80, 0x2cf3, 1),
-    Range16.init(0x2cf9, 0x2cff, 1),
-} };
-
+const _Coptic = &RangeTable.{
+    .r16 = Range16.{
+        Range16.init(0x03e2, 0x03ef, 1),
+        Range16.init(0x2c80, 0x2cf3, 1),
+        Range16.init(0x2cf9, 0x2cff, 1),
+    },
+    .r32 = Range32.{},
+};
 const _Cuneiform = &RangeTable.{
-    .r16 = []Range16.{},
-    .r32 = []Range32.{
+    .r16 = Range16.{},
+    .r32 = Range32.{
         Range32.init(0x12000, 0x12399, 1),
         Range32.init(0x12400, 0x1246e, 1),
         Range32.init(0x12470, 0x12474, 1),
         Range32.init(0x12480, 0x12543, 1),
     },
 };
-
 const _Cypriot = &RangeTable.{
-    .r16 = []Range16.{},
-    .r32 = []Range32.{
+    .r16 = Range16.{},
+    .r32 = Range32.{
         Range32.init(0x10800, 0x10805, 1),
         Range32.init(0x10808, 0x10808, 1),
         Range32.init(0x1080a, 0x10835, 1),
@@ -4165,33 +4151,35 @@ const _Cypriot = &RangeTable.{
         Range32.init(0x1083f, 0x1083f, 1),
     },
 };
-
-const _Cyrillic = &RangeTable.{ .r16 = []Range16.{
-    Range16.init(0x0400, 0x0484, 1),
-    Range16.init(0x0487, 0x052f, 1),
-    Range16.init(0x1c80, 0x1c88, 1),
-    Range16.init(0x1d2b, 0x1d2b, 1),
-    Range16.init(0x1d78, 0x1d78, 1),
-    Range16.init(0x2de0, 0x2dff, 1),
-    Range16.init(0xa640, 0xa69f, 1),
-    Range16.init(0xfe2e, 0xfe2f, 1),
-} };
-
-const _Deseret = &RangeTable.{
-    .r16 = []Range16.{},
-    .r32 = []Range32.{Range32.init(0x10400, 0x1044f, 1)},
+const _Cyrillic = &RangeTable.{
+    .r16 = Range16.{
+        Range16.init(0x0400, 0x0484, 1),
+        Range16.init(0x0487, 0x052f, 1),
+        Range16.init(0x1c80, 0x1c88, 1),
+        Range16.init(0x1d2b, 0x1d2b, 1),
+        Range16.init(0x1d78, 0x1d78, 1),
+        Range16.init(0x2de0, 0x2dff, 1),
+        Range16.init(0xa640, 0xa69f, 1),
+        Range16.init(0xfe2e, 0xfe2f, 1),
+    },
+    .r32 = Range32.{},
 };
-
-const _Devanagari = &RangeTable.{ .r16 = []Range16.{
-    Range16.init(0x0900, 0x0950, 1),
-    Range16.init(0x0953, 0x0963, 1),
-    Range16.init(0x0966, 0x097f, 1),
-    Range16.init(0xa8e0, 0xa8fd, 1),
-} };
-
+const _Deseret = &RangeTable.{
+    .r16 = Range16.{},
+    .r32 = Range32.{Range32.init(0x10400, 0x1044f, 1)},
+};
+const _Devanagari = &RangeTable.{
+    .r16 = Range16.{
+        Range16.init(0x0900, 0x0950, 1),
+        Range16.init(0x0953, 0x0963, 1),
+        Range16.init(0x0966, 0x097f, 1),
+        Range16.init(0xa8e0, 0xa8fd, 1),
+    },
+    .r32 = Range32.{},
+};
 const _Duployan = &RangeTable.{
-    .r16 = []Range16.{},
-    .r32 = []Range32.{
+    .r16 = Range16.{},
+    .r32 = Range32.{
         Range32.init(0x1bc00, 0x1bc6a, 1),
         Range32.init(0x1bc70, 0x1bc7c, 1),
         Range32.init(0x1bc80, 0x1bc88, 1),
@@ -4199,69 +4187,70 @@ const _Duployan = &RangeTable.{
         Range32.init(0x1bc9c, 0x1bc9f, 1),
     },
 };
-
 const _Egyptian_Hieroglyphs = &RangeTable.{
-    .r16 = []Range16.{},
-    .r32 = []Range32.{Range32.init(0x13000, 0x1342e, 1)},
+    .r16 = Range16.{},
+    .r32 = Range32.{Range32.init(0x13000, 0x1342e, 1)},
 };
-
 const _Elbasan = &RangeTable.{
-    .r16 = []Range16.{},
-    .r32 = []Range32.{Range32.init(0x10500, 0x10527, 1)},
+    .r16 = Range16.{},
+    .r32 = Range32.{Range32.init(0x10500, 0x10527, 1)},
 };
-
-const _Ethiopic = &RangeTable.{ .r16 = []Range16.{
-    Range16.init(0x1200, 0x1248, 1),
-    Range16.init(0x124a, 0x124d, 1),
-    Range16.init(0x1250, 0x1256, 1),
-    Range16.init(0x1258, 0x1258, 1),
-    Range16.init(0x125a, 0x125d, 1),
-    Range16.init(0x1260, 0x1288, 1),
-    Range16.init(0x128a, 0x128d, 1),
-    Range16.init(0x1290, 0x12b0, 1),
-    Range16.init(0x12b2, 0x12b5, 1),
-    Range16.init(0x12b8, 0x12be, 1),
-    Range16.init(0x12c0, 0x12c0, 1),
-    Range16.init(0x12c2, 0x12c5, 1),
-    Range16.init(0x12c8, 0x12d6, 1),
-    Range16.init(0x12d8, 0x1310, 1),
-    Range16.init(0x1312, 0x1315, 1),
-    Range16.init(0x1318, 0x135a, 1),
-    Range16.init(0x135d, 0x137c, 1),
-    Range16.init(0x1380, 0x1399, 1),
-    Range16.init(0x2d80, 0x2d96, 1),
-    Range16.init(0x2da0, 0x2da6, 1),
-    Range16.init(0x2da8, 0x2dae, 1),
-    Range16.init(0x2db0, 0x2db6, 1),
-    Range16.init(0x2db8, 0x2dbe, 1),
-    Range16.init(0x2dc0, 0x2dc6, 1),
-    Range16.init(0x2dc8, 0x2dce, 1),
-    Range16.init(0x2dd0, 0x2dd6, 1),
-    Range16.init(0x2dd8, 0x2dde, 1),
-    Range16.init(0xab01, 0xab06, 1),
-    Range16.init(0xab09, 0xab0e, 1),
-    Range16.init(0xab11, 0xab16, 1),
-    Range16.init(0xab20, 0xab26, 1),
-    Range16.init(0xab28, 0xab2e, 1),
-} };
-
-const _Georgian = &RangeTable.{ .r16 = []Range16.{
-    Range16.init(0x10a0, 0x10c5, 1),
-    Range16.init(0x10c7, 0x10c7, 1),
-    Range16.init(0x10cd, 0x10cd, 1),
-    Range16.init(0x10d0, 0x10fa, 1),
-    Range16.init(0x10fc, 0x10ff, 1),
-    Range16.init(0x2d00, 0x2d25, 1),
-    Range16.init(0x2d27, 0x2d27, 1),
-    Range16.init(0x2d2d, 0x2d2d, 1),
-} };
-
+const _Ethiopic = &RangeTable.{
+    .r16 = Range16.{
+        Range16.init(0x1200, 0x1248, 1),
+        Range16.init(0x124a, 0x124d, 1),
+        Range16.init(0x1250, 0x1256, 1),
+        Range16.init(0x1258, 0x1258, 1),
+        Range16.init(0x125a, 0x125d, 1),
+        Range16.init(0x1260, 0x1288, 1),
+        Range16.init(0x128a, 0x128d, 1),
+        Range16.init(0x1290, 0x12b0, 1),
+        Range16.init(0x12b2, 0x12b5, 1),
+        Range16.init(0x12b8, 0x12be, 1),
+        Range16.init(0x12c0, 0x12c0, 1),
+        Range16.init(0x12c2, 0x12c5, 1),
+        Range16.init(0x12c8, 0x12d6, 1),
+        Range16.init(0x12d8, 0x1310, 1),
+        Range16.init(0x1312, 0x1315, 1),
+        Range16.init(0x1318, 0x135a, 1),
+        Range16.init(0x135d, 0x137c, 1),
+        Range16.init(0x1380, 0x1399, 1),
+        Range16.init(0x2d80, 0x2d96, 1),
+        Range16.init(0x2da0, 0x2da6, 1),
+        Range16.init(0x2da8, 0x2dae, 1),
+        Range16.init(0x2db0, 0x2db6, 1),
+        Range16.init(0x2db8, 0x2dbe, 1),
+        Range16.init(0x2dc0, 0x2dc6, 1),
+        Range16.init(0x2dc8, 0x2dce, 1),
+        Range16.init(0x2dd0, 0x2dd6, 1),
+        Range16.init(0x2dd8, 0x2dde, 1),
+        Range16.init(0xab01, 0xab06, 1),
+        Range16.init(0xab09, 0xab0e, 1),
+        Range16.init(0xab11, 0xab16, 1),
+        Range16.init(0xab20, 0xab26, 1),
+        Range16.init(0xab28, 0xab2e, 1),
+    },
+    .r32 = Range32.{},
+};
+const _Georgian = &RangeTable.{
+    .r16 = Range16.{
+        Range16.init(0x10a0, 0x10c5, 1),
+        Range16.init(0x10c7, 0x10c7, 1),
+        Range16.init(0x10cd, 0x10cd, 1),
+        Range16.init(0x10d0, 0x10fa, 1),
+        Range16.init(0x10fc, 0x10ff, 1),
+        Range16.init(0x2d00, 0x2d25, 1),
+        Range16.init(0x2d27, 0x2d27, 1),
+        Range16.init(0x2d2d, 0x2d2d, 1),
+    },
+    .r32 = Range32.{},
+};
 const _Glagolitic = &RangeTable.{
-    .r16 = []Range16.{
+    .r16 = Range16.{
         Range16.init(0x2c00, 0x2c2e, 1),
         Range16.init(0x2c30, 0x2c5e, 1),
     },
-    .r32 = []Range32.{
+    .r32 = Range32.{
         Range32.init(0x1e000, 0x1e006, 1),
         Range32.init(0x1e008, 0x1e018, 1),
         Range32.init(0x1e01b, 0x1e021, 1),
@@ -4269,15 +4258,13 @@ const _Glagolitic = &RangeTable.{
         Range32.init(0x1e026, 0x1e02a, 1),
     },
 };
-
 const _Gothic = &RangeTable.{
-    .r16 = []Range16.{},
-    .r32 = []Range32.{Range32.init(0x10330, 0x1034a, 1)},
+    .r16 = Range16.{},
+    .r32 = Range32.{Range32.init(0x10330, 0x1034a, 1)},
 };
-
 const _Grantha = &RangeTable.{
-    .r16 = []Range16.{},
-    .r32 = []Range32.{
+    .r16 = Range16.{},
+    .r32 = Range32.{
         Range32.init(0x11300, 0x11303, 1),
         Range32.init(0x11305, 0x1130c, 1),
         Range32.init(0x1130f, 0x11310, 1),
@@ -4295,9 +4282,8 @@ const _Grantha = &RangeTable.{
         Range32.init(0x11370, 0x11374, 1),
     },
 };
-
 const _Greek = &RangeTable.{
-    .r16 = []Range16.{
+    .r16 = Range16.{
         Range16.init(0x0370, 0x0373, 1),
         Range16.init(0x0375, 0x0377, 1),
         Range16.init(0x037a, 0x037d, 1),
@@ -4332,51 +4318,54 @@ const _Greek = &RangeTable.{
         Range16.init(0x2126, 0x2126, 1),
         Range16.init(0xab65, 0xab65, 1),
     },
-    .r32 = []Range32.{
+    .r32 = Range32.{
         Range32.init(0x10140, 0x1018e, 1),
         Range32.init(0x101a0, 0x101a0, 1),
         Range32.init(0x1d200, 0x1d245, 1),
     },
 };
-
-const _Gujarati = &RangeTable.{ .r16 = []Range16.{
-    Range16.init(0x0a81, 0x0a83, 1),
-    Range16.init(0x0a85, 0x0a8d, 1),
-    Range16.init(0x0a8f, 0x0a91, 1),
-    Range16.init(0x0a93, 0x0aa8, 1),
-    Range16.init(0x0aaa, 0x0ab0, 1),
-    Range16.init(0x0ab2, 0x0ab3, 1),
-    Range16.init(0x0ab5, 0x0ab9, 1),
-    Range16.init(0x0abc, 0x0ac5, 1),
-    Range16.init(0x0ac7, 0x0ac9, 1),
-    Range16.init(0x0acb, 0x0acd, 1),
-    Range16.init(0x0ad0, 0x0ad0, 1),
-    Range16.init(0x0ae0, 0x0ae3, 1),
-    Range16.init(0x0ae6, 0x0af1, 1),
-    Range16.init(0x0af9, 0x0aff, 1),
-} };
-
-const _Gurmukhi = &RangeTable.{ .r16 = []Range16.{
-    Range16.init(0x0a01, 0x0a03, 1),
-    Range16.init(0x0a05, 0x0a0a, 1),
-    Range16.init(0x0a0f, 0x0a10, 1),
-    Range16.init(0x0a13, 0x0a28, 1),
-    Range16.init(0x0a2a, 0x0a30, 1),
-    Range16.init(0x0a32, 0x0a33, 1),
-    Range16.init(0x0a35, 0x0a36, 1),
-    Range16.init(0x0a38, 0x0a39, 1),
-    Range16.init(0x0a3c, 0x0a3c, 1),
-    Range16.init(0x0a3e, 0x0a42, 1),
-    Range16.init(0x0a47, 0x0a48, 1),
-    Range16.init(0x0a4b, 0x0a4d, 1),
-    Range16.init(0x0a51, 0x0a51, 1),
-    Range16.init(0x0a59, 0x0a5c, 1),
-    Range16.init(0x0a5e, 0x0a5e, 1),
-    Range16.init(0x0a66, 0x0a75, 1),
-} };
-
+const _Gujarati = &RangeTable.{
+    .r16 = Range16.{
+        Range16.init(0x0a81, 0x0a83, 1),
+        Range16.init(0x0a85, 0x0a8d, 1),
+        Range16.init(0x0a8f, 0x0a91, 1),
+        Range16.init(0x0a93, 0x0aa8, 1),
+        Range16.init(0x0aaa, 0x0ab0, 1),
+        Range16.init(0x0ab2, 0x0ab3, 1),
+        Range16.init(0x0ab5, 0x0ab9, 1),
+        Range16.init(0x0abc, 0x0ac5, 1),
+        Range16.init(0x0ac7, 0x0ac9, 1),
+        Range16.init(0x0acb, 0x0acd, 1),
+        Range16.init(0x0ad0, 0x0ad0, 1),
+        Range16.init(0x0ae0, 0x0ae3, 1),
+        Range16.init(0x0ae6, 0x0af1, 1),
+        Range16.init(0x0af9, 0x0aff, 1),
+    },
+    .r32 = Range32.{},
+};
+const _Gurmukhi = &RangeTable.{
+    .r16 = Range16.{
+        Range16.init(0x0a01, 0x0a03, 1),
+        Range16.init(0x0a05, 0x0a0a, 1),
+        Range16.init(0x0a0f, 0x0a10, 1),
+        Range16.init(0x0a13, 0x0a28, 1),
+        Range16.init(0x0a2a, 0x0a30, 1),
+        Range16.init(0x0a32, 0x0a33, 1),
+        Range16.init(0x0a35, 0x0a36, 1),
+        Range16.init(0x0a38, 0x0a39, 1),
+        Range16.init(0x0a3c, 0x0a3c, 1),
+        Range16.init(0x0a3e, 0x0a42, 1),
+        Range16.init(0x0a47, 0x0a48, 1),
+        Range16.init(0x0a4b, 0x0a4d, 1),
+        Range16.init(0x0a51, 0x0a51, 1),
+        Range16.init(0x0a59, 0x0a5c, 1),
+        Range16.init(0x0a5e, 0x0a5e, 1),
+        Range16.init(0x0a66, 0x0a75, 1),
+    },
+    .r32 = Range32.{},
+};
 const _Han = &RangeTable.{
-    .r16 = []Range16.{
+    .r16 = Range16.{
         Range16.init(0x2e80, 0x2e99, 1),
         Range16.init(0x2e9b, 0x2ef3, 1),
         Range16.init(0x2f00, 0x2fd5, 1),
@@ -4389,7 +4378,7 @@ const _Han = &RangeTable.{
         Range16.init(0xf900, 0xfa6d, 1),
         Range16.init(0xfa70, 0xfad9, 1),
     },
-    .r32 = []Range32.{
+    .r32 = Range32.{
         Range32.init(0x20000, 0x2a6d6, 1),
         Range32.init(0x2a700, 0x2b734, 1),
         Range32.init(0x2b740, 0x2b81d, 1),
@@ -4398,68 +4387,70 @@ const _Han = &RangeTable.{
         Range32.init(0x2f800, 0x2fa1d, 1),
     },
 };
-
-const _Hangul = &RangeTable.{ .r16 = []Range16.{
-    Range16.init(0x1100, 0x11ff, 1),
-    Range16.init(0x302e, 0x302f, 1),
-    Range16.init(0x3131, 0x318e, 1),
-    Range16.init(0x3200, 0x321e, 1),
-    Range16.init(0x3260, 0x327e, 1),
-    Range16.init(0xa960, 0xa97c, 1),
-    Range16.init(0xac00, 0xd7a3, 1),
-    Range16.init(0xd7b0, 0xd7c6, 1),
-    Range16.init(0xd7cb, 0xd7fb, 1),
-    Range16.init(0xffa0, 0xffbe, 1),
-    Range16.init(0xffc2, 0xffc7, 1),
-    Range16.init(0xffca, 0xffcf, 1),
-    Range16.init(0xffd2, 0xffd7, 1),
-    Range16.init(0xffda, 0xffdc, 1),
-} };
-
-const _Hanunoo = &RangeTable.{ .r16 = []Range16.{Range16.init(0x1720, 0x1734, 1)} };
-
+const _Hangul = &RangeTable.{
+    .r16 = Range16.{
+        Range16.init(0x1100, 0x11ff, 1),
+        Range16.init(0x302e, 0x302f, 1),
+        Range16.init(0x3131, 0x318e, 1),
+        Range16.init(0x3200, 0x321e, 1),
+        Range16.init(0x3260, 0x327e, 1),
+        Range16.init(0xa960, 0xa97c, 1),
+        Range16.init(0xac00, 0xd7a3, 1),
+        Range16.init(0xd7b0, 0xd7c6, 1),
+        Range16.init(0xd7cb, 0xd7fb, 1),
+        Range16.init(0xffa0, 0xffbe, 1),
+        Range16.init(0xffc2, 0xffc7, 1),
+        Range16.init(0xffca, 0xffcf, 1),
+        Range16.init(0xffd2, 0xffd7, 1),
+        Range16.init(0xffda, 0xffdc, 1),
+    },
+    .r32 = Range32.{},
+};
+const _Hanunoo = &RangeTable.{
+    .r16 = Range16.{Range16.init(0x1720, 0x1734, 1)},
+    .r32 = Range32.{},
+};
 const _Hatran = &RangeTable.{
-    .r16 = []Range16.{},
-    .r32 = []Range32.{
+    .r16 = Range16.{},
+    .r32 = Range32.{
         Range32.init(0x108e0, 0x108f2, 1),
         Range32.init(0x108f4, 0x108f5, 1),
         Range32.init(0x108fb, 0x108ff, 1),
     },
 };
-
-const _Hebrew = &RangeTable.{ .r16 = []Range16.{
-    Range16.init(0x0591, 0x05c7, 1),
-    Range16.init(0x05d0, 0x05ea, 1),
-    Range16.init(0x05f0, 0x05f4, 1),
-    Range16.init(0xfb1d, 0xfb36, 1),
-    Range16.init(0xfb38, 0xfb3c, 1),
-    Range16.init(0xfb3e, 0xfb3e, 1),
-    Range16.init(0xfb40, 0xfb41, 1),
-    Range16.init(0xfb43, 0xfb44, 1),
-    Range16.init(0xfb46, 0xfb4f, 1),
-} };
-
+const _Hebrew = &RangeTable.{
+    .r16 = Range16.{
+        Range16.init(0x0591, 0x05c7, 1),
+        Range16.init(0x05d0, 0x05ea, 1),
+        Range16.init(0x05f0, 0x05f4, 1),
+        Range16.init(0xfb1d, 0xfb36, 1),
+        Range16.init(0xfb38, 0xfb3c, 1),
+        Range16.init(0xfb3e, 0xfb3e, 1),
+        Range16.init(0xfb40, 0xfb41, 1),
+        Range16.init(0xfb43, 0xfb44, 1),
+        Range16.init(0xfb46, 0xfb4f, 1),
+    },
+    .r32 = Range32.{},
+};
 const _Hiragana = &RangeTable.{
-    .r16 = []Range16.{
+    .r16 = Range16.{
         Range16.init(0x3041, 0x3096, 1),
         Range16.init(0x309d, 0x309f, 1),
     },
-    .r32 = []Range32.{
+    .r32 = Range32.{
         Range32.init(0x1b001, 0x1b11e, 1),
         Range32.init(0x1f200, 0x1f200, 1),
     },
 };
-
 const _Imperial_Aramaic = &RangeTable.{
-    .r16 = []Range16.{},
-    .r32 = []Range32.{
+    .r16 = Range16.{},
+    .r32 = Range32.{
         Range32.init(0x10840, 0x10855, 1),
         Range32.init(0x10857, 0x1085f, 1),
     },
 };
-
 const _Inherited = &RangeTable.{
-    .r16 = []Range16.{
+    .r16 = Range16.{
         Range16.init(0x0300, 0x036f, 1),
         Range16.init(0x0485, 0x0486, 1),
         Range16.init(0x064b, 0x0655, 1),
@@ -4481,7 +4472,7 @@ const _Inherited = &RangeTable.{
         Range16.init(0xfe00, 0xfe0f, 1),
         Range16.init(0xfe20, 0xfe2d, 1),
     },
-    .r32 = []Range32.{
+    .r32 = Range32.{
         Range32.init(0x101fd, 0x101fd, 1),
         Range32.init(0x102e0, 0x102e0, 1),
         Range32.init(0x1d167, 0x1d169, 1),
@@ -4491,53 +4482,53 @@ const _Inherited = &RangeTable.{
         Range32.init(0xe0100, 0xe01ef, 1),
     },
 };
-
 const _Inscriptional_Pahlavi = &RangeTable.{
-    .r16 = []Range16.{},
-    .r32 = []Range32.{
+    .r16 = Range16.{},
+    .r32 = Range32.{
         Range32.init(0x10b60, 0x10b72, 1),
         Range32.init(0x10b78, 0x10b7f, 1),
     },
 };
-
 const _Inscriptional_Parthian = &RangeTable.{
-    .r16 = []Range16.{},
-    .r32 = []Range32.{
+    .r16 = Range16.{},
+    .r32 = Range32.{
         Range32.init(0x10b40, 0x10b55, 1),
         Range32.init(0x10b58, 0x10b5f, 1),
     },
 };
-
-const _Javanese = &RangeTable.{ .r16 = []Range16.{
-    Range16.init(0xa980, 0xa9cd, 1),
-    Range16.init(0xa9d0, 0xa9d9, 1),
-    Range16.init(0xa9de, 0xa9df, 1),
-} };
-
-const _Kaithi = &RangeTable.{
-    .r16 = []Range16.{},
-    .r32 = []Range32.{Range32.init(0x11080, 0x110c1, 1)},
+const _Javanese = &RangeTable.{
+    .r16 = Range16.{
+        Range16.init(0xa980, 0xa9cd, 1),
+        Range16.init(0xa9d0, 0xa9d9, 1),
+        Range16.init(0xa9de, 0xa9df, 1),
+    },
+    .r32 = Range32.{},
 };
-
-const _Kannada = &RangeTable.{ .r16 = []Range16.{
-    Range16.init(0x0c80, 0x0c83, 1),
-    Range16.init(0x0c85, 0x0c8c, 1),
-    Range16.init(0x0c8e, 0x0c90, 1),
-    Range16.init(0x0c92, 0x0ca8, 1),
-    Range16.init(0x0caa, 0x0cb3, 1),
-    Range16.init(0x0cb5, 0x0cb9, 1),
-    Range16.init(0x0cbc, 0x0cc4, 1),
-    Range16.init(0x0cc6, 0x0cc8, 1),
-    Range16.init(0x0cca, 0x0ccd, 1),
-    Range16.init(0x0cd5, 0x0cd6, 1),
-    Range16.init(0x0cde, 0x0cde, 1),
-    Range16.init(0x0ce0, 0x0ce3, 1),
-    Range16.init(0x0ce6, 0x0cef, 1),
-    Range16.init(0x0cf1, 0x0cf2, 1),
-} };
-
+const _Kaithi = &RangeTable.{
+    .r16 = Range16.{},
+    .r32 = Range32.{Range32.init(0x11080, 0x110c1, 1)},
+};
+const _Kannada = &RangeTable.{
+    .r16 = Range16.{
+        Range16.init(0x0c80, 0x0c83, 1),
+        Range16.init(0x0c85, 0x0c8c, 1),
+        Range16.init(0x0c8e, 0x0c90, 1),
+        Range16.init(0x0c92, 0x0ca8, 1),
+        Range16.init(0x0caa, 0x0cb3, 1),
+        Range16.init(0x0cb5, 0x0cb9, 1),
+        Range16.init(0x0cbc, 0x0cc4, 1),
+        Range16.init(0x0cc6, 0x0cc8, 1),
+        Range16.init(0x0cca, 0x0ccd, 1),
+        Range16.init(0x0cd5, 0x0cd6, 1),
+        Range16.init(0x0cde, 0x0cde, 1),
+        Range16.init(0x0ce0, 0x0ce3, 1),
+        Range16.init(0x0ce6, 0x0cef, 1),
+        Range16.init(0x0cf1, 0x0cf2, 1),
+    },
+    .r32 = Range32.{},
+};
 const _Katakana = &RangeTable.{
-    .r16 = []Range16.{
+    .r16 = Range16.{
         Range16.init(0x30a1, 0x30fa, 1),
         Range16.init(0x30fd, 0x30ff, 1),
         Range16.init(0x31f0, 0x31ff, 1),
@@ -4546,17 +4537,18 @@ const _Katakana = &RangeTable.{
         Range16.init(0xff66, 0xff6f, 1),
         Range16.init(0xff71, 0xff9d, 1),
     },
-    .r32 = []Range32.{Range32.init(0x1b000, 0x1b000, 1)},
+    .r32 = Range32.{Range32.init(0x1b000, 0x1b000, 1)},
 };
-
-const _Kayah_Li = &RangeTable.{ .r16 = []Range16.{
-    Range16.init(0xa900, 0xa92d, 1),
-    Range16.init(0xa92f, 0xa92f, 1),
-} };
-
+const _Kayah_Li = &RangeTable.{
+    .r16 = Range16.{
+        Range16.init(0xa900, 0xa92d, 1),
+        Range16.init(0xa92f, 0xa92f, 1),
+    },
+    .r32 = Range32.{},
+};
 const _Kharoshthi = &RangeTable.{
-    .r16 = []Range16.{},
-    .r32 = []Range32.{
+    .r16 = Range16.{},
+    .r32 = Range32.{
         Range32.init(0x10a00, 0x10a03, 1),
         Range32.init(0x10a05, 0x10a06, 1),
         Range32.init(0x10a0c, 0x10a13, 1),
@@ -4567,53 +4559,54 @@ const _Kharoshthi = &RangeTable.{
         Range32.init(0x10a50, 0x10a58, 1),
     },
 };
-
-const _Khmer = &RangeTable.{ .r16 = []Range16.{
-    Range16.init(0x1780, 0x17dd, 1),
-    Range16.init(0x17e0, 0x17e9, 1),
-    Range16.init(0x17f0, 0x17f9, 1),
-    Range16.init(0x19e0, 0x19ff, 1),
-} };
-
+const _Khmer = &RangeTable.{
+    .r16 = Range16.{
+        Range16.init(0x1780, 0x17dd, 1),
+        Range16.init(0x17e0, 0x17e9, 1),
+        Range16.init(0x17f0, 0x17f9, 1),
+        Range16.init(0x19e0, 0x19ff, 1),
+    },
+    .r32 = Range32.{},
+};
 const _Khojki = &RangeTable.{
-    .r16 = []Range16.{},
-    .r32 = []Range32.{
+    .r16 = Range16.{},
+    .r32 = Range32.{
         Range32.init(0x11200, 0x11211, 1),
         Range32.init(0x11213, 0x1123e, 1),
     },
 };
-
 const _Khudawadi = &RangeTable.{
-    .r16 = []Range16.{},
-    .r32 = []Range32.{
+    .r16 = Range16.{},
+    .r32 = Range32.{
         Range32.init(0x112b0, 0x112ea, 1),
         Range32.init(0x112f0, 0x112f9, 1),
     },
 };
-
-const _Lao = &RangeTable.{ .r16 = []Range16.{
-    Range16.init(0x0e81, 0x0e82, 1),
-    Range16.init(0x0e84, 0x0e84, 1),
-    Range16.init(0x0e87, 0x0e88, 1),
-    Range16.init(0x0e8a, 0x0e8a, 1),
-    Range16.init(0x0e8d, 0x0e8d, 1),
-    Range16.init(0x0e94, 0x0e97, 1),
-    Range16.init(0x0e99, 0x0e9f, 1),
-    Range16.init(0x0ea1, 0x0ea3, 1),
-    Range16.init(0x0ea5, 0x0ea5, 1),
-    Range16.init(0x0ea7, 0x0ea7, 1),
-    Range16.init(0x0eaa, 0x0eab, 1),
-    Range16.init(0x0ead, 0x0eb9, 1),
-    Range16.init(0x0ebb, 0x0ebd, 1),
-    Range16.init(0x0ec0, 0x0ec4, 1),
-    Range16.init(0x0ec6, 0x0ec6, 1),
-    Range16.init(0x0ec8, 0x0ecd, 1),
-    Range16.init(0x0ed0, 0x0ed9, 1),
-    Range16.init(0x0edc, 0x0edf, 1),
-} };
-
+const _Lao = &RangeTable.{
+    .r16 = Range16.{
+        Range16.init(0x0e81, 0x0e82, 1),
+        Range16.init(0x0e84, 0x0e84, 1),
+        Range16.init(0x0e87, 0x0e88, 1),
+        Range16.init(0x0e8a, 0x0e8a, 1),
+        Range16.init(0x0e8d, 0x0e8d, 1),
+        Range16.init(0x0e94, 0x0e97, 1),
+        Range16.init(0x0e99, 0x0e9f, 1),
+        Range16.init(0x0ea1, 0x0ea3, 1),
+        Range16.init(0x0ea5, 0x0ea5, 1),
+        Range16.init(0x0ea7, 0x0ea7, 1),
+        Range16.init(0x0eaa, 0x0eab, 1),
+        Range16.init(0x0ead, 0x0eb9, 1),
+        Range16.init(0x0ebb, 0x0ebd, 1),
+        Range16.init(0x0ec0, 0x0ec4, 1),
+        Range16.init(0x0ec6, 0x0ec6, 1),
+        Range16.init(0x0ec8, 0x0ecd, 1),
+        Range16.init(0x0ed0, 0x0ed9, 1),
+        Range16.init(0x0edc, 0x0edf, 1),
+    },
+    .r32 = Range32.{},
+};
 const _Latin = &RangeTable.{
-    .r16 = []Range16.{
+    .r16 = Range16.{
         Range16.init(0x0041, 0x005a, 1),
         Range16.init(0x0061, 0x007a, 1),
         Range16.init(0x00aa, 0x00aa, 1),
@@ -4646,35 +4639,37 @@ const _Latin = &RangeTable.{
         Range16.init(0xff21, 0xff3a, 1),
         Range16.init(0xff41, 0xff5a, 1),
     },
-    .latin_offset = 6,
+    .r32 = Range32.{},
 };
-
-const _Lepcha = &RangeTable.{ .r16 = []Range16.{
-    Range16.init(0x1c00, 0x1c37, 1),
-    Range16.init(0x1c3b, 0x1c49, 1),
-    Range16.init(0x1c4d, 0x1c4f, 1),
-} };
-
-const _Limbu = &RangeTable.{ .r16 = []Range16.{
-    Range16.init(0x1900, 0x191e, 1),
-    Range16.init(0x1920, 0x192b, 1),
-    Range16.init(0x1930, 0x193b, 1),
-    Range16.init(0x1940, 0x1940, 1),
-    Range16.init(0x1944, 0x194f, 1),
-} };
-
+const _Lepcha = &RangeTable.{
+    .r16 = Range16.{
+        Range16.init(0x1c00, 0x1c37, 1),
+        Range16.init(0x1c3b, 0x1c49, 1),
+        Range16.init(0x1c4d, 0x1c4f, 1),
+    },
+    .r32 = Range32.{},
+};
+const _Limbu = &RangeTable.{
+    .r16 = Range16.{
+        Range16.init(0x1900, 0x191e, 1),
+        Range16.init(0x1920, 0x192b, 1),
+        Range16.init(0x1930, 0x193b, 1),
+        Range16.init(0x1940, 0x1940, 1),
+        Range16.init(0x1944, 0x194f, 1),
+    },
+    .r32 = Range32.{},
+};
 const _Linear_A = &RangeTable.{
-    .r16 = []Range16.{},
-    .r32 = []Range32.{
+    .r16 = Range16.{},
+    .r32 = Range32.{
         Range32.init(0x10600, 0x10736, 1),
         Range32.init(0x10740, 0x10755, 1),
         Range32.init(0x10760, 0x10767, 1),
     },
 };
-
 const _Linear_B = &RangeTable.{
-    .r16 = []Range16.{},
-    .r32 = []Range32.{
+    .r16 = Range16.{},
+    .r32 = Range32.{
         Range32.init(0x10000, 0x1000b, 1),
         Range32.init(0x1000d, 0x10026, 1),
         Range32.init(0x10028, 0x1003a, 1),
@@ -4684,63 +4679,63 @@ const _Linear_B = &RangeTable.{
         Range32.init(0x10080, 0x100fa, 1),
     },
 };
-
-const _Lisu = &RangeTable.{ .r16 = []Range16.{Range16.init(0xa4d0, 0xa4ff, 1)} };
-
-const _Lycian = &RangeTable.{
-    .r16 = []Range16.{},
-    .r32 = []Range32.{Range32.init(0x10280, 0x1029c, 1)},
+const _Lisu = &RangeTable.{
+    .r16 = Range16.{Range16.init(0xa4d0, 0xa4ff, 1)},
+    .r32 = Range32.{},
 };
-
+const _Lycian = &RangeTable.{
+    .r16 = Range16.{},
+    .r32 = Range32.{Range32.init(0x10280, 0x1029c, 1)},
+};
 const _Lydian = &RangeTable.{
-    .r16 = []Range16.{},
-    .r32 = []Range32.{
+    .r16 = Range16.{},
+    .r32 = Range32.{
         Range32.init(0x10920, 0x10939, 1),
         Range32.init(0x1093f, 0x1093f, 1),
     },
 };
-
 const _Mahajani = &RangeTable.{
-    .r16 = []Range16.{},
-    .r32 = []Range32.{Range32.init(0x11150, 0x11176, 1)},
+    .r16 = Range16.{},
+    .r32 = Range32.{Range32.init(0x11150, 0x11176, 1)},
 };
-
-const _Malayalam = &RangeTable.{ .r16 = []Range16.{
-    Range16.init(0x0d00, 0x0d03, 1),
-    Range16.init(0x0d05, 0x0d0c, 1),
-    Range16.init(0x0d0e, 0x0d10, 1),
-    Range16.init(0x0d12, 0x0d44, 1),
-    Range16.init(0x0d46, 0x0d48, 1),
-    Range16.init(0x0d4a, 0x0d4f, 1),
-    Range16.init(0x0d54, 0x0d63, 1),
-    Range16.init(0x0d66, 0x0d7f, 1),
-} };
-
-const _Mandaic = &RangeTable.{ .r16 = []Range16.{
-    Range16.init(0x0840, 0x085b, 1),
-    Range16.init(0x085e, 0x085e, 1),
-} };
-
+const _Malayalam = &RangeTable.{
+    .r16 = Range16.{
+        Range16.init(0x0d00, 0x0d03, 1),
+        Range16.init(0x0d05, 0x0d0c, 1),
+        Range16.init(0x0d0e, 0x0d10, 1),
+        Range16.init(0x0d12, 0x0d44, 1),
+        Range16.init(0x0d46, 0x0d48, 1),
+        Range16.init(0x0d4a, 0x0d4f, 1),
+        Range16.init(0x0d54, 0x0d63, 1),
+        Range16.init(0x0d66, 0x0d7f, 1),
+    },
+    .r32 = Range32.{},
+};
+const _Mandaic = &RangeTable.{
+    .r16 = Range16.{
+        Range16.init(0x0840, 0x085b, 1),
+        Range16.init(0x085e, 0x085e, 1),
+    },
+    .r32 = Range32.{},
+};
 const _Manichaean = &RangeTable.{
-    .r16 = []Range16.{},
-    .r32 = []Range32.{
+    .r16 = Range16.{},
+    .r32 = Range32.{
         Range32.init(0x10ac0, 0x10ae6, 1),
         Range32.init(0x10aeb, 0x10af6, 1),
     },
 };
-
 const _Marchen = &RangeTable.{
-    .r16 = []Range16.{},
-    .r32 = []Range32.{
+    .r16 = Range16.{},
+    .r32 = Range32.{
         Range32.init(0x11c70, 0x11c8f, 1),
         Range32.init(0x11c92, 0x11ca7, 1),
         Range32.init(0x11ca9, 0x11cb6, 1),
     },
 };
-
 const _Masaram_Gondi = &RangeTable.{
-    .r16 = []Range16.{},
-    .r32 = []Range32.{
+    .r16 = Range16.{},
+    .r32 = Range32.{
         Range32.init(0x11d00, 0x11d06, 1),
         Range32.init(0x11d08, 0x11d09, 1),
         Range32.init(0x11d0b, 0x11d36, 1),
@@ -4750,54 +4745,50 @@ const _Masaram_Gondi = &RangeTable.{
         Range32.init(0x11d50, 0x11d59, 1),
     },
 };
-
-const _Meetei_Mayek = &RangeTable.{ .r16 = []Range16.{
-    Range16.init(0xaae0, 0xaaf6, 1),
-    Range16.init(0xabc0, 0xabed, 1),
-    Range16.init(0xabf0, 0xabf9, 1),
-} };
-
+const _Meetei_Mayek = &RangeTable.{
+    .r16 = Range16.{
+        Range16.init(0xaae0, 0xaaf6, 1),
+        Range16.init(0xabc0, 0xabed, 1),
+        Range16.init(0xabf0, 0xabf9, 1),
+    },
+    .r32 = Range32.{},
+};
 const _Mende_Kikakui = &RangeTable.{
-    .r16 = []Range16.{},
-    .r32 = []Range32.{
+    .r16 = Range16.{},
+    .r32 = Range32.{
         Range32.init(0x1e800, 0x1e8c4, 1),
         Range32.init(0x1e8c7, 0x1e8d6, 1),
     },
 };
-
 const _Meroitic_Cursive = &RangeTable.{
-    .r16 = []Range16.{},
-    .r32 = []Range32.{
+    .r16 = Range16.{},
+    .r32 = Range32.{
         Range32.init(0x109a0, 0x109b7, 1),
         Range32.init(0x109bc, 0x109cf, 1),
         Range32.init(0x109d2, 0x109ff, 1),
     },
 };
-
 const _Meroitic_Hieroglyphs = &RangeTable.{
-    .r16 = []Range16.{},
-    .r32 = []Range32.{Range32.init(0x10980, 0x1099f, 1)},
+    .r16 = Range16.{},
+    .r32 = Range32.{Range32.init(0x10980, 0x1099f, 1)},
 };
-
 const _Miao = &RangeTable.{
-    .r16 = []Range16.{},
-    .r32 = []Range32.{
+    .r16 = Range16.{},
+    .r32 = Range32.{
         Range32.init(0x16f00, 0x16f44, 1),
         Range32.init(0x16f50, 0x16f7e, 1),
         Range32.init(0x16f8f, 0x16f9f, 1),
     },
 };
-
 const _Modi = &RangeTable.{
-    .r16 = []Range16.{},
-    .r32 = []Range32.{
+    .r16 = Range16.{},
+    .r32 = Range32.{
         Range32.init(0x11600, 0x11644, 1),
         Range32.init(0x11650, 0x11659, 1),
     },
 };
-
 const _Mongolian = &RangeTable.{
-    .r16 = []Range16.{
+    .r16 = Range16.{
         Range16.init(0x1800, 0x1801, 1),
         Range16.init(0x1804, 0x1804, 1),
         Range16.init(0x1806, 0x180e, 1),
@@ -4805,21 +4796,19 @@ const _Mongolian = &RangeTable.{
         Range16.init(0x1820, 0x1877, 1),
         Range16.init(0x1880, 0x18aa, 1),
     },
-    .r32 = []Range32.{Range32.init(0x11660, 0x1166c, 1)},
+    .r32 = Range32.{Range32.init(0x11660, 0x1166c, 1)},
 };
-
 const _Mro = &RangeTable.{
-    .r16 = []Range16.{},
-    .r32 = []Range32.{
+    .r16 = Range16.{},
+    .r32 = Range32.{
         Range32.init(0x16a40, 0x16a5e, 1),
         Range32.init(0x16a60, 0x16a69, 1),
         Range32.init(0x16a6e, 0x16a6f, 1),
     },
 };
-
 const _Multani = &RangeTable.{
-    .r16 = []Range16.{},
-    .r32 = []Range32.{
+    .r16 = Range16.{},
+    .r32 = Range32.{
         Range32.init(0x11280, 0x11286, 1),
         Range32.init(0x11288, 0x11288, 1),
         Range32.init(0x1128a, 0x1128d, 1),
@@ -4827,132 +4816,131 @@ const _Multani = &RangeTable.{
         Range32.init(0x1129f, 0x112a9, 1),
     },
 };
-
-const _Myanmar = &RangeTable.{ .r16 = []Range16.{
-    Range16.init(0x1000, 0x109f, 1),
-    Range16.init(0xa9e0, 0xa9fe, 1),
-    Range16.init(0xaa60, 0xaa7f, 1),
-} };
-
+const _Myanmar = &RangeTable.{
+    .r16 = Range16.{
+        Range16.init(0x1000, 0x109f, 1),
+        Range16.init(0xa9e0, 0xa9fe, 1),
+        Range16.init(0xaa60, 0xaa7f, 1),
+    },
+    .r32 = Range32.{},
+};
 const _Nabataean = &RangeTable.{
-    .r16 = []Range16.{},
-    .r32 = []Range32.{
+    .r16 = Range16.{},
+    .r32 = Range32.{
         Range32.init(0x10880, 0x1089e, 1),
         Range32.init(0x108a7, 0x108af, 1),
     },
 };
-
-const _New_Tai_Lue = &RangeTable.{ .r16 = []Range16.{
-    Range16.init(0x1980, 0x19ab, 1),
-    Range16.init(0x19b0, 0x19c9, 1),
-    Range16.init(0x19d0, 0x19da, 1),
-    Range16.init(0x19de, 0x19df, 1),
-} };
-
+const _New_Tai_Lue = &RangeTable.{
+    .r16 = Range16.{
+        Range16.init(0x1980, 0x19ab, 1),
+        Range16.init(0x19b0, 0x19c9, 1),
+        Range16.init(0x19d0, 0x19da, 1),
+        Range16.init(0x19de, 0x19df, 1),
+    },
+    .r32 = Range32.{},
+};
 const _Newa = &RangeTable.{
-    .r16 = []Range16.{},
-    .r32 = []Range32.{
+    .r16 = Range16.{},
+    .r32 = Range32.{
         Range32.init(0x11400, 0x11459, 1),
         Range32.init(0x1145b, 0x1145b, 1),
         Range32.init(0x1145d, 0x1145d, 1),
     },
 };
-
-const _Nko = &RangeTable.{ .r16 = []Range16.{Range16.init(0x07c0, 0x07fa, 1)} };
-
+const _Nko = &RangeTable.{
+    .r16 = Range16.{Range16.init(0x07c0, 0x07fa, 1)},
+    .r32 = Range32.{},
+};
 const _Nushu = &RangeTable.{
-    .r16 = []Range16.{},
-    .r32 = []Range32.{
+    .r16 = Range16.{},
+    .r32 = Range32.{
         Range32.init(0x16fe1, 0x16fe1, 1),
         Range32.init(0x1b170, 0x1b2fb, 1),
     },
 };
-
-const _Ogham = &RangeTable.{ .r16 = []Range16.{Range16.init(0x1680, 0x169c, 1)} };
-
-const _Ol_Chiki = &RangeTable.{ .r16 = []Range16.{Range16.init(0x1c50, 0x1c7f, 1)} };
-
+const _Ogham = &RangeTable.{
+    .r16 = Range16.{Range16.init(0x1680, 0x169c, 1)},
+    .r32 = Range32.{},
+};
+const _Ol_Chiki = &RangeTable.{
+    .r16 = Range16.{Range16.init(0x1c50, 0x1c7f, 1)},
+    .r32 = Range32.{},
+};
 const _Old_Hungarian = &RangeTable.{
-    .r16 = []Range16.{},
-    .r32 = []Range32.{
+    .r16 = Range16.{},
+    .r32 = Range32.{
         Range32.init(0x10c80, 0x10cb2, 1),
         Range32.init(0x10cc0, 0x10cf2, 1),
         Range32.init(0x10cfa, 0x10cff, 1),
     },
 };
-
 const _Old_Italic = &RangeTable.{
-    .r16 = []Range16.{},
-    .r32 = []Range32.{
+    .r16 = Range16.{},
+    .r32 = Range32.{
         Range32.init(0x10300, 0x10323, 1),
         Range32.init(0x1032d, 0x1032f, 1),
     },
 };
-
 const _Old_North_Arabian = &RangeTable.{
-    .r16 = []Range16.{},
-    .r32 = []Range32.{Range32.init(0x10a80, 0x10a9f, 1)},
+    .r16 = Range16.{},
+    .r32 = Range32.{Range32.init(0x10a80, 0x10a9f, 1)},
 };
-
 const _Old_Permic = &RangeTable.{
-    .r16 = []Range16.{},
-    .r32 = []Range32.{Range32.init(0x10350, 0x1037a, 1)},
+    .r16 = Range16.{},
+    .r32 = Range32.{Range32.init(0x10350, 0x1037a, 1)},
 };
-
 const _Old_Persian = &RangeTable.{
-    .r16 = []Range16.{},
-    .r32 = []Range32.{
+    .r16 = Range16.{},
+    .r32 = Range32.{
         Range32.init(0x103a0, 0x103c3, 1),
         Range32.init(0x103c8, 0x103d5, 1),
     },
 };
-
 const _Old_South_Arabian = &RangeTable.{
-    .r16 = []Range16.{},
-    .r32 = []Range32.{Range32.init(0x10a60, 0x10a7f, 1)},
+    .r16 = Range16.{},
+    .r32 = Range32.{Range32.init(0x10a60, 0x10a7f, 1)},
 };
-
 const _Old_Turkic = &RangeTable.{
-    .r16 = []Range16.{},
-    .r32 = []Range32.{Range32.init(0x10c00, 0x10c48, 1)},
+    .r16 = Range16.{},
+    .r32 = Range32.{Range32.init(0x10c00, 0x10c48, 1)},
 };
-
-const _Oriya = &RangeTable.{ .r16 = []Range16.{
-    Range16.init(0x0b01, 0x0b03, 1),
-    Range16.init(0x0b05, 0x0b0c, 1),
-    Range16.init(0x0b0f, 0x0b10, 1),
-    Range16.init(0x0b13, 0x0b28, 1),
-    Range16.init(0x0b2a, 0x0b30, 1),
-    Range16.init(0x0b32, 0x0b33, 1),
-    Range16.init(0x0b35, 0x0b39, 1),
-    Range16.init(0x0b3c, 0x0b44, 1),
-    Range16.init(0x0b47, 0x0b48, 1),
-    Range16.init(0x0b4b, 0x0b4d, 1),
-    Range16.init(0x0b56, 0x0b57, 1),
-    Range16.init(0x0b5c, 0x0b5d, 1),
-    Range16.init(0x0b5f, 0x0b63, 1),
-    Range16.init(0x0b66, 0x0b77, 1),
-} };
-
+const _Oriya = &RangeTable.{
+    .r16 = Range16.{
+        Range16.init(0x0b01, 0x0b03, 1),
+        Range16.init(0x0b05, 0x0b0c, 1),
+        Range16.init(0x0b0f, 0x0b10, 1),
+        Range16.init(0x0b13, 0x0b28, 1),
+        Range16.init(0x0b2a, 0x0b30, 1),
+        Range16.init(0x0b32, 0x0b33, 1),
+        Range16.init(0x0b35, 0x0b39, 1),
+        Range16.init(0x0b3c, 0x0b44, 1),
+        Range16.init(0x0b47, 0x0b48, 1),
+        Range16.init(0x0b4b, 0x0b4d, 1),
+        Range16.init(0x0b56, 0x0b57, 1),
+        Range16.init(0x0b5c, 0x0b5d, 1),
+        Range16.init(0x0b5f, 0x0b63, 1),
+        Range16.init(0x0b66, 0x0b77, 1),
+    },
+    .r32 = Range32.{},
+};
 const _Osage = &RangeTable.{
-    .r16 = []Range16.{},
-    .r32 = []Range32.{
+    .r16 = Range16.{},
+    .r32 = Range32.{
         Range32.init(0x104b0, 0x104d3, 1),
         Range32.init(0x104d8, 0x104fb, 1),
     },
 };
-
 const _Osmanya = &RangeTable.{
-    .r16 = []Range16.{},
-    .r32 = []Range32.{
+    .r16 = Range16.{},
+    .r32 = Range32.{
         Range32.init(0x10480, 0x1049d, 1),
         Range32.init(0x104a0, 0x104a9, 1),
     },
 };
-
 const _Pahawh_Hmong = &RangeTable.{
-    .r16 = []Range16.{},
-    .r32 = []Range32.{
+    .r16 = Range16.{},
+    .r32 = Range32.{
         Range32.init(0x16b00, 0x16b45, 1),
         Range32.init(0x16b50, 0x16b59, 1),
         Range32.init(0x16b5b, 0x16b61, 1),
@@ -4960,88 +4948,89 @@ const _Pahawh_Hmong = &RangeTable.{
         Range32.init(0x16b7d, 0x16b8f, 1),
     },
 };
-
 const _Palmyrene = &RangeTable.{
-    .r16 = []Range16.{},
-    .r32 = []Range32.{Range32.init(0x10860, 0x1087f, 1)},
+    .r16 = Range16.{},
+    .r32 = Range32.{Range32.init(0x10860, 0x1087f, 1)},
 };
-
 const _Pau_Cin_Hau = &RangeTable.{
-    .r16 = []Range16.{},
-    .r32 = []Range32.{Range32.init(0x11ac0, 0x11af8, 1)},
+    .r16 = Range16.{},
+    .r32 = Range32.{Range32.init(0x11ac0, 0x11af8, 1)},
 };
-
-const _Phags_Pa = &RangeTable.{ .r16 = []Range16.{Range16.init(0xa840, 0xa877, 1)} };
-
+const _Phags_Pa = &RangeTable.{
+    .r16 = Range16.{Range16.init(0xa840, 0xa877, 1)},
+    .r32 = Range32.{},
+};
 const _Phoenician = &RangeTable.{
-    .r16 = []Range16.{},
-    .r32 = []Range32.{
+    .r16 = Range16.{},
+    .r32 = Range32.{
         Range32.init(0x10900, 0x1091b, 1),
         Range32.init(0x1091f, 0x1091f, 1),
     },
 };
-
 const _Psalter_Pahlavi = &RangeTable.{
-    .r16 = []Range16.{},
-    .r32 = []Range32.{
+    .r16 = Range16.{},
+    .r32 = Range32.{
         Range32.init(0x10b80, 0x10b91, 1),
         Range32.init(0x10b99, 0x10b9c, 1),
         Range32.init(0x10ba9, 0x10baf, 1),
     },
 };
-
-const _Rejang = &RangeTable.{ .r16 = []Range16.{
-    Range16.init(0xa930, 0xa953, 1),
-    Range16.init(0xa95f, 0xa95f, 1),
-} };
-
-const _Runic = &RangeTable.{ .r16 = []Range16.{
-    Range16.init(0x16a0, 0x16ea, 1),
-    Range16.init(0x16ee, 0x16f8, 1),
-} };
-
-const _Samaritan = &RangeTable.{ .r16 = []Range16.{
-    Range16.init(0x0800, 0x082d, 1),
-    Range16.init(0x0830, 0x083e, 1),
-} };
-
-const _Saurashtra = &RangeTable.{ .r16 = []Range16.{
-    Range16.init(0xa880, 0xa8c5, 1),
-    Range16.init(0xa8ce, 0xa8d9, 1),
-} };
-
+const _Rejang = &RangeTable.{
+    .r16 = Range16.{
+        Range16.init(0xa930, 0xa953, 1),
+        Range16.init(0xa95f, 0xa95f, 1),
+    },
+    .r32 = Range32.{},
+};
+const _Runic = &RangeTable.{
+    .r16 = Range16.{
+        Range16.init(0x16a0, 0x16ea, 1),
+        Range16.init(0x16ee, 0x16f8, 1),
+    },
+    .r32 = Range32.{},
+};
+const _Samaritan = &RangeTable.{
+    .r16 = Range16.{
+        Range16.init(0x0800, 0x082d, 1),
+        Range16.init(0x0830, 0x083e, 1),
+    },
+    .r32 = Range32.{},
+};
+const _Saurashtra = &RangeTable.{
+    .r16 = Range16.{
+        Range16.init(0xa880, 0xa8c5, 1),
+        Range16.init(0xa8ce, 0xa8d9, 1),
+    },
+    .r32 = Range32.{},
+};
 const _Sharada = &RangeTable.{
-    .r16 = []Range16.{},
-    .r32 = []Range32.{
+    .r16 = Range16.{},
+    .r32 = Range32.{
         Range32.init(0x11180, 0x111cd, 1),
         Range32.init(0x111d0, 0x111df, 1),
     },
 };
-
 const _Shavian = &RangeTable.{
-    .r16 = []Range16.{},
-    .r32 = []Range32.{Range32.init(0x10450, 0x1047f, 1)},
+    .r16 = Range16.{},
+    .r32 = Range32.{Range32.init(0x10450, 0x1047f, 1)},
 };
-
 const _Siddham = &RangeTable.{
-    .r16 = []Range16.{},
-    .r32 = []Range32.{
+    .r16 = Range16.{},
+    .r32 = Range32.{
         Range32.init(0x11580, 0x115b5, 1),
         Range32.init(0x115b8, 0x115dd, 1),
     },
 };
-
 const _SignWriting = &RangeTable.{
-    .r16 = []Range16.{},
-    .r32 = []Range32.{
+    .r16 = Range16.{},
+    .r32 = Range32.{
         Range32.init(0x1d800, 0x1da8b, 1),
         Range32.init(0x1da9b, 0x1da9f, 1),
         Range32.init(0x1daa1, 0x1daaf, 1),
     },
 };
-
 const _Sinhala = &RangeTable.{
-    .r16 = []Range16.{
+    .r16 = Range16.{
         Range16.init(0x0d82, 0x0d83, 1),
         Range16.init(0x0d85, 0x0d96, 1),
         Range16.init(0x0d9a, 0x0db1, 1),
@@ -5055,180 +5044,203 @@ const _Sinhala = &RangeTable.{
         Range16.init(0x0de6, 0x0def, 1),
         Range16.init(0x0df2, 0x0df4, 1),
     },
-    .r32 = []Range32.{Range32.init(0x111e1, 0x111f4, 1)},
+    .r32 = Range32.{Range32.init(0x111e1, 0x111f4, 1)},
 };
-
 const _Sora_Sompeng = &RangeTable.{
-    .r16 = []Range16.{},
-    .r32 = []Range32.{
+    .r16 = Range16.{},
+    .r32 = Range32.{
         Range32.init(0x110d0, 0x110e8, 1),
         Range32.init(0x110f0, 0x110f9, 1),
     },
 };
-
 const _Soyombo = &RangeTable.{
-    .r16 = []Range16.{},
-    .r32 = []Range32.{
+    .r16 = Range16.{},
+    .r32 = Range32.{
         Range32.init(0x11a50, 0x11a83, 1),
         Range32.init(0x11a86, 0x11a9c, 1),
         Range32.init(0x11a9e, 0x11aa2, 1),
     },
 };
-
-const _Sundanese = &RangeTable.{ .r16 = []Range16.{
-    Range16.init(0x1b80, 0x1bbf, 1),
-    Range16.init(0x1cc0, 0x1cc7, 1),
-} };
-
-const _Syloti_Nagri = &RangeTable.{ .r16 = []Range16.{Range16.init(0xa800, 0xa82b, 1)} };
-
-const _Syriac = &RangeTable.{ .r16 = []Range16.{
-    Range16.init(0x0700, 0x070d, 1),
-    Range16.init(0x070f, 0x074a, 1),
-    Range16.init(0x074d, 0x074f, 1),
-    Range16.init(0x0860, 0x086a, 1),
-} };
-
-const _Tagalog = &RangeTable.{ .r16 = []Range16.{
-    Range16.init(0x1700, 0x170c, 1),
-    Range16.init(0x170e, 0x1714, 1),
-} };
-
-const _Tagbanwa = &RangeTable.{ .r16 = []Range16.{
-    Range16.init(0x1760, 0x176c, 1),
-    Range16.init(0x176e, 0x1770, 1),
-    Range16.init(0x1772, 0x1773, 1),
-} };
-
-const _Tai_Le = &RangeTable.{ .r16 = []Range16.{
-    Range16.init(0x1950, 0x196d, 1),
-    Range16.init(0x1970, 0x1974, 1),
-} };
-
-const _Tai_Tham = &RangeTable.{ .r16 = []Range16.{
-    Range16.init(0x1a20, 0x1a5e, 1),
-    Range16.init(0x1a60, 0x1a7c, 1),
-    Range16.init(0x1a7f, 0x1a89, 1),
-    Range16.init(0x1a90, 0x1a99, 1),
-    Range16.init(0x1aa0, 0x1aad, 1),
-} };
-
-const _Tai_Viet = &RangeTable.{ .r16 = []Range16.{
-    Range16.init(0xaa80, 0xaac2, 1),
-    Range16.init(0xaadb, 0xaadf, 1),
-} };
-
+const _Sundanese = &RangeTable.{
+    .r16 = Range16.{
+        Range16.init(0x1b80, 0x1bbf, 1),
+        Range16.init(0x1cc0, 0x1cc7, 1),
+    },
+    .r32 = Range32.{},
+};
+const _Syloti_Nagri = &RangeTable.{
+    .r16 = Range16.{Range16.init(0xa800, 0xa82b, 1)},
+    .r32 = Range32.{},
+};
+const _Syriac = &RangeTable.{
+    .r16 = Range16.{
+        Range16.init(0x0700, 0x070d, 1),
+        Range16.init(0x070f, 0x074a, 1),
+        Range16.init(0x074d, 0x074f, 1),
+        Range16.init(0x0860, 0x086a, 1),
+    },
+    .r32 = Range32.{},
+};
+const _Tagalog = &RangeTable.{
+    .r16 = Range16.{
+        Range16.init(0x1700, 0x170c, 1),
+        Range16.init(0x170e, 0x1714, 1),
+    },
+    .r32 = Range32.{},
+};
+const _Tagbanwa = &RangeTable.{
+    .r16 = Range16.{
+        Range16.init(0x1760, 0x176c, 1),
+        Range16.init(0x176e, 0x1770, 1),
+        Range16.init(0x1772, 0x1773, 1),
+    },
+    .r32 = Range32.{},
+};
+const _Tai_Le = &RangeTable.{
+    .r16 = Range16.{
+        Range16.init(0x1950, 0x196d, 1),
+        Range16.init(0x1970, 0x1974, 1),
+    },
+    .r32 = Range32.{},
+};
+const _Tai_Tham = &RangeTable.{
+    .r16 = Range16.{
+        Range16.init(0x1a20, 0x1a5e, 1),
+        Range16.init(0x1a60, 0x1a7c, 1),
+        Range16.init(0x1a7f, 0x1a89, 1),
+        Range16.init(0x1a90, 0x1a99, 1),
+        Range16.init(0x1aa0, 0x1aad, 1),
+    },
+    .r32 = Range32.{},
+};
+const _Tai_Viet = &RangeTable.{
+    .r16 = Range16.{
+        Range16.init(0xaa80, 0xaac2, 1),
+        Range16.init(0xaadb, 0xaadf, 1),
+    },
+    .r32 = Range32.{},
+};
 const _Takri = &RangeTable.{
-    .r16 = []Range16.{},
-    .r32 = []Range32.{
+    .r16 = Range16.{},
+    .r32 = Range32.{
         Range32.init(0x11680, 0x116b7, 1),
         Range32.init(0x116c0, 0x116c9, 1),
     },
 };
-
-const _Tamil = &RangeTable.{ .r16 = []Range16.{
-    Range16.init(0x0b82, 0x0b83, 1),
-    Range16.init(0x0b85, 0x0b8a, 1),
-    Range16.init(0x0b8e, 0x0b90, 1),
-    Range16.init(0x0b92, 0x0b95, 1),
-    Range16.init(0x0b99, 0x0b9a, 1),
-    Range16.init(0x0b9c, 0x0b9c, 1),
-    Range16.init(0x0b9e, 0x0b9f, 1),
-    Range16.init(0x0ba3, 0x0ba4, 1),
-    Range16.init(0x0ba8, 0x0baa, 1),
-    Range16.init(0x0bae, 0x0bb9, 1),
-    Range16.init(0x0bbe, 0x0bc2, 1),
-    Range16.init(0x0bc6, 0x0bc8, 1),
-    Range16.init(0x0bca, 0x0bcd, 1),
-    Range16.init(0x0bd0, 0x0bd0, 1),
-    Range16.init(0x0bd7, 0x0bd7, 1),
-    Range16.init(0x0be6, 0x0bfa, 1),
-} };
-
+const _Tamil = &RangeTable.{
+    .r16 = Range16.{
+        Range16.init(0x0b82, 0x0b83, 1),
+        Range16.init(0x0b85, 0x0b8a, 1),
+        Range16.init(0x0b8e, 0x0b90, 1),
+        Range16.init(0x0b92, 0x0b95, 1),
+        Range16.init(0x0b99, 0x0b9a, 1),
+        Range16.init(0x0b9c, 0x0b9c, 1),
+        Range16.init(0x0b9e, 0x0b9f, 1),
+        Range16.init(0x0ba3, 0x0ba4, 1),
+        Range16.init(0x0ba8, 0x0baa, 1),
+        Range16.init(0x0bae, 0x0bb9, 1),
+        Range16.init(0x0bbe, 0x0bc2, 1),
+        Range16.init(0x0bc6, 0x0bc8, 1),
+        Range16.init(0x0bca, 0x0bcd, 1),
+        Range16.init(0x0bd0, 0x0bd0, 1),
+        Range16.init(0x0bd7, 0x0bd7, 1),
+        Range16.init(0x0be6, 0x0bfa, 1),
+    },
+    .r32 = Range32.{},
+};
 const _Tangut = &RangeTable.{
-    .r16 = []Range16.{},
-    .r32 = []Range32.{
+    .r16 = Range16.{},
+    .r32 = Range32.{
         Range32.init(0x16fe0, 0x16fe0, 1),
         Range32.init(0x17000, 0x187ec, 1),
         Range32.init(0x18800, 0x18af2, 1),
     },
 };
-
-const _Telugu = &RangeTable.{ .r16 = []Range16.{
-    Range16.init(0x0c00, 0x0c03, 1),
-    Range16.init(0x0c05, 0x0c0c, 1),
-    Range16.init(0x0c0e, 0x0c10, 1),
-    Range16.init(0x0c12, 0x0c28, 1),
-    Range16.init(0x0c2a, 0x0c39, 1),
-    Range16.init(0x0c3d, 0x0c44, 1),
-    Range16.init(0x0c46, 0x0c48, 1),
-    Range16.init(0x0c4a, 0x0c4d, 1),
-    Range16.init(0x0c55, 0x0c56, 1),
-    Range16.init(0x0c58, 0x0c5a, 1),
-    Range16.init(0x0c60, 0x0c63, 1),
-    Range16.init(0x0c66, 0x0c6f, 1),
-    Range16.init(0x0c78, 0x0c7f, 1),
-} };
-
-const _Thaana = &RangeTable.{ .r16 = []Range16.{Range16.init(0x0780, 0x07b1, 1)} };
-
-const _Thai = &RangeTable.{ .r16 = []Range16.{
-    Range16.init(0x0e01, 0x0e3a, 1),
-    Range16.init(0x0e40, 0x0e5b, 1),
-} };
-
-const _Tibetan = &RangeTable.{ .r16 = []Range16.{
-    Range16.init(0x0f00, 0x0f47, 1),
-    Range16.init(0x0f49, 0x0f6c, 1),
-    Range16.init(0x0f71, 0x0f97, 1),
-    Range16.init(0x0f99, 0x0fbc, 1),
-    Range16.init(0x0fbe, 0x0fcc, 1),
-    Range16.init(0x0fce, 0x0fd4, 1),
-    Range16.init(0x0fd9, 0x0fda, 1),
-} };
-
-const _Tifinagh = &RangeTable.{ .r16 = []Range16.{
-    Range16.init(0x2d30, 0x2d67, 1),
-    Range16.init(0x2d6f, 0x2d70, 1),
-    Range16.init(0x2d7f, 0x2d7f, 1),
-} };
-
+const _Telugu = &RangeTable.{
+    .r16 = Range16.{
+        Range16.init(0x0c00, 0x0c03, 1),
+        Range16.init(0x0c05, 0x0c0c, 1),
+        Range16.init(0x0c0e, 0x0c10, 1),
+        Range16.init(0x0c12, 0x0c28, 1),
+        Range16.init(0x0c2a, 0x0c39, 1),
+        Range16.init(0x0c3d, 0x0c44, 1),
+        Range16.init(0x0c46, 0x0c48, 1),
+        Range16.init(0x0c4a, 0x0c4d, 1),
+        Range16.init(0x0c55, 0x0c56, 1),
+        Range16.init(0x0c58, 0x0c5a, 1),
+        Range16.init(0x0c60, 0x0c63, 1),
+        Range16.init(0x0c66, 0x0c6f, 1),
+        Range16.init(0x0c78, 0x0c7f, 1),
+    },
+    .r32 = Range32.{},
+};
+const _Thaana = &RangeTable.{
+    .r16 = Range16.{Range16.init(0x0780, 0x07b1, 1)},
+    .r32 = Range32.{},
+};
+const _Thai = &RangeTable.{
+    .r16 = Range16.{
+        Range16.init(0x0e01, 0x0e3a, 1),
+        Range16.init(0x0e40, 0x0e5b, 1),
+    },
+    .r32 = Range32.{},
+};
+const _Tibetan = &RangeTable.{
+    .r16 = Range16.{
+        Range16.init(0x0f00, 0x0f47, 1),
+        Range16.init(0x0f49, 0x0f6c, 1),
+        Range16.init(0x0f71, 0x0f97, 1),
+        Range16.init(0x0f99, 0x0fbc, 1),
+        Range16.init(0x0fbe, 0x0fcc, 1),
+        Range16.init(0x0fce, 0x0fd4, 1),
+        Range16.init(0x0fd9, 0x0fda, 1),
+    },
+    .r32 = Range32.{},
+};
+const _Tifinagh = &RangeTable.{
+    .r16 = Range16.{
+        Range16.init(0x2d30, 0x2d67, 1),
+        Range16.init(0x2d6f, 0x2d70, 1),
+        Range16.init(0x2d7f, 0x2d7f, 1),
+    },
+    .r32 = Range32.{},
+};
 const _Tirhuta = &RangeTable.{
-    .r16 = []Range16.{},
-    .r32 = []Range32.{
+    .r16 = Range16.{},
+    .r32 = Range32.{
         Range32.init(0x11480, 0x114c7, 1),
         Range32.init(0x114d0, 0x114d9, 1),
     },
 };
-
 const _Ugaritic = &RangeTable.{
-    .r16 = []Range16.{},
-    .r32 = []Range32.{
+    .r16 = Range16.{},
+    .r32 = Range32.{
         Range32.init(0x10380, 0x1039d, 1),
         Range32.init(0x1039f, 0x1039f, 1),
     },
 };
-
-const _Vai = &RangeTable.{ .r16 = []Range16.{Range16.init(0xa500, 0xa62b, 1)} };
-
+const _Vai = &RangeTable.{
+    .r16 = Range16.{Range16.init(0xa500, 0xa62b, 1)},
+    .r32 = Range32.{},
+};
 const _Warang_Citi = &RangeTable.{
-    .r16 = []Range16.{},
-    .r32 = []Range32.{
+    .r16 = Range16.{},
+    .r32 = Range32.{
         Range32.init(0x118a0, 0x118f2, 1),
         Range32.init(0x118ff, 0x118ff, 1),
     },
 };
-
-const _Yi = &RangeTable.{ .r16 = []Range16.{
-    Range16.init(0xa000, 0xa48c, 1),
-    Range16.init(0xa490, 0xa4c6, 1),
-} };
-
-const _Zanabazar_Square = &RangeTable.{
-    .r16 = []Range16.{},
-    .r32 = []Range32.{Range32.init(0x11a00, 0x11a47, 1)},
+const _Yi = &RangeTable.{
+    .r16 = Range16.{
+        Range16.init(0xa000, 0xa48c, 1),
+        Range16.init(0xa490, 0xa4c6, 1),
+    },
+    .r32 = Range32.{},
 };
-
+const _Zanabazar_Square = &RangeTable.{
+    .r16 = Range16.{},
+    .r32 = Range32.{Range32.init(0x11a00, 0x11a47, 1)},
+};
 // These variables have type *RangeTable.
 pub const Adlam = _Adlam; // Adlam is the set of Unicode characters in script Adlam.
 pub const Ahom = _Ahom; // Ahom is the set of Unicode characters in script Ahom.
@@ -5462,23 +5474,24 @@ pub const Property = enum.{
 };
 
 const _ASCII_Hex_Digit = &RangeTable.{
-    .r16 = []Range16.{
+    .r16 = Range16.{
         Range16.init(0x0030, 0x0039, 1),
         Range16.init(0x0041, 0x0046, 1),
         Range16.init(0x0061, 0x0066, 1),
     },
-    .latin_offset = 3,
+    .r32 = Range32.{},
 };
-
-const _Bidi_Control = &RangeTable.{ .r16 = []Range16.{
-    Range16.init(0x061c, 0x061c, 1),
-    Range16.init(0x200e, 0x200f, 1),
-    Range16.init(0x202a, 0x202e, 1),
-    Range16.init(0x2066, 0x2069, 1),
-} };
-
+const _Bidi_Control = &RangeTable.{
+    .r16 = Range16.{
+        Range16.init(0x061c, 0x061c, 1),
+        Range16.init(0x200e, 0x200f, 1),
+        Range16.init(0x202a, 0x202e, 1),
+        Range16.init(0x2066, 0x2069, 1),
+    },
+    .r32 = Range32.{},
+};
 const _Dash = &RangeTable.{
-    .r16 = []Range16.{
+    .r16 = Range16.{
         Range16.init(0x002d, 0x002d, 1),
         Range16.init(0x058a, 0x058a, 1),
         Range16.init(0x05be, 0x05be, 1),
@@ -5501,11 +5514,10 @@ const _Dash = &RangeTable.{
         Range16.init(0xfe63, 0xfe63, 1),
         Range16.init(0xff0d, 0xff0d, 1),
     },
-    .latin_offset = 1,
+    .r32 = Range32.{},
 };
-
 const _Deprecated = &RangeTable.{
-    .r16 = []Range16.{
+    .r16 = Range16.{
         Range16.init(0x0149, 0x0149, 1),
         Range16.init(0x0673, 0x0673, 1),
         Range16.init(0x0f77, 0x0f77, 1),
@@ -5514,11 +5526,10 @@ const _Deprecated = &RangeTable.{
         Range16.init(0x206a, 0x206f, 1),
         Range16.init(0x2329, 0x232a, 1),
     },
-    .r32 = []Range32.{Range32.init(0xe0001, 0xe0001, 1)},
+    .r32 = Range32.{Range32.init(0xe0001, 0xe0001, 1)},
 };
-
 const _Diacritic = &RangeTable.{
-    .r16 = []Range16.{
+    .r16 = Range16.{
         Range16.init(0x005e, 0x005e, 1),
         Range16.init(0x0060, 0x0060, 1),
         Range16.init(0x00a8, 0x00a8, 1),
@@ -5643,7 +5654,7 @@ const _Diacritic = &RangeTable.{
         Range16.init(0xff9e, 0xff9f, 1),
         Range16.init(0xffe3, 0xffe3, 1),
     },
-    .r32 = []Range32.{
+    .r32 = Range32.{
         Range32.init(0x102e0, 0x102e0, 1),
         Range32.init(0x10ae5, 0x10ae6, 1),
         Range32.init(0x110b9, 0x110ba, 1),
@@ -5681,11 +5692,9 @@ const _Diacritic = &RangeTable.{
         Range32.init(0x1e944, 0x1e946, 1),
         Range32.init(0x1e948, 0x1e94a, 1),
     },
-    .latin_offset = 6,
 };
-
 const _Extender = &RangeTable.{
-    .r16 = []Range16.{
+    .r16 = Range16.{
         Range16.init(0x00b7, 0x00b7, 1),
         Range16.init(0x02d0, 0x02d1, 1),
         Range16.init(0x0640, 0x0640, 1),
@@ -5710,7 +5719,7 @@ const _Extender = &RangeTable.{
         Range16.init(0xaaf3, 0xaaf4, 1),
         Range16.init(0xff70, 0xff70, 1),
     },
-    .r32 = []Range32.{
+    .r32 = Range32.{
         Range32.init(0x1135d, 0x1135d, 1),
         Range32.init(0x115c6, 0x115c8, 1),
         Range32.init(0x11a98, 0x11a98, 1),
@@ -5718,11 +5727,9 @@ const _Extender = &RangeTable.{
         Range32.init(0x16fe0, 0x16fe1, 1),
         Range32.init(0x1e944, 0x1e946, 1),
     },
-    .latin_offset = 1,
 };
-
 const _Hex_Digit = &RangeTable.{
-    .r16 = []Range16.{
+    .r16 = Range16.{
         Range16.init(0x0030, 0x0039, 1),
         Range16.init(0x0041, 0x0046, 1),
         Range16.init(0x0061, 0x0066, 1),
@@ -5730,11 +5737,10 @@ const _Hex_Digit = &RangeTable.{
         Range16.init(0xff21, 0xff26, 1),
         Range16.init(0xff41, 0xff46, 1),
     },
-    .latin_offset = 3,
+    .r32 = Range32.{},
 };
-
 const _Hyphen = &RangeTable.{
-    .r16 = []Range16.{
+    .r16 = Range16.{
         Range16.init(0x002d, 0x002d, 1),
         Range16.init(0x00ad, 0x00ad, 1),
         Range16.init(0x058a, 0x058a, 1),
@@ -5746,18 +5752,21 @@ const _Hyphen = &RangeTable.{
         Range16.init(0xff0d, 0xff0d, 1),
         Range16.init(0xff65, 0xff65, 1),
     },
-    .latin_offset = 2,
+    .r32 = Range32.{},
 };
-
-const _IDS_Binary_Operator = &RangeTable.{ .r16 = []Range16.{
-    Range16.init(0x2ff0, 0x2ff1, 1),
-    Range16.init(0x2ff4, 0x2ffb, 1),
-} };
-
-const _IDS_Trinary_Operator = &RangeTable.{ .r16 = []Range16.{Range16.init(0x2ff2, 0x2ff3, 1)} };
-
+const _IDS_Binary_Operator = &RangeTable.{
+    .r16 = Range16.{
+        Range16.init(0x2ff0, 0x2ff1, 1),
+        Range16.init(0x2ff4, 0x2ffb, 1),
+    },
+    .r32 = Range32.{},
+};
+const _IDS_Trinary_Operator = &RangeTable.{
+    .r16 = Range16.{Range16.init(0x2ff2, 0x2ff3, 1)},
+    .r32 = Range32.{},
+};
 const _Ideographic = &RangeTable.{
-    .r16 = []Range16.{
+    .r16 = Range16.{
         Range16.init(0x3006, 0x3007, 1),
         Range16.init(0x3021, 0x3029, 1),
         Range16.init(0x3038, 0x303a, 1),
@@ -5766,7 +5775,7 @@ const _Ideographic = &RangeTable.{
         Range16.init(0xf900, 0xfa6d, 1),
         Range16.init(0xfa70, 0xfad9, 1),
     },
-    .r32 = []Range32.{
+    .r32 = Range32.{
         Range32.init(0x17000, 0x187ec, 1),
         Range32.init(0x18800, 0x18af2, 1),
         Range32.init(0x1b170, 0x1b2fb, 1),
@@ -5778,25 +5787,28 @@ const _Ideographic = &RangeTable.{
         Range32.init(0x2f800, 0x2fa1d, 1),
     },
 };
-
-const _Join_Control = &RangeTable.{ .r16 = []Range16.{Range16.init(0x200c, 0x200d, 1)} };
-
-const _Logical_Order_Exception = &RangeTable.{ .r16 = []Range16.{
-    Range16.init(0x0e40, 0x0e44, 1),
-    Range16.init(0x0ec0, 0x0ec4, 1),
-    Range16.init(0x19b5, 0x19b7, 1),
-    Range16.init(0x19ba, 0x19ba, 1),
-    Range16.init(0xaab5, 0xaab6, 1),
-    Range16.init(0xaab9, 0xaab9, 1),
-    Range16.init(0xaabb, 0xaabc, 1),
-} };
-
+const _Join_Control = &RangeTable.{
+    .r16 = Range16.{Range16.init(0x200c, 0x200d, 1)},
+    .r32 = Range32.{},
+};
+const _Logical_Order_Exception = &RangeTable.{
+    .r16 = Range16.{
+        Range16.init(0x0e40, 0x0e44, 1),
+        Range16.init(0x0ec0, 0x0ec4, 1),
+        Range16.init(0x19b5, 0x19b7, 1),
+        Range16.init(0x19ba, 0x19ba, 1),
+        Range16.init(0xaab5, 0xaab6, 1),
+        Range16.init(0xaab9, 0xaab9, 1),
+        Range16.init(0xaabb, 0xaabc, 1),
+    },
+    .r32 = Range32.{},
+};
 const _Noncharacter_Code_Point = &RangeTable.{
-    .r16 = []Range16.{
+    .r16 = Range16.{
         Range16.init(0xfdd0, 0xfdef, 1),
         Range16.init(0xfffe, 0xffff, 1),
     },
-    .r32 = []Range32.{
+    .r32 = Range32.{
         Range32.init(0x1fffe, 0x1ffff, 1),
         Range32.init(0x2fffe, 0x2ffff, 1),
         Range32.init(0x3fffe, 0x3ffff, 1),
@@ -5815,9 +5827,8 @@ const _Noncharacter_Code_Point = &RangeTable.{
         Range32.init(0x10fffe, 0x10ffff, 1),
     },
 };
-
 const _Other_Alphabetic = &RangeTable.{
-    .r16 = []Range16.{
+    .r16 = Range16.{
         Range16.init(0x0345, 0x0345, 1),
         Range16.init(0x05b0, 0x05bd, 1),
         Range16.init(0x05bf, 0x05bf, 1),
@@ -5966,7 +5977,7 @@ const _Other_Alphabetic = &RangeTable.{
         Range16.init(0xabe3, 0xabea, 1),
         Range16.init(0xfb1e, 0xfb1e, 1),
     },
-    .r32 = []Range32.{
+    .r32 = Range32.{
         Range32.init(0x10376, 0x1037a, 1),
         Range32.init(0x10a01, 0x10a03, 1),
         Range32.init(0x10a05, 0x10a06, 1),
@@ -6028,9 +6039,8 @@ const _Other_Alphabetic = &RangeTable.{
         Range32.init(0x1f170, 0x1f189, 1),
     },
 };
-
 const _Other_Default_Ignorable_Code_Point = &RangeTable.{
-    .r16 = []Range16.{
+    .r16 = Range16.{
         Range16.init(0x034f, 0x034f, 1),
         Range16.init(0x115f, 0x1160, 1),
         Range16.init(0x17b4, 0x17b5, 1),
@@ -6039,16 +6049,15 @@ const _Other_Default_Ignorable_Code_Point = &RangeTable.{
         Range16.init(0xffa0, 0xffa0, 1),
         Range16.init(0xfff0, 0xfff8, 1),
     },
-    .r32 = []Range32.{
+    .r32 = Range32.{
         Range32.init(0xe0000, 0xe0000, 1),
         Range32.init(0xe0002, 0xe001f, 1),
         Range32.init(0xe0080, 0xe00ff, 1),
         Range32.init(0xe01f0, 0xe0fff, 1),
     },
 };
-
 const _Other_Grapheme_Extend = &RangeTable.{
-    .r16 = []Range16.{
+    .r16 = Range16.{
         Range16.init(0x09be, 0x09be, 1),
         Range16.init(0x09d7, 0x09d7, 1),
         Range16.init(0x0b3e, 0x0b3e, 1),
@@ -6065,7 +6074,7 @@ const _Other_Grapheme_Extend = &RangeTable.{
         Range16.init(0x302e, 0x302f, 1),
         Range16.init(0xff9e, 0xff9f, 1),
     },
-    .r32 = []Range32.{
+    .r32 = Range32.{
         Range32.init(0x1133e, 0x1133e, 1),
         Range32.init(0x11357, 0x11357, 1),
         Range32.init(0x114b0, 0x114b0, 1),
@@ -6076,26 +6085,26 @@ const _Other_Grapheme_Extend = &RangeTable.{
         Range32.init(0xe0020, 0xe007f, 1),
     },
 };
-
 const _Other_ID_Continue = &RangeTable.{
-    .r16 = []Range16.{
+    .r16 = Range16.{
         Range16.init(0x00b7, 0x00b7, 1),
         Range16.init(0x0387, 0x0387, 1),
         Range16.init(0x1369, 0x1371, 1),
         Range16.init(0x19da, 0x19da, 1),
     },
-    .latin_offset = 1,
+    .r32 = Range32.{},
 };
-
-const _Other_ID_Start = &RangeTable.{ .r16 = []Range16.{
-    Range16.init(0x1885, 0x1886, 1),
-    Range16.init(0x2118, 0x2118, 1),
-    Range16.init(0x212e, 0x212e, 1),
-    Range16.init(0x309b, 0x309c, 1),
-} };
-
+const _Other_ID_Start = &RangeTable.{
+    .r16 = Range16.{
+        Range16.init(0x1885, 0x1886, 1),
+        Range16.init(0x2118, 0x2118, 1),
+        Range16.init(0x212e, 0x212e, 1),
+        Range16.init(0x309b, 0x309c, 1),
+    },
+    .r32 = Range32.{},
+};
 const _Other_Lowercase = &RangeTable.{
-    .r16 = []Range16.{
+    .r16 = Range16.{
         Range16.init(0x00aa, 0x00aa, 1),
         Range16.init(0x00ba, 0x00ba, 1),
         Range16.init(0x02b0, 0x02b8, 1),
@@ -6117,11 +6126,10 @@ const _Other_Lowercase = &RangeTable.{
         Range16.init(0xa7f8, 0xa7f9, 1),
         Range16.init(0xab5c, 0xab5f, 1),
     },
-    .latin_offset = 2,
+    .r32 = Range32.{},
 };
-
 const _Other_Math = &RangeTable.{
-    .r16 = []Range16.{
+    .r16 = Range16.{
         Range16.init(0x005e, 0x005e, 1),
         Range16.init(0x03d0, 0x03d2, 1),
         Range16.init(0x03d5, 0x03d5, 1),
@@ -6193,7 +6201,7 @@ const _Other_Math = &RangeTable.{
         Range16.init(0xff3c, 0xff3c, 1),
         Range16.init(0xff3e, 0xff3e, 1),
     },
-    .r32 = []Range32.{
+    .r32 = Range32.{
         Range32.init(0x1d400, 0x1d454, 1),
         Range32.init(0x1d456, 0x1d49c, 1),
         Range32.init(0x1d49e, 0x1d49f, 1),
@@ -6259,23 +6267,20 @@ const _Other_Math = &RangeTable.{
         Range32.init(0x1eea5, 0x1eea9, 1),
         Range32.init(0x1eeab, 0x1eebb, 1),
     },
-    .latin_offset = 1,
 };
-
 const _Other_Uppercase = &RangeTable.{
-    .r16 = []Range16.{
+    .r16 = Range16.{
         Range16.init(0x2160, 0x216f, 1),
         Range16.init(0x24b6, 0x24cf, 1),
     },
-    .r32 = []Range32.{
+    .r32 = Range32.{
         Range32.init(0x1f130, 0x1f149, 1),
         Range32.init(0x1f150, 0x1f169, 1),
         Range32.init(0x1f170, 0x1f189, 1),
     },
 };
-
 const _Pattern_Syntax = &RangeTable.{
-    .r16 = []Range16.{
+    .r16 = Range16.{
         Range16.init(0x0021, 0x002f, 1),
         Range16.init(0x003a, 0x0040, 1),
         Range16.init(0x005b, 0x005e, 1),
@@ -6305,32 +6310,29 @@ const _Pattern_Syntax = &RangeTable.{
         Range16.init(0xfd3e, 0xfd3f, 1),
         Range16.init(0xfe45, 0xfe46, 1),
     },
-    .latin_offset = 15,
+    .r32 = Range32.{},
 };
-
 const _Pattern_White_Space = &RangeTable.{
-    .r16 = []Range16.{
+    .r16 = Range16.{
         Range16.init(0x0009, 0x000d, 1),
         Range16.init(0x0020, 0x0020, 1),
         Range16.init(0x0085, 0x0085, 1),
         Range16.init(0x200e, 0x200f, 1),
         Range16.init(0x2028, 0x2029, 1),
     },
-    .latin_offset = 3,
+    .r32 = Range32.{},
 };
-
 const _Prepended_Concatenation_Mark = &RangeTable.{
-    .r16 = []Range16.{
+    .r16 = Range16.{
         Range16.init(0x0600, 0x0605, 1),
         Range16.init(0x06dd, 0x06dd, 1),
         Range16.init(0x070f, 0x070f, 1),
         Range16.init(0x08e2, 0x08e2, 1),
     },
-    .r32 = []Range32.{Range32.init(0x110bd, 0x110bd, 1)},
+    .r32 = Range32.{Range32.init(0x110bd, 0x110bd, 1)},
 };
-
 const _Quotation_Mark = &RangeTable.{
-    .r16 = []Range16.{
+    .r16 = Range16.{
         Range16.init(0x0022, 0x0022, 1),
         Range16.init(0x0027, 0x0027, 1),
         Range16.init(0x00ab, 0x00ab, 1),
@@ -6345,22 +6347,22 @@ const _Quotation_Mark = &RangeTable.{
         Range16.init(0xff07, 0xff07, 1),
         Range16.init(0xff62, 0xff63, 1),
     },
-    .latin_offset = 4,
+    .r32 = Range32.{},
 };
-
-const _Radical = &RangeTable.{ .r16 = []Range16.{
-    Range16.init(0x2e80, 0x2e99, 1),
-    Range16.init(0x2e9b, 0x2ef3, 1),
-    Range16.init(0x2f00, 0x2fd5, 1),
-} };
-
+const _Radical = &RangeTable.{
+    .r16 = Range16.{
+        Range16.init(0x2e80, 0x2e99, 1),
+        Range16.init(0x2e9b, 0x2ef3, 1),
+        Range16.init(0x2f00, 0x2fd5, 1),
+    },
+    .r32 = Range32.{},
+};
 const _Regional_Indicator = &RangeTable.{
-    .r16 = []Range16.{},
-    .r32 = []Range32.{Range32.init(0x1f1e6, 0x1f1ff, 1)},
+    .r16 = Range16.{},
+    .r32 = Range32.{Range32.init(0x1f1e6, 0x1f1ff, 1)},
 };
-
 const _Sentence_Terminal = &RangeTable.{
-    .r16 = []Range16.{
+    .r16 = Range16.{
         Range16.init(0x0021, 0x0021, 1),
         Range16.init(0x002e, 0x002e, 1),
         Range16.init(0x003f, 0x003f, 1),
@@ -6406,7 +6408,7 @@ const _Sentence_Terminal = &RangeTable.{
         Range16.init(0xff1f, 0xff1f, 1),
         Range16.init(0xff61, 0xff61, 1),
     },
-    .r32 = []Range32.{
+    .r32 = Range32.{
         Range32.init(0x10a56, 0x10a57, 1),
         Range32.init(0x11047, 0x11048, 1),
         Range32.init(0x110be, 0x110c1, 1),
@@ -6432,11 +6434,9 @@ const _Sentence_Terminal = &RangeTable.{
         Range32.init(0x1bc9f, 0x1bc9f, 1),
         Range32.init(0x1da88, 0x1da88, 1),
     },
-    .latin_offset = 3,
 };
-
 const _Soft_Dotted = &RangeTable.{
-    .r16 = []Range16.{
+    .r16 = Range16.{
         Range16.init(0x0069, 0x006a, 1),
         Range16.init(0x012f, 0x012f, 1),
         Range16.init(0x0249, 0x0249, 1),
@@ -6456,7 +6456,7 @@ const _Soft_Dotted = &RangeTable.{
         Range16.init(0x2148, 0x2149, 1),
         Range16.init(0x2c7c, 0x2c7c, 1),
     },
-    .r32 = []Range32.{
+    .r32 = Range32.{
         Range32.init(0x1d422, 0x1d423, 1),
         Range32.init(0x1d456, 0x1d457, 1),
         Range32.init(0x1d48a, 0x1d48b, 1),
@@ -6471,11 +6471,9 @@ const _Soft_Dotted = &RangeTable.{
         Range32.init(0x1d65e, 0x1d65f, 1),
         Range32.init(0x1d692, 0x1d693, 1),
     },
-    .latin_offset = 1,
 };
-
 const _Terminal_Punctuation = &RangeTable.{
-    .r16 = []Range16.{
+    .r16 = Range16.{
         Range16.init(0x0021, 0x0021, 1),
         Range16.init(0x002c, 0x002c, 1),
         Range16.init(0x002e, 0x002e, 1),
@@ -6540,7 +6538,7 @@ const _Terminal_Punctuation = &RangeTable.{
         Range16.init(0xff61, 0xff61, 1),
         Range16.init(0xff64, 0xff64, 1),
     },
-    .r32 = []Range32.{
+    .r32 = Range32.{
         Range32.init(0x1039f, 0x1039f, 1),
         Range32.init(0x103d0, 0x103d0, 1),
         Range32.init(0x10857, 0x10857, 1),
@@ -6576,11 +6574,9 @@ const _Terminal_Punctuation = &RangeTable.{
         Range32.init(0x1bc9f, 0x1bc9f, 1),
         Range32.init(0x1da87, 0x1da8a, 1),
     },
-    .latin_offset = 5,
 };
-
 const _Unified_Ideograph = &RangeTable.{
-    .r16 = []Range16.{
+    .r16 = Range16.{
         Range16.init(0x3400, 0x4db5, 1),
         Range16.init(0x4e00, 0x9fea, 1),
         Range16.init(0xfa0e, 0xfa0f, 1),
@@ -6591,7 +6587,7 @@ const _Unified_Ideograph = &RangeTable.{
         Range16.init(0xfa23, 0xfa24, 1),
         Range16.init(0xfa27, 0xfa29, 1),
     },
-    .r32 = []Range32.{
+    .r32 = Range32.{
         Range32.init(0x20000, 0x2a6d6, 1),
         Range32.init(0x2a700, 0x2b734, 1),
         Range32.init(0x2b740, 0x2b81d, 1),
@@ -6599,17 +6595,15 @@ const _Unified_Ideograph = &RangeTable.{
         Range32.init(0x2ceb0, 0x2ebe0, 1),
     },
 };
-
 const _Variation_Selector = &RangeTable.{
-    .r16 = []Range16.{
+    .r16 = Range16.{
         Range16.init(0x180b, 0x180d, 1),
         Range16.init(0xfe00, 0xfe0f, 1),
     },
-    .r32 = []Range32.{Range32.init(0xe0100, 0xe01ef, 1)},
+    .r32 = Range32.{Range32.init(0xe0100, 0xe01ef, 1)},
 };
-
 const _White_Space = &RangeTable.{
-    .r16 = []Range16.{
+    .r16 = Range16.{
         Range16.init(0x0009, 0x000d, 1),
         Range16.init(0x0020, 0x0020, 1),
         Range16.init(0x0085, 0x0085, 1),
@@ -6621,9 +6615,8 @@ const _White_Space = &RangeTable.{
         Range16.init(0x205f, 0x205f, 1),
         Range16.init(0x3000, 0x3000, 1),
     },
-    .latin_offset = 4,
+    .r32 = Range32.{},
 };
-
 // These variables have type *RangeTable.
 pub const STerm = _Sentence_Terminal; // STerm is an alias for Sentence_Terminal.
 pub const ASCII_Hex_Digit = _ASCII_Hex_Digit; // ASCII_Hex_Digit is the set of Unicode characters with property ASCII_Hex_Digit.
@@ -7485,10 +7478,12 @@ pub const FoldCategory = enum.{
     }
 };
 
-const foldL = &RangeTable.{ .r16 = []Range16.{Range16.init(0x0345, 0x0345, 1)} };
-
+const foldL = &RangeTable.{
+    .r16 = Range16.{Range16.init(0x0345, 0x0345, 1)},
+    .r32 = Range32.{},
+};
 const foldLl = &RangeTable.{
-    .r16 = []Range16.{
+    .r16 = Range16.{
         Range16.init(0x0041, 0x005a, 1),
         Range16.init(0x00c0, 0x00d6, 1),
         Range16.init(0x00d8, 0x00de, 1),
@@ -7592,30 +7587,30 @@ const foldLl = &RangeTable.{
         Range16.init(0xa7b6, 0xff21, 22379),
         Range16.init(0xff22, 0xff3a, 1),
     },
-    .r32 = []Range32.{
+    .r32 = Range32.{
         Range32.init(0x10400, 0x10427, 1),
         Range32.init(0x104b0, 0x104d3, 1),
         Range32.init(0x10c80, 0x10cb2, 1),
         Range32.init(0x118a0, 0x118bf, 1),
         Range32.init(0x1e900, 0x1e921, 1),
     },
-    .latin_offset = 3,
 };
-
-const foldLt = &RangeTable.{ .r16 = []Range16.{
-    Range16.init(0x01c4, 0x01c6, 2),
-    Range16.init(0x01c7, 0x01c9, 2),
-    Range16.init(0x01ca, 0x01cc, 2),
-    Range16.init(0x01f1, 0x01f3, 2),
-    Range16.init(0x1f80, 0x1f87, 1),
-    Range16.init(0x1f90, 0x1f97, 1),
-    Range16.init(0x1fa0, 0x1fa7, 1),
-    Range16.init(0x1fb3, 0x1fc3, 16),
-    Range16.init(0x1ff3, 0x1ff3, 1),
-} };
-
+const foldLt = &RangeTable.{
+    .r16 = Range16.{
+        Range16.init(0x01c4, 0x01c6, 2),
+        Range16.init(0x01c7, 0x01c9, 2),
+        Range16.init(0x01ca, 0x01cc, 2),
+        Range16.init(0x01f1, 0x01f3, 2),
+        Range16.init(0x1f80, 0x1f87, 1),
+        Range16.init(0x1f90, 0x1f97, 1),
+        Range16.init(0x1fa0, 0x1fa7, 1),
+        Range16.init(0x1fb3, 0x1fc3, 16),
+        Range16.init(0x1ff3, 0x1ff3, 1),
+    },
+    .r32 = Range32.{},
+};
 const foldLu = &RangeTable.{
-    .r16 = []Range16.{
+    .r16 = Range16.{
         Range16.init(0x0061, 0x007a, 1),
         Range16.init(0x00b5, 0x00df, 42),
         Range16.init(0x00e0, 0x00f6, 1),
@@ -7719,26 +7714,28 @@ const foldLu = &RangeTable.{
         Range16.init(0xab71, 0xabbf, 1),
         Range16.init(0xff41, 0xff5a, 1),
     },
-    .r32 = []Range32.{
+    .r32 = Range32.{
         Range32.init(0x10428, 0x1044f, 1),
         Range32.init(0x104d8, 0x104fb, 1),
         Range32.init(0x10cc0, 0x10cf2, 1),
         Range32.init(0x118c0, 0x118df, 1),
         Range32.init(0x1e922, 0x1e943, 1),
     },
-    .latin_offset = 4,
 };
-
-const foldM = &RangeTable.{ .r16 = []Range16.{
-    Range16.init(0x0399, 0x03b9, 32),
-    Range16.init(0x1fbe, 0x1fbe, 1),
-} };
-
-const foldMn = &RangeTable.{ .r16 = []Range16.{
-    Range16.init(0x0399, 0x03b9, 32),
-    Range16.init(0x1fbe, 0x1fbe, 1),
-} };
-
+const foldM = &RangeTable.{
+    .r16 = Range16.{
+        Range16.init(0x0399, 0x03b9, 32),
+        Range16.init(0x1fbe, 0x1fbe, 1),
+    },
+    .r32 = Range32.{},
+};
+const foldMn = &RangeTable.{
+    .r16 = Range16.{
+        Range16.init(0x0399, 0x03b9, 32),
+        Range16.init(0x1fbe, 0x1fbe, 1),
+    },
+    .r32 = Range32.{},
+};
 // FoldScript maps a script name to a table of
 // code points outside the script that are equivalent under
 // simple case folding to code points inside the script.
@@ -7762,14 +7759,21 @@ pub const FoldScript = enum.{
     }
 };
 
-const foldCommon = &RangeTable.{ .r16 = []Range16.{Range16.init(0x039c, 0x03bc, 32)} };
-
-const foldGreek = &RangeTable.{ .r16 = []Range16.{Range16.init(0x00b5, 0x0345, 656)} };
-
-const foldInherited = &RangeTable.{ .r16 = []Range16.{
-    Range16.init(0x0399, 0x03b9, 32),
-    Range16.init(0x1fbe, 0x1fbe, 1),
-} };
+const foldCommon = &RangeTable.{
+    .r16 = Range16.{Range16.init(0x039c, 0x03bc, 32)},
+    .r32 = Range32.{},
+};
+const foldGreek = &RangeTable.{
+    .r16 = Range16.{Range16.init(0x00b5, 0x0345, 656)},
+    .r32 = Range32.{},
+};
+const foldInherited = &RangeTable.{
+    .r16 = Range16.{
+        Range16.init(0x0399, 0x03b9, 32),
+        Range16.init(0x1fbe, 0x1fbe, 1),
+    },
+    .r32 = Range32.{},
+};
 
 // Range entries: 3587 16-bit, 1554 32-bit, 5141 total.
 // Range bytes: 21522 16-bit, 18648 32-bit, 40170 total.
