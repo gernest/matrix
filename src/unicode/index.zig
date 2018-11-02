@@ -300,7 +300,50 @@ test "toUpper" {
     }
 }
 
-// test "bug" {
-//     const r = toUpper(42560);
-//     _ = t.terrorf("\n====={},{}\n", r, r == 42560);
-// }
+pub fn toLower(rune: u32) u32 {
+    if (rune <= base.max_ascii) {
+        if ('A' <= rune and rune <= 'Z') {
+            return rune + ('a' - 'A');
+        }
+        return rune;
+    }
+    return to(base.Case.Lower, rune);
+}
+
+test "toLower" {
+    for (case_test) |c, idx| {
+        switch (c.case) {
+            base.Case.Lower => {
+                const r = toLower(c.in);
+                if (r != c.out) {
+                    try t.terrorf("expected {} got {}\n", c.out, r);
+                }
+            },
+            else => {},
+        }
+    }
+}
+
+pub fn toTitle(rune: u32) u32 {
+    if (rune <= base.max_ascii) {
+        if ('a' <= rune and rune <= 'z') {
+            return rune - ('a' - 'A');
+        }
+        return rune;
+    }
+    return to(base.Case.Title, rune);
+}
+
+test "toLower" {
+    for (case_test) |c, idx| {
+        switch (c.case) {
+            base.Case.Title => {
+                const r = toTitle(c.in);
+                if (r != c.out) {
+                    try t.terrorf("expected {} got {}\n", c.out, r);
+                }
+            },
+            else => {},
+        }
+    }
+}
