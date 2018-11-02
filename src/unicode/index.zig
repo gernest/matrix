@@ -1,9 +1,8 @@
 const base = @import("base.zig");
 const letter = @import("letter.zig");
 const tables = @import("tables.zig");
-const std = @import("std");
-const assert = std.debug.assert;
-const warn = std.debug.warn;
+const t = @import("../testing/index.zig");
+const warn = @import("std").debug.warn;
 
 /// isUpper reports whether the rune is an upper case letter.
 pub fn isUpper(rune: u32) bool {
@@ -40,8 +39,9 @@ test "isUpper" {
         0x1d7ca,
     };
 
-    for (upper_test) |r| {
-        warn("{}\n", r);
-        assert(isUpper(r) == true);
+    for (upper_test) |r, i| {
+        if (!isUpper(r)) {
+            try t.terrorf("\nexpected to be {} to be uppter i={}\n", r, i);
+        }
     }
 }

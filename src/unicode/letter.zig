@@ -74,7 +74,7 @@ pub fn is(range_tab: *base.RangeTable, r: u32) bool {
 pub fn isExcludingLatin(range_tab: *const base.RangeTable, r: u32) bool {
     const off = range_tab.latin_offset;
     const r16_len = range_tab.r16.len;
-    if (r16_len > off and r < @intCast(u32, range_tab.r16[r16_len - 1].hi)) {
+    if (r16_len > off and r <= @intCast(u32, range_tab.r16[r16_len - 1].hi)) {
         return is16(range_tab.r16[off..], @intCast(u16, r));
     }
     if (range_tab.r32.len > 0 and r >= range_tab.r32[0].lo) {
