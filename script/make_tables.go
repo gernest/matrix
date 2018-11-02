@@ -562,22 +562,22 @@ const format16 = "    Range16.init(0x%04x, 0x%04x, %d),\n"
 func dumpRangeTable(name string, table *unicode.RangeTable) {
 	printf("%s = &RangeTable.{\n", name)
 	if len(table.R16) != 0 {
-		println("  .r16=Range16.{")
+		println("  .r16=[]Range16.{")
 		for _, v := range table.R16 {
 			printf(format16, v.Lo, v.Hi, v.Stride)
 		}
 		println("},")
 	} else {
-		println("  .r16=Range16.{},")
+		println("  .r16=[]Range16.{},")
 	}
 	if len(table.R32) != 0 {
-		println("  .r32=Range32.{")
+		println("  .r32=[]Range32.{")
 		for _, v := range table.R32 {
 			printf(format32, v.Lo, v.Hi, v.Stride)
 		}
 		println("},")
 	} else {
-		println("  .r32=Range32.{},")
+		println("  .r32=[]Range32.{},")
 	}
 	println("};")
 }
