@@ -577,7 +577,7 @@ func dumpRangeTable(name string, table *unicode.RangeTable) {
 		println("  .r32=init:{")
 		println("  var r=[]Range32.{")
 		for _, v := range table.R32 {
-			printf(format16, v.Lo, v.Hi, v.Stride)
+			printf(format32, v.Lo, v.Hi, v.Stride)
 		}
 		println("};")
 		println("break :init r[0..];")
