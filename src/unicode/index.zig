@@ -13,6 +13,18 @@ pub fn isUpper(rune: u32) bool {
     return letter.isExcludingLatin(tables.Upper, rune);
 }
 
+const notletterTest = []u32.{
+    0x20,
+    0x35,
+    0x375,
+    0x619,
+    0x700,
+    0x1885,
+    0xfffe,
+    0x1ffff,
+    0x10ffff,
+};
+
 test "isUpper" {
     const upper_test = []u32.{
         0x41,
@@ -38,10 +50,32 @@ test "isUpper" {
         0x1d400,
         0x1d7ca,
     };
-
+    const notupperTest = []u32.{
+        0x40,
+        0x5b,
+        0x61,
+        0x185,
+        0x1b0,
+        0x377,
+        0x387,
+        0x2150,
+        0xab7d,
+        0xffff,
+        0x10000,
+    };
     for (upper_test) |r, i| {
         if (!isUpper(r)) {
-            try t.terrorf("\nexpected to be {} to be uppter i={}\n", r, i);
+            try t.terrorf("\nexpected {} to be upper i={}\n", r, i);
+        }
+    }
+    for (notupperTest) |r, i| {
+        if (isUpper(r)) {
+            try t.terrorf("\nexpected {} not to be upper i={}\n", r, i);
+        }
+    }
+    for (notletterTest) |r, i| {
+        if (isUpper(r)) {
+            try t.terrorf("\nexpected {} not to be upper i={}\n", r, i);
         }
     }
 }
