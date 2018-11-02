@@ -45,3 +45,12 @@ test "isUpper" {
         }
     }
 }
+
+// isLower reports whether the rune is a lower case letter.
+pub fn isLower(rune: u32) bool {
+    if (rune <= base.max_latin1) {
+        const p = tables.properties[@intCast(usize, rune)];
+        return (p & base.pLmask) == base.pLl;
+    }
+    return letter.isExcludingLatin(tables.Lower, rune);
+}
