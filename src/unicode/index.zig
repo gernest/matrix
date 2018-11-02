@@ -88,3 +88,11 @@ pub fn isLower(rune: u32) bool {
     }
     return letter.isExcludingLatin(tables.Lower, rune);
 }
+
+// IsTitle reports whether the rune is a title case letter.
+pub fn isTitle(rune: u32) bool {
+    if (rune <= base.max_latin1) {
+        return false;
+    }
+    return letter.isExcludingLatin(tables.Title, rune);
+}
