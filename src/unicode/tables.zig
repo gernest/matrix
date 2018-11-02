@@ -131,7 +131,7 @@ const _C = RangeTable.{
         };
         break :init r[0..];
     },
-    .latin_offset = 0,
+    .latin_offset = 2,
 };
 const _Cc = RangeTable.{
     .r16 = init: {
@@ -142,7 +142,7 @@ const _Cc = RangeTable.{
         break :init r[0..];
     },
     .r32 = []Range32.{},
-    .latin_offset = 0,
+    .latin_offset = 2,
 };
 const _Cf = RangeTable.{
     .r16 = init: {
@@ -754,7 +754,7 @@ const _L = RangeTable.{
         };
         break :init r[0..];
     },
-    .latin_offset = 0,
+    .latin_offset = 6,
 };
 const _Ll = RangeTable.{
     .r16 = init: {
@@ -917,7 +917,7 @@ const _Ll = RangeTable.{
         };
         break :init r[0..];
     },
-    .latin_offset = 0,
+    .latin_offset = 4,
 };
 const _Lm = RangeTable.{
     .r16 = init: {
@@ -1419,7 +1419,7 @@ const _Lo = RangeTable.{
         };
         break :init r[0..];
     },
-    .latin_offset = 0,
+    .latin_offset = 1,
 };
 const _Lt = RangeTable.{
     .r16 = init: {
@@ -1586,7 +1586,7 @@ const _Lu = RangeTable.{
         };
         break :init r[0..];
     },
-    .latin_offset = 0,
+    .latin_offset = 3,
 };
 const _M = RangeTable.{
     .r16 = init: {
@@ -2428,7 +2428,7 @@ const _N = RangeTable.{
         };
         break :init r[0..];
     },
-    .latin_offset = 0,
+    .latin_offset = 4,
 };
 const _Nd = RangeTable.{
     .r16 = init: {
@@ -2496,7 +2496,7 @@ const _Nd = RangeTable.{
         };
         break :init r[0..];
     },
-    .latin_offset = 0,
+    .latin_offset = 1,
 };
 const _Nl = RangeTable.{
     .r16 = init: {
@@ -2592,7 +2592,7 @@ const _No = RangeTable.{
         };
         break :init r[0..];
     },
-    .latin_offset = 0,
+    .latin_offset = 3,
 };
 const _P = RangeTable.{
     .r16 = init: {
@@ -2755,7 +2755,7 @@ const _P = RangeTable.{
         };
         break :init r[0..];
     },
-    .latin_offset = 0,
+    .latin_offset = 11,
 };
 const _Pc = RangeTable.{
     .r16 = init: {
@@ -2820,7 +2820,7 @@ const _Pe = RangeTable.{
         break :init r[0..];
     },
     .r32 = []Range32.{},
-    .latin_offset = 0,
+    .latin_offset = 1,
 };
 const _Pf = RangeTable.{
     .r16 = init: {
@@ -3010,7 +3010,7 @@ const _Po = RangeTable.{
         };
         break :init r[0..];
     },
-    .latin_offset = 0,
+    .latin_offset = 8,
 };
 const _Ps = RangeTable.{
     .r16 = init: {
@@ -3044,7 +3044,7 @@ const _Ps = RangeTable.{
         break :init r[0..];
     },
     .r32 = []Range32.{},
-    .latin_offset = 0,
+    .latin_offset = 1,
 };
 const _S = RangeTable.{
     .r16 = init: {
@@ -3245,7 +3245,7 @@ const _S = RangeTable.{
         };
         break :init r[0..];
     },
-    .latin_offset = 0,
+    .latin_offset = 10,
 };
 const _Sc = RangeTable.{
     .r16 = init: {
@@ -3266,7 +3266,7 @@ const _Sc = RangeTable.{
         break :init r[0..];
     },
     .r32 = []Range32.{},
-    .latin_offset = 0,
+    .latin_offset = 2,
 };
 const _Sk = RangeTable.{
     .r16 = init: {
@@ -3304,7 +3304,7 @@ const _Sk = RangeTable.{
         };
         break :init r[0..];
     },
-    .latin_offset = 0,
+    .latin_offset = 3,
 };
 const _Sm = RangeTable.{
     .r16 = init: {
@@ -3366,7 +3366,7 @@ const _Sm = RangeTable.{
         };
         break :init r[0..];
     },
-    .latin_offset = 0,
+    .latin_offset = 5,
 };
 const _So = RangeTable.{
     .r16 = init: {
@@ -3537,7 +3537,7 @@ const _So = RangeTable.{
         };
         break :init r[0..];
     },
-    .latin_offset = 0,
+    .latin_offset = 2,
 };
 const _Z = RangeTable.{
     .r16 = init: {
@@ -3552,7 +3552,7 @@ const _Z = RangeTable.{
         break :init r[0..];
     },
     .r32 = []Range32.{},
-    .latin_offset = 0,
+    .latin_offset = 1,
 };
 const _Zl = RangeTable.{
     .r16 = init: {
@@ -3582,7 +3582,7 @@ const _Zs = RangeTable.{
         break :init r[0..];
     },
     .r32 = []Range32.{},
-    .latin_offset = 0,
+    .latin_offset = 1,
 };
 pub const Cc = &_Cc; // Cc is the set of Unicode characters in category Cc.
 pub const Cf = &_Cf; // Cf is the set of Unicode characters in category Cf.
@@ -8595,7 +8595,7 @@ const foldLl = RangeTable.{
         };
         break :init r[0..];
     },
-    .latin_offset = 0,
+    .latin_offset = 3,
 };
 const foldLt = RangeTable.{
     .r16 = init: {
@@ -8733,7 +8733,7 @@ const foldLu = RangeTable.{
         };
         break :init r[0..];
     },
-    .latin_offset = 0,
+    .latin_offset = 4,
 };
 const foldM = RangeTable.{
     .r16 = init: {

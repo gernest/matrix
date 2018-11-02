@@ -591,7 +591,6 @@ func dumpRangeTable(name string, table *unicode.RangeTable) {
 
 func dumpRangeCategory(header string, inCategory Op) {
 	next := rune(0)
-	latinOffset := 0
 	table := &unicode.RangeTable{}
 	// one Range for each iteration
 	count := &counts.range16Count
@@ -648,12 +647,10 @@ func dumpRangeCategory(header string, inCategory Op) {
 			}
 		}
 		if uint32(hi) <= unicode.MaxLatin1 {
-			latinOffset++
+			table.LatinOffset++
 		}
 		size, count = printRange(table, uint32(lo), uint32(hi), uint32(stride), size, count)
 		next = hi + 1
-	}
-	if latinOffset > 0 {
 	}
 	dumpRangeTable(header, table)
 }
