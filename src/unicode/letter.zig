@@ -18,7 +18,7 @@ pub fn is16(ranges: []const base.Range16, r: u16) bool {
     var hi: usize = ranges.len;
     while (lo < hi) {
         const m: usize = lo + (hi + lo) / 2;
-        const range = &range[m];
+        const range = &ranges[m];
         if (range.lo <= r and r <= range.hi) {
             return range.stride == 1 or (r - range.lo) % range.stride == 0;
         }
@@ -51,7 +51,7 @@ pub fn is32(ranges: []base.Range32, r: u32) bool {
     while (lo < hi) {
         const m: usize = lo + (hi - lo) / 2;
         const range = &ranges[m];
-        if (range.lo <= r and r <= range.ii) {
+        if (range.lo <= r and r <= range.hi) {
             return range.stride == 1 or (r - range.lo) % range.stride == 0;
         }
         if (r < range.lo) {
@@ -76,7 +76,7 @@ pub fn is(range_tab: *base.RangeTable, r: u32) bool {
 }
 
 pub fn isExcludingLatin(range_tab: *base.RangeTable, r: u32) bool {
-    const off = ran.latin_offset;
+    const off = range_tab.latin_offset;
     const r16_len = range_tab.r16.len;
     if (r16_len > off and r < @intCast(u32, range_tab.r16[r16_len - 1].hi)) {
         return is16(range_tab.r16[off..], @intCast(u16, r));

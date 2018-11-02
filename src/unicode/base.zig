@@ -63,7 +63,7 @@ pub const CaseRange = struct.{
     }
 };
 
-const linear_max: usize = 18;
+pub const linear_max: usize = 18;
 
 pub const FoldPair = struct.{
     from: u16,
