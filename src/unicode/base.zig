@@ -1,5 +1,5 @@
 pub const max_rune: u32 = 0x10ffff;
-pub const replacement_char = 0xfffd;
+pub const replacement_char: u32 = 0xfffd;
 pub const max_ascii: u32 = 0x7f;
 pub const max_latin1: u32 = 0xff;
 
@@ -18,7 +18,7 @@ pub const pLmask: u8 = 96;
 /// If the Delta field of a CaseRange is UpperLower, it means
 /// this CaseRange represents a sequence of the form (say)
 /// Upper Lower Upper Lower.
-pub const upper_lower: u32 = max_rune + 1;
+pub const upper_lower: i32 = @intCast(i32, max_rune) + 1;
 
 pub const RangeTable = struct.{
     r16: []Range16,
@@ -51,14 +51,18 @@ pub const Case = enum(usize).{
     Lower,
     Title,
     Max,
+
+    pub fn rune(self: Case) u32 {
+        return @intCast(u32, @enumToInt(self));
+    }
 };
 
 pub const CaseRange = struct.{
     lo: u32,
     hi: u32,
-    delta: []const u32,
+    delta: []const i32,
 
-    pub fn init(lo: u32, hi: u32, delta: []const u32) CaseRange {
+    pub fn init(lo: u32, hi: u32, delta: []const i32) CaseRange {
         return CaseRange.{ .lo = lo, .hi = hi, .delta = delta };
     }
 };

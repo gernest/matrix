@@ -441,6 +441,7 @@ const base=@import("base.zig");
 const RangeTable=base.RangeTable;
 const Range16=base.Range16;
 const Range32=base.Range32;
+const CaseRange=base.CaseRange;
 `
 
 func printCategories() {
@@ -1172,14 +1173,14 @@ func printCaseRange(lo, hi *caseState) {
 	}
 	switch {
 	case hi.point > lo.point && lo.isUpperLower():
-		printf("  CaseRange.init(0x%04X, 0x%04X, []const u32.{base.upper_lower, base.upper_lower, base.upper_lower}),\n",
+		printf("  CaseRange.init(0x%04X, 0x%04X, []const i32.{base.upper_lower, base.upper_lower, base.upper_lower}),\n",
 			lo.point, hi.point)
 	case hi.point > lo.point && lo.isLowerUpper():
 		logger.Fatalf("LowerUpper sequence: should not happen: %U.  If it's real, need to fix To()", lo.point)
-		printf("  CaseRange.init(0x%04X, 0x%04X, []const u32.{base.upper_lower, base.upper_lower, base.upper_lower}),\n",
+		printf("  CaseRange.init(0x%04X, 0x%04X, []const i32.{base.upper_lower, base.upper_lower, base.upper_lower}),\n",
 			lo.point, hi.point)
 	default:
-		printf("  CaseRange.init(0x%04X, 0x%04X, []const u32.{%d, %d, %d}),\n",
+		printf("  CaseRange.init(0x%04X, 0x%04X, []const i32.{%d, %d, %d}),\n",
 			lo.point, hi.point,
 			lo.deltaToUpper, lo.deltaToLower, lo.deltaToTitle)
 	}

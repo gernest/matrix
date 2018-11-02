@@ -96,3 +96,205 @@ pub fn isTitle(rune: u32) bool {
     }
     return letter.isExcludingLatin(tables.Title, rune);
 }
+
+const toResult = struct.{
+    mapped: u32,
+    found_mapping: bool,
+};
+
+fn to_case(_case: base.Case, rune: u32, case_range: []base.CaseRange) toResult {
+    if (_case.rune() < 0 or base.Case.Max.rune() <= _case.rune()) {
+        return toResult.{
+            .mapped = base.replacement_char,
+            .found_mapping = false,
+        };
+    }
+    var lo: usize = 0;
+    var hi = case_range.len;
+    while (lo < hi) {
+        const m = lo + (hi - lo) / 2;
+        const cr = case_range[m];
+        if (cr.lo <= rune and rune <= cr.hi) {
+            const delta = cr.delta[_case.rune()];
+
+            if (delta > @intCast(i32, base.max_rune)) {
+                // In an Upper-Lower sequence, which always starts with
+                // an UpperCase letter, the real deltas always look like:
+                //{0, 1, 0}    UpperCase (Lower is next)
+                //{-1, 0, -1}  LowerCase (Upper, Title are previous)
+                // The characters at even offsets from the beginning of the
+                // sequence are upper case; the ones at odd offsets are lower.
+                // The correct mapping can be done by clearing or setting the low
+                // bit in the sequence offset.
+                // The constants UpperCase and TitleCase are even while LowerCase
+                // is odd so we take the low bit from _case.
+                var i: u32 = 1;
+                return toResult.{
+                    .mapped = cr.lo + (cr.lo & ~i | _case.rune() & 1),
+                    .found_mapping = true,
+                };
+            }
+            return toResult.{
+                .mapped = @intCast(u32, @intCast(i32, rune) + delta),
+                .found_mapping = true,
+            };
+        }
+        if (rune < cr.lo) {
+            hi = m;
+        } else {
+            lo = m + 1;
+        }
+    }
+    return toResult.{
+        .mapped = rune,
+        .found_mapping = false,
+    };
+}
+
+// to maps the rune to the specified case: UpperCase, LowerCase, or TitleCase.
+pub fn to(case: base.Case, rune: u32) u32 {
+    const v = to_case(case, rune, tables.CaseRanges);
+    return v.mapped;
+}
+
+pub fn toUpper(rune: u32) u32 {
+    if (rune <= base.max_ascii) {
+        if ('a' <= rune and rune <= 'z') {
+            return rune - ('a' - 'A');
+        }
+        return rune;
+    }
+    return to(base.Case.Upper, rune);
+}
+
+const caseT = struct.{
+    case: base.Case,
+    in: u32,
+    out: u32,
+    fn init(case: base.Case, in: u32, out: u32) caseT {
+        return caseT.{ .case = case, .in = in, .out = out };
+    }
+};
+
+const case_test = []caseT.{
+
+    // ASCII (special-cased so test carefully)
+    caseT.init(base.Case.Upper, '\n', '\n'),
+    caseT.init(base.Case.Upper, 'a', 'A'),
+    caseT.init(base.Case.Upper, 'A', 'A'),
+    caseT.init(base.Case.Upper, '7', '7'),
+    caseT.init(base.Case.Lower, '\n', '\n'),
+    caseT.init(base.Case.Lower, 'a', 'a'),
+    caseT.init(base.Case.Lower, 'A', 'a'),
+    caseT.init(base.Case.Lower, '7', '7'),
+    caseT.init(base.Case.Title, '\n', '\n'),
+    caseT.init(base.Case.Title, 'a', 'A'),
+    caseT.init(base.Case.Title, 'A', 'A'),
+    caseT.init(base.Case.Title, '7', '7'),
+    // Latin-1: easy to read the tests!
+    caseT.init(base.Case.Upper, 0x80, 0x80),
+    // caseT.init(base.Case.Upper, 'Å', 'Å'),
+    // caseT.init(base.Case.Upper, 'å', 'Å'),
+    caseT.init(base.Case.Lower, 0x80, 0x80),
+    // caseT.init(base.Case.Lower, 'Å', 'å'),
+    // caseT.init(base.Case.Lower, 'å', 'å'),
+    caseT.init(base.Case.Title, 0x80, 0x80),
+    // caseT.init(base.Case.Title, 'Å', 'Å'),
+    // caseT.init(base.Case.Title, 'å', 'Å'),
+
+    // 0131;LATIN SMALL LETTER DOTLESS I;Ll;0;L;;;;;N;;;0049;;0049
+    caseT.init(base.Case.Upper, 0x0131, 'I'),
+    caseT.init(base.Case.Lower, 0x0131, 0x0131),
+    caseT.init(base.Case.Title, 0x0131, 'I'),
+
+    // 0133;LATIN SMALL LIGATURE IJ;Ll;0;L;<compat> 0069 006A;;;;N;LATIN SMALL LETTER I J;;0132;;0132
+    caseT.init(base.Case.Upper, 0x0133, 0x0132),
+    caseT.init(base.Case.Lower, 0x0133, 0x0133),
+    caseT.init(base.Case.Title, 0x0133, 0x0132),
+
+    // 212A;KELVIN SIGN;Lu;0;L;004B;;;;N;DEGREES KELVIN;;;006B;
+    caseT.init(base.Case.Upper, 0x212A, 0x212A),
+    caseT.init(base.Case.Lower, 0x212A, 'k'),
+    caseT.init(base.Case.Title, 0x212A, 0x212A),
+
+    // From an UpperLower sequence
+    // A640;CYRILLIC CAPITAL LETTER ZEMLYA;Lu;0;L;;;;;N;;;;A641;
+    caseT.init(base.Case.Upper, 0xA640, 0xA640),
+    caseT.init(base.Case.Lower, 0xA640, 0xA641),
+    caseT.init(base.Case.Title, 0xA640, 0xA640),
+    // A641;CYRILLIC SMALL LETTER ZEMLYA;Ll;0;L;;;;;N;;;A640;;A640
+    caseT.init(base.Case.Upper, 0xA641, 0xA640),
+    caseT.init(base.Case.Lower, 0xA641, 0xA641),
+    caseT.init(base.Case.Title, 0xA641, 0xA640),
+    // A64E;CYRILLIC CAPITAL LETTER NEUTRAL YER;Lu;0;L;;;;;N;;;;A64F;
+    caseT.init(base.Case.Upper, 0xA64E, 0xA64E),
+    caseT.init(base.Case.Lower, 0xA64E, 0xA64F),
+    caseT.init(base.Case.Title, 0xA64E, 0xA64E),
+    // A65F;CYRILLIC SMALL LETTER YN;Ll;0;L;;;;;N;;;A65E;;A65E
+    caseT.init(base.Case.Upper, 0xA65F, 0xA65E),
+    caseT.init(base.Case.Lower, 0xA65F, 0xA65F),
+    caseT.init(base.Case.Title, 0xA65F, 0xA65E),
+
+    // From another UpperLower sequence
+    // 0139;LATIN CAPITAL LETTER L WITH ACUTE;Lu;0;L;004C 0301;;;;N;LATIN CAPITAL LETTER L ACUTE;;;013A;
+    caseT.init(base.Case.Upper, 0x0139, 0x0139),
+    caseT.init(base.Case.Lower, 0x0139, 0x013A),
+    caseT.init(base.Case.Title, 0x0139, 0x0139),
+    // 013F;LATIN CAPITAL LETTER L WITH MIDDLE DOT;Lu;0;L;<compat> 004C 00B7;;;;N;;;;0140;
+    caseT.init(base.Case.Upper, 0x013f, 0x013f),
+    caseT.init(base.Case.Lower, 0x013f, 0x0140),
+    caseT.init(base.Case.Title, 0x013f, 0x013f),
+    // 0148;LATIN SMALL LETTER N WITH CARON;Ll;0;L;006E 030C;;;;N;LATIN SMALL LETTER N HACEK;;0147;;0147
+    caseT.init(base.Case.Upper, 0x0148, 0x0147),
+    caseT.init(base.Case.Lower, 0x0148, 0x0148),
+    caseT.init(base.Case.Title, 0x0148, 0x0147),
+
+    // base.Case.Lower lower than base.Case.Upper.
+    // AB78;CHEROKEE SMALL LETTER GE;Ll;0;L;;;;;N;;;13A8;;13A8
+    caseT.init(base.Case.Upper, 0xab78, 0x13a8),
+    caseT.init(base.Case.Lower, 0xab78, 0xab78),
+    caseT.init(base.Case.Title, 0xab78, 0x13a8),
+    caseT.init(base.Case.Upper, 0x13a8, 0x13a8),
+    caseT.init(base.Case.Lower, 0x13a8, 0xab78),
+    caseT.init(base.Case.Title, 0x13a8, 0x13a8),
+
+    // Last block in the 5.1.0 table
+    // 10400;DESERET CAPITAL LETTER LONG I;Lu;0;L;;;;;N;;;;10428;
+    caseT.init(base.Case.Upper, 0x10400, 0x10400),
+    caseT.init(base.Case.Lower, 0x10400, 0x10428),
+    caseT.init(base.Case.Title, 0x10400, 0x10400),
+    // 10427;DESERET CAPITAL LETTER EW;Lu;0;L;;;;;N;;;;1044F;
+    caseT.init(base.Case.Upper, 0x10427, 0x10427),
+    caseT.init(base.Case.Lower, 0x10427, 0x1044F),
+    caseT.init(base.Case.Title, 0x10427, 0x10427),
+    // 10428;DESERET SMALL LETTER LONG I;Ll;0;L;;;;;N;;;10400;;10400
+    caseT.init(base.Case.Upper, 0x10428, 0x10400),
+    caseT.init(base.Case.Lower, 0x10428, 0x10428),
+    caseT.init(base.Case.Title, 0x10428, 0x10400),
+    // 1044F;DESERET SMALL LETTER EW;Ll;0;L;;;;;N;;;10427;;10427
+    caseT.init(base.Case.Upper, 0x1044F, 0x10427),
+    caseT.init(base.Case.Lower, 0x1044F, 0x1044F),
+    caseT.init(base.Case.Title, 0x1044F, 0x10427),
+
+    // First one not in the 5.1.0 table
+    // 10450;SHAVIAN LETTER PEEP;Lo;0;L;;;;;N;;;;;
+    caseT.init(base.Case.Upper, 0x10450, 0x10450),
+    caseT.init(base.Case.Lower, 0x10450, 0x10450),
+    caseT.init(base.Case.Title, 0x10450, 0x10450),
+
+    // Non-letters with case.
+    caseT.init(base.Case.Lower, 0x2161, 0x2171),
+    caseT.init(base.Case.Upper, 0x0345, 0x0399),
+};
+
+test "toUpper" {
+    for (case_test) |c| {
+        if (c.case != base.Case.Upper) {
+            continue;
+        }
+        const r = toUpper(c.in);
+        if (r != c.out) {
+            _ = t.terrorf("\n toUpper expected {} got {} \n", c.out, r);
+        }
+    }
+}
