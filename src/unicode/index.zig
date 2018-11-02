@@ -116,7 +116,6 @@ fn to_case(_case: base.Case, rune: u32, case_range: []base.CaseRange) toResult {
         const cr = case_range[m];
         if (cr.lo <= rune and rune <= cr.hi) {
             const delta = cr.delta[_case.rune()];
-
             if (delta > @intCast(i32, base.max_rune)) {
                 // In an Upper-Lower sequence, which always starts with
                 // an UpperCase letter, the real deltas always look like:
@@ -130,7 +129,7 @@ fn to_case(_case: base.Case, rune: u32, case_range: []base.CaseRange) toResult {
                 // is odd so we take the low bit from _case.
                 var i: u32 = 1;
                 return toResult.{
-                    .mapped = cr.lo + (cr.lo & ~i | _case.rune() & 1),
+                    .mapped = cr.lo + ((rune - cr.lo) & ~i | _case.rune() & 1),
                     .found_mapping = true,
                 };
             }
@@ -288,13 +287,20 @@ const case_test = []caseT.{
 };
 
 test "toUpper" {
-    for (case_test) |c| {
-        if (c.case != base.Case.Upper) {
-            continue;
-        }
-        const r = toUpper(c.in);
-        if (r != c.out) {
-            _ = t.terrorf("\n toUpper expected {} got {} \n", c.out, r);
+    for (case_test) |c, idx| {
+        switch (c.case) {
+            base.Case.Upper => {
+                const r = toUpper(c.in);
+                if (r != c.out) {
+                    try t.terrorf("expected {} got {}\n", c.out, r);
+                }
+            },
+            else => {},
         }
     }
 }
+
+// test "bug" {
+//     const r = toUpper(42560);
+//     _ = t.terrorf("\n====={},{}\n", r, r == 42560);
+// }
