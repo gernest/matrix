@@ -121,16 +121,17 @@ const _C = RangeTable.{
     },
     .r32 = init: {
         var r = []Range32.{
-            Range16.init(0x110bd, 0x1bca0, 44003),
-            Range16.init(0x1bca1, 0x1bca3, 1),
-            Range16.init(0x1d173, 0x1d17a, 1),
-            Range16.init(0xe0001, 0xe0020, 31),
-            Range16.init(0xe0021, 0xe007f, 1),
-            Range16.init(0xf0000, 0xffffd, 1),
-            Range16.init(0x100000, 0x10fffd, 1),
+            Range32.init(0x110bd, 0x1bca0, 44003),
+            Range32.init(0x1bca1, 0x1bca3, 1),
+            Range32.init(0x1d173, 0x1d17a, 1),
+            Range32.init(0xe0001, 0xe0020, 31),
+            Range32.init(0xe0021, 0xe007f, 1),
+            Range32.init(0xf0000, 0xffffd, 1),
+            Range32.init(0x100000, 0x10fffd, 1),
         };
         break :init r[0..];
     },
+    .latin_offset = 0,
 };
 const _Cc = RangeTable.{
     .r16 = init: {
@@ -141,6 +142,7 @@ const _Cc = RangeTable.{
         break :init r[0..];
     },
     .r32 = []Range32.{},
+    .latin_offset = 0,
 };
 const _Cf = RangeTable.{
     .r16 = init: {
@@ -161,14 +163,15 @@ const _Cf = RangeTable.{
     },
     .r32 = init: {
         var r = []Range32.{
-            Range16.init(0x110bd, 0x1bca0, 44003),
-            Range16.init(0x1bca1, 0x1bca3, 1),
-            Range16.init(0x1d173, 0x1d17a, 1),
-            Range16.init(0xe0001, 0xe0020, 31),
-            Range16.init(0xe0021, 0xe007f, 1),
+            Range32.init(0x110bd, 0x1bca0, 44003),
+            Range32.init(0x1bca1, 0x1bca3, 1),
+            Range32.init(0x1d173, 0x1d17a, 1),
+            Range32.init(0xe0001, 0xe0020, 31),
+            Range32.init(0xe0021, 0xe007f, 1),
         };
         break :init r[0..];
     },
+    .latin_offset = 0,
 };
 const _Co = RangeTable.{
     .r16 = init: {
@@ -177,11 +180,12 @@ const _Co = RangeTable.{
     },
     .r32 = init: {
         var r = []Range32.{
-            Range16.init(0xf0000, 0xffffd, 1),
-            Range16.init(0x100000, 0x10fffd, 1),
+            Range32.init(0xf0000, 0xffffd, 1),
+            Range32.init(0x100000, 0x10fffd, 1),
         };
         break :init r[0..];
     },
+    .latin_offset = 0,
 };
 const _Cs = RangeTable.{
     .r16 = init: {
@@ -189,6 +193,7 @@ const _Cs = RangeTable.{
         break :init r[0..];
     },
     .r32 = []Range32.{},
+    .latin_offset = 0,
 };
 const _L = RangeTable.{
     .r16 = init: {
@@ -557,198 +562,199 @@ const _L = RangeTable.{
     },
     .r32 = init: {
         var r = []Range32.{
-            Range16.init(0x10000, 0x1000b, 1),
-            Range16.init(0x1000d, 0x10026, 1),
-            Range16.init(0x10028, 0x1003a, 1),
-            Range16.init(0x1003c, 0x1003d, 1),
-            Range16.init(0x1003f, 0x1004d, 1),
-            Range16.init(0x10050, 0x1005d, 1),
-            Range16.init(0x10080, 0x100fa, 1),
-            Range16.init(0x10280, 0x1029c, 1),
-            Range16.init(0x102a0, 0x102d0, 1),
-            Range16.init(0x10300, 0x1031f, 1),
-            Range16.init(0x1032d, 0x10340, 1),
-            Range16.init(0x10342, 0x10349, 1),
-            Range16.init(0x10350, 0x10375, 1),
-            Range16.init(0x10380, 0x1039d, 1),
-            Range16.init(0x103a0, 0x103c3, 1),
-            Range16.init(0x103c8, 0x103cf, 1),
-            Range16.init(0x10400, 0x1049d, 1),
-            Range16.init(0x104b0, 0x104d3, 1),
-            Range16.init(0x104d8, 0x104fb, 1),
-            Range16.init(0x10500, 0x10527, 1),
-            Range16.init(0x10530, 0x10563, 1),
-            Range16.init(0x10600, 0x10736, 1),
-            Range16.init(0x10740, 0x10755, 1),
-            Range16.init(0x10760, 0x10767, 1),
-            Range16.init(0x10800, 0x10805, 1),
-            Range16.init(0x10808, 0x1080a, 2),
-            Range16.init(0x1080b, 0x10835, 1),
-            Range16.init(0x10837, 0x10838, 1),
-            Range16.init(0x1083c, 0x1083f, 3),
-            Range16.init(0x10840, 0x10855, 1),
-            Range16.init(0x10860, 0x10876, 1),
-            Range16.init(0x10880, 0x1089e, 1),
-            Range16.init(0x108e0, 0x108f2, 1),
-            Range16.init(0x108f4, 0x108f5, 1),
-            Range16.init(0x10900, 0x10915, 1),
-            Range16.init(0x10920, 0x10939, 1),
-            Range16.init(0x10980, 0x109b7, 1),
-            Range16.init(0x109be, 0x109bf, 1),
-            Range16.init(0x10a00, 0x10a10, 16),
-            Range16.init(0x10a11, 0x10a13, 1),
-            Range16.init(0x10a15, 0x10a17, 1),
-            Range16.init(0x10a19, 0x10a33, 1),
-            Range16.init(0x10a60, 0x10a7c, 1),
-            Range16.init(0x10a80, 0x10a9c, 1),
-            Range16.init(0x10ac0, 0x10ac7, 1),
-            Range16.init(0x10ac9, 0x10ae4, 1),
-            Range16.init(0x10b00, 0x10b35, 1),
-            Range16.init(0x10b40, 0x10b55, 1),
-            Range16.init(0x10b60, 0x10b72, 1),
-            Range16.init(0x10b80, 0x10b91, 1),
-            Range16.init(0x10c00, 0x10c48, 1),
-            Range16.init(0x10c80, 0x10cb2, 1),
-            Range16.init(0x10cc0, 0x10cf2, 1),
-            Range16.init(0x11003, 0x11037, 1),
-            Range16.init(0x11083, 0x110af, 1),
-            Range16.init(0x110d0, 0x110e8, 1),
-            Range16.init(0x11103, 0x11126, 1),
-            Range16.init(0x11150, 0x11172, 1),
-            Range16.init(0x11176, 0x11183, 13),
-            Range16.init(0x11184, 0x111b2, 1),
-            Range16.init(0x111c1, 0x111c4, 1),
-            Range16.init(0x111da, 0x111dc, 2),
-            Range16.init(0x11200, 0x11211, 1),
-            Range16.init(0x11213, 0x1122b, 1),
-            Range16.init(0x11280, 0x11286, 1),
-            Range16.init(0x11288, 0x1128a, 2),
-            Range16.init(0x1128b, 0x1128d, 1),
-            Range16.init(0x1128f, 0x1129d, 1),
-            Range16.init(0x1129f, 0x112a8, 1),
-            Range16.init(0x112b0, 0x112de, 1),
-            Range16.init(0x11305, 0x1130c, 1),
-            Range16.init(0x1130f, 0x11310, 1),
-            Range16.init(0x11313, 0x11328, 1),
-            Range16.init(0x1132a, 0x11330, 1),
-            Range16.init(0x11332, 0x11333, 1),
-            Range16.init(0x11335, 0x11339, 1),
-            Range16.init(0x1133d, 0x11350, 19),
-            Range16.init(0x1135d, 0x11361, 1),
-            Range16.init(0x11400, 0x11434, 1),
-            Range16.init(0x11447, 0x1144a, 1),
-            Range16.init(0x11480, 0x114af, 1),
-            Range16.init(0x114c4, 0x114c5, 1),
-            Range16.init(0x114c7, 0x11580, 185),
-            Range16.init(0x11581, 0x115ae, 1),
-            Range16.init(0x115d8, 0x115db, 1),
-            Range16.init(0x11600, 0x1162f, 1),
-            Range16.init(0x11644, 0x11680, 60),
-            Range16.init(0x11681, 0x116aa, 1),
-            Range16.init(0x11700, 0x11719, 1),
-            Range16.init(0x118a0, 0x118df, 1),
-            Range16.init(0x118ff, 0x11a00, 257),
-            Range16.init(0x11a0b, 0x11a32, 1),
-            Range16.init(0x11a3a, 0x11a50, 22),
-            Range16.init(0x11a5c, 0x11a83, 1),
-            Range16.init(0x11a86, 0x11a89, 1),
-            Range16.init(0x11ac0, 0x11af8, 1),
-            Range16.init(0x11c00, 0x11c08, 1),
-            Range16.init(0x11c0a, 0x11c2e, 1),
-            Range16.init(0x11c40, 0x11c72, 50),
-            Range16.init(0x11c73, 0x11c8f, 1),
-            Range16.init(0x11d00, 0x11d06, 1),
-            Range16.init(0x11d08, 0x11d09, 1),
-            Range16.init(0x11d0b, 0x11d30, 1),
-            Range16.init(0x11d46, 0x12000, 698),
-            Range16.init(0x12001, 0x12399, 1),
-            Range16.init(0x12480, 0x12543, 1),
-            Range16.init(0x13000, 0x1342e, 1),
-            Range16.init(0x14400, 0x14646, 1),
-            Range16.init(0x16800, 0x16a38, 1),
-            Range16.init(0x16a40, 0x16a5e, 1),
-            Range16.init(0x16ad0, 0x16aed, 1),
-            Range16.init(0x16b00, 0x16b2f, 1),
-            Range16.init(0x16b40, 0x16b43, 1),
-            Range16.init(0x16b63, 0x16b77, 1),
-            Range16.init(0x16b7d, 0x16b8f, 1),
-            Range16.init(0x16f00, 0x16f44, 1),
-            Range16.init(0x16f50, 0x16f93, 67),
-            Range16.init(0x16f94, 0x16f9f, 1),
-            Range16.init(0x16fe0, 0x16fe1, 1),
-            Range16.init(0x17000, 0x187ec, 1),
-            Range16.init(0x18800, 0x18af2, 1),
-            Range16.init(0x1b000, 0x1b11e, 1),
-            Range16.init(0x1b170, 0x1b2fb, 1),
-            Range16.init(0x1bc00, 0x1bc6a, 1),
-            Range16.init(0x1bc70, 0x1bc7c, 1),
-            Range16.init(0x1bc80, 0x1bc88, 1),
-            Range16.init(0x1bc90, 0x1bc99, 1),
-            Range16.init(0x1d400, 0x1d454, 1),
-            Range16.init(0x1d456, 0x1d49c, 1),
-            Range16.init(0x1d49e, 0x1d49f, 1),
-            Range16.init(0x1d4a2, 0x1d4a5, 3),
-            Range16.init(0x1d4a6, 0x1d4a9, 3),
-            Range16.init(0x1d4aa, 0x1d4ac, 1),
-            Range16.init(0x1d4ae, 0x1d4b9, 1),
-            Range16.init(0x1d4bb, 0x1d4bd, 2),
-            Range16.init(0x1d4be, 0x1d4c3, 1),
-            Range16.init(0x1d4c5, 0x1d505, 1),
-            Range16.init(0x1d507, 0x1d50a, 1),
-            Range16.init(0x1d50d, 0x1d514, 1),
-            Range16.init(0x1d516, 0x1d51c, 1),
-            Range16.init(0x1d51e, 0x1d539, 1),
-            Range16.init(0x1d53b, 0x1d53e, 1),
-            Range16.init(0x1d540, 0x1d544, 1),
-            Range16.init(0x1d546, 0x1d54a, 4),
-            Range16.init(0x1d54b, 0x1d550, 1),
-            Range16.init(0x1d552, 0x1d6a5, 1),
-            Range16.init(0x1d6a8, 0x1d6c0, 1),
-            Range16.init(0x1d6c2, 0x1d6da, 1),
-            Range16.init(0x1d6dc, 0x1d6fa, 1),
-            Range16.init(0x1d6fc, 0x1d714, 1),
-            Range16.init(0x1d716, 0x1d734, 1),
-            Range16.init(0x1d736, 0x1d74e, 1),
-            Range16.init(0x1d750, 0x1d76e, 1),
-            Range16.init(0x1d770, 0x1d788, 1),
-            Range16.init(0x1d78a, 0x1d7a8, 1),
-            Range16.init(0x1d7aa, 0x1d7c2, 1),
-            Range16.init(0x1d7c4, 0x1d7cb, 1),
-            Range16.init(0x1e800, 0x1e8c4, 1),
-            Range16.init(0x1e900, 0x1e943, 1),
-            Range16.init(0x1ee00, 0x1ee03, 1),
-            Range16.init(0x1ee05, 0x1ee1f, 1),
-            Range16.init(0x1ee21, 0x1ee22, 1),
-            Range16.init(0x1ee24, 0x1ee27, 3),
-            Range16.init(0x1ee29, 0x1ee32, 1),
-            Range16.init(0x1ee34, 0x1ee37, 1),
-            Range16.init(0x1ee39, 0x1ee3b, 2),
-            Range16.init(0x1ee42, 0x1ee47, 5),
-            Range16.init(0x1ee49, 0x1ee4d, 2),
-            Range16.init(0x1ee4e, 0x1ee4f, 1),
-            Range16.init(0x1ee51, 0x1ee52, 1),
-            Range16.init(0x1ee54, 0x1ee57, 3),
-            Range16.init(0x1ee59, 0x1ee61, 2),
-            Range16.init(0x1ee62, 0x1ee64, 2),
-            Range16.init(0x1ee67, 0x1ee6a, 1),
-            Range16.init(0x1ee6c, 0x1ee72, 1),
-            Range16.init(0x1ee74, 0x1ee77, 1),
-            Range16.init(0x1ee79, 0x1ee7c, 1),
-            Range16.init(0x1ee7e, 0x1ee80, 2),
-            Range16.init(0x1ee81, 0x1ee89, 1),
-            Range16.init(0x1ee8b, 0x1ee9b, 1),
-            Range16.init(0x1eea1, 0x1eea3, 1),
-            Range16.init(0x1eea5, 0x1eea9, 1),
-            Range16.init(0x1eeab, 0x1eebb, 1),
-            Range16.init(0x20000, 0x2a6d6, 1),
-            Range16.init(0x2a700, 0x2b734, 1),
-            Range16.init(0x2b740, 0x2b81d, 1),
-            Range16.init(0x2b820, 0x2cea1, 1),
-            Range16.init(0x2ceb0, 0x2ebe0, 1),
-            Range16.init(0x2f800, 0x2fa1d, 1),
+            Range32.init(0x10000, 0x1000b, 1),
+            Range32.init(0x1000d, 0x10026, 1),
+            Range32.init(0x10028, 0x1003a, 1),
+            Range32.init(0x1003c, 0x1003d, 1),
+            Range32.init(0x1003f, 0x1004d, 1),
+            Range32.init(0x10050, 0x1005d, 1),
+            Range32.init(0x10080, 0x100fa, 1),
+            Range32.init(0x10280, 0x1029c, 1),
+            Range32.init(0x102a0, 0x102d0, 1),
+            Range32.init(0x10300, 0x1031f, 1),
+            Range32.init(0x1032d, 0x10340, 1),
+            Range32.init(0x10342, 0x10349, 1),
+            Range32.init(0x10350, 0x10375, 1),
+            Range32.init(0x10380, 0x1039d, 1),
+            Range32.init(0x103a0, 0x103c3, 1),
+            Range32.init(0x103c8, 0x103cf, 1),
+            Range32.init(0x10400, 0x1049d, 1),
+            Range32.init(0x104b0, 0x104d3, 1),
+            Range32.init(0x104d8, 0x104fb, 1),
+            Range32.init(0x10500, 0x10527, 1),
+            Range32.init(0x10530, 0x10563, 1),
+            Range32.init(0x10600, 0x10736, 1),
+            Range32.init(0x10740, 0x10755, 1),
+            Range32.init(0x10760, 0x10767, 1),
+            Range32.init(0x10800, 0x10805, 1),
+            Range32.init(0x10808, 0x1080a, 2),
+            Range32.init(0x1080b, 0x10835, 1),
+            Range32.init(0x10837, 0x10838, 1),
+            Range32.init(0x1083c, 0x1083f, 3),
+            Range32.init(0x10840, 0x10855, 1),
+            Range32.init(0x10860, 0x10876, 1),
+            Range32.init(0x10880, 0x1089e, 1),
+            Range32.init(0x108e0, 0x108f2, 1),
+            Range32.init(0x108f4, 0x108f5, 1),
+            Range32.init(0x10900, 0x10915, 1),
+            Range32.init(0x10920, 0x10939, 1),
+            Range32.init(0x10980, 0x109b7, 1),
+            Range32.init(0x109be, 0x109bf, 1),
+            Range32.init(0x10a00, 0x10a10, 16),
+            Range32.init(0x10a11, 0x10a13, 1),
+            Range32.init(0x10a15, 0x10a17, 1),
+            Range32.init(0x10a19, 0x10a33, 1),
+            Range32.init(0x10a60, 0x10a7c, 1),
+            Range32.init(0x10a80, 0x10a9c, 1),
+            Range32.init(0x10ac0, 0x10ac7, 1),
+            Range32.init(0x10ac9, 0x10ae4, 1),
+            Range32.init(0x10b00, 0x10b35, 1),
+            Range32.init(0x10b40, 0x10b55, 1),
+            Range32.init(0x10b60, 0x10b72, 1),
+            Range32.init(0x10b80, 0x10b91, 1),
+            Range32.init(0x10c00, 0x10c48, 1),
+            Range32.init(0x10c80, 0x10cb2, 1),
+            Range32.init(0x10cc0, 0x10cf2, 1),
+            Range32.init(0x11003, 0x11037, 1),
+            Range32.init(0x11083, 0x110af, 1),
+            Range32.init(0x110d0, 0x110e8, 1),
+            Range32.init(0x11103, 0x11126, 1),
+            Range32.init(0x11150, 0x11172, 1),
+            Range32.init(0x11176, 0x11183, 13),
+            Range32.init(0x11184, 0x111b2, 1),
+            Range32.init(0x111c1, 0x111c4, 1),
+            Range32.init(0x111da, 0x111dc, 2),
+            Range32.init(0x11200, 0x11211, 1),
+            Range32.init(0x11213, 0x1122b, 1),
+            Range32.init(0x11280, 0x11286, 1),
+            Range32.init(0x11288, 0x1128a, 2),
+            Range32.init(0x1128b, 0x1128d, 1),
+            Range32.init(0x1128f, 0x1129d, 1),
+            Range32.init(0x1129f, 0x112a8, 1),
+            Range32.init(0x112b0, 0x112de, 1),
+            Range32.init(0x11305, 0x1130c, 1),
+            Range32.init(0x1130f, 0x11310, 1),
+            Range32.init(0x11313, 0x11328, 1),
+            Range32.init(0x1132a, 0x11330, 1),
+            Range32.init(0x11332, 0x11333, 1),
+            Range32.init(0x11335, 0x11339, 1),
+            Range32.init(0x1133d, 0x11350, 19),
+            Range32.init(0x1135d, 0x11361, 1),
+            Range32.init(0x11400, 0x11434, 1),
+            Range32.init(0x11447, 0x1144a, 1),
+            Range32.init(0x11480, 0x114af, 1),
+            Range32.init(0x114c4, 0x114c5, 1),
+            Range32.init(0x114c7, 0x11580, 185),
+            Range32.init(0x11581, 0x115ae, 1),
+            Range32.init(0x115d8, 0x115db, 1),
+            Range32.init(0x11600, 0x1162f, 1),
+            Range32.init(0x11644, 0x11680, 60),
+            Range32.init(0x11681, 0x116aa, 1),
+            Range32.init(0x11700, 0x11719, 1),
+            Range32.init(0x118a0, 0x118df, 1),
+            Range32.init(0x118ff, 0x11a00, 257),
+            Range32.init(0x11a0b, 0x11a32, 1),
+            Range32.init(0x11a3a, 0x11a50, 22),
+            Range32.init(0x11a5c, 0x11a83, 1),
+            Range32.init(0x11a86, 0x11a89, 1),
+            Range32.init(0x11ac0, 0x11af8, 1),
+            Range32.init(0x11c00, 0x11c08, 1),
+            Range32.init(0x11c0a, 0x11c2e, 1),
+            Range32.init(0x11c40, 0x11c72, 50),
+            Range32.init(0x11c73, 0x11c8f, 1),
+            Range32.init(0x11d00, 0x11d06, 1),
+            Range32.init(0x11d08, 0x11d09, 1),
+            Range32.init(0x11d0b, 0x11d30, 1),
+            Range32.init(0x11d46, 0x12000, 698),
+            Range32.init(0x12001, 0x12399, 1),
+            Range32.init(0x12480, 0x12543, 1),
+            Range32.init(0x13000, 0x1342e, 1),
+            Range32.init(0x14400, 0x14646, 1),
+            Range32.init(0x16800, 0x16a38, 1),
+            Range32.init(0x16a40, 0x16a5e, 1),
+            Range32.init(0x16ad0, 0x16aed, 1),
+            Range32.init(0x16b00, 0x16b2f, 1),
+            Range32.init(0x16b40, 0x16b43, 1),
+            Range32.init(0x16b63, 0x16b77, 1),
+            Range32.init(0x16b7d, 0x16b8f, 1),
+            Range32.init(0x16f00, 0x16f44, 1),
+            Range32.init(0x16f50, 0x16f93, 67),
+            Range32.init(0x16f94, 0x16f9f, 1),
+            Range32.init(0x16fe0, 0x16fe1, 1),
+            Range32.init(0x17000, 0x187ec, 1),
+            Range32.init(0x18800, 0x18af2, 1),
+            Range32.init(0x1b000, 0x1b11e, 1),
+            Range32.init(0x1b170, 0x1b2fb, 1),
+            Range32.init(0x1bc00, 0x1bc6a, 1),
+            Range32.init(0x1bc70, 0x1bc7c, 1),
+            Range32.init(0x1bc80, 0x1bc88, 1),
+            Range32.init(0x1bc90, 0x1bc99, 1),
+            Range32.init(0x1d400, 0x1d454, 1),
+            Range32.init(0x1d456, 0x1d49c, 1),
+            Range32.init(0x1d49e, 0x1d49f, 1),
+            Range32.init(0x1d4a2, 0x1d4a5, 3),
+            Range32.init(0x1d4a6, 0x1d4a9, 3),
+            Range32.init(0x1d4aa, 0x1d4ac, 1),
+            Range32.init(0x1d4ae, 0x1d4b9, 1),
+            Range32.init(0x1d4bb, 0x1d4bd, 2),
+            Range32.init(0x1d4be, 0x1d4c3, 1),
+            Range32.init(0x1d4c5, 0x1d505, 1),
+            Range32.init(0x1d507, 0x1d50a, 1),
+            Range32.init(0x1d50d, 0x1d514, 1),
+            Range32.init(0x1d516, 0x1d51c, 1),
+            Range32.init(0x1d51e, 0x1d539, 1),
+            Range32.init(0x1d53b, 0x1d53e, 1),
+            Range32.init(0x1d540, 0x1d544, 1),
+            Range32.init(0x1d546, 0x1d54a, 4),
+            Range32.init(0x1d54b, 0x1d550, 1),
+            Range32.init(0x1d552, 0x1d6a5, 1),
+            Range32.init(0x1d6a8, 0x1d6c0, 1),
+            Range32.init(0x1d6c2, 0x1d6da, 1),
+            Range32.init(0x1d6dc, 0x1d6fa, 1),
+            Range32.init(0x1d6fc, 0x1d714, 1),
+            Range32.init(0x1d716, 0x1d734, 1),
+            Range32.init(0x1d736, 0x1d74e, 1),
+            Range32.init(0x1d750, 0x1d76e, 1),
+            Range32.init(0x1d770, 0x1d788, 1),
+            Range32.init(0x1d78a, 0x1d7a8, 1),
+            Range32.init(0x1d7aa, 0x1d7c2, 1),
+            Range32.init(0x1d7c4, 0x1d7cb, 1),
+            Range32.init(0x1e800, 0x1e8c4, 1),
+            Range32.init(0x1e900, 0x1e943, 1),
+            Range32.init(0x1ee00, 0x1ee03, 1),
+            Range32.init(0x1ee05, 0x1ee1f, 1),
+            Range32.init(0x1ee21, 0x1ee22, 1),
+            Range32.init(0x1ee24, 0x1ee27, 3),
+            Range32.init(0x1ee29, 0x1ee32, 1),
+            Range32.init(0x1ee34, 0x1ee37, 1),
+            Range32.init(0x1ee39, 0x1ee3b, 2),
+            Range32.init(0x1ee42, 0x1ee47, 5),
+            Range32.init(0x1ee49, 0x1ee4d, 2),
+            Range32.init(0x1ee4e, 0x1ee4f, 1),
+            Range32.init(0x1ee51, 0x1ee52, 1),
+            Range32.init(0x1ee54, 0x1ee57, 3),
+            Range32.init(0x1ee59, 0x1ee61, 2),
+            Range32.init(0x1ee62, 0x1ee64, 2),
+            Range32.init(0x1ee67, 0x1ee6a, 1),
+            Range32.init(0x1ee6c, 0x1ee72, 1),
+            Range32.init(0x1ee74, 0x1ee77, 1),
+            Range32.init(0x1ee79, 0x1ee7c, 1),
+            Range32.init(0x1ee7e, 0x1ee80, 2),
+            Range32.init(0x1ee81, 0x1ee89, 1),
+            Range32.init(0x1ee8b, 0x1ee9b, 1),
+            Range32.init(0x1eea1, 0x1eea3, 1),
+            Range32.init(0x1eea5, 0x1eea9, 1),
+            Range32.init(0x1eeab, 0x1eebb, 1),
+            Range32.init(0x20000, 0x2a6d6, 1),
+            Range32.init(0x2a700, 0x2b734, 1),
+            Range32.init(0x2b740, 0x2b81d, 1),
+            Range32.init(0x2b820, 0x2cea1, 1),
+            Range32.init(0x2ceb0, 0x2ebe0, 1),
+            Range32.init(0x2f800, 0x2fa1d, 1),
         };
         break :init r[0..];
     },
+    .latin_offset = 0,
 };
 const _Ll = RangeTable.{
     .r16 = init: {
@@ -875,42 +881,43 @@ const _Ll = RangeTable.{
     },
     .r32 = init: {
         var r = []Range32.{
-            Range16.init(0x10428, 0x1044f, 1),
-            Range16.init(0x104d8, 0x104fb, 1),
-            Range16.init(0x10cc0, 0x10cf2, 1),
-            Range16.init(0x118c0, 0x118df, 1),
-            Range16.init(0x1d41a, 0x1d433, 1),
-            Range16.init(0x1d44e, 0x1d454, 1),
-            Range16.init(0x1d456, 0x1d467, 1),
-            Range16.init(0x1d482, 0x1d49b, 1),
-            Range16.init(0x1d4b6, 0x1d4b9, 1),
-            Range16.init(0x1d4bb, 0x1d4bd, 2),
-            Range16.init(0x1d4be, 0x1d4c3, 1),
-            Range16.init(0x1d4c5, 0x1d4cf, 1),
-            Range16.init(0x1d4ea, 0x1d503, 1),
-            Range16.init(0x1d51e, 0x1d537, 1),
-            Range16.init(0x1d552, 0x1d56b, 1),
-            Range16.init(0x1d586, 0x1d59f, 1),
-            Range16.init(0x1d5ba, 0x1d5d3, 1),
-            Range16.init(0x1d5ee, 0x1d607, 1),
-            Range16.init(0x1d622, 0x1d63b, 1),
-            Range16.init(0x1d656, 0x1d66f, 1),
-            Range16.init(0x1d68a, 0x1d6a5, 1),
-            Range16.init(0x1d6c2, 0x1d6da, 1),
-            Range16.init(0x1d6dc, 0x1d6e1, 1),
-            Range16.init(0x1d6fc, 0x1d714, 1),
-            Range16.init(0x1d716, 0x1d71b, 1),
-            Range16.init(0x1d736, 0x1d74e, 1),
-            Range16.init(0x1d750, 0x1d755, 1),
-            Range16.init(0x1d770, 0x1d788, 1),
-            Range16.init(0x1d78a, 0x1d78f, 1),
-            Range16.init(0x1d7aa, 0x1d7c2, 1),
-            Range16.init(0x1d7c4, 0x1d7c9, 1),
-            Range16.init(0x1d7cb, 0x1e922, 4439),
-            Range16.init(0x1e923, 0x1e943, 1),
+            Range32.init(0x10428, 0x1044f, 1),
+            Range32.init(0x104d8, 0x104fb, 1),
+            Range32.init(0x10cc0, 0x10cf2, 1),
+            Range32.init(0x118c0, 0x118df, 1),
+            Range32.init(0x1d41a, 0x1d433, 1),
+            Range32.init(0x1d44e, 0x1d454, 1),
+            Range32.init(0x1d456, 0x1d467, 1),
+            Range32.init(0x1d482, 0x1d49b, 1),
+            Range32.init(0x1d4b6, 0x1d4b9, 1),
+            Range32.init(0x1d4bb, 0x1d4bd, 2),
+            Range32.init(0x1d4be, 0x1d4c3, 1),
+            Range32.init(0x1d4c5, 0x1d4cf, 1),
+            Range32.init(0x1d4ea, 0x1d503, 1),
+            Range32.init(0x1d51e, 0x1d537, 1),
+            Range32.init(0x1d552, 0x1d56b, 1),
+            Range32.init(0x1d586, 0x1d59f, 1),
+            Range32.init(0x1d5ba, 0x1d5d3, 1),
+            Range32.init(0x1d5ee, 0x1d607, 1),
+            Range32.init(0x1d622, 0x1d63b, 1),
+            Range32.init(0x1d656, 0x1d66f, 1),
+            Range32.init(0x1d68a, 0x1d6a5, 1),
+            Range32.init(0x1d6c2, 0x1d6da, 1),
+            Range32.init(0x1d6dc, 0x1d6e1, 1),
+            Range32.init(0x1d6fc, 0x1d714, 1),
+            Range32.init(0x1d716, 0x1d71b, 1),
+            Range32.init(0x1d736, 0x1d74e, 1),
+            Range32.init(0x1d750, 0x1d755, 1),
+            Range32.init(0x1d770, 0x1d788, 1),
+            Range32.init(0x1d78a, 0x1d78f, 1),
+            Range32.init(0x1d7aa, 0x1d7c2, 1),
+            Range32.init(0x1d7c4, 0x1d7c9, 1),
+            Range32.init(0x1d7cb, 0x1e922, 4439),
+            Range32.init(0x1e923, 0x1e943, 1),
         };
         break :init r[0..];
     },
+    .latin_offset = 0,
 };
 const _Lm = RangeTable.{
     .r16 = init: {
@@ -960,13 +967,14 @@ const _Lm = RangeTable.{
     },
     .r32 = init: {
         var r = []Range32.{
-            Range16.init(0x16b40, 0x16b40, 1),
-            Range16.init(0x16b41, 0x16b43, 1),
-            Range16.init(0x16f93, 0x16f9f, 1),
-            Range16.init(0x16fe0, 0x16fe1, 1),
+            Range32.init(0x16b40, 0x16b40, 1),
+            Range32.init(0x16b41, 0x16b43, 1),
+            Range32.init(0x16f93, 0x16f9f, 1),
+            Range32.init(0x16fe0, 0x16fe1, 1),
         };
         break :init r[0..];
     },
+    .latin_offset = 0,
 };
 const _Lo = RangeTable.{
     .r16 = init: {
@@ -1258,159 +1266,160 @@ const _Lo = RangeTable.{
     },
     .r32 = init: {
         var r = []Range32.{
-            Range16.init(0x10000, 0x1000b, 1),
-            Range16.init(0x1000d, 0x10026, 1),
-            Range16.init(0x10028, 0x1003a, 1),
-            Range16.init(0x1003c, 0x1003d, 1),
-            Range16.init(0x1003f, 0x1004d, 1),
-            Range16.init(0x10050, 0x1005d, 1),
-            Range16.init(0x10080, 0x100fa, 1),
-            Range16.init(0x10280, 0x1029c, 1),
-            Range16.init(0x102a0, 0x102d0, 1),
-            Range16.init(0x10300, 0x1031f, 1),
-            Range16.init(0x1032d, 0x10340, 1),
-            Range16.init(0x10342, 0x10349, 1),
-            Range16.init(0x10350, 0x10375, 1),
-            Range16.init(0x10380, 0x1039d, 1),
-            Range16.init(0x103a0, 0x103c3, 1),
-            Range16.init(0x103c8, 0x103cf, 1),
-            Range16.init(0x10450, 0x1049d, 1),
-            Range16.init(0x10500, 0x10527, 1),
-            Range16.init(0x10530, 0x10563, 1),
-            Range16.init(0x10600, 0x10736, 1),
-            Range16.init(0x10740, 0x10755, 1),
-            Range16.init(0x10760, 0x10767, 1),
-            Range16.init(0x10800, 0x10805, 1),
-            Range16.init(0x10808, 0x1080a, 2),
-            Range16.init(0x1080b, 0x10835, 1),
-            Range16.init(0x10837, 0x10838, 1),
-            Range16.init(0x1083c, 0x1083f, 3),
-            Range16.init(0x10840, 0x10855, 1),
-            Range16.init(0x10860, 0x10876, 1),
-            Range16.init(0x10880, 0x1089e, 1),
-            Range16.init(0x108e0, 0x108f2, 1),
-            Range16.init(0x108f4, 0x108f5, 1),
-            Range16.init(0x10900, 0x10915, 1),
-            Range16.init(0x10920, 0x10939, 1),
-            Range16.init(0x10980, 0x109b7, 1),
-            Range16.init(0x109be, 0x109bf, 1),
-            Range16.init(0x10a00, 0x10a10, 16),
-            Range16.init(0x10a11, 0x10a13, 1),
-            Range16.init(0x10a15, 0x10a17, 1),
-            Range16.init(0x10a19, 0x10a33, 1),
-            Range16.init(0x10a60, 0x10a7c, 1),
-            Range16.init(0x10a80, 0x10a9c, 1),
-            Range16.init(0x10ac0, 0x10ac7, 1),
-            Range16.init(0x10ac9, 0x10ae4, 1),
-            Range16.init(0x10b00, 0x10b35, 1),
-            Range16.init(0x10b40, 0x10b55, 1),
-            Range16.init(0x10b60, 0x10b72, 1),
-            Range16.init(0x10b80, 0x10b91, 1),
-            Range16.init(0x10c00, 0x10c48, 1),
-            Range16.init(0x11003, 0x11037, 1),
-            Range16.init(0x11083, 0x110af, 1),
-            Range16.init(0x110d0, 0x110e8, 1),
-            Range16.init(0x11103, 0x11126, 1),
-            Range16.init(0x11150, 0x11172, 1),
-            Range16.init(0x11176, 0x11183, 13),
-            Range16.init(0x11184, 0x111b2, 1),
-            Range16.init(0x111c1, 0x111c4, 1),
-            Range16.init(0x111da, 0x111dc, 2),
-            Range16.init(0x11200, 0x11211, 1),
-            Range16.init(0x11213, 0x1122b, 1),
-            Range16.init(0x11280, 0x11286, 1),
-            Range16.init(0x11288, 0x1128a, 2),
-            Range16.init(0x1128b, 0x1128d, 1),
-            Range16.init(0x1128f, 0x1129d, 1),
-            Range16.init(0x1129f, 0x112a8, 1),
-            Range16.init(0x112b0, 0x112de, 1),
-            Range16.init(0x11305, 0x1130c, 1),
-            Range16.init(0x1130f, 0x11310, 1),
-            Range16.init(0x11313, 0x11328, 1),
-            Range16.init(0x1132a, 0x11330, 1),
-            Range16.init(0x11332, 0x11333, 1),
-            Range16.init(0x11335, 0x11339, 1),
-            Range16.init(0x1133d, 0x11350, 19),
-            Range16.init(0x1135d, 0x11361, 1),
-            Range16.init(0x11400, 0x11434, 1),
-            Range16.init(0x11447, 0x1144a, 1),
-            Range16.init(0x11480, 0x114af, 1),
-            Range16.init(0x114c4, 0x114c5, 1),
-            Range16.init(0x114c7, 0x11580, 185),
-            Range16.init(0x11581, 0x115ae, 1),
-            Range16.init(0x115d8, 0x115db, 1),
-            Range16.init(0x11600, 0x1162f, 1),
-            Range16.init(0x11644, 0x11680, 60),
-            Range16.init(0x11681, 0x116aa, 1),
-            Range16.init(0x11700, 0x11719, 1),
-            Range16.init(0x118ff, 0x11a00, 257),
-            Range16.init(0x11a0b, 0x11a32, 1),
-            Range16.init(0x11a3a, 0x11a50, 22),
-            Range16.init(0x11a5c, 0x11a83, 1),
-            Range16.init(0x11a86, 0x11a89, 1),
-            Range16.init(0x11ac0, 0x11af8, 1),
-            Range16.init(0x11c00, 0x11c08, 1),
-            Range16.init(0x11c0a, 0x11c2e, 1),
-            Range16.init(0x11c40, 0x11c72, 50),
-            Range16.init(0x11c73, 0x11c8f, 1),
-            Range16.init(0x11d00, 0x11d06, 1),
-            Range16.init(0x11d08, 0x11d09, 1),
-            Range16.init(0x11d0b, 0x11d30, 1),
-            Range16.init(0x11d46, 0x12000, 698),
-            Range16.init(0x12001, 0x12399, 1),
-            Range16.init(0x12480, 0x12543, 1),
-            Range16.init(0x13000, 0x1342e, 1),
-            Range16.init(0x14400, 0x14646, 1),
-            Range16.init(0x16800, 0x16a38, 1),
-            Range16.init(0x16a40, 0x16a5e, 1),
-            Range16.init(0x16ad0, 0x16aed, 1),
-            Range16.init(0x16b00, 0x16b2f, 1),
-            Range16.init(0x16b63, 0x16b77, 1),
-            Range16.init(0x16b7d, 0x16b8f, 1),
-            Range16.init(0x16f00, 0x16f44, 1),
-            Range16.init(0x16f50, 0x17000, 176),
-            Range16.init(0x17001, 0x187ec, 1),
-            Range16.init(0x18800, 0x18af2, 1),
-            Range16.init(0x1b000, 0x1b11e, 1),
-            Range16.init(0x1b170, 0x1b2fb, 1),
-            Range16.init(0x1bc00, 0x1bc6a, 1),
-            Range16.init(0x1bc70, 0x1bc7c, 1),
-            Range16.init(0x1bc80, 0x1bc88, 1),
-            Range16.init(0x1bc90, 0x1bc99, 1),
-            Range16.init(0x1e800, 0x1e8c4, 1),
-            Range16.init(0x1ee00, 0x1ee03, 1),
-            Range16.init(0x1ee05, 0x1ee1f, 1),
-            Range16.init(0x1ee21, 0x1ee22, 1),
-            Range16.init(0x1ee24, 0x1ee27, 3),
-            Range16.init(0x1ee29, 0x1ee32, 1),
-            Range16.init(0x1ee34, 0x1ee37, 1),
-            Range16.init(0x1ee39, 0x1ee3b, 2),
-            Range16.init(0x1ee42, 0x1ee47, 5),
-            Range16.init(0x1ee49, 0x1ee4d, 2),
-            Range16.init(0x1ee4e, 0x1ee4f, 1),
-            Range16.init(0x1ee51, 0x1ee52, 1),
-            Range16.init(0x1ee54, 0x1ee57, 3),
-            Range16.init(0x1ee59, 0x1ee61, 2),
-            Range16.init(0x1ee62, 0x1ee64, 2),
-            Range16.init(0x1ee67, 0x1ee6a, 1),
-            Range16.init(0x1ee6c, 0x1ee72, 1),
-            Range16.init(0x1ee74, 0x1ee77, 1),
-            Range16.init(0x1ee79, 0x1ee7c, 1),
-            Range16.init(0x1ee7e, 0x1ee80, 2),
-            Range16.init(0x1ee81, 0x1ee89, 1),
-            Range16.init(0x1ee8b, 0x1ee9b, 1),
-            Range16.init(0x1eea1, 0x1eea3, 1),
-            Range16.init(0x1eea5, 0x1eea9, 1),
-            Range16.init(0x1eeab, 0x1eebb, 1),
-            Range16.init(0x20000, 0x2a6d6, 1),
-            Range16.init(0x2a700, 0x2b734, 1),
-            Range16.init(0x2b740, 0x2b81d, 1),
-            Range16.init(0x2b820, 0x2cea1, 1),
-            Range16.init(0x2ceb0, 0x2ebe0, 1),
-            Range16.init(0x2f800, 0x2fa1d, 1),
+            Range32.init(0x10000, 0x1000b, 1),
+            Range32.init(0x1000d, 0x10026, 1),
+            Range32.init(0x10028, 0x1003a, 1),
+            Range32.init(0x1003c, 0x1003d, 1),
+            Range32.init(0x1003f, 0x1004d, 1),
+            Range32.init(0x10050, 0x1005d, 1),
+            Range32.init(0x10080, 0x100fa, 1),
+            Range32.init(0x10280, 0x1029c, 1),
+            Range32.init(0x102a0, 0x102d0, 1),
+            Range32.init(0x10300, 0x1031f, 1),
+            Range32.init(0x1032d, 0x10340, 1),
+            Range32.init(0x10342, 0x10349, 1),
+            Range32.init(0x10350, 0x10375, 1),
+            Range32.init(0x10380, 0x1039d, 1),
+            Range32.init(0x103a0, 0x103c3, 1),
+            Range32.init(0x103c8, 0x103cf, 1),
+            Range32.init(0x10450, 0x1049d, 1),
+            Range32.init(0x10500, 0x10527, 1),
+            Range32.init(0x10530, 0x10563, 1),
+            Range32.init(0x10600, 0x10736, 1),
+            Range32.init(0x10740, 0x10755, 1),
+            Range32.init(0x10760, 0x10767, 1),
+            Range32.init(0x10800, 0x10805, 1),
+            Range32.init(0x10808, 0x1080a, 2),
+            Range32.init(0x1080b, 0x10835, 1),
+            Range32.init(0x10837, 0x10838, 1),
+            Range32.init(0x1083c, 0x1083f, 3),
+            Range32.init(0x10840, 0x10855, 1),
+            Range32.init(0x10860, 0x10876, 1),
+            Range32.init(0x10880, 0x1089e, 1),
+            Range32.init(0x108e0, 0x108f2, 1),
+            Range32.init(0x108f4, 0x108f5, 1),
+            Range32.init(0x10900, 0x10915, 1),
+            Range32.init(0x10920, 0x10939, 1),
+            Range32.init(0x10980, 0x109b7, 1),
+            Range32.init(0x109be, 0x109bf, 1),
+            Range32.init(0x10a00, 0x10a10, 16),
+            Range32.init(0x10a11, 0x10a13, 1),
+            Range32.init(0x10a15, 0x10a17, 1),
+            Range32.init(0x10a19, 0x10a33, 1),
+            Range32.init(0x10a60, 0x10a7c, 1),
+            Range32.init(0x10a80, 0x10a9c, 1),
+            Range32.init(0x10ac0, 0x10ac7, 1),
+            Range32.init(0x10ac9, 0x10ae4, 1),
+            Range32.init(0x10b00, 0x10b35, 1),
+            Range32.init(0x10b40, 0x10b55, 1),
+            Range32.init(0x10b60, 0x10b72, 1),
+            Range32.init(0x10b80, 0x10b91, 1),
+            Range32.init(0x10c00, 0x10c48, 1),
+            Range32.init(0x11003, 0x11037, 1),
+            Range32.init(0x11083, 0x110af, 1),
+            Range32.init(0x110d0, 0x110e8, 1),
+            Range32.init(0x11103, 0x11126, 1),
+            Range32.init(0x11150, 0x11172, 1),
+            Range32.init(0x11176, 0x11183, 13),
+            Range32.init(0x11184, 0x111b2, 1),
+            Range32.init(0x111c1, 0x111c4, 1),
+            Range32.init(0x111da, 0x111dc, 2),
+            Range32.init(0x11200, 0x11211, 1),
+            Range32.init(0x11213, 0x1122b, 1),
+            Range32.init(0x11280, 0x11286, 1),
+            Range32.init(0x11288, 0x1128a, 2),
+            Range32.init(0x1128b, 0x1128d, 1),
+            Range32.init(0x1128f, 0x1129d, 1),
+            Range32.init(0x1129f, 0x112a8, 1),
+            Range32.init(0x112b0, 0x112de, 1),
+            Range32.init(0x11305, 0x1130c, 1),
+            Range32.init(0x1130f, 0x11310, 1),
+            Range32.init(0x11313, 0x11328, 1),
+            Range32.init(0x1132a, 0x11330, 1),
+            Range32.init(0x11332, 0x11333, 1),
+            Range32.init(0x11335, 0x11339, 1),
+            Range32.init(0x1133d, 0x11350, 19),
+            Range32.init(0x1135d, 0x11361, 1),
+            Range32.init(0x11400, 0x11434, 1),
+            Range32.init(0x11447, 0x1144a, 1),
+            Range32.init(0x11480, 0x114af, 1),
+            Range32.init(0x114c4, 0x114c5, 1),
+            Range32.init(0x114c7, 0x11580, 185),
+            Range32.init(0x11581, 0x115ae, 1),
+            Range32.init(0x115d8, 0x115db, 1),
+            Range32.init(0x11600, 0x1162f, 1),
+            Range32.init(0x11644, 0x11680, 60),
+            Range32.init(0x11681, 0x116aa, 1),
+            Range32.init(0x11700, 0x11719, 1),
+            Range32.init(0x118ff, 0x11a00, 257),
+            Range32.init(0x11a0b, 0x11a32, 1),
+            Range32.init(0x11a3a, 0x11a50, 22),
+            Range32.init(0x11a5c, 0x11a83, 1),
+            Range32.init(0x11a86, 0x11a89, 1),
+            Range32.init(0x11ac0, 0x11af8, 1),
+            Range32.init(0x11c00, 0x11c08, 1),
+            Range32.init(0x11c0a, 0x11c2e, 1),
+            Range32.init(0x11c40, 0x11c72, 50),
+            Range32.init(0x11c73, 0x11c8f, 1),
+            Range32.init(0x11d00, 0x11d06, 1),
+            Range32.init(0x11d08, 0x11d09, 1),
+            Range32.init(0x11d0b, 0x11d30, 1),
+            Range32.init(0x11d46, 0x12000, 698),
+            Range32.init(0x12001, 0x12399, 1),
+            Range32.init(0x12480, 0x12543, 1),
+            Range32.init(0x13000, 0x1342e, 1),
+            Range32.init(0x14400, 0x14646, 1),
+            Range32.init(0x16800, 0x16a38, 1),
+            Range32.init(0x16a40, 0x16a5e, 1),
+            Range32.init(0x16ad0, 0x16aed, 1),
+            Range32.init(0x16b00, 0x16b2f, 1),
+            Range32.init(0x16b63, 0x16b77, 1),
+            Range32.init(0x16b7d, 0x16b8f, 1),
+            Range32.init(0x16f00, 0x16f44, 1),
+            Range32.init(0x16f50, 0x17000, 176),
+            Range32.init(0x17001, 0x187ec, 1),
+            Range32.init(0x18800, 0x18af2, 1),
+            Range32.init(0x1b000, 0x1b11e, 1),
+            Range32.init(0x1b170, 0x1b2fb, 1),
+            Range32.init(0x1bc00, 0x1bc6a, 1),
+            Range32.init(0x1bc70, 0x1bc7c, 1),
+            Range32.init(0x1bc80, 0x1bc88, 1),
+            Range32.init(0x1bc90, 0x1bc99, 1),
+            Range32.init(0x1e800, 0x1e8c4, 1),
+            Range32.init(0x1ee00, 0x1ee03, 1),
+            Range32.init(0x1ee05, 0x1ee1f, 1),
+            Range32.init(0x1ee21, 0x1ee22, 1),
+            Range32.init(0x1ee24, 0x1ee27, 3),
+            Range32.init(0x1ee29, 0x1ee32, 1),
+            Range32.init(0x1ee34, 0x1ee37, 1),
+            Range32.init(0x1ee39, 0x1ee3b, 2),
+            Range32.init(0x1ee42, 0x1ee47, 5),
+            Range32.init(0x1ee49, 0x1ee4d, 2),
+            Range32.init(0x1ee4e, 0x1ee4f, 1),
+            Range32.init(0x1ee51, 0x1ee52, 1),
+            Range32.init(0x1ee54, 0x1ee57, 3),
+            Range32.init(0x1ee59, 0x1ee61, 2),
+            Range32.init(0x1ee62, 0x1ee64, 2),
+            Range32.init(0x1ee67, 0x1ee6a, 1),
+            Range32.init(0x1ee6c, 0x1ee72, 1),
+            Range32.init(0x1ee74, 0x1ee77, 1),
+            Range32.init(0x1ee79, 0x1ee7c, 1),
+            Range32.init(0x1ee7e, 0x1ee80, 2),
+            Range32.init(0x1ee81, 0x1ee89, 1),
+            Range32.init(0x1ee8b, 0x1ee9b, 1),
+            Range32.init(0x1eea1, 0x1eea3, 1),
+            Range32.init(0x1eea5, 0x1eea9, 1),
+            Range32.init(0x1eeab, 0x1eebb, 1),
+            Range32.init(0x20000, 0x2a6d6, 1),
+            Range32.init(0x2a700, 0x2b734, 1),
+            Range32.init(0x2b740, 0x2b81d, 1),
+            Range32.init(0x2b820, 0x2cea1, 1),
+            Range32.init(0x2ceb0, 0x2ebe0, 1),
+            Range32.init(0x2f800, 0x2fa1d, 1),
         };
         break :init r[0..];
     },
+    .latin_offset = 0,
 };
 const _Lt = RangeTable.{
     .r16 = init: {
@@ -1426,6 +1435,7 @@ const _Lt = RangeTable.{
         break :init r[0..];
     },
     .r32 = []Range32.{},
+    .latin_offset = 0,
 };
 const _Lu = RangeTable.{
     .r16 = init: {
@@ -1538,44 +1548,45 @@ const _Lu = RangeTable.{
     },
     .r32 = init: {
         var r = []Range32.{
-            Range16.init(0x10400, 0x10427, 1),
-            Range16.init(0x104b0, 0x104d3, 1),
-            Range16.init(0x10c80, 0x10cb2, 1),
-            Range16.init(0x118a0, 0x118bf, 1),
-            Range16.init(0x1d400, 0x1d419, 1),
-            Range16.init(0x1d434, 0x1d44d, 1),
-            Range16.init(0x1d468, 0x1d481, 1),
-            Range16.init(0x1d49c, 0x1d49e, 2),
-            Range16.init(0x1d49f, 0x1d4a5, 3),
-            Range16.init(0x1d4a6, 0x1d4a9, 3),
-            Range16.init(0x1d4aa, 0x1d4ac, 1),
-            Range16.init(0x1d4ae, 0x1d4b5, 1),
-            Range16.init(0x1d4d0, 0x1d4e9, 1),
-            Range16.init(0x1d504, 0x1d505, 1),
-            Range16.init(0x1d507, 0x1d50a, 1),
-            Range16.init(0x1d50d, 0x1d514, 1),
-            Range16.init(0x1d516, 0x1d51c, 1),
-            Range16.init(0x1d538, 0x1d539, 1),
-            Range16.init(0x1d53b, 0x1d53e, 1),
-            Range16.init(0x1d540, 0x1d544, 1),
-            Range16.init(0x1d546, 0x1d54a, 4),
-            Range16.init(0x1d54b, 0x1d550, 1),
-            Range16.init(0x1d56c, 0x1d585, 1),
-            Range16.init(0x1d5a0, 0x1d5b9, 1),
-            Range16.init(0x1d5d4, 0x1d5ed, 1),
-            Range16.init(0x1d608, 0x1d621, 1),
-            Range16.init(0x1d63c, 0x1d655, 1),
-            Range16.init(0x1d670, 0x1d689, 1),
-            Range16.init(0x1d6a8, 0x1d6c0, 1),
-            Range16.init(0x1d6e2, 0x1d6fa, 1),
-            Range16.init(0x1d71c, 0x1d734, 1),
-            Range16.init(0x1d756, 0x1d76e, 1),
-            Range16.init(0x1d790, 0x1d7a8, 1),
-            Range16.init(0x1d7ca, 0x1e900, 4406),
-            Range16.init(0x1e901, 0x1e921, 1),
+            Range32.init(0x10400, 0x10427, 1),
+            Range32.init(0x104b0, 0x104d3, 1),
+            Range32.init(0x10c80, 0x10cb2, 1),
+            Range32.init(0x118a0, 0x118bf, 1),
+            Range32.init(0x1d400, 0x1d419, 1),
+            Range32.init(0x1d434, 0x1d44d, 1),
+            Range32.init(0x1d468, 0x1d481, 1),
+            Range32.init(0x1d49c, 0x1d49e, 2),
+            Range32.init(0x1d49f, 0x1d4a5, 3),
+            Range32.init(0x1d4a6, 0x1d4a9, 3),
+            Range32.init(0x1d4aa, 0x1d4ac, 1),
+            Range32.init(0x1d4ae, 0x1d4b5, 1),
+            Range32.init(0x1d4d0, 0x1d4e9, 1),
+            Range32.init(0x1d504, 0x1d505, 1),
+            Range32.init(0x1d507, 0x1d50a, 1),
+            Range32.init(0x1d50d, 0x1d514, 1),
+            Range32.init(0x1d516, 0x1d51c, 1),
+            Range32.init(0x1d538, 0x1d539, 1),
+            Range32.init(0x1d53b, 0x1d53e, 1),
+            Range32.init(0x1d540, 0x1d544, 1),
+            Range32.init(0x1d546, 0x1d54a, 4),
+            Range32.init(0x1d54b, 0x1d550, 1),
+            Range32.init(0x1d56c, 0x1d585, 1),
+            Range32.init(0x1d5a0, 0x1d5b9, 1),
+            Range32.init(0x1d5d4, 0x1d5ed, 1),
+            Range32.init(0x1d608, 0x1d621, 1),
+            Range32.init(0x1d63c, 0x1d655, 1),
+            Range32.init(0x1d670, 0x1d689, 1),
+            Range32.init(0x1d6a8, 0x1d6c0, 1),
+            Range32.init(0x1d6e2, 0x1d6fa, 1),
+            Range32.init(0x1d71c, 0x1d734, 1),
+            Range32.init(0x1d756, 0x1d76e, 1),
+            Range32.init(0x1d790, 0x1d7a8, 1),
+            Range32.init(0x1d7ca, 0x1e900, 4406),
+            Range32.init(0x1e901, 0x1e921, 1),
         };
         break :init r[0..];
     },
+    .latin_offset = 0,
 };
 const _M = RangeTable.{
     .r16 = init: {
@@ -1763,86 +1774,87 @@ const _M = RangeTable.{
     },
     .r32 = init: {
         var r = []Range32.{
-            Range16.init(0x101fd, 0x102e0, 227),
-            Range16.init(0x10376, 0x1037a, 1),
-            Range16.init(0x10a01, 0x10a03, 1),
-            Range16.init(0x10a05, 0x10a06, 1),
-            Range16.init(0x10a0c, 0x10a0f, 1),
-            Range16.init(0x10a38, 0x10a3a, 1),
-            Range16.init(0x10a3f, 0x10ae5, 166),
-            Range16.init(0x10ae6, 0x11000, 1306),
-            Range16.init(0x11001, 0x11002, 1),
-            Range16.init(0x11038, 0x11046, 1),
-            Range16.init(0x1107f, 0x11082, 1),
-            Range16.init(0x110b0, 0x110ba, 1),
-            Range16.init(0x11100, 0x11102, 1),
-            Range16.init(0x11127, 0x11134, 1),
-            Range16.init(0x11173, 0x11180, 13),
-            Range16.init(0x11181, 0x11182, 1),
-            Range16.init(0x111b3, 0x111c0, 1),
-            Range16.init(0x111ca, 0x111cc, 1),
-            Range16.init(0x1122c, 0x11237, 1),
-            Range16.init(0x1123e, 0x112df, 161),
-            Range16.init(0x112e0, 0x112ea, 1),
-            Range16.init(0x11300, 0x11303, 1),
-            Range16.init(0x1133c, 0x1133e, 2),
-            Range16.init(0x1133f, 0x11344, 1),
-            Range16.init(0x11347, 0x11348, 1),
-            Range16.init(0x1134b, 0x1134d, 1),
-            Range16.init(0x11357, 0x11362, 11),
-            Range16.init(0x11363, 0x11366, 3),
-            Range16.init(0x11367, 0x1136c, 1),
-            Range16.init(0x11370, 0x11374, 1),
-            Range16.init(0x11435, 0x11446, 1),
-            Range16.init(0x114b0, 0x114c3, 1),
-            Range16.init(0x115af, 0x115b5, 1),
-            Range16.init(0x115b8, 0x115c0, 1),
-            Range16.init(0x115dc, 0x115dd, 1),
-            Range16.init(0x11630, 0x11640, 1),
-            Range16.init(0x116ab, 0x116b7, 1),
-            Range16.init(0x1171d, 0x1172b, 1),
-            Range16.init(0x11a01, 0x11a0a, 1),
-            Range16.init(0x11a33, 0x11a39, 1),
-            Range16.init(0x11a3b, 0x11a3e, 1),
-            Range16.init(0x11a47, 0x11a51, 10),
-            Range16.init(0x11a52, 0x11a5b, 1),
-            Range16.init(0x11a8a, 0x11a99, 1),
-            Range16.init(0x11c2f, 0x11c36, 1),
-            Range16.init(0x11c38, 0x11c3f, 1),
-            Range16.init(0x11c92, 0x11ca7, 1),
-            Range16.init(0x11ca9, 0x11cb6, 1),
-            Range16.init(0x11d31, 0x11d36, 1),
-            Range16.init(0x11d3a, 0x11d3c, 2),
-            Range16.init(0x11d3d, 0x11d3f, 2),
-            Range16.init(0x11d40, 0x11d45, 1),
-            Range16.init(0x11d47, 0x16af0, 19881),
-            Range16.init(0x16af1, 0x16af4, 1),
-            Range16.init(0x16b30, 0x16b36, 1),
-            Range16.init(0x16f51, 0x16f7e, 1),
-            Range16.init(0x16f8f, 0x16f92, 1),
-            Range16.init(0x1bc9d, 0x1bc9e, 1),
-            Range16.init(0x1d165, 0x1d169, 1),
-            Range16.init(0x1d16d, 0x1d172, 1),
-            Range16.init(0x1d17b, 0x1d182, 1),
-            Range16.init(0x1d185, 0x1d18b, 1),
-            Range16.init(0x1d1aa, 0x1d1ad, 1),
-            Range16.init(0x1d242, 0x1d244, 1),
-            Range16.init(0x1da00, 0x1da36, 1),
-            Range16.init(0x1da3b, 0x1da6c, 1),
-            Range16.init(0x1da75, 0x1da84, 15),
-            Range16.init(0x1da9b, 0x1da9f, 1),
-            Range16.init(0x1daa1, 0x1daaf, 1),
-            Range16.init(0x1e000, 0x1e006, 1),
-            Range16.init(0x1e008, 0x1e018, 1),
-            Range16.init(0x1e01b, 0x1e021, 1),
-            Range16.init(0x1e023, 0x1e024, 1),
-            Range16.init(0x1e026, 0x1e02a, 1),
-            Range16.init(0x1e8d0, 0x1e8d6, 1),
-            Range16.init(0x1e944, 0x1e94a, 1),
-            Range16.init(0xe0100, 0xe01ef, 1),
+            Range32.init(0x101fd, 0x102e0, 227),
+            Range32.init(0x10376, 0x1037a, 1),
+            Range32.init(0x10a01, 0x10a03, 1),
+            Range32.init(0x10a05, 0x10a06, 1),
+            Range32.init(0x10a0c, 0x10a0f, 1),
+            Range32.init(0x10a38, 0x10a3a, 1),
+            Range32.init(0x10a3f, 0x10ae5, 166),
+            Range32.init(0x10ae6, 0x11000, 1306),
+            Range32.init(0x11001, 0x11002, 1),
+            Range32.init(0x11038, 0x11046, 1),
+            Range32.init(0x1107f, 0x11082, 1),
+            Range32.init(0x110b0, 0x110ba, 1),
+            Range32.init(0x11100, 0x11102, 1),
+            Range32.init(0x11127, 0x11134, 1),
+            Range32.init(0x11173, 0x11180, 13),
+            Range32.init(0x11181, 0x11182, 1),
+            Range32.init(0x111b3, 0x111c0, 1),
+            Range32.init(0x111ca, 0x111cc, 1),
+            Range32.init(0x1122c, 0x11237, 1),
+            Range32.init(0x1123e, 0x112df, 161),
+            Range32.init(0x112e0, 0x112ea, 1),
+            Range32.init(0x11300, 0x11303, 1),
+            Range32.init(0x1133c, 0x1133e, 2),
+            Range32.init(0x1133f, 0x11344, 1),
+            Range32.init(0x11347, 0x11348, 1),
+            Range32.init(0x1134b, 0x1134d, 1),
+            Range32.init(0x11357, 0x11362, 11),
+            Range32.init(0x11363, 0x11366, 3),
+            Range32.init(0x11367, 0x1136c, 1),
+            Range32.init(0x11370, 0x11374, 1),
+            Range32.init(0x11435, 0x11446, 1),
+            Range32.init(0x114b0, 0x114c3, 1),
+            Range32.init(0x115af, 0x115b5, 1),
+            Range32.init(0x115b8, 0x115c0, 1),
+            Range32.init(0x115dc, 0x115dd, 1),
+            Range32.init(0x11630, 0x11640, 1),
+            Range32.init(0x116ab, 0x116b7, 1),
+            Range32.init(0x1171d, 0x1172b, 1),
+            Range32.init(0x11a01, 0x11a0a, 1),
+            Range32.init(0x11a33, 0x11a39, 1),
+            Range32.init(0x11a3b, 0x11a3e, 1),
+            Range32.init(0x11a47, 0x11a51, 10),
+            Range32.init(0x11a52, 0x11a5b, 1),
+            Range32.init(0x11a8a, 0x11a99, 1),
+            Range32.init(0x11c2f, 0x11c36, 1),
+            Range32.init(0x11c38, 0x11c3f, 1),
+            Range32.init(0x11c92, 0x11ca7, 1),
+            Range32.init(0x11ca9, 0x11cb6, 1),
+            Range32.init(0x11d31, 0x11d36, 1),
+            Range32.init(0x11d3a, 0x11d3c, 2),
+            Range32.init(0x11d3d, 0x11d3f, 2),
+            Range32.init(0x11d40, 0x11d45, 1),
+            Range32.init(0x11d47, 0x16af0, 19881),
+            Range32.init(0x16af1, 0x16af4, 1),
+            Range32.init(0x16b30, 0x16b36, 1),
+            Range32.init(0x16f51, 0x16f7e, 1),
+            Range32.init(0x16f8f, 0x16f92, 1),
+            Range32.init(0x1bc9d, 0x1bc9e, 1),
+            Range32.init(0x1d165, 0x1d169, 1),
+            Range32.init(0x1d16d, 0x1d172, 1),
+            Range32.init(0x1d17b, 0x1d182, 1),
+            Range32.init(0x1d185, 0x1d18b, 1),
+            Range32.init(0x1d1aa, 0x1d1ad, 1),
+            Range32.init(0x1d242, 0x1d244, 1),
+            Range32.init(0x1da00, 0x1da36, 1),
+            Range32.init(0x1da3b, 0x1da6c, 1),
+            Range32.init(0x1da75, 0x1da84, 15),
+            Range32.init(0x1da9b, 0x1da9f, 1),
+            Range32.init(0x1daa1, 0x1daaf, 1),
+            Range32.init(0x1e000, 0x1e006, 1),
+            Range32.init(0x1e008, 0x1e018, 1),
+            Range32.init(0x1e01b, 0x1e021, 1),
+            Range32.init(0x1e023, 0x1e024, 1),
+            Range32.init(0x1e026, 0x1e02a, 1),
+            Range32.init(0x1e8d0, 0x1e8d6, 1),
+            Range32.init(0x1e944, 0x1e94a, 1),
+            Range32.init(0xe0100, 0xe01ef, 1),
         };
         break :init r[0..];
     },
+    .latin_offset = 0,
 };
 const _Mc = RangeTable.{
     .r16 = init: {
@@ -1949,52 +1961,53 @@ const _Mc = RangeTable.{
     },
     .r32 = init: {
         var r = []Range32.{
-            Range16.init(0x11000, 0x11002, 2),
-            Range16.init(0x11082, 0x110b0, 46),
-            Range16.init(0x110b1, 0x110b2, 1),
-            Range16.init(0x110b7, 0x110b8, 1),
-            Range16.init(0x1112c, 0x11182, 86),
-            Range16.init(0x111b3, 0x111b5, 1),
-            Range16.init(0x111bf, 0x111c0, 1),
-            Range16.init(0x1122c, 0x1122e, 1),
-            Range16.init(0x11232, 0x11233, 1),
-            Range16.init(0x11235, 0x112e0, 171),
-            Range16.init(0x112e1, 0x112e2, 1),
-            Range16.init(0x11302, 0x11303, 1),
-            Range16.init(0x1133e, 0x1133f, 1),
-            Range16.init(0x11341, 0x11344, 1),
-            Range16.init(0x11347, 0x11348, 1),
-            Range16.init(0x1134b, 0x1134d, 1),
-            Range16.init(0x11357, 0x11362, 11),
-            Range16.init(0x11363, 0x11435, 210),
-            Range16.init(0x11436, 0x11437, 1),
-            Range16.init(0x11440, 0x11441, 1),
-            Range16.init(0x11445, 0x114b0, 107),
-            Range16.init(0x114b1, 0x114b2, 1),
-            Range16.init(0x114b9, 0x114bb, 2),
-            Range16.init(0x114bc, 0x114be, 1),
-            Range16.init(0x114c1, 0x115af, 238),
-            Range16.init(0x115b0, 0x115b1, 1),
-            Range16.init(0x115b8, 0x115bb, 1),
-            Range16.init(0x115be, 0x11630, 114),
-            Range16.init(0x11631, 0x11632, 1),
-            Range16.init(0x1163b, 0x1163c, 1),
-            Range16.init(0x1163e, 0x116ac, 110),
-            Range16.init(0x116ae, 0x116af, 1),
-            Range16.init(0x116b6, 0x11720, 106),
-            Range16.init(0x11721, 0x11726, 5),
-            Range16.init(0x11a07, 0x11a08, 1),
-            Range16.init(0x11a39, 0x11a57, 30),
-            Range16.init(0x11a58, 0x11a97, 63),
-            Range16.init(0x11c2f, 0x11c3e, 15),
-            Range16.init(0x11ca9, 0x11cb1, 8),
-            Range16.init(0x11cb4, 0x16f51, 21149),
-            Range16.init(0x16f52, 0x16f7e, 1),
-            Range16.init(0x1d165, 0x1d166, 1),
-            Range16.init(0x1d16d, 0x1d172, 1),
+            Range32.init(0x11000, 0x11002, 2),
+            Range32.init(0x11082, 0x110b0, 46),
+            Range32.init(0x110b1, 0x110b2, 1),
+            Range32.init(0x110b7, 0x110b8, 1),
+            Range32.init(0x1112c, 0x11182, 86),
+            Range32.init(0x111b3, 0x111b5, 1),
+            Range32.init(0x111bf, 0x111c0, 1),
+            Range32.init(0x1122c, 0x1122e, 1),
+            Range32.init(0x11232, 0x11233, 1),
+            Range32.init(0x11235, 0x112e0, 171),
+            Range32.init(0x112e1, 0x112e2, 1),
+            Range32.init(0x11302, 0x11303, 1),
+            Range32.init(0x1133e, 0x1133f, 1),
+            Range32.init(0x11341, 0x11344, 1),
+            Range32.init(0x11347, 0x11348, 1),
+            Range32.init(0x1134b, 0x1134d, 1),
+            Range32.init(0x11357, 0x11362, 11),
+            Range32.init(0x11363, 0x11435, 210),
+            Range32.init(0x11436, 0x11437, 1),
+            Range32.init(0x11440, 0x11441, 1),
+            Range32.init(0x11445, 0x114b0, 107),
+            Range32.init(0x114b1, 0x114b2, 1),
+            Range32.init(0x114b9, 0x114bb, 2),
+            Range32.init(0x114bc, 0x114be, 1),
+            Range32.init(0x114c1, 0x115af, 238),
+            Range32.init(0x115b0, 0x115b1, 1),
+            Range32.init(0x115b8, 0x115bb, 1),
+            Range32.init(0x115be, 0x11630, 114),
+            Range32.init(0x11631, 0x11632, 1),
+            Range32.init(0x1163b, 0x1163c, 1),
+            Range32.init(0x1163e, 0x116ac, 110),
+            Range32.init(0x116ae, 0x116af, 1),
+            Range32.init(0x116b6, 0x11720, 106),
+            Range32.init(0x11721, 0x11726, 5),
+            Range32.init(0x11a07, 0x11a08, 1),
+            Range32.init(0x11a39, 0x11a57, 30),
+            Range32.init(0x11a58, 0x11a97, 63),
+            Range32.init(0x11c2f, 0x11c3e, 15),
+            Range32.init(0x11ca9, 0x11cb1, 8),
+            Range32.init(0x11cb4, 0x16f51, 21149),
+            Range32.init(0x16f52, 0x16f7e, 1),
+            Range32.init(0x1d165, 0x1d166, 1),
+            Range32.init(0x1d16d, 0x1d172, 1),
         };
         break :init r[0..];
     },
+    .latin_offset = 0,
 };
 const _Me = RangeTable.{
     .r16 = init: {
@@ -2008,6 +2021,7 @@ const _Me = RangeTable.{
         break :init r[0..];
     },
     .r32 = []Range32.{},
+    .latin_offset = 0,
 };
 const _Mn = RangeTable.{
     .r16 = init: {
@@ -2193,100 +2207,101 @@ const _Mn = RangeTable.{
     },
     .r32 = init: {
         var r = []Range32.{
-            Range16.init(0x101fd, 0x102e0, 227),
-            Range16.init(0x10376, 0x1037a, 1),
-            Range16.init(0x10a01, 0x10a03, 1),
-            Range16.init(0x10a05, 0x10a06, 1),
-            Range16.init(0x10a0c, 0x10a0f, 1),
-            Range16.init(0x10a38, 0x10a3a, 1),
-            Range16.init(0x10a3f, 0x10ae5, 166),
-            Range16.init(0x10ae6, 0x11001, 1307),
-            Range16.init(0x11038, 0x11046, 1),
-            Range16.init(0x1107f, 0x11081, 1),
-            Range16.init(0x110b3, 0x110b6, 1),
-            Range16.init(0x110b9, 0x110ba, 1),
-            Range16.init(0x11100, 0x11102, 1),
-            Range16.init(0x11127, 0x1112b, 1),
-            Range16.init(0x1112d, 0x11134, 1),
-            Range16.init(0x11173, 0x11180, 13),
-            Range16.init(0x11181, 0x111b6, 53),
-            Range16.init(0x111b7, 0x111be, 1),
-            Range16.init(0x111ca, 0x111cc, 1),
-            Range16.init(0x1122f, 0x11231, 1),
-            Range16.init(0x11234, 0x11236, 2),
-            Range16.init(0x11237, 0x1123e, 7),
-            Range16.init(0x112df, 0x112e3, 4),
-            Range16.init(0x112e4, 0x112ea, 1),
-            Range16.init(0x11300, 0x11301, 1),
-            Range16.init(0x1133c, 0x11340, 4),
-            Range16.init(0x11366, 0x1136c, 1),
-            Range16.init(0x11370, 0x11374, 1),
-            Range16.init(0x11438, 0x1143f, 1),
-            Range16.init(0x11442, 0x11444, 1),
-            Range16.init(0x11446, 0x114b3, 109),
-            Range16.init(0x114b4, 0x114b8, 1),
-            Range16.init(0x114ba, 0x114bf, 5),
-            Range16.init(0x114c0, 0x114c2, 2),
-            Range16.init(0x114c3, 0x115b2, 239),
-            Range16.init(0x115b3, 0x115b5, 1),
-            Range16.init(0x115bc, 0x115bd, 1),
-            Range16.init(0x115bf, 0x115c0, 1),
-            Range16.init(0x115dc, 0x115dd, 1),
-            Range16.init(0x11633, 0x1163a, 1),
-            Range16.init(0x1163d, 0x1163f, 2),
-            Range16.init(0x11640, 0x116ab, 107),
-            Range16.init(0x116ad, 0x116b0, 3),
-            Range16.init(0x116b1, 0x116b5, 1),
-            Range16.init(0x116b7, 0x1171d, 102),
-            Range16.init(0x1171e, 0x1171f, 1),
-            Range16.init(0x11722, 0x11725, 1),
-            Range16.init(0x11727, 0x1172b, 1),
-            Range16.init(0x11a01, 0x11a06, 1),
-            Range16.init(0x11a09, 0x11a0a, 1),
-            Range16.init(0x11a33, 0x11a38, 1),
-            Range16.init(0x11a3b, 0x11a3e, 1),
-            Range16.init(0x11a47, 0x11a51, 10),
-            Range16.init(0x11a52, 0x11a56, 1),
-            Range16.init(0x11a59, 0x11a5b, 1),
-            Range16.init(0x11a8a, 0x11a96, 1),
-            Range16.init(0x11a98, 0x11a99, 1),
-            Range16.init(0x11c30, 0x11c36, 1),
-            Range16.init(0x11c38, 0x11c3d, 1),
-            Range16.init(0x11c3f, 0x11c92, 83),
-            Range16.init(0x11c93, 0x11ca7, 1),
-            Range16.init(0x11caa, 0x11cb0, 1),
-            Range16.init(0x11cb2, 0x11cb3, 1),
-            Range16.init(0x11cb5, 0x11cb6, 1),
-            Range16.init(0x11d31, 0x11d36, 1),
-            Range16.init(0x11d3a, 0x11d3c, 2),
-            Range16.init(0x11d3d, 0x11d3f, 2),
-            Range16.init(0x11d40, 0x11d45, 1),
-            Range16.init(0x11d47, 0x16af0, 19881),
-            Range16.init(0x16af1, 0x16af4, 1),
-            Range16.init(0x16b30, 0x16b36, 1),
-            Range16.init(0x16f8f, 0x16f92, 1),
-            Range16.init(0x1bc9d, 0x1bc9e, 1),
-            Range16.init(0x1d167, 0x1d169, 1),
-            Range16.init(0x1d17b, 0x1d182, 1),
-            Range16.init(0x1d185, 0x1d18b, 1),
-            Range16.init(0x1d1aa, 0x1d1ad, 1),
-            Range16.init(0x1d242, 0x1d244, 1),
-            Range16.init(0x1da00, 0x1da36, 1),
-            Range16.init(0x1da3b, 0x1da6c, 1),
-            Range16.init(0x1da75, 0x1da84, 15),
-            Range16.init(0x1da9b, 0x1da9f, 1),
-            Range16.init(0x1daa1, 0x1daaf, 1),
-            Range16.init(0x1e000, 0x1e006, 1),
-            Range16.init(0x1e008, 0x1e018, 1),
-            Range16.init(0x1e01b, 0x1e021, 1),
-            Range16.init(0x1e023, 0x1e024, 1),
-            Range16.init(0x1e026, 0x1e02a, 1),
-            Range16.init(0x1e8d0, 0x1e8d6, 1),
-            Range16.init(0x1e944, 0x1e94a, 1),
-            Range16.init(0xe0100, 0xe01ef, 1),
+            Range32.init(0x101fd, 0x102e0, 227),
+            Range32.init(0x10376, 0x1037a, 1),
+            Range32.init(0x10a01, 0x10a03, 1),
+            Range32.init(0x10a05, 0x10a06, 1),
+            Range32.init(0x10a0c, 0x10a0f, 1),
+            Range32.init(0x10a38, 0x10a3a, 1),
+            Range32.init(0x10a3f, 0x10ae5, 166),
+            Range32.init(0x10ae6, 0x11001, 1307),
+            Range32.init(0x11038, 0x11046, 1),
+            Range32.init(0x1107f, 0x11081, 1),
+            Range32.init(0x110b3, 0x110b6, 1),
+            Range32.init(0x110b9, 0x110ba, 1),
+            Range32.init(0x11100, 0x11102, 1),
+            Range32.init(0x11127, 0x1112b, 1),
+            Range32.init(0x1112d, 0x11134, 1),
+            Range32.init(0x11173, 0x11180, 13),
+            Range32.init(0x11181, 0x111b6, 53),
+            Range32.init(0x111b7, 0x111be, 1),
+            Range32.init(0x111ca, 0x111cc, 1),
+            Range32.init(0x1122f, 0x11231, 1),
+            Range32.init(0x11234, 0x11236, 2),
+            Range32.init(0x11237, 0x1123e, 7),
+            Range32.init(0x112df, 0x112e3, 4),
+            Range32.init(0x112e4, 0x112ea, 1),
+            Range32.init(0x11300, 0x11301, 1),
+            Range32.init(0x1133c, 0x11340, 4),
+            Range32.init(0x11366, 0x1136c, 1),
+            Range32.init(0x11370, 0x11374, 1),
+            Range32.init(0x11438, 0x1143f, 1),
+            Range32.init(0x11442, 0x11444, 1),
+            Range32.init(0x11446, 0x114b3, 109),
+            Range32.init(0x114b4, 0x114b8, 1),
+            Range32.init(0x114ba, 0x114bf, 5),
+            Range32.init(0x114c0, 0x114c2, 2),
+            Range32.init(0x114c3, 0x115b2, 239),
+            Range32.init(0x115b3, 0x115b5, 1),
+            Range32.init(0x115bc, 0x115bd, 1),
+            Range32.init(0x115bf, 0x115c0, 1),
+            Range32.init(0x115dc, 0x115dd, 1),
+            Range32.init(0x11633, 0x1163a, 1),
+            Range32.init(0x1163d, 0x1163f, 2),
+            Range32.init(0x11640, 0x116ab, 107),
+            Range32.init(0x116ad, 0x116b0, 3),
+            Range32.init(0x116b1, 0x116b5, 1),
+            Range32.init(0x116b7, 0x1171d, 102),
+            Range32.init(0x1171e, 0x1171f, 1),
+            Range32.init(0x11722, 0x11725, 1),
+            Range32.init(0x11727, 0x1172b, 1),
+            Range32.init(0x11a01, 0x11a06, 1),
+            Range32.init(0x11a09, 0x11a0a, 1),
+            Range32.init(0x11a33, 0x11a38, 1),
+            Range32.init(0x11a3b, 0x11a3e, 1),
+            Range32.init(0x11a47, 0x11a51, 10),
+            Range32.init(0x11a52, 0x11a56, 1),
+            Range32.init(0x11a59, 0x11a5b, 1),
+            Range32.init(0x11a8a, 0x11a96, 1),
+            Range32.init(0x11a98, 0x11a99, 1),
+            Range32.init(0x11c30, 0x11c36, 1),
+            Range32.init(0x11c38, 0x11c3d, 1),
+            Range32.init(0x11c3f, 0x11c92, 83),
+            Range32.init(0x11c93, 0x11ca7, 1),
+            Range32.init(0x11caa, 0x11cb0, 1),
+            Range32.init(0x11cb2, 0x11cb3, 1),
+            Range32.init(0x11cb5, 0x11cb6, 1),
+            Range32.init(0x11d31, 0x11d36, 1),
+            Range32.init(0x11d3a, 0x11d3c, 2),
+            Range32.init(0x11d3d, 0x11d3f, 2),
+            Range32.init(0x11d40, 0x11d45, 1),
+            Range32.init(0x11d47, 0x16af0, 19881),
+            Range32.init(0x16af1, 0x16af4, 1),
+            Range32.init(0x16b30, 0x16b36, 1),
+            Range32.init(0x16f8f, 0x16f92, 1),
+            Range32.init(0x1bc9d, 0x1bc9e, 1),
+            Range32.init(0x1d167, 0x1d169, 1),
+            Range32.init(0x1d17b, 0x1d182, 1),
+            Range32.init(0x1d185, 0x1d18b, 1),
+            Range32.init(0x1d1aa, 0x1d1ad, 1),
+            Range32.init(0x1d242, 0x1d244, 1),
+            Range32.init(0x1da00, 0x1da36, 1),
+            Range32.init(0x1da3b, 0x1da6c, 1),
+            Range32.init(0x1da75, 0x1da84, 15),
+            Range32.init(0x1da9b, 0x1da9f, 1),
+            Range32.init(0x1daa1, 0x1daaf, 1),
+            Range32.init(0x1e000, 0x1e006, 1),
+            Range32.init(0x1e008, 0x1e018, 1),
+            Range32.init(0x1e01b, 0x1e021, 1),
+            Range32.init(0x1e023, 0x1e024, 1),
+            Range32.init(0x1e026, 0x1e02a, 1),
+            Range32.init(0x1e8d0, 0x1e8d6, 1),
+            Range32.init(0x1e944, 0x1e94a, 1),
+            Range32.init(0xe0100, 0xe01ef, 1),
         };
         break :init r[0..];
     },
+    .latin_offset = 0,
 };
 const _N = RangeTable.{
     .r16 = init: {
@@ -2362,57 +2377,58 @@ const _N = RangeTable.{
     },
     .r32 = init: {
         var r = []Range32.{
-            Range16.init(0x10107, 0x10133, 1),
-            Range16.init(0x10140, 0x10178, 1),
-            Range16.init(0x1018a, 0x1018b, 1),
-            Range16.init(0x102e1, 0x102fb, 1),
-            Range16.init(0x10320, 0x10323, 1),
-            Range16.init(0x10341, 0x1034a, 9),
-            Range16.init(0x103d1, 0x103d5, 1),
-            Range16.init(0x104a0, 0x104a9, 1),
-            Range16.init(0x10858, 0x1085f, 1),
-            Range16.init(0x10879, 0x1087f, 1),
-            Range16.init(0x108a7, 0x108af, 1),
-            Range16.init(0x108fb, 0x108ff, 1),
-            Range16.init(0x10916, 0x1091b, 1),
-            Range16.init(0x109bc, 0x109bd, 1),
-            Range16.init(0x109c0, 0x109cf, 1),
-            Range16.init(0x109d2, 0x109ff, 1),
-            Range16.init(0x10a40, 0x10a47, 1),
-            Range16.init(0x10a7d, 0x10a7e, 1),
-            Range16.init(0x10a9d, 0x10a9f, 1),
-            Range16.init(0x10aeb, 0x10aef, 1),
-            Range16.init(0x10b58, 0x10b5f, 1),
-            Range16.init(0x10b78, 0x10b7f, 1),
-            Range16.init(0x10ba9, 0x10baf, 1),
-            Range16.init(0x10cfa, 0x10cff, 1),
-            Range16.init(0x10e60, 0x10e7e, 1),
-            Range16.init(0x11052, 0x1106f, 1),
-            Range16.init(0x110f0, 0x110f9, 1),
-            Range16.init(0x11136, 0x1113f, 1),
-            Range16.init(0x111d0, 0x111d9, 1),
-            Range16.init(0x111e1, 0x111f4, 1),
-            Range16.init(0x112f0, 0x112f9, 1),
-            Range16.init(0x11450, 0x11459, 1),
-            Range16.init(0x114d0, 0x114d9, 1),
-            Range16.init(0x11650, 0x11659, 1),
-            Range16.init(0x116c0, 0x116c9, 1),
-            Range16.init(0x11730, 0x1173b, 1),
-            Range16.init(0x118e0, 0x118f2, 1),
-            Range16.init(0x11c50, 0x11c6c, 1),
-            Range16.init(0x11d50, 0x11d59, 1),
-            Range16.init(0x12400, 0x1246e, 1),
-            Range16.init(0x16a60, 0x16a69, 1),
-            Range16.init(0x16b50, 0x16b59, 1),
-            Range16.init(0x16b5b, 0x16b61, 1),
-            Range16.init(0x1d360, 0x1d371, 1),
-            Range16.init(0x1d7ce, 0x1d7ff, 1),
-            Range16.init(0x1e8c7, 0x1e8cf, 1),
-            Range16.init(0x1e950, 0x1e959, 1),
-            Range16.init(0x1f100, 0x1f10c, 1),
+            Range32.init(0x10107, 0x10133, 1),
+            Range32.init(0x10140, 0x10178, 1),
+            Range32.init(0x1018a, 0x1018b, 1),
+            Range32.init(0x102e1, 0x102fb, 1),
+            Range32.init(0x10320, 0x10323, 1),
+            Range32.init(0x10341, 0x1034a, 9),
+            Range32.init(0x103d1, 0x103d5, 1),
+            Range32.init(0x104a0, 0x104a9, 1),
+            Range32.init(0x10858, 0x1085f, 1),
+            Range32.init(0x10879, 0x1087f, 1),
+            Range32.init(0x108a7, 0x108af, 1),
+            Range32.init(0x108fb, 0x108ff, 1),
+            Range32.init(0x10916, 0x1091b, 1),
+            Range32.init(0x109bc, 0x109bd, 1),
+            Range32.init(0x109c0, 0x109cf, 1),
+            Range32.init(0x109d2, 0x109ff, 1),
+            Range32.init(0x10a40, 0x10a47, 1),
+            Range32.init(0x10a7d, 0x10a7e, 1),
+            Range32.init(0x10a9d, 0x10a9f, 1),
+            Range32.init(0x10aeb, 0x10aef, 1),
+            Range32.init(0x10b58, 0x10b5f, 1),
+            Range32.init(0x10b78, 0x10b7f, 1),
+            Range32.init(0x10ba9, 0x10baf, 1),
+            Range32.init(0x10cfa, 0x10cff, 1),
+            Range32.init(0x10e60, 0x10e7e, 1),
+            Range32.init(0x11052, 0x1106f, 1),
+            Range32.init(0x110f0, 0x110f9, 1),
+            Range32.init(0x11136, 0x1113f, 1),
+            Range32.init(0x111d0, 0x111d9, 1),
+            Range32.init(0x111e1, 0x111f4, 1),
+            Range32.init(0x112f0, 0x112f9, 1),
+            Range32.init(0x11450, 0x11459, 1),
+            Range32.init(0x114d0, 0x114d9, 1),
+            Range32.init(0x11650, 0x11659, 1),
+            Range32.init(0x116c0, 0x116c9, 1),
+            Range32.init(0x11730, 0x1173b, 1),
+            Range32.init(0x118e0, 0x118f2, 1),
+            Range32.init(0x11c50, 0x11c6c, 1),
+            Range32.init(0x11d50, 0x11d59, 1),
+            Range32.init(0x12400, 0x1246e, 1),
+            Range32.init(0x16a60, 0x16a69, 1),
+            Range32.init(0x16b50, 0x16b59, 1),
+            Range32.init(0x16b5b, 0x16b61, 1),
+            Range32.init(0x1d360, 0x1d371, 1),
+            Range32.init(0x1d7ce, 0x1d7ff, 1),
+            Range32.init(0x1e8c7, 0x1e8cf, 1),
+            Range32.init(0x1e950, 0x1e959, 1),
+            Range32.init(0x1f100, 0x1f10c, 1),
         };
         break :init r[0..];
     },
+    .latin_offset = 0,
 };
 const _Nd = RangeTable.{
     .r16 = init: {
@@ -2459,27 +2475,28 @@ const _Nd = RangeTable.{
     },
     .r32 = init: {
         var r = []Range32.{
-            Range16.init(0x104a0, 0x104a9, 1),
-            Range16.init(0x11066, 0x1106f, 1),
-            Range16.init(0x110f0, 0x110f9, 1),
-            Range16.init(0x11136, 0x1113f, 1),
-            Range16.init(0x111d0, 0x111d9, 1),
-            Range16.init(0x112f0, 0x112f9, 1),
-            Range16.init(0x11450, 0x11459, 1),
-            Range16.init(0x114d0, 0x114d9, 1),
-            Range16.init(0x11650, 0x11659, 1),
-            Range16.init(0x116c0, 0x116c9, 1),
-            Range16.init(0x11730, 0x11739, 1),
-            Range16.init(0x118e0, 0x118e9, 1),
-            Range16.init(0x11c50, 0x11c59, 1),
-            Range16.init(0x11d50, 0x11d59, 1),
-            Range16.init(0x16a60, 0x16a69, 1),
-            Range16.init(0x16b50, 0x16b59, 1),
-            Range16.init(0x1d7ce, 0x1d7ff, 1),
-            Range16.init(0x1e950, 0x1e959, 1),
+            Range32.init(0x104a0, 0x104a9, 1),
+            Range32.init(0x11066, 0x1106f, 1),
+            Range32.init(0x110f0, 0x110f9, 1),
+            Range32.init(0x11136, 0x1113f, 1),
+            Range32.init(0x111d0, 0x111d9, 1),
+            Range32.init(0x112f0, 0x112f9, 1),
+            Range32.init(0x11450, 0x11459, 1),
+            Range32.init(0x114d0, 0x114d9, 1),
+            Range32.init(0x11650, 0x11659, 1),
+            Range32.init(0x116c0, 0x116c9, 1),
+            Range32.init(0x11730, 0x11739, 1),
+            Range32.init(0x118e0, 0x118e9, 1),
+            Range32.init(0x11c50, 0x11c59, 1),
+            Range32.init(0x11d50, 0x11d59, 1),
+            Range32.init(0x16a60, 0x16a69, 1),
+            Range32.init(0x16b50, 0x16b59, 1),
+            Range32.init(0x1d7ce, 0x1d7ff, 1),
+            Range32.init(0x1e950, 0x1e959, 1),
         };
         break :init r[0..];
     },
+    .latin_offset = 0,
 };
 const _Nl = RangeTable.{
     .r16 = init: {
@@ -2496,13 +2513,14 @@ const _Nl = RangeTable.{
     },
     .r32 = init: {
         var r = []Range32.{
-            Range16.init(0x10140, 0x10174, 1),
-            Range16.init(0x10341, 0x1034a, 9),
-            Range16.init(0x103d1, 0x103d5, 1),
-            Range16.init(0x12400, 0x1246e, 1),
+            Range32.init(0x10140, 0x10174, 1),
+            Range32.init(0x10341, 0x1034a, 9),
+            Range32.init(0x103d1, 0x103d5, 1),
+            Range32.init(0x12400, 0x1246e, 1),
         };
         break :init r[0..];
     },
+    .latin_offset = 0,
 };
 const _No = RangeTable.{
     .r16 = init: {
@@ -2540,40 +2558,41 @@ const _No = RangeTable.{
     },
     .r32 = init: {
         var r = []Range32.{
-            Range16.init(0x10107, 0x10133, 1),
-            Range16.init(0x10175, 0x10178, 1),
-            Range16.init(0x1018a, 0x1018b, 1),
-            Range16.init(0x102e1, 0x102fb, 1),
-            Range16.init(0x10320, 0x10323, 1),
-            Range16.init(0x10858, 0x1085f, 1),
-            Range16.init(0x10879, 0x1087f, 1),
-            Range16.init(0x108a7, 0x108af, 1),
-            Range16.init(0x108fb, 0x108ff, 1),
-            Range16.init(0x10916, 0x1091b, 1),
-            Range16.init(0x109bc, 0x109bd, 1),
-            Range16.init(0x109c0, 0x109cf, 1),
-            Range16.init(0x109d2, 0x109ff, 1),
-            Range16.init(0x10a40, 0x10a47, 1),
-            Range16.init(0x10a7d, 0x10a7e, 1),
-            Range16.init(0x10a9d, 0x10a9f, 1),
-            Range16.init(0x10aeb, 0x10aef, 1),
-            Range16.init(0x10b58, 0x10b5f, 1),
-            Range16.init(0x10b78, 0x10b7f, 1),
-            Range16.init(0x10ba9, 0x10baf, 1),
-            Range16.init(0x10cfa, 0x10cff, 1),
-            Range16.init(0x10e60, 0x10e7e, 1),
-            Range16.init(0x11052, 0x11065, 1),
-            Range16.init(0x111e1, 0x111f4, 1),
-            Range16.init(0x1173a, 0x1173b, 1),
-            Range16.init(0x118ea, 0x118f2, 1),
-            Range16.init(0x11c5a, 0x11c6c, 1),
-            Range16.init(0x16b5b, 0x16b61, 1),
-            Range16.init(0x1d360, 0x1d371, 1),
-            Range16.init(0x1e8c7, 0x1e8cf, 1),
-            Range16.init(0x1f100, 0x1f10c, 1),
+            Range32.init(0x10107, 0x10133, 1),
+            Range32.init(0x10175, 0x10178, 1),
+            Range32.init(0x1018a, 0x1018b, 1),
+            Range32.init(0x102e1, 0x102fb, 1),
+            Range32.init(0x10320, 0x10323, 1),
+            Range32.init(0x10858, 0x1085f, 1),
+            Range32.init(0x10879, 0x1087f, 1),
+            Range32.init(0x108a7, 0x108af, 1),
+            Range32.init(0x108fb, 0x108ff, 1),
+            Range32.init(0x10916, 0x1091b, 1),
+            Range32.init(0x109bc, 0x109bd, 1),
+            Range32.init(0x109c0, 0x109cf, 1),
+            Range32.init(0x109d2, 0x109ff, 1),
+            Range32.init(0x10a40, 0x10a47, 1),
+            Range32.init(0x10a7d, 0x10a7e, 1),
+            Range32.init(0x10a9d, 0x10a9f, 1),
+            Range32.init(0x10aeb, 0x10aef, 1),
+            Range32.init(0x10b58, 0x10b5f, 1),
+            Range32.init(0x10b78, 0x10b7f, 1),
+            Range32.init(0x10ba9, 0x10baf, 1),
+            Range32.init(0x10cfa, 0x10cff, 1),
+            Range32.init(0x10e60, 0x10e7e, 1),
+            Range32.init(0x11052, 0x11065, 1),
+            Range32.init(0x111e1, 0x111f4, 1),
+            Range32.init(0x1173a, 0x1173b, 1),
+            Range32.init(0x118ea, 0x118f2, 1),
+            Range32.init(0x11c5a, 0x11c6c, 1),
+            Range32.init(0x16b5b, 0x16b61, 1),
+            Range32.init(0x1d360, 0x1d371, 1),
+            Range32.init(0x1e8c7, 0x1e8cf, 1),
+            Range32.init(0x1f100, 0x1f10c, 1),
         };
         break :init r[0..];
     },
+    .latin_offset = 0,
 };
 const _P = RangeTable.{
     .r16 = init: {
@@ -2695,47 +2714,48 @@ const _P = RangeTable.{
     },
     .r32 = init: {
         var r = []Range32.{
-            Range16.init(0x10100, 0x10102, 1),
-            Range16.init(0x1039f, 0x103d0, 49),
-            Range16.init(0x1056f, 0x10857, 744),
-            Range16.init(0x1091f, 0x1093f, 32),
-            Range16.init(0x10a50, 0x10a58, 1),
-            Range16.init(0x10a7f, 0x10af0, 113),
-            Range16.init(0x10af1, 0x10af6, 1),
-            Range16.init(0x10b39, 0x10b3f, 1),
-            Range16.init(0x10b99, 0x10b9c, 1),
-            Range16.init(0x11047, 0x1104d, 1),
-            Range16.init(0x110bb, 0x110bc, 1),
-            Range16.init(0x110be, 0x110c1, 1),
-            Range16.init(0x11140, 0x11143, 1),
-            Range16.init(0x11174, 0x11175, 1),
-            Range16.init(0x111c5, 0x111c9, 1),
-            Range16.init(0x111cd, 0x111db, 14),
-            Range16.init(0x111dd, 0x111df, 1),
-            Range16.init(0x11238, 0x1123d, 1),
-            Range16.init(0x112a9, 0x1144b, 418),
-            Range16.init(0x1144c, 0x1144f, 1),
-            Range16.init(0x1145b, 0x1145d, 2),
-            Range16.init(0x114c6, 0x115c1, 251),
-            Range16.init(0x115c2, 0x115d7, 1),
-            Range16.init(0x11641, 0x11643, 1),
-            Range16.init(0x11660, 0x1166c, 1),
-            Range16.init(0x1173c, 0x1173e, 1),
-            Range16.init(0x11a3f, 0x11a46, 1),
-            Range16.init(0x11a9a, 0x11a9c, 1),
-            Range16.init(0x11a9e, 0x11aa2, 1),
-            Range16.init(0x11c41, 0x11c45, 1),
-            Range16.init(0x11c70, 0x11c71, 1),
-            Range16.init(0x12470, 0x12474, 1),
-            Range16.init(0x16a6e, 0x16a6f, 1),
-            Range16.init(0x16af5, 0x16b37, 66),
-            Range16.init(0x16b38, 0x16b3b, 1),
-            Range16.init(0x16b44, 0x1bc9f, 20827),
-            Range16.init(0x1da87, 0x1da8b, 1),
-            Range16.init(0x1e95e, 0x1e95f, 1),
+            Range32.init(0x10100, 0x10102, 1),
+            Range32.init(0x1039f, 0x103d0, 49),
+            Range32.init(0x1056f, 0x10857, 744),
+            Range32.init(0x1091f, 0x1093f, 32),
+            Range32.init(0x10a50, 0x10a58, 1),
+            Range32.init(0x10a7f, 0x10af0, 113),
+            Range32.init(0x10af1, 0x10af6, 1),
+            Range32.init(0x10b39, 0x10b3f, 1),
+            Range32.init(0x10b99, 0x10b9c, 1),
+            Range32.init(0x11047, 0x1104d, 1),
+            Range32.init(0x110bb, 0x110bc, 1),
+            Range32.init(0x110be, 0x110c1, 1),
+            Range32.init(0x11140, 0x11143, 1),
+            Range32.init(0x11174, 0x11175, 1),
+            Range32.init(0x111c5, 0x111c9, 1),
+            Range32.init(0x111cd, 0x111db, 14),
+            Range32.init(0x111dd, 0x111df, 1),
+            Range32.init(0x11238, 0x1123d, 1),
+            Range32.init(0x112a9, 0x1144b, 418),
+            Range32.init(0x1144c, 0x1144f, 1),
+            Range32.init(0x1145b, 0x1145d, 2),
+            Range32.init(0x114c6, 0x115c1, 251),
+            Range32.init(0x115c2, 0x115d7, 1),
+            Range32.init(0x11641, 0x11643, 1),
+            Range32.init(0x11660, 0x1166c, 1),
+            Range32.init(0x1173c, 0x1173e, 1),
+            Range32.init(0x11a3f, 0x11a46, 1),
+            Range32.init(0x11a9a, 0x11a9c, 1),
+            Range32.init(0x11a9e, 0x11aa2, 1),
+            Range32.init(0x11c41, 0x11c45, 1),
+            Range32.init(0x11c70, 0x11c71, 1),
+            Range32.init(0x12470, 0x12474, 1),
+            Range32.init(0x16a6e, 0x16a6f, 1),
+            Range32.init(0x16af5, 0x16b37, 66),
+            Range32.init(0x16b38, 0x16b3b, 1),
+            Range32.init(0x16b44, 0x1bc9f, 20827),
+            Range32.init(0x1da87, 0x1da8b, 1),
+            Range32.init(0x1e95e, 0x1e95f, 1),
         };
         break :init r[0..];
     },
+    .latin_offset = 0,
 };
 const _Pc = RangeTable.{
     .r16 = init: {
@@ -2749,6 +2769,7 @@ const _Pc = RangeTable.{
         break :init r[0..];
     },
     .r32 = []Range32.{},
+    .latin_offset = 0,
 };
 const _Pd = RangeTable.{
     .r16 = init: {
@@ -2768,6 +2789,7 @@ const _Pd = RangeTable.{
         break :init r[0..];
     },
     .r32 = []Range32.{},
+    .latin_offset = 0,
 };
 const _Pe = RangeTable.{
     .r16 = init: {
@@ -2798,6 +2820,7 @@ const _Pe = RangeTable.{
         break :init r[0..];
     },
     .r32 = []Range32.{},
+    .latin_offset = 0,
 };
 const _Pf = RangeTable.{
     .r16 = init: {
@@ -2811,6 +2834,7 @@ const _Pf = RangeTable.{
         break :init r[0..];
     },
     .r32 = []Range32.{},
+    .latin_offset = 0,
 };
 const _Pi = RangeTable.{
     .r16 = init: {
@@ -2825,6 +2849,7 @@ const _Pi = RangeTable.{
         break :init r[0..];
     },
     .r32 = []Range32.{},
+    .latin_offset = 0,
 };
 const _Po = RangeTable.{
     .r16 = init: {
@@ -2943,48 +2968,49 @@ const _Po = RangeTable.{
     },
     .r32 = init: {
         var r = []Range32.{
-            Range16.init(0x10100, 0x10100, 1),
-            Range16.init(0x10101, 0x10102, 1),
-            Range16.init(0x1039f, 0x103d0, 49),
-            Range16.init(0x1056f, 0x10857, 744),
-            Range16.init(0x1091f, 0x1093f, 32),
-            Range16.init(0x10a50, 0x10a58, 1),
-            Range16.init(0x10a7f, 0x10af0, 113),
-            Range16.init(0x10af1, 0x10af6, 1),
-            Range16.init(0x10b39, 0x10b3f, 1),
-            Range16.init(0x10b99, 0x10b9c, 1),
-            Range16.init(0x11047, 0x1104d, 1),
-            Range16.init(0x110bb, 0x110bc, 1),
-            Range16.init(0x110be, 0x110c1, 1),
-            Range16.init(0x11140, 0x11143, 1),
-            Range16.init(0x11174, 0x11175, 1),
-            Range16.init(0x111c5, 0x111c9, 1),
-            Range16.init(0x111cd, 0x111db, 14),
-            Range16.init(0x111dd, 0x111df, 1),
-            Range16.init(0x11238, 0x1123d, 1),
-            Range16.init(0x112a9, 0x1144b, 418),
-            Range16.init(0x1144c, 0x1144f, 1),
-            Range16.init(0x1145b, 0x1145d, 2),
-            Range16.init(0x114c6, 0x115c1, 251),
-            Range16.init(0x115c2, 0x115d7, 1),
-            Range16.init(0x11641, 0x11643, 1),
-            Range16.init(0x11660, 0x1166c, 1),
-            Range16.init(0x1173c, 0x1173e, 1),
-            Range16.init(0x11a3f, 0x11a46, 1),
-            Range16.init(0x11a9a, 0x11a9c, 1),
-            Range16.init(0x11a9e, 0x11aa2, 1),
-            Range16.init(0x11c41, 0x11c45, 1),
-            Range16.init(0x11c70, 0x11c71, 1),
-            Range16.init(0x12470, 0x12474, 1),
-            Range16.init(0x16a6e, 0x16a6f, 1),
-            Range16.init(0x16af5, 0x16b37, 66),
-            Range16.init(0x16b38, 0x16b3b, 1),
-            Range16.init(0x16b44, 0x1bc9f, 20827),
-            Range16.init(0x1da87, 0x1da8b, 1),
-            Range16.init(0x1e95e, 0x1e95f, 1),
+            Range32.init(0x10100, 0x10100, 1),
+            Range32.init(0x10101, 0x10102, 1),
+            Range32.init(0x1039f, 0x103d0, 49),
+            Range32.init(0x1056f, 0x10857, 744),
+            Range32.init(0x1091f, 0x1093f, 32),
+            Range32.init(0x10a50, 0x10a58, 1),
+            Range32.init(0x10a7f, 0x10af0, 113),
+            Range32.init(0x10af1, 0x10af6, 1),
+            Range32.init(0x10b39, 0x10b3f, 1),
+            Range32.init(0x10b99, 0x10b9c, 1),
+            Range32.init(0x11047, 0x1104d, 1),
+            Range32.init(0x110bb, 0x110bc, 1),
+            Range32.init(0x110be, 0x110c1, 1),
+            Range32.init(0x11140, 0x11143, 1),
+            Range32.init(0x11174, 0x11175, 1),
+            Range32.init(0x111c5, 0x111c9, 1),
+            Range32.init(0x111cd, 0x111db, 14),
+            Range32.init(0x111dd, 0x111df, 1),
+            Range32.init(0x11238, 0x1123d, 1),
+            Range32.init(0x112a9, 0x1144b, 418),
+            Range32.init(0x1144c, 0x1144f, 1),
+            Range32.init(0x1145b, 0x1145d, 2),
+            Range32.init(0x114c6, 0x115c1, 251),
+            Range32.init(0x115c2, 0x115d7, 1),
+            Range32.init(0x11641, 0x11643, 1),
+            Range32.init(0x11660, 0x1166c, 1),
+            Range32.init(0x1173c, 0x1173e, 1),
+            Range32.init(0x11a3f, 0x11a46, 1),
+            Range32.init(0x11a9a, 0x11a9c, 1),
+            Range32.init(0x11a9e, 0x11aa2, 1),
+            Range32.init(0x11c41, 0x11c45, 1),
+            Range32.init(0x11c70, 0x11c71, 1),
+            Range32.init(0x12470, 0x12474, 1),
+            Range32.init(0x16a6e, 0x16a6f, 1),
+            Range32.init(0x16af5, 0x16b37, 66),
+            Range32.init(0x16b38, 0x16b3b, 1),
+            Range32.init(0x16b44, 0x1bc9f, 20827),
+            Range32.init(0x1da87, 0x1da8b, 1),
+            Range32.init(0x1e95e, 0x1e95f, 1),
         };
         break :init r[0..];
     },
+    .latin_offset = 0,
 };
 const _Ps = RangeTable.{
     .r16 = init: {
@@ -3018,6 +3044,7 @@ const _Ps = RangeTable.{
         break :init r[0..];
     },
     .r32 = []Range32.{},
+    .latin_offset = 0,
 };
 const _S = RangeTable.{
     .r16 = init: {
@@ -3153,71 +3180,72 @@ const _S = RangeTable.{
     },
     .r32 = init: {
         var r = []Range32.{
-            Range16.init(0x10137, 0x1013f, 1),
-            Range16.init(0x10179, 0x10189, 1),
-            Range16.init(0x1018c, 0x1018e, 1),
-            Range16.init(0x10190, 0x1019b, 1),
-            Range16.init(0x101a0, 0x101d0, 48),
-            Range16.init(0x101d1, 0x101fc, 1),
-            Range16.init(0x10877, 0x10878, 1),
-            Range16.init(0x10ac8, 0x1173f, 3191),
-            Range16.init(0x16b3c, 0x16b3f, 1),
-            Range16.init(0x16b45, 0x1bc9c, 20823),
-            Range16.init(0x1d000, 0x1d0f5, 1),
-            Range16.init(0x1d100, 0x1d126, 1),
-            Range16.init(0x1d129, 0x1d164, 1),
-            Range16.init(0x1d16a, 0x1d16c, 1),
-            Range16.init(0x1d183, 0x1d184, 1),
-            Range16.init(0x1d18c, 0x1d1a9, 1),
-            Range16.init(0x1d1ae, 0x1d1e8, 1),
-            Range16.init(0x1d200, 0x1d241, 1),
-            Range16.init(0x1d245, 0x1d300, 187),
-            Range16.init(0x1d301, 0x1d356, 1),
-            Range16.init(0x1d6c1, 0x1d6db, 26),
-            Range16.init(0x1d6fb, 0x1d715, 26),
-            Range16.init(0x1d735, 0x1d74f, 26),
-            Range16.init(0x1d76f, 0x1d789, 26),
-            Range16.init(0x1d7a9, 0x1d7c3, 26),
-            Range16.init(0x1d800, 0x1d9ff, 1),
-            Range16.init(0x1da37, 0x1da3a, 1),
-            Range16.init(0x1da6d, 0x1da74, 1),
-            Range16.init(0x1da76, 0x1da83, 1),
-            Range16.init(0x1da85, 0x1da86, 1),
-            Range16.init(0x1eef0, 0x1eef1, 1),
-            Range16.init(0x1f000, 0x1f02b, 1),
-            Range16.init(0x1f030, 0x1f093, 1),
-            Range16.init(0x1f0a0, 0x1f0ae, 1),
-            Range16.init(0x1f0b1, 0x1f0bf, 1),
-            Range16.init(0x1f0c1, 0x1f0cf, 1),
-            Range16.init(0x1f0d1, 0x1f0f5, 1),
-            Range16.init(0x1f110, 0x1f12e, 1),
-            Range16.init(0x1f130, 0x1f16b, 1),
-            Range16.init(0x1f170, 0x1f1ac, 1),
-            Range16.init(0x1f1e6, 0x1f202, 1),
-            Range16.init(0x1f210, 0x1f23b, 1),
-            Range16.init(0x1f240, 0x1f248, 1),
-            Range16.init(0x1f250, 0x1f251, 1),
-            Range16.init(0x1f260, 0x1f265, 1),
-            Range16.init(0x1f300, 0x1f6d4, 1),
-            Range16.init(0x1f6e0, 0x1f6ec, 1),
-            Range16.init(0x1f6f0, 0x1f6f8, 1),
-            Range16.init(0x1f700, 0x1f773, 1),
-            Range16.init(0x1f780, 0x1f7d4, 1),
-            Range16.init(0x1f800, 0x1f80b, 1),
-            Range16.init(0x1f810, 0x1f847, 1),
-            Range16.init(0x1f850, 0x1f859, 1),
-            Range16.init(0x1f860, 0x1f887, 1),
-            Range16.init(0x1f890, 0x1f8ad, 1),
-            Range16.init(0x1f900, 0x1f90b, 1),
-            Range16.init(0x1f910, 0x1f93e, 1),
-            Range16.init(0x1f940, 0x1f94c, 1),
-            Range16.init(0x1f950, 0x1f96b, 1),
-            Range16.init(0x1f980, 0x1f997, 1),
-            Range16.init(0x1f9c0, 0x1f9d0, 16),
-            Range16.init(0x1f9d1, 0x1f9e6, 1),
+            Range32.init(0x10137, 0x1013f, 1),
+            Range32.init(0x10179, 0x10189, 1),
+            Range32.init(0x1018c, 0x1018e, 1),
+            Range32.init(0x10190, 0x1019b, 1),
+            Range32.init(0x101a0, 0x101d0, 48),
+            Range32.init(0x101d1, 0x101fc, 1),
+            Range32.init(0x10877, 0x10878, 1),
+            Range32.init(0x10ac8, 0x1173f, 3191),
+            Range32.init(0x16b3c, 0x16b3f, 1),
+            Range32.init(0x16b45, 0x1bc9c, 20823),
+            Range32.init(0x1d000, 0x1d0f5, 1),
+            Range32.init(0x1d100, 0x1d126, 1),
+            Range32.init(0x1d129, 0x1d164, 1),
+            Range32.init(0x1d16a, 0x1d16c, 1),
+            Range32.init(0x1d183, 0x1d184, 1),
+            Range32.init(0x1d18c, 0x1d1a9, 1),
+            Range32.init(0x1d1ae, 0x1d1e8, 1),
+            Range32.init(0x1d200, 0x1d241, 1),
+            Range32.init(0x1d245, 0x1d300, 187),
+            Range32.init(0x1d301, 0x1d356, 1),
+            Range32.init(0x1d6c1, 0x1d6db, 26),
+            Range32.init(0x1d6fb, 0x1d715, 26),
+            Range32.init(0x1d735, 0x1d74f, 26),
+            Range32.init(0x1d76f, 0x1d789, 26),
+            Range32.init(0x1d7a9, 0x1d7c3, 26),
+            Range32.init(0x1d800, 0x1d9ff, 1),
+            Range32.init(0x1da37, 0x1da3a, 1),
+            Range32.init(0x1da6d, 0x1da74, 1),
+            Range32.init(0x1da76, 0x1da83, 1),
+            Range32.init(0x1da85, 0x1da86, 1),
+            Range32.init(0x1eef0, 0x1eef1, 1),
+            Range32.init(0x1f000, 0x1f02b, 1),
+            Range32.init(0x1f030, 0x1f093, 1),
+            Range32.init(0x1f0a0, 0x1f0ae, 1),
+            Range32.init(0x1f0b1, 0x1f0bf, 1),
+            Range32.init(0x1f0c1, 0x1f0cf, 1),
+            Range32.init(0x1f0d1, 0x1f0f5, 1),
+            Range32.init(0x1f110, 0x1f12e, 1),
+            Range32.init(0x1f130, 0x1f16b, 1),
+            Range32.init(0x1f170, 0x1f1ac, 1),
+            Range32.init(0x1f1e6, 0x1f202, 1),
+            Range32.init(0x1f210, 0x1f23b, 1),
+            Range32.init(0x1f240, 0x1f248, 1),
+            Range32.init(0x1f250, 0x1f251, 1),
+            Range32.init(0x1f260, 0x1f265, 1),
+            Range32.init(0x1f300, 0x1f6d4, 1),
+            Range32.init(0x1f6e0, 0x1f6ec, 1),
+            Range32.init(0x1f6f0, 0x1f6f8, 1),
+            Range32.init(0x1f700, 0x1f773, 1),
+            Range32.init(0x1f780, 0x1f7d4, 1),
+            Range32.init(0x1f800, 0x1f80b, 1),
+            Range32.init(0x1f810, 0x1f847, 1),
+            Range32.init(0x1f850, 0x1f859, 1),
+            Range32.init(0x1f860, 0x1f887, 1),
+            Range32.init(0x1f890, 0x1f8ad, 1),
+            Range32.init(0x1f900, 0x1f90b, 1),
+            Range32.init(0x1f910, 0x1f93e, 1),
+            Range32.init(0x1f940, 0x1f94c, 1),
+            Range32.init(0x1f950, 0x1f96b, 1),
+            Range32.init(0x1f980, 0x1f997, 1),
+            Range32.init(0x1f9c0, 0x1f9d0, 16),
+            Range32.init(0x1f9d1, 0x1f9e6, 1),
         };
         break :init r[0..];
     },
+    .latin_offset = 0,
 };
 const _Sc = RangeTable.{
     .r16 = init: {
@@ -3238,6 +3266,7 @@ const _Sc = RangeTable.{
         break :init r[0..];
     },
     .r32 = []Range32.{},
+    .latin_offset = 0,
 };
 const _Sk = RangeTable.{
     .r16 = init: {
@@ -3270,11 +3299,12 @@ const _Sk = RangeTable.{
     },
     .r32 = init: {
         var r = []Range32.{
-            Range16.init(0x1f3fb, 0x1f3fb, 1),
-            Range16.init(0x1f3fc, 0x1f3ff, 1),
+            Range32.init(0x1f3fb, 0x1f3fb, 1),
+            Range32.init(0x1f3fc, 0x1f3ff, 1),
         };
         break :init r[0..];
     },
+    .latin_offset = 0,
 };
 const _Sm = RangeTable.{
     .r16 = init: {
@@ -3327,15 +3357,16 @@ const _Sm = RangeTable.{
     },
     .r32 = init: {
         var r = []Range32.{
-            Range16.init(0x1d6c1, 0x1d6db, 26),
-            Range16.init(0x1d6fb, 0x1d715, 26),
-            Range16.init(0x1d735, 0x1d74f, 26),
-            Range16.init(0x1d76f, 0x1d789, 26),
-            Range16.init(0x1d7a9, 0x1d7c3, 26),
-            Range16.init(0x1eef0, 0x1eef1, 1),
+            Range32.init(0x1d6c1, 0x1d6db, 26),
+            Range32.init(0x1d6fb, 0x1d715, 26),
+            Range32.init(0x1d735, 0x1d74f, 26),
+            Range32.init(0x1d76f, 0x1d789, 26),
+            Range32.init(0x1d7a9, 0x1d7c3, 26),
+            Range32.init(0x1eef0, 0x1eef1, 1),
         };
         break :init r[0..];
     },
+    .latin_offset = 0,
 };
 const _So = RangeTable.{
     .r16 = init: {
@@ -3445,67 +3476,68 @@ const _So = RangeTable.{
     },
     .r32 = init: {
         var r = []Range32.{
-            Range16.init(0x10137, 0x10137, 1),
-            Range16.init(0x10138, 0x1013f, 1),
-            Range16.init(0x10179, 0x10189, 1),
-            Range16.init(0x1018c, 0x1018e, 1),
-            Range16.init(0x10190, 0x1019b, 1),
-            Range16.init(0x101a0, 0x101d0, 48),
-            Range16.init(0x101d1, 0x101fc, 1),
-            Range16.init(0x10877, 0x10878, 1),
-            Range16.init(0x10ac8, 0x1173f, 3191),
-            Range16.init(0x16b3c, 0x16b3f, 1),
-            Range16.init(0x16b45, 0x1bc9c, 20823),
-            Range16.init(0x1d000, 0x1d0f5, 1),
-            Range16.init(0x1d100, 0x1d126, 1),
-            Range16.init(0x1d129, 0x1d164, 1),
-            Range16.init(0x1d16a, 0x1d16c, 1),
-            Range16.init(0x1d183, 0x1d184, 1),
-            Range16.init(0x1d18c, 0x1d1a9, 1),
-            Range16.init(0x1d1ae, 0x1d1e8, 1),
-            Range16.init(0x1d200, 0x1d241, 1),
-            Range16.init(0x1d245, 0x1d300, 187),
-            Range16.init(0x1d301, 0x1d356, 1),
-            Range16.init(0x1d800, 0x1d9ff, 1),
-            Range16.init(0x1da37, 0x1da3a, 1),
-            Range16.init(0x1da6d, 0x1da74, 1),
-            Range16.init(0x1da76, 0x1da83, 1),
-            Range16.init(0x1da85, 0x1da86, 1),
-            Range16.init(0x1f000, 0x1f02b, 1),
-            Range16.init(0x1f030, 0x1f093, 1),
-            Range16.init(0x1f0a0, 0x1f0ae, 1),
-            Range16.init(0x1f0b1, 0x1f0bf, 1),
-            Range16.init(0x1f0c1, 0x1f0cf, 1),
-            Range16.init(0x1f0d1, 0x1f0f5, 1),
-            Range16.init(0x1f110, 0x1f12e, 1),
-            Range16.init(0x1f130, 0x1f16b, 1),
-            Range16.init(0x1f170, 0x1f1ac, 1),
-            Range16.init(0x1f1e6, 0x1f202, 1),
-            Range16.init(0x1f210, 0x1f23b, 1),
-            Range16.init(0x1f240, 0x1f248, 1),
-            Range16.init(0x1f250, 0x1f251, 1),
-            Range16.init(0x1f260, 0x1f265, 1),
-            Range16.init(0x1f300, 0x1f3fa, 1),
-            Range16.init(0x1f400, 0x1f6d4, 1),
-            Range16.init(0x1f6e0, 0x1f6ec, 1),
-            Range16.init(0x1f6f0, 0x1f6f8, 1),
-            Range16.init(0x1f700, 0x1f773, 1),
-            Range16.init(0x1f780, 0x1f7d4, 1),
-            Range16.init(0x1f800, 0x1f80b, 1),
-            Range16.init(0x1f810, 0x1f847, 1),
-            Range16.init(0x1f850, 0x1f859, 1),
-            Range16.init(0x1f860, 0x1f887, 1),
-            Range16.init(0x1f890, 0x1f8ad, 1),
-            Range16.init(0x1f900, 0x1f90b, 1),
-            Range16.init(0x1f910, 0x1f93e, 1),
-            Range16.init(0x1f940, 0x1f94c, 1),
-            Range16.init(0x1f950, 0x1f96b, 1),
-            Range16.init(0x1f980, 0x1f997, 1),
-            Range16.init(0x1f9c0, 0x1f9d0, 16),
-            Range16.init(0x1f9d1, 0x1f9e6, 1),
+            Range32.init(0x10137, 0x10137, 1),
+            Range32.init(0x10138, 0x1013f, 1),
+            Range32.init(0x10179, 0x10189, 1),
+            Range32.init(0x1018c, 0x1018e, 1),
+            Range32.init(0x10190, 0x1019b, 1),
+            Range32.init(0x101a0, 0x101d0, 48),
+            Range32.init(0x101d1, 0x101fc, 1),
+            Range32.init(0x10877, 0x10878, 1),
+            Range32.init(0x10ac8, 0x1173f, 3191),
+            Range32.init(0x16b3c, 0x16b3f, 1),
+            Range32.init(0x16b45, 0x1bc9c, 20823),
+            Range32.init(0x1d000, 0x1d0f5, 1),
+            Range32.init(0x1d100, 0x1d126, 1),
+            Range32.init(0x1d129, 0x1d164, 1),
+            Range32.init(0x1d16a, 0x1d16c, 1),
+            Range32.init(0x1d183, 0x1d184, 1),
+            Range32.init(0x1d18c, 0x1d1a9, 1),
+            Range32.init(0x1d1ae, 0x1d1e8, 1),
+            Range32.init(0x1d200, 0x1d241, 1),
+            Range32.init(0x1d245, 0x1d300, 187),
+            Range32.init(0x1d301, 0x1d356, 1),
+            Range32.init(0x1d800, 0x1d9ff, 1),
+            Range32.init(0x1da37, 0x1da3a, 1),
+            Range32.init(0x1da6d, 0x1da74, 1),
+            Range32.init(0x1da76, 0x1da83, 1),
+            Range32.init(0x1da85, 0x1da86, 1),
+            Range32.init(0x1f000, 0x1f02b, 1),
+            Range32.init(0x1f030, 0x1f093, 1),
+            Range32.init(0x1f0a0, 0x1f0ae, 1),
+            Range32.init(0x1f0b1, 0x1f0bf, 1),
+            Range32.init(0x1f0c1, 0x1f0cf, 1),
+            Range32.init(0x1f0d1, 0x1f0f5, 1),
+            Range32.init(0x1f110, 0x1f12e, 1),
+            Range32.init(0x1f130, 0x1f16b, 1),
+            Range32.init(0x1f170, 0x1f1ac, 1),
+            Range32.init(0x1f1e6, 0x1f202, 1),
+            Range32.init(0x1f210, 0x1f23b, 1),
+            Range32.init(0x1f240, 0x1f248, 1),
+            Range32.init(0x1f250, 0x1f251, 1),
+            Range32.init(0x1f260, 0x1f265, 1),
+            Range32.init(0x1f300, 0x1f3fa, 1),
+            Range32.init(0x1f400, 0x1f6d4, 1),
+            Range32.init(0x1f6e0, 0x1f6ec, 1),
+            Range32.init(0x1f6f0, 0x1f6f8, 1),
+            Range32.init(0x1f700, 0x1f773, 1),
+            Range32.init(0x1f780, 0x1f7d4, 1),
+            Range32.init(0x1f800, 0x1f80b, 1),
+            Range32.init(0x1f810, 0x1f847, 1),
+            Range32.init(0x1f850, 0x1f859, 1),
+            Range32.init(0x1f860, 0x1f887, 1),
+            Range32.init(0x1f890, 0x1f8ad, 1),
+            Range32.init(0x1f900, 0x1f90b, 1),
+            Range32.init(0x1f910, 0x1f93e, 1),
+            Range32.init(0x1f940, 0x1f94c, 1),
+            Range32.init(0x1f950, 0x1f96b, 1),
+            Range32.init(0x1f980, 0x1f997, 1),
+            Range32.init(0x1f9c0, 0x1f9d0, 16),
+            Range32.init(0x1f9d1, 0x1f9e6, 1),
         };
         break :init r[0..];
     },
+    .latin_offset = 0,
 };
 const _Z = RangeTable.{
     .r16 = init: {
@@ -3520,6 +3552,7 @@ const _Z = RangeTable.{
         break :init r[0..];
     },
     .r32 = []Range32.{},
+    .latin_offset = 0,
 };
 const _Zl = RangeTable.{
     .r16 = init: {
@@ -3527,6 +3560,7 @@ const _Zl = RangeTable.{
         break :init r[0..];
     },
     .r32 = []Range32.{},
+    .latin_offset = 0,
 };
 const _Zp = RangeTable.{
     .r16 = init: {
@@ -3534,6 +3568,7 @@ const _Zp = RangeTable.{
         break :init r[0..];
     },
     .r32 = []Range32.{},
+    .latin_offset = 0,
 };
 const _Zs = RangeTable.{
     .r16 = init: {
@@ -3547,6 +3582,7 @@ const _Zs = RangeTable.{
         break :init r[0..];
     },
     .r32 = []Range32.{},
+    .latin_offset = 0,
 };
 pub const Cc = &_Cc; // Cc is the set of Unicode characters in category Cc.
 pub const Cf = &_Cf; // Cf is the set of Unicode characters in category Cf.
@@ -3901,30 +3937,33 @@ const _Adlam = RangeTable.{
     .r16 = []Range16.{},
     .r32 = init: {
         var r = []Range32.{
-            Range16.init(0x1e900, 0x1e94a, 1),
-            Range16.init(0x1e950, 0x1e959, 1),
-            Range16.init(0x1e95e, 0x1e95f, 1),
+            Range32.init(0x1e900, 0x1e94a, 1),
+            Range32.init(0x1e950, 0x1e959, 1),
+            Range32.init(0x1e95e, 0x1e95f, 1),
         };
         break :init r[0..];
     },
+    .latin_offset = 0,
 };
 const _Ahom = RangeTable.{
     .r16 = []Range16.{},
     .r32 = init: {
         var r = []Range32.{
-            Range16.init(0x11700, 0x11719, 1),
-            Range16.init(0x1171d, 0x1172b, 1),
-            Range16.init(0x11730, 0x1173f, 1),
+            Range32.init(0x11700, 0x11719, 1),
+            Range32.init(0x1171d, 0x1172b, 1),
+            Range32.init(0x11730, 0x1173f, 1),
         };
         break :init r[0..];
     },
+    .latin_offset = 0,
 };
 const _Anatolian_Hieroglyphs = RangeTable.{
     .r16 = []Range16.{},
     .r32 = init: {
-        var r = []Range32.{Range16.init(0x14400, 0x14646, 1)};
+        var r = []Range32.{Range32.init(0x14400, 0x14646, 1)};
         break :init r[0..];
     },
+    .latin_offset = 0,
 };
 const _Arabic = RangeTable.{
     .r16 = init: {
@@ -3956,44 +3995,45 @@ const _Arabic = RangeTable.{
     },
     .r32 = init: {
         var r = []Range32.{
-            Range16.init(0x10e60, 0x10e7e, 1),
-            Range16.init(0x1ee00, 0x1ee03, 1),
-            Range16.init(0x1ee05, 0x1ee1f, 1),
-            Range16.init(0x1ee21, 0x1ee22, 1),
-            Range16.init(0x1ee24, 0x1ee24, 1),
-            Range16.init(0x1ee27, 0x1ee27, 1),
-            Range16.init(0x1ee29, 0x1ee32, 1),
-            Range16.init(0x1ee34, 0x1ee37, 1),
-            Range16.init(0x1ee39, 0x1ee39, 1),
-            Range16.init(0x1ee3b, 0x1ee3b, 1),
-            Range16.init(0x1ee42, 0x1ee42, 1),
-            Range16.init(0x1ee47, 0x1ee47, 1),
-            Range16.init(0x1ee49, 0x1ee49, 1),
-            Range16.init(0x1ee4b, 0x1ee4b, 1),
-            Range16.init(0x1ee4d, 0x1ee4f, 1),
-            Range16.init(0x1ee51, 0x1ee52, 1),
-            Range16.init(0x1ee54, 0x1ee54, 1),
-            Range16.init(0x1ee57, 0x1ee57, 1),
-            Range16.init(0x1ee59, 0x1ee59, 1),
-            Range16.init(0x1ee5b, 0x1ee5b, 1),
-            Range16.init(0x1ee5d, 0x1ee5d, 1),
-            Range16.init(0x1ee5f, 0x1ee5f, 1),
-            Range16.init(0x1ee61, 0x1ee62, 1),
-            Range16.init(0x1ee64, 0x1ee64, 1),
-            Range16.init(0x1ee67, 0x1ee6a, 1),
-            Range16.init(0x1ee6c, 0x1ee72, 1),
-            Range16.init(0x1ee74, 0x1ee77, 1),
-            Range16.init(0x1ee79, 0x1ee7c, 1),
-            Range16.init(0x1ee7e, 0x1ee7e, 1),
-            Range16.init(0x1ee80, 0x1ee89, 1),
-            Range16.init(0x1ee8b, 0x1ee9b, 1),
-            Range16.init(0x1eea1, 0x1eea3, 1),
-            Range16.init(0x1eea5, 0x1eea9, 1),
-            Range16.init(0x1eeab, 0x1eebb, 1),
-            Range16.init(0x1eef0, 0x1eef1, 1),
+            Range32.init(0x10e60, 0x10e7e, 1),
+            Range32.init(0x1ee00, 0x1ee03, 1),
+            Range32.init(0x1ee05, 0x1ee1f, 1),
+            Range32.init(0x1ee21, 0x1ee22, 1),
+            Range32.init(0x1ee24, 0x1ee24, 1),
+            Range32.init(0x1ee27, 0x1ee27, 1),
+            Range32.init(0x1ee29, 0x1ee32, 1),
+            Range32.init(0x1ee34, 0x1ee37, 1),
+            Range32.init(0x1ee39, 0x1ee39, 1),
+            Range32.init(0x1ee3b, 0x1ee3b, 1),
+            Range32.init(0x1ee42, 0x1ee42, 1),
+            Range32.init(0x1ee47, 0x1ee47, 1),
+            Range32.init(0x1ee49, 0x1ee49, 1),
+            Range32.init(0x1ee4b, 0x1ee4b, 1),
+            Range32.init(0x1ee4d, 0x1ee4f, 1),
+            Range32.init(0x1ee51, 0x1ee52, 1),
+            Range32.init(0x1ee54, 0x1ee54, 1),
+            Range32.init(0x1ee57, 0x1ee57, 1),
+            Range32.init(0x1ee59, 0x1ee59, 1),
+            Range32.init(0x1ee5b, 0x1ee5b, 1),
+            Range32.init(0x1ee5d, 0x1ee5d, 1),
+            Range32.init(0x1ee5f, 0x1ee5f, 1),
+            Range32.init(0x1ee61, 0x1ee62, 1),
+            Range32.init(0x1ee64, 0x1ee64, 1),
+            Range32.init(0x1ee67, 0x1ee6a, 1),
+            Range32.init(0x1ee6c, 0x1ee72, 1),
+            Range32.init(0x1ee74, 0x1ee77, 1),
+            Range32.init(0x1ee79, 0x1ee7c, 1),
+            Range32.init(0x1ee7e, 0x1ee7e, 1),
+            Range32.init(0x1ee80, 0x1ee89, 1),
+            Range32.init(0x1ee8b, 0x1ee9b, 1),
+            Range32.init(0x1eea1, 0x1eea3, 1),
+            Range32.init(0x1eea5, 0x1eea9, 1),
+            Range32.init(0x1eeab, 0x1eebb, 1),
+            Range32.init(0x1eef0, 0x1eef1, 1),
         };
         break :init r[0..];
     },
+    .latin_offset = 0,
 };
 const _Armenian = RangeTable.{
     .r16 = init: {
@@ -4008,16 +4048,18 @@ const _Armenian = RangeTable.{
         break :init r[0..];
     },
     .r32 = []Range32.{},
+    .latin_offset = 0,
 };
 const _Avestan = RangeTable.{
     .r16 = []Range16.{},
     .r32 = init: {
         var r = []Range32.{
-            Range16.init(0x10b00, 0x10b35, 1),
-            Range16.init(0x10b39, 0x10b3f, 1),
+            Range32.init(0x10b00, 0x10b35, 1),
+            Range32.init(0x10b39, 0x10b3f, 1),
         };
         break :init r[0..];
     },
+    .latin_offset = 0,
 };
 const _Balinese = RangeTable.{
     .r16 = init: {
@@ -4028,6 +4070,7 @@ const _Balinese = RangeTable.{
         break :init r[0..];
     },
     .r32 = []Range32.{},
+    .latin_offset = 0,
 };
 const _Bamum = RangeTable.{
     .r16 = init: {
@@ -4035,19 +4078,21 @@ const _Bamum = RangeTable.{
         break :init r[0..];
     },
     .r32 = init: {
-        var r = []Range32.{Range16.init(0x16800, 0x16a38, 1)};
+        var r = []Range32.{Range32.init(0x16800, 0x16a38, 1)};
         break :init r[0..];
     },
+    .latin_offset = 0,
 };
 const _Bassa_Vah = RangeTable.{
     .r16 = []Range16.{},
     .r32 = init: {
         var r = []Range32.{
-            Range16.init(0x16ad0, 0x16aed, 1),
-            Range16.init(0x16af0, 0x16af5, 1),
+            Range32.init(0x16ad0, 0x16aed, 1),
+            Range32.init(0x16af0, 0x16af5, 1),
         };
         break :init r[0..];
     },
+    .latin_offset = 0,
 };
 const _Batak = RangeTable.{
     .r16 = init: {
@@ -4058,6 +4103,7 @@ const _Batak = RangeTable.{
         break :init r[0..];
     },
     .r32 = []Range32.{},
+    .latin_offset = 0,
 };
 const _Bengali = RangeTable.{
     .r16 = init: {
@@ -4080,18 +4126,20 @@ const _Bengali = RangeTable.{
         break :init r[0..];
     },
     .r32 = []Range32.{},
+    .latin_offset = 0,
 };
 const _Bhaiksuki = RangeTable.{
     .r16 = []Range16.{},
     .r32 = init: {
         var r = []Range32.{
-            Range16.init(0x11c00, 0x11c08, 1),
-            Range16.init(0x11c0a, 0x11c36, 1),
-            Range16.init(0x11c38, 0x11c45, 1),
-            Range16.init(0x11c50, 0x11c6c, 1),
+            Range32.init(0x11c00, 0x11c08, 1),
+            Range32.init(0x11c0a, 0x11c36, 1),
+            Range32.init(0x11c38, 0x11c45, 1),
+            Range32.init(0x11c50, 0x11c6c, 1),
         };
         break :init r[0..];
     },
+    .latin_offset = 0,
 };
 const _Bopomofo = RangeTable.{
     .r16 = init: {
@@ -4103,17 +4151,19 @@ const _Bopomofo = RangeTable.{
         break :init r[0..];
     },
     .r32 = []Range32.{},
+    .latin_offset = 0,
 };
 const _Brahmi = RangeTable.{
     .r16 = []Range16.{},
     .r32 = init: {
         var r = []Range32.{
-            Range16.init(0x11000, 0x1104d, 1),
-            Range16.init(0x11052, 0x1106f, 1),
-            Range16.init(0x1107f, 0x1107f, 1),
+            Range32.init(0x11000, 0x1104d, 1),
+            Range32.init(0x11052, 0x1106f, 1),
+            Range32.init(0x1107f, 0x1107f, 1),
         };
         break :init r[0..];
     },
+    .latin_offset = 0,
 };
 const _Braille = RangeTable.{
     .r16 = init: {
@@ -4121,6 +4171,7 @@ const _Braille = RangeTable.{
         break :init r[0..];
     },
     .r32 = []Range32.{},
+    .latin_offset = 0,
 };
 const _Buginese = RangeTable.{
     .r16 = init: {
@@ -4131,6 +4182,7 @@ const _Buginese = RangeTable.{
         break :init r[0..];
     },
     .r32 = []Range32.{},
+    .latin_offset = 0,
 };
 const _Buhid = RangeTable.{
     .r16 = init: {
@@ -4138,6 +4190,7 @@ const _Buhid = RangeTable.{
         break :init r[0..];
     },
     .r32 = []Range32.{},
+    .latin_offset = 0,
 };
 const _Canadian_Aboriginal = RangeTable.{
     .r16 = init: {
@@ -4148,33 +4201,37 @@ const _Canadian_Aboriginal = RangeTable.{
         break :init r[0..];
     },
     .r32 = []Range32.{},
+    .latin_offset = 0,
 };
 const _Carian = RangeTable.{
     .r16 = []Range16.{},
     .r32 = init: {
-        var r = []Range32.{Range16.init(0x102a0, 0x102d0, 1)};
+        var r = []Range32.{Range32.init(0x102a0, 0x102d0, 1)};
         break :init r[0..];
     },
+    .latin_offset = 0,
 };
 const _Caucasian_Albanian = RangeTable.{
     .r16 = []Range16.{},
     .r32 = init: {
         var r = []Range32.{
-            Range16.init(0x10530, 0x10563, 1),
-            Range16.init(0x1056f, 0x1056f, 1),
+            Range32.init(0x10530, 0x10563, 1),
+            Range32.init(0x1056f, 0x1056f, 1),
         };
         break :init r[0..];
     },
+    .latin_offset = 0,
 };
 const _Chakma = RangeTable.{
     .r16 = []Range16.{},
     .r32 = init: {
         var r = []Range32.{
-            Range16.init(0x11100, 0x11134, 1),
-            Range16.init(0x11136, 0x11143, 1),
+            Range32.init(0x11100, 0x11134, 1),
+            Range32.init(0x11136, 0x11143, 1),
         };
         break :init r[0..];
     },
+    .latin_offset = 0,
 };
 const _Cham = RangeTable.{
     .r16 = init: {
@@ -4187,6 +4244,7 @@ const _Cham = RangeTable.{
         break :init r[0..];
     },
     .r32 = []Range32.{},
+    .latin_offset = 0,
 };
 const _Cherokee = RangeTable.{
     .r16 = init: {
@@ -4198,6 +4256,7 @@ const _Cherokee = RangeTable.{
         break :init r[0..];
     },
     .r32 = []Range32.{},
+    .latin_offset = 0,
 };
 const _Common = RangeTable.{
     .r16 = init: {
@@ -4299,81 +4358,82 @@ const _Common = RangeTable.{
     },
     .r32 = init: {
         var r = []Range32.{
-            Range16.init(0x10100, 0x10102, 1),
-            Range16.init(0x10107, 0x10133, 1),
-            Range16.init(0x10137, 0x1013f, 1),
-            Range16.init(0x10190, 0x1019b, 1),
-            Range16.init(0x101d0, 0x101fc, 1),
-            Range16.init(0x102e1, 0x102fb, 1),
-            Range16.init(0x1bca0, 0x1bca3, 1),
-            Range16.init(0x1d000, 0x1d0f5, 1),
-            Range16.init(0x1d100, 0x1d126, 1),
-            Range16.init(0x1d129, 0x1d166, 1),
-            Range16.init(0x1d16a, 0x1d17a, 1),
-            Range16.init(0x1d183, 0x1d184, 1),
-            Range16.init(0x1d18c, 0x1d1a9, 1),
-            Range16.init(0x1d1ae, 0x1d1e8, 1),
-            Range16.init(0x1d300, 0x1d356, 1),
-            Range16.init(0x1d360, 0x1d371, 1),
-            Range16.init(0x1d400, 0x1d454, 1),
-            Range16.init(0x1d456, 0x1d49c, 1),
-            Range16.init(0x1d49e, 0x1d49f, 1),
-            Range16.init(0x1d4a2, 0x1d4a2, 1),
-            Range16.init(0x1d4a5, 0x1d4a6, 1),
-            Range16.init(0x1d4a9, 0x1d4ac, 1),
-            Range16.init(0x1d4ae, 0x1d4b9, 1),
-            Range16.init(0x1d4bb, 0x1d4bb, 1),
-            Range16.init(0x1d4bd, 0x1d4c3, 1),
-            Range16.init(0x1d4c5, 0x1d505, 1),
-            Range16.init(0x1d507, 0x1d50a, 1),
-            Range16.init(0x1d50d, 0x1d514, 1),
-            Range16.init(0x1d516, 0x1d51c, 1),
-            Range16.init(0x1d51e, 0x1d539, 1),
-            Range16.init(0x1d53b, 0x1d53e, 1),
-            Range16.init(0x1d540, 0x1d544, 1),
-            Range16.init(0x1d546, 0x1d546, 1),
-            Range16.init(0x1d54a, 0x1d550, 1),
-            Range16.init(0x1d552, 0x1d6a5, 1),
-            Range16.init(0x1d6a8, 0x1d7cb, 1),
-            Range16.init(0x1d7ce, 0x1d7ff, 1),
-            Range16.init(0x1f000, 0x1f02b, 1),
-            Range16.init(0x1f030, 0x1f093, 1),
-            Range16.init(0x1f0a0, 0x1f0ae, 1),
-            Range16.init(0x1f0b1, 0x1f0bf, 1),
-            Range16.init(0x1f0c1, 0x1f0cf, 1),
-            Range16.init(0x1f0d1, 0x1f0f5, 1),
-            Range16.init(0x1f100, 0x1f10c, 1),
-            Range16.init(0x1f110, 0x1f12e, 1),
-            Range16.init(0x1f130, 0x1f16b, 1),
-            Range16.init(0x1f170, 0x1f1ac, 1),
-            Range16.init(0x1f1e6, 0x1f1ff, 1),
-            Range16.init(0x1f201, 0x1f202, 1),
-            Range16.init(0x1f210, 0x1f23b, 1),
-            Range16.init(0x1f240, 0x1f248, 1),
-            Range16.init(0x1f250, 0x1f251, 1),
-            Range16.init(0x1f260, 0x1f265, 1),
-            Range16.init(0x1f300, 0x1f6d4, 1),
-            Range16.init(0x1f6e0, 0x1f6ec, 1),
-            Range16.init(0x1f6f0, 0x1f6f8, 1),
-            Range16.init(0x1f700, 0x1f773, 1),
-            Range16.init(0x1f780, 0x1f7d4, 1),
-            Range16.init(0x1f800, 0x1f80b, 1),
-            Range16.init(0x1f810, 0x1f847, 1),
-            Range16.init(0x1f850, 0x1f859, 1),
-            Range16.init(0x1f860, 0x1f887, 1),
-            Range16.init(0x1f890, 0x1f8ad, 1),
-            Range16.init(0x1f900, 0x1f90b, 1),
-            Range16.init(0x1f910, 0x1f93e, 1),
-            Range16.init(0x1f940, 0x1f94c, 1),
-            Range16.init(0x1f950, 0x1f96b, 1),
-            Range16.init(0x1f980, 0x1f997, 1),
-            Range16.init(0x1f9c0, 0x1f9c0, 1),
-            Range16.init(0x1f9d0, 0x1f9e6, 1),
-            Range16.init(0xe0001, 0xe0001, 1),
-            Range16.init(0xe0020, 0xe007f, 1),
+            Range32.init(0x10100, 0x10102, 1),
+            Range32.init(0x10107, 0x10133, 1),
+            Range32.init(0x10137, 0x1013f, 1),
+            Range32.init(0x10190, 0x1019b, 1),
+            Range32.init(0x101d0, 0x101fc, 1),
+            Range32.init(0x102e1, 0x102fb, 1),
+            Range32.init(0x1bca0, 0x1bca3, 1),
+            Range32.init(0x1d000, 0x1d0f5, 1),
+            Range32.init(0x1d100, 0x1d126, 1),
+            Range32.init(0x1d129, 0x1d166, 1),
+            Range32.init(0x1d16a, 0x1d17a, 1),
+            Range32.init(0x1d183, 0x1d184, 1),
+            Range32.init(0x1d18c, 0x1d1a9, 1),
+            Range32.init(0x1d1ae, 0x1d1e8, 1),
+            Range32.init(0x1d300, 0x1d356, 1),
+            Range32.init(0x1d360, 0x1d371, 1),
+            Range32.init(0x1d400, 0x1d454, 1),
+            Range32.init(0x1d456, 0x1d49c, 1),
+            Range32.init(0x1d49e, 0x1d49f, 1),
+            Range32.init(0x1d4a2, 0x1d4a2, 1),
+            Range32.init(0x1d4a5, 0x1d4a6, 1),
+            Range32.init(0x1d4a9, 0x1d4ac, 1),
+            Range32.init(0x1d4ae, 0x1d4b9, 1),
+            Range32.init(0x1d4bb, 0x1d4bb, 1),
+            Range32.init(0x1d4bd, 0x1d4c3, 1),
+            Range32.init(0x1d4c5, 0x1d505, 1),
+            Range32.init(0x1d507, 0x1d50a, 1),
+            Range32.init(0x1d50d, 0x1d514, 1),
+            Range32.init(0x1d516, 0x1d51c, 1),
+            Range32.init(0x1d51e, 0x1d539, 1),
+            Range32.init(0x1d53b, 0x1d53e, 1),
+            Range32.init(0x1d540, 0x1d544, 1),
+            Range32.init(0x1d546, 0x1d546, 1),
+            Range32.init(0x1d54a, 0x1d550, 1),
+            Range32.init(0x1d552, 0x1d6a5, 1),
+            Range32.init(0x1d6a8, 0x1d7cb, 1),
+            Range32.init(0x1d7ce, 0x1d7ff, 1),
+            Range32.init(0x1f000, 0x1f02b, 1),
+            Range32.init(0x1f030, 0x1f093, 1),
+            Range32.init(0x1f0a0, 0x1f0ae, 1),
+            Range32.init(0x1f0b1, 0x1f0bf, 1),
+            Range32.init(0x1f0c1, 0x1f0cf, 1),
+            Range32.init(0x1f0d1, 0x1f0f5, 1),
+            Range32.init(0x1f100, 0x1f10c, 1),
+            Range32.init(0x1f110, 0x1f12e, 1),
+            Range32.init(0x1f130, 0x1f16b, 1),
+            Range32.init(0x1f170, 0x1f1ac, 1),
+            Range32.init(0x1f1e6, 0x1f1ff, 1),
+            Range32.init(0x1f201, 0x1f202, 1),
+            Range32.init(0x1f210, 0x1f23b, 1),
+            Range32.init(0x1f240, 0x1f248, 1),
+            Range32.init(0x1f250, 0x1f251, 1),
+            Range32.init(0x1f260, 0x1f265, 1),
+            Range32.init(0x1f300, 0x1f6d4, 1),
+            Range32.init(0x1f6e0, 0x1f6ec, 1),
+            Range32.init(0x1f6f0, 0x1f6f8, 1),
+            Range32.init(0x1f700, 0x1f773, 1),
+            Range32.init(0x1f780, 0x1f7d4, 1),
+            Range32.init(0x1f800, 0x1f80b, 1),
+            Range32.init(0x1f810, 0x1f847, 1),
+            Range32.init(0x1f850, 0x1f859, 1),
+            Range32.init(0x1f860, 0x1f887, 1),
+            Range32.init(0x1f890, 0x1f8ad, 1),
+            Range32.init(0x1f900, 0x1f90b, 1),
+            Range32.init(0x1f910, 0x1f93e, 1),
+            Range32.init(0x1f940, 0x1f94c, 1),
+            Range32.init(0x1f950, 0x1f96b, 1),
+            Range32.init(0x1f980, 0x1f997, 1),
+            Range32.init(0x1f9c0, 0x1f9c0, 1),
+            Range32.init(0x1f9d0, 0x1f9e6, 1),
+            Range32.init(0xe0001, 0xe0001, 1),
+            Range32.init(0xe0020, 0xe007f, 1),
         };
         break :init r[0..];
     },
+    .latin_offset = 7,
 };
 const _Coptic = RangeTable.{
     .r16 = init: {
@@ -4385,32 +4445,35 @@ const _Coptic = RangeTable.{
         break :init r[0..];
     },
     .r32 = []Range32.{},
+    .latin_offset = 0,
 };
 const _Cuneiform = RangeTable.{
     .r16 = []Range16.{},
     .r32 = init: {
         var r = []Range32.{
-            Range16.init(0x12000, 0x12399, 1),
-            Range16.init(0x12400, 0x1246e, 1),
-            Range16.init(0x12470, 0x12474, 1),
-            Range16.init(0x12480, 0x12543, 1),
+            Range32.init(0x12000, 0x12399, 1),
+            Range32.init(0x12400, 0x1246e, 1),
+            Range32.init(0x12470, 0x12474, 1),
+            Range32.init(0x12480, 0x12543, 1),
         };
         break :init r[0..];
     },
+    .latin_offset = 0,
 };
 const _Cypriot = RangeTable.{
     .r16 = []Range16.{},
     .r32 = init: {
         var r = []Range32.{
-            Range16.init(0x10800, 0x10805, 1),
-            Range16.init(0x10808, 0x10808, 1),
-            Range16.init(0x1080a, 0x10835, 1),
-            Range16.init(0x10837, 0x10838, 1),
-            Range16.init(0x1083c, 0x1083c, 1),
-            Range16.init(0x1083f, 0x1083f, 1),
+            Range32.init(0x10800, 0x10805, 1),
+            Range32.init(0x10808, 0x10808, 1),
+            Range32.init(0x1080a, 0x10835, 1),
+            Range32.init(0x10837, 0x10838, 1),
+            Range32.init(0x1083c, 0x1083c, 1),
+            Range32.init(0x1083f, 0x1083f, 1),
         };
         break :init r[0..];
     },
+    .latin_offset = 0,
 };
 const _Cyrillic = RangeTable.{
     .r16 = init: {
@@ -4427,13 +4490,15 @@ const _Cyrillic = RangeTable.{
         break :init r[0..];
     },
     .r32 = []Range32.{},
+    .latin_offset = 0,
 };
 const _Deseret = RangeTable.{
     .r16 = []Range16.{},
     .r32 = init: {
-        var r = []Range32.{Range16.init(0x10400, 0x1044f, 1)};
+        var r = []Range32.{Range32.init(0x10400, 0x1044f, 1)};
         break :init r[0..];
     },
+    .latin_offset = 0,
 };
 const _Devanagari = RangeTable.{
     .r16 = init: {
@@ -4446,33 +4511,37 @@ const _Devanagari = RangeTable.{
         break :init r[0..];
     },
     .r32 = []Range32.{},
+    .latin_offset = 0,
 };
 const _Duployan = RangeTable.{
     .r16 = []Range16.{},
     .r32 = init: {
         var r = []Range32.{
-            Range16.init(0x1bc00, 0x1bc6a, 1),
-            Range16.init(0x1bc70, 0x1bc7c, 1),
-            Range16.init(0x1bc80, 0x1bc88, 1),
-            Range16.init(0x1bc90, 0x1bc99, 1),
-            Range16.init(0x1bc9c, 0x1bc9f, 1),
+            Range32.init(0x1bc00, 0x1bc6a, 1),
+            Range32.init(0x1bc70, 0x1bc7c, 1),
+            Range32.init(0x1bc80, 0x1bc88, 1),
+            Range32.init(0x1bc90, 0x1bc99, 1),
+            Range32.init(0x1bc9c, 0x1bc9f, 1),
         };
         break :init r[0..];
     },
+    .latin_offset = 0,
 };
 const _Egyptian_Hieroglyphs = RangeTable.{
     .r16 = []Range16.{},
     .r32 = init: {
-        var r = []Range32.{Range16.init(0x13000, 0x1342e, 1)};
+        var r = []Range32.{Range32.init(0x13000, 0x1342e, 1)};
         break :init r[0..];
     },
+    .latin_offset = 0,
 };
 const _Elbasan = RangeTable.{
     .r16 = []Range16.{},
     .r32 = init: {
-        var r = []Range32.{Range16.init(0x10500, 0x10527, 1)};
+        var r = []Range32.{Range32.init(0x10500, 0x10527, 1)};
         break :init r[0..];
     },
+    .latin_offset = 0,
 };
 const _Ethiopic = RangeTable.{
     .r16 = init: {
@@ -4513,6 +4582,7 @@ const _Ethiopic = RangeTable.{
         break :init r[0..];
     },
     .r32 = []Range32.{},
+    .latin_offset = 0,
 };
 const _Georgian = RangeTable.{
     .r16 = init: {
@@ -4529,6 +4599,7 @@ const _Georgian = RangeTable.{
         break :init r[0..];
     },
     .r32 = []Range32.{},
+    .latin_offset = 0,
 };
 const _Glagolitic = RangeTable.{
     .r16 = init: {
@@ -4540,44 +4611,47 @@ const _Glagolitic = RangeTable.{
     },
     .r32 = init: {
         var r = []Range32.{
-            Range16.init(0x1e000, 0x1e006, 1),
-            Range16.init(0x1e008, 0x1e018, 1),
-            Range16.init(0x1e01b, 0x1e021, 1),
-            Range16.init(0x1e023, 0x1e024, 1),
-            Range16.init(0x1e026, 0x1e02a, 1),
+            Range32.init(0x1e000, 0x1e006, 1),
+            Range32.init(0x1e008, 0x1e018, 1),
+            Range32.init(0x1e01b, 0x1e021, 1),
+            Range32.init(0x1e023, 0x1e024, 1),
+            Range32.init(0x1e026, 0x1e02a, 1),
         };
         break :init r[0..];
     },
+    .latin_offset = 0,
 };
 const _Gothic = RangeTable.{
     .r16 = []Range16.{},
     .r32 = init: {
-        var r = []Range32.{Range16.init(0x10330, 0x1034a, 1)};
+        var r = []Range32.{Range32.init(0x10330, 0x1034a, 1)};
         break :init r[0..];
     },
+    .latin_offset = 0,
 };
 const _Grantha = RangeTable.{
     .r16 = []Range16.{},
     .r32 = init: {
         var r = []Range32.{
-            Range16.init(0x11300, 0x11303, 1),
-            Range16.init(0x11305, 0x1130c, 1),
-            Range16.init(0x1130f, 0x11310, 1),
-            Range16.init(0x11313, 0x11328, 1),
-            Range16.init(0x1132a, 0x11330, 1),
-            Range16.init(0x11332, 0x11333, 1),
-            Range16.init(0x11335, 0x11339, 1),
-            Range16.init(0x1133c, 0x11344, 1),
-            Range16.init(0x11347, 0x11348, 1),
-            Range16.init(0x1134b, 0x1134d, 1),
-            Range16.init(0x11350, 0x11350, 1),
-            Range16.init(0x11357, 0x11357, 1),
-            Range16.init(0x1135d, 0x11363, 1),
-            Range16.init(0x11366, 0x1136c, 1),
-            Range16.init(0x11370, 0x11374, 1),
+            Range32.init(0x11300, 0x11303, 1),
+            Range32.init(0x11305, 0x1130c, 1),
+            Range32.init(0x1130f, 0x11310, 1),
+            Range32.init(0x11313, 0x11328, 1),
+            Range32.init(0x1132a, 0x11330, 1),
+            Range32.init(0x11332, 0x11333, 1),
+            Range32.init(0x11335, 0x11339, 1),
+            Range32.init(0x1133c, 0x11344, 1),
+            Range32.init(0x11347, 0x11348, 1),
+            Range32.init(0x1134b, 0x1134d, 1),
+            Range32.init(0x11350, 0x11350, 1),
+            Range32.init(0x11357, 0x11357, 1),
+            Range32.init(0x1135d, 0x11363, 1),
+            Range32.init(0x11366, 0x1136c, 1),
+            Range32.init(0x11370, 0x11374, 1),
         };
         break :init r[0..];
     },
+    .latin_offset = 0,
 };
 const _Greek = RangeTable.{
     .r16 = init: {
@@ -4620,12 +4694,13 @@ const _Greek = RangeTable.{
     },
     .r32 = init: {
         var r = []Range32.{
-            Range16.init(0x10140, 0x1018e, 1),
-            Range16.init(0x101a0, 0x101a0, 1),
-            Range16.init(0x1d200, 0x1d245, 1),
+            Range32.init(0x10140, 0x1018e, 1),
+            Range32.init(0x101a0, 0x101a0, 1),
+            Range32.init(0x1d200, 0x1d245, 1),
         };
         break :init r[0..];
     },
+    .latin_offset = 0,
 };
 const _Gujarati = RangeTable.{
     .r16 = init: {
@@ -4648,6 +4723,7 @@ const _Gujarati = RangeTable.{
         break :init r[0..];
     },
     .r32 = []Range32.{},
+    .latin_offset = 0,
 };
 const _Gurmukhi = RangeTable.{
     .r16 = init: {
@@ -4672,6 +4748,7 @@ const _Gurmukhi = RangeTable.{
         break :init r[0..];
     },
     .r32 = []Range32.{},
+    .latin_offset = 0,
 };
 const _Han = RangeTable.{
     .r16 = init: {
@@ -4692,15 +4769,16 @@ const _Han = RangeTable.{
     },
     .r32 = init: {
         var r = []Range32.{
-            Range16.init(0x20000, 0x2a6d6, 1),
-            Range16.init(0x2a700, 0x2b734, 1),
-            Range16.init(0x2b740, 0x2b81d, 1),
-            Range16.init(0x2b820, 0x2cea1, 1),
-            Range16.init(0x2ceb0, 0x2ebe0, 1),
-            Range16.init(0x2f800, 0x2fa1d, 1),
+            Range32.init(0x20000, 0x2a6d6, 1),
+            Range32.init(0x2a700, 0x2b734, 1),
+            Range32.init(0x2b740, 0x2b81d, 1),
+            Range32.init(0x2b820, 0x2cea1, 1),
+            Range32.init(0x2ceb0, 0x2ebe0, 1),
+            Range32.init(0x2f800, 0x2fa1d, 1),
         };
         break :init r[0..];
     },
+    .latin_offset = 0,
 };
 const _Hangul = RangeTable.{
     .r16 = init: {
@@ -4723,6 +4801,7 @@ const _Hangul = RangeTable.{
         break :init r[0..];
     },
     .r32 = []Range32.{},
+    .latin_offset = 0,
 };
 const _Hanunoo = RangeTable.{
     .r16 = init: {
@@ -4730,17 +4809,19 @@ const _Hanunoo = RangeTable.{
         break :init r[0..];
     },
     .r32 = []Range32.{},
+    .latin_offset = 0,
 };
 const _Hatran = RangeTable.{
     .r16 = []Range16.{},
     .r32 = init: {
         var r = []Range32.{
-            Range16.init(0x108e0, 0x108f2, 1),
-            Range16.init(0x108f4, 0x108f5, 1),
-            Range16.init(0x108fb, 0x108ff, 1),
+            Range32.init(0x108e0, 0x108f2, 1),
+            Range32.init(0x108f4, 0x108f5, 1),
+            Range32.init(0x108fb, 0x108ff, 1),
         };
         break :init r[0..];
     },
+    .latin_offset = 0,
 };
 const _Hebrew = RangeTable.{
     .r16 = init: {
@@ -4758,6 +4839,7 @@ const _Hebrew = RangeTable.{
         break :init r[0..];
     },
     .r32 = []Range32.{},
+    .latin_offset = 0,
 };
 const _Hiragana = RangeTable.{
     .r16 = init: {
@@ -4769,21 +4851,23 @@ const _Hiragana = RangeTable.{
     },
     .r32 = init: {
         var r = []Range32.{
-            Range16.init(0x1b001, 0x1b11e, 1),
-            Range16.init(0x1f200, 0x1f200, 1),
+            Range32.init(0x1b001, 0x1b11e, 1),
+            Range32.init(0x1f200, 0x1f200, 1),
         };
         break :init r[0..];
     },
+    .latin_offset = 0,
 };
 const _Imperial_Aramaic = RangeTable.{
     .r16 = []Range16.{},
     .r32 = init: {
         var r = []Range32.{
-            Range16.init(0x10840, 0x10855, 1),
-            Range16.init(0x10857, 0x1085f, 1),
+            Range32.init(0x10840, 0x10855, 1),
+            Range32.init(0x10857, 0x1085f, 1),
         };
         break :init r[0..];
     },
+    .latin_offset = 0,
 };
 const _Inherited = RangeTable.{
     .r16 = init: {
@@ -4813,36 +4897,39 @@ const _Inherited = RangeTable.{
     },
     .r32 = init: {
         var r = []Range32.{
-            Range16.init(0x101fd, 0x101fd, 1),
-            Range16.init(0x102e0, 0x102e0, 1),
-            Range16.init(0x1d167, 0x1d169, 1),
-            Range16.init(0x1d17b, 0x1d182, 1),
-            Range16.init(0x1d185, 0x1d18b, 1),
-            Range16.init(0x1d1aa, 0x1d1ad, 1),
-            Range16.init(0xe0100, 0xe01ef, 1),
+            Range32.init(0x101fd, 0x101fd, 1),
+            Range32.init(0x102e0, 0x102e0, 1),
+            Range32.init(0x1d167, 0x1d169, 1),
+            Range32.init(0x1d17b, 0x1d182, 1),
+            Range32.init(0x1d185, 0x1d18b, 1),
+            Range32.init(0x1d1aa, 0x1d1ad, 1),
+            Range32.init(0xe0100, 0xe01ef, 1),
         };
         break :init r[0..];
     },
+    .latin_offset = 0,
 };
 const _Inscriptional_Pahlavi = RangeTable.{
     .r16 = []Range16.{},
     .r32 = init: {
         var r = []Range32.{
-            Range16.init(0x10b60, 0x10b72, 1),
-            Range16.init(0x10b78, 0x10b7f, 1),
+            Range32.init(0x10b60, 0x10b72, 1),
+            Range32.init(0x10b78, 0x10b7f, 1),
         };
         break :init r[0..];
     },
+    .latin_offset = 0,
 };
 const _Inscriptional_Parthian = RangeTable.{
     .r16 = []Range16.{},
     .r32 = init: {
         var r = []Range32.{
-            Range16.init(0x10b40, 0x10b55, 1),
-            Range16.init(0x10b58, 0x10b5f, 1),
+            Range32.init(0x10b40, 0x10b55, 1),
+            Range32.init(0x10b58, 0x10b5f, 1),
         };
         break :init r[0..];
     },
+    .latin_offset = 0,
 };
 const _Javanese = RangeTable.{
     .r16 = init: {
@@ -4854,13 +4941,15 @@ const _Javanese = RangeTable.{
         break :init r[0..];
     },
     .r32 = []Range32.{},
+    .latin_offset = 0,
 };
 const _Kaithi = RangeTable.{
     .r16 = []Range16.{},
     .r32 = init: {
-        var r = []Range32.{Range16.init(0x11080, 0x110c1, 1)};
+        var r = []Range32.{Range32.init(0x11080, 0x110c1, 1)};
         break :init r[0..];
     },
+    .latin_offset = 0,
 };
 const _Kannada = RangeTable.{
     .r16 = init: {
@@ -4883,6 +4972,7 @@ const _Kannada = RangeTable.{
         break :init r[0..];
     },
     .r32 = []Range32.{},
+    .latin_offset = 0,
 };
 const _Katakana = RangeTable.{
     .r16 = init: {
@@ -4898,9 +4988,10 @@ const _Katakana = RangeTable.{
         break :init r[0..];
     },
     .r32 = init: {
-        var r = []Range32.{Range16.init(0x1b000, 0x1b000, 1)};
+        var r = []Range32.{Range32.init(0x1b000, 0x1b000, 1)};
         break :init r[0..];
     },
+    .latin_offset = 0,
 };
 const _Kayah_Li = RangeTable.{
     .r16 = init: {
@@ -4911,22 +5002,24 @@ const _Kayah_Li = RangeTable.{
         break :init r[0..];
     },
     .r32 = []Range32.{},
+    .latin_offset = 0,
 };
 const _Kharoshthi = RangeTable.{
     .r16 = []Range16.{},
     .r32 = init: {
         var r = []Range32.{
-            Range16.init(0x10a00, 0x10a03, 1),
-            Range16.init(0x10a05, 0x10a06, 1),
-            Range16.init(0x10a0c, 0x10a13, 1),
-            Range16.init(0x10a15, 0x10a17, 1),
-            Range16.init(0x10a19, 0x10a33, 1),
-            Range16.init(0x10a38, 0x10a3a, 1),
-            Range16.init(0x10a3f, 0x10a47, 1),
-            Range16.init(0x10a50, 0x10a58, 1),
+            Range32.init(0x10a00, 0x10a03, 1),
+            Range32.init(0x10a05, 0x10a06, 1),
+            Range32.init(0x10a0c, 0x10a13, 1),
+            Range32.init(0x10a15, 0x10a17, 1),
+            Range32.init(0x10a19, 0x10a33, 1),
+            Range32.init(0x10a38, 0x10a3a, 1),
+            Range32.init(0x10a3f, 0x10a47, 1),
+            Range32.init(0x10a50, 0x10a58, 1),
         };
         break :init r[0..];
     },
+    .latin_offset = 0,
 };
 const _Khmer = RangeTable.{
     .r16 = init: {
@@ -4939,26 +5032,29 @@ const _Khmer = RangeTable.{
         break :init r[0..];
     },
     .r32 = []Range32.{},
+    .latin_offset = 0,
 };
 const _Khojki = RangeTable.{
     .r16 = []Range16.{},
     .r32 = init: {
         var r = []Range32.{
-            Range16.init(0x11200, 0x11211, 1),
-            Range16.init(0x11213, 0x1123e, 1),
+            Range32.init(0x11200, 0x11211, 1),
+            Range32.init(0x11213, 0x1123e, 1),
         };
         break :init r[0..];
     },
+    .latin_offset = 0,
 };
 const _Khudawadi = RangeTable.{
     .r16 = []Range16.{},
     .r32 = init: {
         var r = []Range32.{
-            Range16.init(0x112b0, 0x112ea, 1),
-            Range16.init(0x112f0, 0x112f9, 1),
+            Range32.init(0x112b0, 0x112ea, 1),
+            Range32.init(0x112f0, 0x112f9, 1),
         };
         break :init r[0..];
     },
+    .latin_offset = 0,
 };
 const _Lao = RangeTable.{
     .r16 = init: {
@@ -4985,6 +5081,7 @@ const _Lao = RangeTable.{
         break :init r[0..];
     },
     .r32 = []Range32.{},
+    .latin_offset = 0,
 };
 const _Latin = RangeTable.{
     .r16 = init: {
@@ -5024,6 +5121,7 @@ const _Latin = RangeTable.{
         break :init r[0..];
     },
     .r32 = []Range32.{},
+    .latin_offset = 6,
 };
 const _Lepcha = RangeTable.{
     .r16 = init: {
@@ -5035,6 +5133,7 @@ const _Lepcha = RangeTable.{
         break :init r[0..];
     },
     .r32 = []Range32.{},
+    .latin_offset = 0,
 };
 const _Limbu = RangeTable.{
     .r16 = init: {
@@ -5048,32 +5147,35 @@ const _Limbu = RangeTable.{
         break :init r[0..];
     },
     .r32 = []Range32.{},
+    .latin_offset = 0,
 };
 const _Linear_A = RangeTable.{
     .r16 = []Range16.{},
     .r32 = init: {
         var r = []Range32.{
-            Range16.init(0x10600, 0x10736, 1),
-            Range16.init(0x10740, 0x10755, 1),
-            Range16.init(0x10760, 0x10767, 1),
+            Range32.init(0x10600, 0x10736, 1),
+            Range32.init(0x10740, 0x10755, 1),
+            Range32.init(0x10760, 0x10767, 1),
         };
         break :init r[0..];
     },
+    .latin_offset = 0,
 };
 const _Linear_B = RangeTable.{
     .r16 = []Range16.{},
     .r32 = init: {
         var r = []Range32.{
-            Range16.init(0x10000, 0x1000b, 1),
-            Range16.init(0x1000d, 0x10026, 1),
-            Range16.init(0x10028, 0x1003a, 1),
-            Range16.init(0x1003c, 0x1003d, 1),
-            Range16.init(0x1003f, 0x1004d, 1),
-            Range16.init(0x10050, 0x1005d, 1),
-            Range16.init(0x10080, 0x100fa, 1),
+            Range32.init(0x10000, 0x1000b, 1),
+            Range32.init(0x1000d, 0x10026, 1),
+            Range32.init(0x10028, 0x1003a, 1),
+            Range32.init(0x1003c, 0x1003d, 1),
+            Range32.init(0x1003f, 0x1004d, 1),
+            Range32.init(0x10050, 0x1005d, 1),
+            Range32.init(0x10080, 0x100fa, 1),
         };
         break :init r[0..];
     },
+    .latin_offset = 0,
 };
 const _Lisu = RangeTable.{
     .r16 = init: {
@@ -5081,30 +5183,34 @@ const _Lisu = RangeTable.{
         break :init r[0..];
     },
     .r32 = []Range32.{},
+    .latin_offset = 0,
 };
 const _Lycian = RangeTable.{
     .r16 = []Range16.{},
     .r32 = init: {
-        var r = []Range32.{Range16.init(0x10280, 0x1029c, 1)};
+        var r = []Range32.{Range32.init(0x10280, 0x1029c, 1)};
         break :init r[0..];
     },
+    .latin_offset = 0,
 };
 const _Lydian = RangeTable.{
     .r16 = []Range16.{},
     .r32 = init: {
         var r = []Range32.{
-            Range16.init(0x10920, 0x10939, 1),
-            Range16.init(0x1093f, 0x1093f, 1),
+            Range32.init(0x10920, 0x10939, 1),
+            Range32.init(0x1093f, 0x1093f, 1),
         };
         break :init r[0..];
     },
+    .latin_offset = 0,
 };
 const _Mahajani = RangeTable.{
     .r16 = []Range16.{},
     .r32 = init: {
-        var r = []Range32.{Range16.init(0x11150, 0x11176, 1)};
+        var r = []Range32.{Range32.init(0x11150, 0x11176, 1)};
         break :init r[0..];
     },
+    .latin_offset = 0,
 };
 const _Malayalam = RangeTable.{
     .r16 = init: {
@@ -5121,6 +5227,7 @@ const _Malayalam = RangeTable.{
         break :init r[0..];
     },
     .r32 = []Range32.{},
+    .latin_offset = 0,
 };
 const _Mandaic = RangeTable.{
     .r16 = init: {
@@ -5131,42 +5238,46 @@ const _Mandaic = RangeTable.{
         break :init r[0..];
     },
     .r32 = []Range32.{},
+    .latin_offset = 0,
 };
 const _Manichaean = RangeTable.{
     .r16 = []Range16.{},
     .r32 = init: {
         var r = []Range32.{
-            Range16.init(0x10ac0, 0x10ae6, 1),
-            Range16.init(0x10aeb, 0x10af6, 1),
+            Range32.init(0x10ac0, 0x10ae6, 1),
+            Range32.init(0x10aeb, 0x10af6, 1),
         };
         break :init r[0..];
     },
+    .latin_offset = 0,
 };
 const _Marchen = RangeTable.{
     .r16 = []Range16.{},
     .r32 = init: {
         var r = []Range32.{
-            Range16.init(0x11c70, 0x11c8f, 1),
-            Range16.init(0x11c92, 0x11ca7, 1),
-            Range16.init(0x11ca9, 0x11cb6, 1),
+            Range32.init(0x11c70, 0x11c8f, 1),
+            Range32.init(0x11c92, 0x11ca7, 1),
+            Range32.init(0x11ca9, 0x11cb6, 1),
         };
         break :init r[0..];
     },
+    .latin_offset = 0,
 };
 const _Masaram_Gondi = RangeTable.{
     .r16 = []Range16.{},
     .r32 = init: {
         var r = []Range32.{
-            Range16.init(0x11d00, 0x11d06, 1),
-            Range16.init(0x11d08, 0x11d09, 1),
-            Range16.init(0x11d0b, 0x11d36, 1),
-            Range16.init(0x11d3a, 0x11d3a, 1),
-            Range16.init(0x11d3c, 0x11d3d, 1),
-            Range16.init(0x11d3f, 0x11d47, 1),
-            Range16.init(0x11d50, 0x11d59, 1),
+            Range32.init(0x11d00, 0x11d06, 1),
+            Range32.init(0x11d08, 0x11d09, 1),
+            Range32.init(0x11d0b, 0x11d36, 1),
+            Range32.init(0x11d3a, 0x11d3a, 1),
+            Range32.init(0x11d3c, 0x11d3d, 1),
+            Range32.init(0x11d3f, 0x11d47, 1),
+            Range32.init(0x11d50, 0x11d59, 1),
         };
         break :init r[0..];
     },
+    .latin_offset = 0,
 };
 const _Meetei_Mayek = RangeTable.{
     .r16 = init: {
@@ -5178,55 +5289,61 @@ const _Meetei_Mayek = RangeTable.{
         break :init r[0..];
     },
     .r32 = []Range32.{},
+    .latin_offset = 0,
 };
 const _Mende_Kikakui = RangeTable.{
     .r16 = []Range16.{},
     .r32 = init: {
         var r = []Range32.{
-            Range16.init(0x1e800, 0x1e8c4, 1),
-            Range16.init(0x1e8c7, 0x1e8d6, 1),
+            Range32.init(0x1e800, 0x1e8c4, 1),
+            Range32.init(0x1e8c7, 0x1e8d6, 1),
         };
         break :init r[0..];
     },
+    .latin_offset = 0,
 };
 const _Meroitic_Cursive = RangeTable.{
     .r16 = []Range16.{},
     .r32 = init: {
         var r = []Range32.{
-            Range16.init(0x109a0, 0x109b7, 1),
-            Range16.init(0x109bc, 0x109cf, 1),
-            Range16.init(0x109d2, 0x109ff, 1),
+            Range32.init(0x109a0, 0x109b7, 1),
+            Range32.init(0x109bc, 0x109cf, 1),
+            Range32.init(0x109d2, 0x109ff, 1),
         };
         break :init r[0..];
     },
+    .latin_offset = 0,
 };
 const _Meroitic_Hieroglyphs = RangeTable.{
     .r16 = []Range16.{},
     .r32 = init: {
-        var r = []Range32.{Range16.init(0x10980, 0x1099f, 1)};
+        var r = []Range32.{Range32.init(0x10980, 0x1099f, 1)};
         break :init r[0..];
     },
+    .latin_offset = 0,
 };
 const _Miao = RangeTable.{
     .r16 = []Range16.{},
     .r32 = init: {
         var r = []Range32.{
-            Range16.init(0x16f00, 0x16f44, 1),
-            Range16.init(0x16f50, 0x16f7e, 1),
-            Range16.init(0x16f8f, 0x16f9f, 1),
+            Range32.init(0x16f00, 0x16f44, 1),
+            Range32.init(0x16f50, 0x16f7e, 1),
+            Range32.init(0x16f8f, 0x16f9f, 1),
         };
         break :init r[0..];
     },
+    .latin_offset = 0,
 };
 const _Modi = RangeTable.{
     .r16 = []Range16.{},
     .r32 = init: {
         var r = []Range32.{
-            Range16.init(0x11600, 0x11644, 1),
-            Range16.init(0x11650, 0x11659, 1),
+            Range32.init(0x11600, 0x11644, 1),
+            Range32.init(0x11650, 0x11659, 1),
         };
         break :init r[0..];
     },
+    .latin_offset = 0,
 };
 const _Mongolian = RangeTable.{
     .r16 = init: {
@@ -5241,33 +5358,36 @@ const _Mongolian = RangeTable.{
         break :init r[0..];
     },
     .r32 = init: {
-        var r = []Range32.{Range16.init(0x11660, 0x1166c, 1)};
+        var r = []Range32.{Range32.init(0x11660, 0x1166c, 1)};
         break :init r[0..];
     },
+    .latin_offset = 0,
 };
 const _Mro = RangeTable.{
     .r16 = []Range16.{},
     .r32 = init: {
         var r = []Range32.{
-            Range16.init(0x16a40, 0x16a5e, 1),
-            Range16.init(0x16a60, 0x16a69, 1),
-            Range16.init(0x16a6e, 0x16a6f, 1),
+            Range32.init(0x16a40, 0x16a5e, 1),
+            Range32.init(0x16a60, 0x16a69, 1),
+            Range32.init(0x16a6e, 0x16a6f, 1),
         };
         break :init r[0..];
     },
+    .latin_offset = 0,
 };
 const _Multani = RangeTable.{
     .r16 = []Range16.{},
     .r32 = init: {
         var r = []Range32.{
-            Range16.init(0x11280, 0x11286, 1),
-            Range16.init(0x11288, 0x11288, 1),
-            Range16.init(0x1128a, 0x1128d, 1),
-            Range16.init(0x1128f, 0x1129d, 1),
-            Range16.init(0x1129f, 0x112a9, 1),
+            Range32.init(0x11280, 0x11286, 1),
+            Range32.init(0x11288, 0x11288, 1),
+            Range32.init(0x1128a, 0x1128d, 1),
+            Range32.init(0x1128f, 0x1129d, 1),
+            Range32.init(0x1129f, 0x112a9, 1),
         };
         break :init r[0..];
     },
+    .latin_offset = 0,
 };
 const _Myanmar = RangeTable.{
     .r16 = init: {
@@ -5279,16 +5399,18 @@ const _Myanmar = RangeTable.{
         break :init r[0..];
     },
     .r32 = []Range32.{},
+    .latin_offset = 0,
 };
 const _Nabataean = RangeTable.{
     .r16 = []Range16.{},
     .r32 = init: {
         var r = []Range32.{
-            Range16.init(0x10880, 0x1089e, 1),
-            Range16.init(0x108a7, 0x108af, 1),
+            Range32.init(0x10880, 0x1089e, 1),
+            Range32.init(0x108a7, 0x108af, 1),
         };
         break :init r[0..];
     },
+    .latin_offset = 0,
 };
 const _New_Tai_Lue = RangeTable.{
     .r16 = init: {
@@ -5301,17 +5423,19 @@ const _New_Tai_Lue = RangeTable.{
         break :init r[0..];
     },
     .r32 = []Range32.{},
+    .latin_offset = 0,
 };
 const _Newa = RangeTable.{
     .r16 = []Range16.{},
     .r32 = init: {
         var r = []Range32.{
-            Range16.init(0x11400, 0x11459, 1),
-            Range16.init(0x1145b, 0x1145b, 1),
-            Range16.init(0x1145d, 0x1145d, 1),
+            Range32.init(0x11400, 0x11459, 1),
+            Range32.init(0x1145b, 0x1145b, 1),
+            Range32.init(0x1145d, 0x1145d, 1),
         };
         break :init r[0..];
     },
+    .latin_offset = 0,
 };
 const _Nko = RangeTable.{
     .r16 = init: {
@@ -5319,16 +5443,18 @@ const _Nko = RangeTable.{
         break :init r[0..];
     },
     .r32 = []Range32.{},
+    .latin_offset = 0,
 };
 const _Nushu = RangeTable.{
     .r16 = []Range16.{},
     .r32 = init: {
         var r = []Range32.{
-            Range16.init(0x16fe1, 0x16fe1, 1),
-            Range16.init(0x1b170, 0x1b2fb, 1),
+            Range32.init(0x16fe1, 0x16fe1, 1),
+            Range32.init(0x1b170, 0x1b2fb, 1),
         };
         break :init r[0..];
     },
+    .latin_offset = 0,
 };
 const _Ogham = RangeTable.{
     .r16 = init: {
@@ -5336,6 +5462,7 @@ const _Ogham = RangeTable.{
         break :init r[0..];
     },
     .r32 = []Range32.{},
+    .latin_offset = 0,
 };
 const _Ol_Chiki = RangeTable.{
     .r16 = init: {
@@ -5343,65 +5470,73 @@ const _Ol_Chiki = RangeTable.{
         break :init r[0..];
     },
     .r32 = []Range32.{},
+    .latin_offset = 0,
 };
 const _Old_Hungarian = RangeTable.{
     .r16 = []Range16.{},
     .r32 = init: {
         var r = []Range32.{
-            Range16.init(0x10c80, 0x10cb2, 1),
-            Range16.init(0x10cc0, 0x10cf2, 1),
-            Range16.init(0x10cfa, 0x10cff, 1),
+            Range32.init(0x10c80, 0x10cb2, 1),
+            Range32.init(0x10cc0, 0x10cf2, 1),
+            Range32.init(0x10cfa, 0x10cff, 1),
         };
         break :init r[0..];
     },
+    .latin_offset = 0,
 };
 const _Old_Italic = RangeTable.{
     .r16 = []Range16.{},
     .r32 = init: {
         var r = []Range32.{
-            Range16.init(0x10300, 0x10323, 1),
-            Range16.init(0x1032d, 0x1032f, 1),
+            Range32.init(0x10300, 0x10323, 1),
+            Range32.init(0x1032d, 0x1032f, 1),
         };
         break :init r[0..];
     },
+    .latin_offset = 0,
 };
 const _Old_North_Arabian = RangeTable.{
     .r16 = []Range16.{},
     .r32 = init: {
-        var r = []Range32.{Range16.init(0x10a80, 0x10a9f, 1)};
+        var r = []Range32.{Range32.init(0x10a80, 0x10a9f, 1)};
         break :init r[0..];
     },
+    .latin_offset = 0,
 };
 const _Old_Permic = RangeTable.{
     .r16 = []Range16.{},
     .r32 = init: {
-        var r = []Range32.{Range16.init(0x10350, 0x1037a, 1)};
+        var r = []Range32.{Range32.init(0x10350, 0x1037a, 1)};
         break :init r[0..];
     },
+    .latin_offset = 0,
 };
 const _Old_Persian = RangeTable.{
     .r16 = []Range16.{},
     .r32 = init: {
         var r = []Range32.{
-            Range16.init(0x103a0, 0x103c3, 1),
-            Range16.init(0x103c8, 0x103d5, 1),
+            Range32.init(0x103a0, 0x103c3, 1),
+            Range32.init(0x103c8, 0x103d5, 1),
         };
         break :init r[0..];
     },
+    .latin_offset = 0,
 };
 const _Old_South_Arabian = RangeTable.{
     .r16 = []Range16.{},
     .r32 = init: {
-        var r = []Range32.{Range16.init(0x10a60, 0x10a7f, 1)};
+        var r = []Range32.{Range32.init(0x10a60, 0x10a7f, 1)};
         break :init r[0..];
     },
+    .latin_offset = 0,
 };
 const _Old_Turkic = RangeTable.{
     .r16 = []Range16.{},
     .r32 = init: {
-        var r = []Range32.{Range16.init(0x10c00, 0x10c48, 1)};
+        var r = []Range32.{Range32.init(0x10c00, 0x10c48, 1)};
         break :init r[0..];
     },
+    .latin_offset = 0,
 };
 const _Oriya = RangeTable.{
     .r16 = init: {
@@ -5424,53 +5559,59 @@ const _Oriya = RangeTable.{
         break :init r[0..];
     },
     .r32 = []Range32.{},
+    .latin_offset = 0,
 };
 const _Osage = RangeTable.{
     .r16 = []Range16.{},
     .r32 = init: {
         var r = []Range32.{
-            Range16.init(0x104b0, 0x104d3, 1),
-            Range16.init(0x104d8, 0x104fb, 1),
+            Range32.init(0x104b0, 0x104d3, 1),
+            Range32.init(0x104d8, 0x104fb, 1),
         };
         break :init r[0..];
     },
+    .latin_offset = 0,
 };
 const _Osmanya = RangeTable.{
     .r16 = []Range16.{},
     .r32 = init: {
         var r = []Range32.{
-            Range16.init(0x10480, 0x1049d, 1),
-            Range16.init(0x104a0, 0x104a9, 1),
+            Range32.init(0x10480, 0x1049d, 1),
+            Range32.init(0x104a0, 0x104a9, 1),
         };
         break :init r[0..];
     },
+    .latin_offset = 0,
 };
 const _Pahawh_Hmong = RangeTable.{
     .r16 = []Range16.{},
     .r32 = init: {
         var r = []Range32.{
-            Range16.init(0x16b00, 0x16b45, 1),
-            Range16.init(0x16b50, 0x16b59, 1),
-            Range16.init(0x16b5b, 0x16b61, 1),
-            Range16.init(0x16b63, 0x16b77, 1),
-            Range16.init(0x16b7d, 0x16b8f, 1),
+            Range32.init(0x16b00, 0x16b45, 1),
+            Range32.init(0x16b50, 0x16b59, 1),
+            Range32.init(0x16b5b, 0x16b61, 1),
+            Range32.init(0x16b63, 0x16b77, 1),
+            Range32.init(0x16b7d, 0x16b8f, 1),
         };
         break :init r[0..];
     },
+    .latin_offset = 0,
 };
 const _Palmyrene = RangeTable.{
     .r16 = []Range16.{},
     .r32 = init: {
-        var r = []Range32.{Range16.init(0x10860, 0x1087f, 1)};
+        var r = []Range32.{Range32.init(0x10860, 0x1087f, 1)};
         break :init r[0..];
     },
+    .latin_offset = 0,
 };
 const _Pau_Cin_Hau = RangeTable.{
     .r16 = []Range16.{},
     .r32 = init: {
-        var r = []Range32.{Range16.init(0x11ac0, 0x11af8, 1)};
+        var r = []Range32.{Range32.init(0x11ac0, 0x11af8, 1)};
         break :init r[0..];
     },
+    .latin_offset = 0,
 };
 const _Phags_Pa = RangeTable.{
     .r16 = init: {
@@ -5478,27 +5619,30 @@ const _Phags_Pa = RangeTable.{
         break :init r[0..];
     },
     .r32 = []Range32.{},
+    .latin_offset = 0,
 };
 const _Phoenician = RangeTable.{
     .r16 = []Range16.{},
     .r32 = init: {
         var r = []Range32.{
-            Range16.init(0x10900, 0x1091b, 1),
-            Range16.init(0x1091f, 0x1091f, 1),
+            Range32.init(0x10900, 0x1091b, 1),
+            Range32.init(0x1091f, 0x1091f, 1),
         };
         break :init r[0..];
     },
+    .latin_offset = 0,
 };
 const _Psalter_Pahlavi = RangeTable.{
     .r16 = []Range16.{},
     .r32 = init: {
         var r = []Range32.{
-            Range16.init(0x10b80, 0x10b91, 1),
-            Range16.init(0x10b99, 0x10b9c, 1),
-            Range16.init(0x10ba9, 0x10baf, 1),
+            Range32.init(0x10b80, 0x10b91, 1),
+            Range32.init(0x10b99, 0x10b9c, 1),
+            Range32.init(0x10ba9, 0x10baf, 1),
         };
         break :init r[0..];
     },
+    .latin_offset = 0,
 };
 const _Rejang = RangeTable.{
     .r16 = init: {
@@ -5509,6 +5653,7 @@ const _Rejang = RangeTable.{
         break :init r[0..];
     },
     .r32 = []Range32.{},
+    .latin_offset = 0,
 };
 const _Runic = RangeTable.{
     .r16 = init: {
@@ -5519,6 +5664,7 @@ const _Runic = RangeTable.{
         break :init r[0..];
     },
     .r32 = []Range32.{},
+    .latin_offset = 0,
 };
 const _Samaritan = RangeTable.{
     .r16 = init: {
@@ -5529,6 +5675,7 @@ const _Samaritan = RangeTable.{
         break :init r[0..];
     },
     .r32 = []Range32.{},
+    .latin_offset = 0,
 };
 const _Saurashtra = RangeTable.{
     .r16 = init: {
@@ -5539,44 +5686,49 @@ const _Saurashtra = RangeTable.{
         break :init r[0..];
     },
     .r32 = []Range32.{},
+    .latin_offset = 0,
 };
 const _Sharada = RangeTable.{
     .r16 = []Range16.{},
     .r32 = init: {
         var r = []Range32.{
-            Range16.init(0x11180, 0x111cd, 1),
-            Range16.init(0x111d0, 0x111df, 1),
+            Range32.init(0x11180, 0x111cd, 1),
+            Range32.init(0x111d0, 0x111df, 1),
         };
         break :init r[0..];
     },
+    .latin_offset = 0,
 };
 const _Shavian = RangeTable.{
     .r16 = []Range16.{},
     .r32 = init: {
-        var r = []Range32.{Range16.init(0x10450, 0x1047f, 1)};
+        var r = []Range32.{Range32.init(0x10450, 0x1047f, 1)};
         break :init r[0..];
     },
+    .latin_offset = 0,
 };
 const _Siddham = RangeTable.{
     .r16 = []Range16.{},
     .r32 = init: {
         var r = []Range32.{
-            Range16.init(0x11580, 0x115b5, 1),
-            Range16.init(0x115b8, 0x115dd, 1),
+            Range32.init(0x11580, 0x115b5, 1),
+            Range32.init(0x115b8, 0x115dd, 1),
         };
         break :init r[0..];
     },
+    .latin_offset = 0,
 };
 const _SignWriting = RangeTable.{
     .r16 = []Range16.{},
     .r32 = init: {
         var r = []Range32.{
-            Range16.init(0x1d800, 0x1da8b, 1),
-            Range16.init(0x1da9b, 0x1da9f, 1),
-            Range16.init(0x1daa1, 0x1daaf, 1),
+            Range32.init(0x1d800, 0x1da8b, 1),
+            Range32.init(0x1da9b, 0x1da9f, 1),
+            Range32.init(0x1daa1, 0x1daaf, 1),
         };
         break :init r[0..];
     },
+    .latin_offset = 0,
 };
 const _Sinhala = RangeTable.{
     .r16 = init: {
@@ -5597,30 +5749,33 @@ const _Sinhala = RangeTable.{
         break :init r[0..];
     },
     .r32 = init: {
-        var r = []Range32.{Range16.init(0x111e1, 0x111f4, 1)};
+        var r = []Range32.{Range32.init(0x111e1, 0x111f4, 1)};
         break :init r[0..];
     },
+    .latin_offset = 0,
 };
 const _Sora_Sompeng = RangeTable.{
     .r16 = []Range16.{},
     .r32 = init: {
         var r = []Range32.{
-            Range16.init(0x110d0, 0x110e8, 1),
-            Range16.init(0x110f0, 0x110f9, 1),
+            Range32.init(0x110d0, 0x110e8, 1),
+            Range32.init(0x110f0, 0x110f9, 1),
         };
         break :init r[0..];
     },
+    .latin_offset = 0,
 };
 const _Soyombo = RangeTable.{
     .r16 = []Range16.{},
     .r32 = init: {
         var r = []Range32.{
-            Range16.init(0x11a50, 0x11a83, 1),
-            Range16.init(0x11a86, 0x11a9c, 1),
-            Range16.init(0x11a9e, 0x11aa2, 1),
+            Range32.init(0x11a50, 0x11a83, 1),
+            Range32.init(0x11a86, 0x11a9c, 1),
+            Range32.init(0x11a9e, 0x11aa2, 1),
         };
         break :init r[0..];
     },
+    .latin_offset = 0,
 };
 const _Sundanese = RangeTable.{
     .r16 = init: {
@@ -5631,6 +5786,7 @@ const _Sundanese = RangeTable.{
         break :init r[0..];
     },
     .r32 = []Range32.{},
+    .latin_offset = 0,
 };
 const _Syloti_Nagri = RangeTable.{
     .r16 = init: {
@@ -5638,6 +5794,7 @@ const _Syloti_Nagri = RangeTable.{
         break :init r[0..];
     },
     .r32 = []Range32.{},
+    .latin_offset = 0,
 };
 const _Syriac = RangeTable.{
     .r16 = init: {
@@ -5650,6 +5807,7 @@ const _Syriac = RangeTable.{
         break :init r[0..];
     },
     .r32 = []Range32.{},
+    .latin_offset = 0,
 };
 const _Tagalog = RangeTable.{
     .r16 = init: {
@@ -5660,6 +5818,7 @@ const _Tagalog = RangeTable.{
         break :init r[0..];
     },
     .r32 = []Range32.{},
+    .latin_offset = 0,
 };
 const _Tagbanwa = RangeTable.{
     .r16 = init: {
@@ -5671,6 +5830,7 @@ const _Tagbanwa = RangeTable.{
         break :init r[0..];
     },
     .r32 = []Range32.{},
+    .latin_offset = 0,
 };
 const _Tai_Le = RangeTable.{
     .r16 = init: {
@@ -5681,6 +5841,7 @@ const _Tai_Le = RangeTable.{
         break :init r[0..];
     },
     .r32 = []Range32.{},
+    .latin_offset = 0,
 };
 const _Tai_Tham = RangeTable.{
     .r16 = init: {
@@ -5694,6 +5855,7 @@ const _Tai_Tham = RangeTable.{
         break :init r[0..];
     },
     .r32 = []Range32.{},
+    .latin_offset = 0,
 };
 const _Tai_Viet = RangeTable.{
     .r16 = init: {
@@ -5704,16 +5866,18 @@ const _Tai_Viet = RangeTable.{
         break :init r[0..];
     },
     .r32 = []Range32.{},
+    .latin_offset = 0,
 };
 const _Takri = RangeTable.{
     .r16 = []Range16.{},
     .r32 = init: {
         var r = []Range32.{
-            Range16.init(0x11680, 0x116b7, 1),
-            Range16.init(0x116c0, 0x116c9, 1),
+            Range32.init(0x11680, 0x116b7, 1),
+            Range32.init(0x116c0, 0x116c9, 1),
         };
         break :init r[0..];
     },
+    .latin_offset = 0,
 };
 const _Tamil = RangeTable.{
     .r16 = init: {
@@ -5738,17 +5902,19 @@ const _Tamil = RangeTable.{
         break :init r[0..];
     },
     .r32 = []Range32.{},
+    .latin_offset = 0,
 };
 const _Tangut = RangeTable.{
     .r16 = []Range16.{},
     .r32 = init: {
         var r = []Range32.{
-            Range16.init(0x16fe0, 0x16fe0, 1),
-            Range16.init(0x17000, 0x187ec, 1),
-            Range16.init(0x18800, 0x18af2, 1),
+            Range32.init(0x16fe0, 0x16fe0, 1),
+            Range32.init(0x17000, 0x187ec, 1),
+            Range32.init(0x18800, 0x18af2, 1),
         };
         break :init r[0..];
     },
+    .latin_offset = 0,
 };
 const _Telugu = RangeTable.{
     .r16 = init: {
@@ -5770,6 +5936,7 @@ const _Telugu = RangeTable.{
         break :init r[0..];
     },
     .r32 = []Range32.{},
+    .latin_offset = 0,
 };
 const _Thaana = RangeTable.{
     .r16 = init: {
@@ -5777,6 +5944,7 @@ const _Thaana = RangeTable.{
         break :init r[0..];
     },
     .r32 = []Range32.{},
+    .latin_offset = 0,
 };
 const _Thai = RangeTable.{
     .r16 = init: {
@@ -5787,6 +5955,7 @@ const _Thai = RangeTable.{
         break :init r[0..];
     },
     .r32 = []Range32.{},
+    .latin_offset = 0,
 };
 const _Tibetan = RangeTable.{
     .r16 = init: {
@@ -5802,6 +5971,7 @@ const _Tibetan = RangeTable.{
         break :init r[0..];
     },
     .r32 = []Range32.{},
+    .latin_offset = 0,
 };
 const _Tifinagh = RangeTable.{
     .r16 = init: {
@@ -5813,26 +5983,29 @@ const _Tifinagh = RangeTable.{
         break :init r[0..];
     },
     .r32 = []Range32.{},
+    .latin_offset = 0,
 };
 const _Tirhuta = RangeTable.{
     .r16 = []Range16.{},
     .r32 = init: {
         var r = []Range32.{
-            Range16.init(0x11480, 0x114c7, 1),
-            Range16.init(0x114d0, 0x114d9, 1),
+            Range32.init(0x11480, 0x114c7, 1),
+            Range32.init(0x114d0, 0x114d9, 1),
         };
         break :init r[0..];
     },
+    .latin_offset = 0,
 };
 const _Ugaritic = RangeTable.{
     .r16 = []Range16.{},
     .r32 = init: {
         var r = []Range32.{
-            Range16.init(0x10380, 0x1039d, 1),
-            Range16.init(0x1039f, 0x1039f, 1),
+            Range32.init(0x10380, 0x1039d, 1),
+            Range32.init(0x1039f, 0x1039f, 1),
         };
         break :init r[0..];
     },
+    .latin_offset = 0,
 };
 const _Vai = RangeTable.{
     .r16 = init: {
@@ -5840,16 +6013,18 @@ const _Vai = RangeTable.{
         break :init r[0..];
     },
     .r32 = []Range32.{},
+    .latin_offset = 0,
 };
 const _Warang_Citi = RangeTable.{
     .r16 = []Range16.{},
     .r32 = init: {
         var r = []Range32.{
-            Range16.init(0x118a0, 0x118f2, 1),
-            Range16.init(0x118ff, 0x118ff, 1),
+            Range32.init(0x118a0, 0x118f2, 1),
+            Range32.init(0x118ff, 0x118ff, 1),
         };
         break :init r[0..];
     },
+    .latin_offset = 0,
 };
 const _Yi = RangeTable.{
     .r16 = init: {
@@ -5860,13 +6035,15 @@ const _Yi = RangeTable.{
         break :init r[0..];
     },
     .r32 = []Range32.{},
+    .latin_offset = 0,
 };
 const _Zanabazar_Square = RangeTable.{
     .r16 = []Range16.{},
     .r32 = init: {
-        var r = []Range32.{Range16.init(0x11a00, 0x11a47, 1)};
+        var r = []Range32.{Range32.init(0x11a00, 0x11a47, 1)};
         break :init r[0..];
     },
+    .latin_offset = 0,
 };
 // These variables have type *RangeTable.
 pub const Adlam = &_Adlam; // Adlam is the set of Unicode characters in script Adlam.
@@ -6110,6 +6287,7 @@ const _ASCII_Hex_Digit = RangeTable.{
         break :init r[0..];
     },
     .r32 = []Range32.{},
+    .latin_offset = 3,
 };
 const _Bidi_Control = RangeTable.{
     .r16 = init: {
@@ -6122,6 +6300,7 @@ const _Bidi_Control = RangeTable.{
         break :init r[0..];
     },
     .r32 = []Range32.{},
+    .latin_offset = 0,
 };
 const _Dash = RangeTable.{
     .r16 = init: {
@@ -6151,6 +6330,7 @@ const _Dash = RangeTable.{
         break :init r[0..];
     },
     .r32 = []Range32.{},
+    .latin_offset = 1,
 };
 const _Deprecated = RangeTable.{
     .r16 = init: {
@@ -6166,9 +6346,10 @@ const _Deprecated = RangeTable.{
         break :init r[0..];
     },
     .r32 = init: {
-        var r = []Range32.{Range16.init(0xe0001, 0xe0001, 1)};
+        var r = []Range32.{Range32.init(0xe0001, 0xe0001, 1)};
         break :init r[0..];
     },
+    .latin_offset = 0,
 };
 const _Diacritic = RangeTable.{
     .r16 = init: {
@@ -6301,45 +6482,46 @@ const _Diacritic = RangeTable.{
     },
     .r32 = init: {
         var r = []Range32.{
-            Range16.init(0x102e0, 0x102e0, 1),
-            Range16.init(0x10ae5, 0x10ae6, 1),
-            Range16.init(0x110b9, 0x110ba, 1),
-            Range16.init(0x11133, 0x11134, 1),
-            Range16.init(0x11173, 0x11173, 1),
-            Range16.init(0x111c0, 0x111c0, 1),
-            Range16.init(0x111ca, 0x111cc, 1),
-            Range16.init(0x11235, 0x11236, 1),
-            Range16.init(0x112e9, 0x112ea, 1),
-            Range16.init(0x1133c, 0x1133c, 1),
-            Range16.init(0x1134d, 0x1134d, 1),
-            Range16.init(0x11366, 0x1136c, 1),
-            Range16.init(0x11370, 0x11374, 1),
-            Range16.init(0x11442, 0x11442, 1),
-            Range16.init(0x11446, 0x11446, 1),
-            Range16.init(0x114c2, 0x114c3, 1),
-            Range16.init(0x115bf, 0x115c0, 1),
-            Range16.init(0x1163f, 0x1163f, 1),
-            Range16.init(0x116b6, 0x116b7, 1),
-            Range16.init(0x1172b, 0x1172b, 1),
-            Range16.init(0x11a34, 0x11a34, 1),
-            Range16.init(0x11a47, 0x11a47, 1),
-            Range16.init(0x11a99, 0x11a99, 1),
-            Range16.init(0x11c3f, 0x11c3f, 1),
-            Range16.init(0x11d42, 0x11d42, 1),
-            Range16.init(0x11d44, 0x11d45, 1),
-            Range16.init(0x16af0, 0x16af4, 1),
-            Range16.init(0x16f8f, 0x16f9f, 1),
-            Range16.init(0x1d167, 0x1d169, 1),
-            Range16.init(0x1d16d, 0x1d172, 1),
-            Range16.init(0x1d17b, 0x1d182, 1),
-            Range16.init(0x1d185, 0x1d18b, 1),
-            Range16.init(0x1d1aa, 0x1d1ad, 1),
-            Range16.init(0x1e8d0, 0x1e8d6, 1),
-            Range16.init(0x1e944, 0x1e946, 1),
-            Range16.init(0x1e948, 0x1e94a, 1),
+            Range32.init(0x102e0, 0x102e0, 1),
+            Range32.init(0x10ae5, 0x10ae6, 1),
+            Range32.init(0x110b9, 0x110ba, 1),
+            Range32.init(0x11133, 0x11134, 1),
+            Range32.init(0x11173, 0x11173, 1),
+            Range32.init(0x111c0, 0x111c0, 1),
+            Range32.init(0x111ca, 0x111cc, 1),
+            Range32.init(0x11235, 0x11236, 1),
+            Range32.init(0x112e9, 0x112ea, 1),
+            Range32.init(0x1133c, 0x1133c, 1),
+            Range32.init(0x1134d, 0x1134d, 1),
+            Range32.init(0x11366, 0x1136c, 1),
+            Range32.init(0x11370, 0x11374, 1),
+            Range32.init(0x11442, 0x11442, 1),
+            Range32.init(0x11446, 0x11446, 1),
+            Range32.init(0x114c2, 0x114c3, 1),
+            Range32.init(0x115bf, 0x115c0, 1),
+            Range32.init(0x1163f, 0x1163f, 1),
+            Range32.init(0x116b6, 0x116b7, 1),
+            Range32.init(0x1172b, 0x1172b, 1),
+            Range32.init(0x11a34, 0x11a34, 1),
+            Range32.init(0x11a47, 0x11a47, 1),
+            Range32.init(0x11a99, 0x11a99, 1),
+            Range32.init(0x11c3f, 0x11c3f, 1),
+            Range32.init(0x11d42, 0x11d42, 1),
+            Range32.init(0x11d44, 0x11d45, 1),
+            Range32.init(0x16af0, 0x16af4, 1),
+            Range32.init(0x16f8f, 0x16f9f, 1),
+            Range32.init(0x1d167, 0x1d169, 1),
+            Range32.init(0x1d16d, 0x1d172, 1),
+            Range32.init(0x1d17b, 0x1d182, 1),
+            Range32.init(0x1d185, 0x1d18b, 1),
+            Range32.init(0x1d1aa, 0x1d1ad, 1),
+            Range32.init(0x1e8d0, 0x1e8d6, 1),
+            Range32.init(0x1e944, 0x1e946, 1),
+            Range32.init(0x1e948, 0x1e94a, 1),
         };
         break :init r[0..];
     },
+    .latin_offset = 6,
 };
 const _Extender = RangeTable.{
     .r16 = init: {
@@ -6372,15 +6554,16 @@ const _Extender = RangeTable.{
     },
     .r32 = init: {
         var r = []Range32.{
-            Range16.init(0x1135d, 0x1135d, 1),
-            Range16.init(0x115c6, 0x115c8, 1),
-            Range16.init(0x11a98, 0x11a98, 1),
-            Range16.init(0x16b42, 0x16b43, 1),
-            Range16.init(0x16fe0, 0x16fe1, 1),
-            Range16.init(0x1e944, 0x1e946, 1),
+            Range32.init(0x1135d, 0x1135d, 1),
+            Range32.init(0x115c6, 0x115c8, 1),
+            Range32.init(0x11a98, 0x11a98, 1),
+            Range32.init(0x16b42, 0x16b43, 1),
+            Range32.init(0x16fe0, 0x16fe1, 1),
+            Range32.init(0x1e944, 0x1e946, 1),
         };
         break :init r[0..];
     },
+    .latin_offset = 1,
 };
 const _Hex_Digit = RangeTable.{
     .r16 = init: {
@@ -6395,6 +6578,7 @@ const _Hex_Digit = RangeTable.{
         break :init r[0..];
     },
     .r32 = []Range32.{},
+    .latin_offset = 3,
 };
 const _Hyphen = RangeTable.{
     .r16 = init: {
@@ -6413,6 +6597,7 @@ const _Hyphen = RangeTable.{
         break :init r[0..];
     },
     .r32 = []Range32.{},
+    .latin_offset = 2,
 };
 const _IDS_Binary_Operator = RangeTable.{
     .r16 = init: {
@@ -6423,6 +6608,7 @@ const _IDS_Binary_Operator = RangeTable.{
         break :init r[0..];
     },
     .r32 = []Range32.{},
+    .latin_offset = 0,
 };
 const _IDS_Trinary_Operator = RangeTable.{
     .r16 = init: {
@@ -6430,6 +6616,7 @@ const _IDS_Trinary_Operator = RangeTable.{
         break :init r[0..];
     },
     .r32 = []Range32.{},
+    .latin_offset = 0,
 };
 const _Ideographic = RangeTable.{
     .r16 = init: {
@@ -6446,18 +6633,19 @@ const _Ideographic = RangeTable.{
     },
     .r32 = init: {
         var r = []Range32.{
-            Range16.init(0x17000, 0x187ec, 1),
-            Range16.init(0x18800, 0x18af2, 1),
-            Range16.init(0x1b170, 0x1b2fb, 1),
-            Range16.init(0x20000, 0x2a6d6, 1),
-            Range16.init(0x2a700, 0x2b734, 1),
-            Range16.init(0x2b740, 0x2b81d, 1),
-            Range16.init(0x2b820, 0x2cea1, 1),
-            Range16.init(0x2ceb0, 0x2ebe0, 1),
-            Range16.init(0x2f800, 0x2fa1d, 1),
+            Range32.init(0x17000, 0x187ec, 1),
+            Range32.init(0x18800, 0x18af2, 1),
+            Range32.init(0x1b170, 0x1b2fb, 1),
+            Range32.init(0x20000, 0x2a6d6, 1),
+            Range32.init(0x2a700, 0x2b734, 1),
+            Range32.init(0x2b740, 0x2b81d, 1),
+            Range32.init(0x2b820, 0x2cea1, 1),
+            Range32.init(0x2ceb0, 0x2ebe0, 1),
+            Range32.init(0x2f800, 0x2fa1d, 1),
         };
         break :init r[0..];
     },
+    .latin_offset = 0,
 };
 const _Join_Control = RangeTable.{
     .r16 = init: {
@@ -6465,6 +6653,7 @@ const _Join_Control = RangeTable.{
         break :init r[0..];
     },
     .r32 = []Range32.{},
+    .latin_offset = 0,
 };
 const _Logical_Order_Exception = RangeTable.{
     .r16 = init: {
@@ -6480,6 +6669,7 @@ const _Logical_Order_Exception = RangeTable.{
         break :init r[0..];
     },
     .r32 = []Range32.{},
+    .latin_offset = 0,
 };
 const _Noncharacter_Code_Point = RangeTable.{
     .r16 = init: {
@@ -6491,25 +6681,26 @@ const _Noncharacter_Code_Point = RangeTable.{
     },
     .r32 = init: {
         var r = []Range32.{
-            Range16.init(0x1fffe, 0x1ffff, 1),
-            Range16.init(0x2fffe, 0x2ffff, 1),
-            Range16.init(0x3fffe, 0x3ffff, 1),
-            Range16.init(0x4fffe, 0x4ffff, 1),
-            Range16.init(0x5fffe, 0x5ffff, 1),
-            Range16.init(0x6fffe, 0x6ffff, 1),
-            Range16.init(0x7fffe, 0x7ffff, 1),
-            Range16.init(0x8fffe, 0x8ffff, 1),
-            Range16.init(0x9fffe, 0x9ffff, 1),
-            Range16.init(0xafffe, 0xaffff, 1),
-            Range16.init(0xbfffe, 0xbffff, 1),
-            Range16.init(0xcfffe, 0xcffff, 1),
-            Range16.init(0xdfffe, 0xdffff, 1),
-            Range16.init(0xefffe, 0xeffff, 1),
-            Range16.init(0xffffe, 0xfffff, 1),
-            Range16.init(0x10fffe, 0x10ffff, 1),
+            Range32.init(0x1fffe, 0x1ffff, 1),
+            Range32.init(0x2fffe, 0x2ffff, 1),
+            Range32.init(0x3fffe, 0x3ffff, 1),
+            Range32.init(0x4fffe, 0x4ffff, 1),
+            Range32.init(0x5fffe, 0x5ffff, 1),
+            Range32.init(0x6fffe, 0x6ffff, 1),
+            Range32.init(0x7fffe, 0x7ffff, 1),
+            Range32.init(0x8fffe, 0x8ffff, 1),
+            Range32.init(0x9fffe, 0x9ffff, 1),
+            Range32.init(0xafffe, 0xaffff, 1),
+            Range32.init(0xbfffe, 0xbffff, 1),
+            Range32.init(0xcfffe, 0xcffff, 1),
+            Range32.init(0xdfffe, 0xdffff, 1),
+            Range32.init(0xefffe, 0xeffff, 1),
+            Range32.init(0xffffe, 0xfffff, 1),
+            Range32.init(0x10fffe, 0x10ffff, 1),
         };
         break :init r[0..];
     },
+    .latin_offset = 0,
 };
 const _Other_Alphabetic = RangeTable.{
     .r16 = init: {
@@ -6666,68 +6857,69 @@ const _Other_Alphabetic = RangeTable.{
     },
     .r32 = init: {
         var r = []Range32.{
-            Range16.init(0x10376, 0x1037a, 1),
-            Range16.init(0x10a01, 0x10a03, 1),
-            Range16.init(0x10a05, 0x10a06, 1),
-            Range16.init(0x10a0c, 0x10a0f, 1),
-            Range16.init(0x11000, 0x11002, 1),
-            Range16.init(0x11038, 0x11045, 1),
-            Range16.init(0x11082, 0x11082, 1),
-            Range16.init(0x110b0, 0x110b8, 1),
-            Range16.init(0x11100, 0x11102, 1),
-            Range16.init(0x11127, 0x11132, 1),
-            Range16.init(0x11180, 0x11182, 1),
-            Range16.init(0x111b3, 0x111bf, 1),
-            Range16.init(0x1122c, 0x11234, 1),
-            Range16.init(0x11237, 0x11237, 1),
-            Range16.init(0x1123e, 0x1123e, 1),
-            Range16.init(0x112df, 0x112e8, 1),
-            Range16.init(0x11300, 0x11303, 1),
-            Range16.init(0x1133e, 0x11344, 1),
-            Range16.init(0x11347, 0x11348, 1),
-            Range16.init(0x1134b, 0x1134c, 1),
-            Range16.init(0x11357, 0x11357, 1),
-            Range16.init(0x11362, 0x11363, 1),
-            Range16.init(0x11435, 0x11441, 1),
-            Range16.init(0x11443, 0x11445, 1),
-            Range16.init(0x114b0, 0x114c1, 1),
-            Range16.init(0x115af, 0x115b5, 1),
-            Range16.init(0x115b8, 0x115be, 1),
-            Range16.init(0x115dc, 0x115dd, 1),
-            Range16.init(0x11630, 0x1163e, 1),
-            Range16.init(0x11640, 0x11640, 1),
-            Range16.init(0x116ab, 0x116b5, 1),
-            Range16.init(0x1171d, 0x1172a, 1),
-            Range16.init(0x11a01, 0x11a0a, 1),
-            Range16.init(0x11a35, 0x11a39, 1),
-            Range16.init(0x11a3b, 0x11a3e, 1),
-            Range16.init(0x11a51, 0x11a5b, 1),
-            Range16.init(0x11a8a, 0x11a97, 1),
-            Range16.init(0x11c2f, 0x11c36, 1),
-            Range16.init(0x11c38, 0x11c3e, 1),
-            Range16.init(0x11c92, 0x11ca7, 1),
-            Range16.init(0x11ca9, 0x11cb6, 1),
-            Range16.init(0x11d31, 0x11d36, 1),
-            Range16.init(0x11d3a, 0x11d3a, 1),
-            Range16.init(0x11d3c, 0x11d3d, 1),
-            Range16.init(0x11d3f, 0x11d41, 1),
-            Range16.init(0x11d43, 0x11d43, 1),
-            Range16.init(0x11d47, 0x11d47, 1),
-            Range16.init(0x16b30, 0x16b36, 1),
-            Range16.init(0x16f51, 0x16f7e, 1),
-            Range16.init(0x1bc9e, 0x1bc9e, 1),
-            Range16.init(0x1e000, 0x1e006, 1),
-            Range16.init(0x1e008, 0x1e018, 1),
-            Range16.init(0x1e01b, 0x1e021, 1),
-            Range16.init(0x1e023, 0x1e024, 1),
-            Range16.init(0x1e026, 0x1e02a, 1),
-            Range16.init(0x1e947, 0x1e947, 1),
-            Range16.init(0x1f130, 0x1f149, 1),
-            Range16.init(0x1f150, 0x1f169, 1),
-            Range16.init(0x1f170, 0x1f189, 1),
+            Range32.init(0x10376, 0x1037a, 1),
+            Range32.init(0x10a01, 0x10a03, 1),
+            Range32.init(0x10a05, 0x10a06, 1),
+            Range32.init(0x10a0c, 0x10a0f, 1),
+            Range32.init(0x11000, 0x11002, 1),
+            Range32.init(0x11038, 0x11045, 1),
+            Range32.init(0x11082, 0x11082, 1),
+            Range32.init(0x110b0, 0x110b8, 1),
+            Range32.init(0x11100, 0x11102, 1),
+            Range32.init(0x11127, 0x11132, 1),
+            Range32.init(0x11180, 0x11182, 1),
+            Range32.init(0x111b3, 0x111bf, 1),
+            Range32.init(0x1122c, 0x11234, 1),
+            Range32.init(0x11237, 0x11237, 1),
+            Range32.init(0x1123e, 0x1123e, 1),
+            Range32.init(0x112df, 0x112e8, 1),
+            Range32.init(0x11300, 0x11303, 1),
+            Range32.init(0x1133e, 0x11344, 1),
+            Range32.init(0x11347, 0x11348, 1),
+            Range32.init(0x1134b, 0x1134c, 1),
+            Range32.init(0x11357, 0x11357, 1),
+            Range32.init(0x11362, 0x11363, 1),
+            Range32.init(0x11435, 0x11441, 1),
+            Range32.init(0x11443, 0x11445, 1),
+            Range32.init(0x114b0, 0x114c1, 1),
+            Range32.init(0x115af, 0x115b5, 1),
+            Range32.init(0x115b8, 0x115be, 1),
+            Range32.init(0x115dc, 0x115dd, 1),
+            Range32.init(0x11630, 0x1163e, 1),
+            Range32.init(0x11640, 0x11640, 1),
+            Range32.init(0x116ab, 0x116b5, 1),
+            Range32.init(0x1171d, 0x1172a, 1),
+            Range32.init(0x11a01, 0x11a0a, 1),
+            Range32.init(0x11a35, 0x11a39, 1),
+            Range32.init(0x11a3b, 0x11a3e, 1),
+            Range32.init(0x11a51, 0x11a5b, 1),
+            Range32.init(0x11a8a, 0x11a97, 1),
+            Range32.init(0x11c2f, 0x11c36, 1),
+            Range32.init(0x11c38, 0x11c3e, 1),
+            Range32.init(0x11c92, 0x11ca7, 1),
+            Range32.init(0x11ca9, 0x11cb6, 1),
+            Range32.init(0x11d31, 0x11d36, 1),
+            Range32.init(0x11d3a, 0x11d3a, 1),
+            Range32.init(0x11d3c, 0x11d3d, 1),
+            Range32.init(0x11d3f, 0x11d41, 1),
+            Range32.init(0x11d43, 0x11d43, 1),
+            Range32.init(0x11d47, 0x11d47, 1),
+            Range32.init(0x16b30, 0x16b36, 1),
+            Range32.init(0x16f51, 0x16f7e, 1),
+            Range32.init(0x1bc9e, 0x1bc9e, 1),
+            Range32.init(0x1e000, 0x1e006, 1),
+            Range32.init(0x1e008, 0x1e018, 1),
+            Range32.init(0x1e01b, 0x1e021, 1),
+            Range32.init(0x1e023, 0x1e024, 1),
+            Range32.init(0x1e026, 0x1e02a, 1),
+            Range32.init(0x1e947, 0x1e947, 1),
+            Range32.init(0x1f130, 0x1f149, 1),
+            Range32.init(0x1f150, 0x1f169, 1),
+            Range32.init(0x1f170, 0x1f189, 1),
         };
         break :init r[0..];
     },
+    .latin_offset = 0,
 };
 const _Other_Default_Ignorable_Code_Point = RangeTable.{
     .r16 = init: {
@@ -6744,13 +6936,14 @@ const _Other_Default_Ignorable_Code_Point = RangeTable.{
     },
     .r32 = init: {
         var r = []Range32.{
-            Range16.init(0xe0000, 0xe0000, 1),
-            Range16.init(0xe0002, 0xe001f, 1),
-            Range16.init(0xe0080, 0xe00ff, 1),
-            Range16.init(0xe01f0, 0xe0fff, 1),
+            Range32.init(0xe0000, 0xe0000, 1),
+            Range32.init(0xe0002, 0xe001f, 1),
+            Range32.init(0xe0080, 0xe00ff, 1),
+            Range32.init(0xe01f0, 0xe0fff, 1),
         };
         break :init r[0..];
     },
+    .latin_offset = 0,
 };
 const _Other_Grapheme_Extend = RangeTable.{
     .r16 = init: {
@@ -6775,17 +6968,18 @@ const _Other_Grapheme_Extend = RangeTable.{
     },
     .r32 = init: {
         var r = []Range32.{
-            Range16.init(0x1133e, 0x1133e, 1),
-            Range16.init(0x11357, 0x11357, 1),
-            Range16.init(0x114b0, 0x114b0, 1),
-            Range16.init(0x114bd, 0x114bd, 1),
-            Range16.init(0x115af, 0x115af, 1),
-            Range16.init(0x1d165, 0x1d165, 1),
-            Range16.init(0x1d16e, 0x1d172, 1),
-            Range16.init(0xe0020, 0xe007f, 1),
+            Range32.init(0x1133e, 0x1133e, 1),
+            Range32.init(0x11357, 0x11357, 1),
+            Range32.init(0x114b0, 0x114b0, 1),
+            Range32.init(0x114bd, 0x114bd, 1),
+            Range32.init(0x115af, 0x115af, 1),
+            Range32.init(0x1d165, 0x1d165, 1),
+            Range32.init(0x1d16e, 0x1d172, 1),
+            Range32.init(0xe0020, 0xe007f, 1),
         };
         break :init r[0..];
     },
+    .latin_offset = 0,
 };
 const _Other_ID_Continue = RangeTable.{
     .r16 = init: {
@@ -6798,6 +6992,7 @@ const _Other_ID_Continue = RangeTable.{
         break :init r[0..];
     },
     .r32 = []Range32.{},
+    .latin_offset = 1,
 };
 const _Other_ID_Start = RangeTable.{
     .r16 = init: {
@@ -6810,6 +7005,7 @@ const _Other_ID_Start = RangeTable.{
         break :init r[0..];
     },
     .r32 = []Range32.{},
+    .latin_offset = 0,
 };
 const _Other_Lowercase = RangeTable.{
     .r16 = init: {
@@ -6838,6 +7034,7 @@ const _Other_Lowercase = RangeTable.{
         break :init r[0..];
     },
     .r32 = []Range32.{},
+    .latin_offset = 2,
 };
 const _Other_Math = RangeTable.{
     .r16 = init: {
@@ -6917,73 +7114,74 @@ const _Other_Math = RangeTable.{
     },
     .r32 = init: {
         var r = []Range32.{
-            Range16.init(0x1d400, 0x1d454, 1),
-            Range16.init(0x1d456, 0x1d49c, 1),
-            Range16.init(0x1d49e, 0x1d49f, 1),
-            Range16.init(0x1d4a2, 0x1d4a2, 1),
-            Range16.init(0x1d4a5, 0x1d4a6, 1),
-            Range16.init(0x1d4a9, 0x1d4ac, 1),
-            Range16.init(0x1d4ae, 0x1d4b9, 1),
-            Range16.init(0x1d4bb, 0x1d4bb, 1),
-            Range16.init(0x1d4bd, 0x1d4c3, 1),
-            Range16.init(0x1d4c5, 0x1d505, 1),
-            Range16.init(0x1d507, 0x1d50a, 1),
-            Range16.init(0x1d50d, 0x1d514, 1),
-            Range16.init(0x1d516, 0x1d51c, 1),
-            Range16.init(0x1d51e, 0x1d539, 1),
-            Range16.init(0x1d53b, 0x1d53e, 1),
-            Range16.init(0x1d540, 0x1d544, 1),
-            Range16.init(0x1d546, 0x1d546, 1),
-            Range16.init(0x1d54a, 0x1d550, 1),
-            Range16.init(0x1d552, 0x1d6a5, 1),
-            Range16.init(0x1d6a8, 0x1d6c0, 1),
-            Range16.init(0x1d6c2, 0x1d6da, 1),
-            Range16.init(0x1d6dc, 0x1d6fa, 1),
-            Range16.init(0x1d6fc, 0x1d714, 1),
-            Range16.init(0x1d716, 0x1d734, 1),
-            Range16.init(0x1d736, 0x1d74e, 1),
-            Range16.init(0x1d750, 0x1d76e, 1),
-            Range16.init(0x1d770, 0x1d788, 1),
-            Range16.init(0x1d78a, 0x1d7a8, 1),
-            Range16.init(0x1d7aa, 0x1d7c2, 1),
-            Range16.init(0x1d7c4, 0x1d7cb, 1),
-            Range16.init(0x1d7ce, 0x1d7ff, 1),
-            Range16.init(0x1ee00, 0x1ee03, 1),
-            Range16.init(0x1ee05, 0x1ee1f, 1),
-            Range16.init(0x1ee21, 0x1ee22, 1),
-            Range16.init(0x1ee24, 0x1ee24, 1),
-            Range16.init(0x1ee27, 0x1ee27, 1),
-            Range16.init(0x1ee29, 0x1ee32, 1),
-            Range16.init(0x1ee34, 0x1ee37, 1),
-            Range16.init(0x1ee39, 0x1ee39, 1),
-            Range16.init(0x1ee3b, 0x1ee3b, 1),
-            Range16.init(0x1ee42, 0x1ee42, 1),
-            Range16.init(0x1ee47, 0x1ee47, 1),
-            Range16.init(0x1ee49, 0x1ee49, 1),
-            Range16.init(0x1ee4b, 0x1ee4b, 1),
-            Range16.init(0x1ee4d, 0x1ee4f, 1),
-            Range16.init(0x1ee51, 0x1ee52, 1),
-            Range16.init(0x1ee54, 0x1ee54, 1),
-            Range16.init(0x1ee57, 0x1ee57, 1),
-            Range16.init(0x1ee59, 0x1ee59, 1),
-            Range16.init(0x1ee5b, 0x1ee5b, 1),
-            Range16.init(0x1ee5d, 0x1ee5d, 1),
-            Range16.init(0x1ee5f, 0x1ee5f, 1),
-            Range16.init(0x1ee61, 0x1ee62, 1),
-            Range16.init(0x1ee64, 0x1ee64, 1),
-            Range16.init(0x1ee67, 0x1ee6a, 1),
-            Range16.init(0x1ee6c, 0x1ee72, 1),
-            Range16.init(0x1ee74, 0x1ee77, 1),
-            Range16.init(0x1ee79, 0x1ee7c, 1),
-            Range16.init(0x1ee7e, 0x1ee7e, 1),
-            Range16.init(0x1ee80, 0x1ee89, 1),
-            Range16.init(0x1ee8b, 0x1ee9b, 1),
-            Range16.init(0x1eea1, 0x1eea3, 1),
-            Range16.init(0x1eea5, 0x1eea9, 1),
-            Range16.init(0x1eeab, 0x1eebb, 1),
+            Range32.init(0x1d400, 0x1d454, 1),
+            Range32.init(0x1d456, 0x1d49c, 1),
+            Range32.init(0x1d49e, 0x1d49f, 1),
+            Range32.init(0x1d4a2, 0x1d4a2, 1),
+            Range32.init(0x1d4a5, 0x1d4a6, 1),
+            Range32.init(0x1d4a9, 0x1d4ac, 1),
+            Range32.init(0x1d4ae, 0x1d4b9, 1),
+            Range32.init(0x1d4bb, 0x1d4bb, 1),
+            Range32.init(0x1d4bd, 0x1d4c3, 1),
+            Range32.init(0x1d4c5, 0x1d505, 1),
+            Range32.init(0x1d507, 0x1d50a, 1),
+            Range32.init(0x1d50d, 0x1d514, 1),
+            Range32.init(0x1d516, 0x1d51c, 1),
+            Range32.init(0x1d51e, 0x1d539, 1),
+            Range32.init(0x1d53b, 0x1d53e, 1),
+            Range32.init(0x1d540, 0x1d544, 1),
+            Range32.init(0x1d546, 0x1d546, 1),
+            Range32.init(0x1d54a, 0x1d550, 1),
+            Range32.init(0x1d552, 0x1d6a5, 1),
+            Range32.init(0x1d6a8, 0x1d6c0, 1),
+            Range32.init(0x1d6c2, 0x1d6da, 1),
+            Range32.init(0x1d6dc, 0x1d6fa, 1),
+            Range32.init(0x1d6fc, 0x1d714, 1),
+            Range32.init(0x1d716, 0x1d734, 1),
+            Range32.init(0x1d736, 0x1d74e, 1),
+            Range32.init(0x1d750, 0x1d76e, 1),
+            Range32.init(0x1d770, 0x1d788, 1),
+            Range32.init(0x1d78a, 0x1d7a8, 1),
+            Range32.init(0x1d7aa, 0x1d7c2, 1),
+            Range32.init(0x1d7c4, 0x1d7cb, 1),
+            Range32.init(0x1d7ce, 0x1d7ff, 1),
+            Range32.init(0x1ee00, 0x1ee03, 1),
+            Range32.init(0x1ee05, 0x1ee1f, 1),
+            Range32.init(0x1ee21, 0x1ee22, 1),
+            Range32.init(0x1ee24, 0x1ee24, 1),
+            Range32.init(0x1ee27, 0x1ee27, 1),
+            Range32.init(0x1ee29, 0x1ee32, 1),
+            Range32.init(0x1ee34, 0x1ee37, 1),
+            Range32.init(0x1ee39, 0x1ee39, 1),
+            Range32.init(0x1ee3b, 0x1ee3b, 1),
+            Range32.init(0x1ee42, 0x1ee42, 1),
+            Range32.init(0x1ee47, 0x1ee47, 1),
+            Range32.init(0x1ee49, 0x1ee49, 1),
+            Range32.init(0x1ee4b, 0x1ee4b, 1),
+            Range32.init(0x1ee4d, 0x1ee4f, 1),
+            Range32.init(0x1ee51, 0x1ee52, 1),
+            Range32.init(0x1ee54, 0x1ee54, 1),
+            Range32.init(0x1ee57, 0x1ee57, 1),
+            Range32.init(0x1ee59, 0x1ee59, 1),
+            Range32.init(0x1ee5b, 0x1ee5b, 1),
+            Range32.init(0x1ee5d, 0x1ee5d, 1),
+            Range32.init(0x1ee5f, 0x1ee5f, 1),
+            Range32.init(0x1ee61, 0x1ee62, 1),
+            Range32.init(0x1ee64, 0x1ee64, 1),
+            Range32.init(0x1ee67, 0x1ee6a, 1),
+            Range32.init(0x1ee6c, 0x1ee72, 1),
+            Range32.init(0x1ee74, 0x1ee77, 1),
+            Range32.init(0x1ee79, 0x1ee7c, 1),
+            Range32.init(0x1ee7e, 0x1ee7e, 1),
+            Range32.init(0x1ee80, 0x1ee89, 1),
+            Range32.init(0x1ee8b, 0x1ee9b, 1),
+            Range32.init(0x1eea1, 0x1eea3, 1),
+            Range32.init(0x1eea5, 0x1eea9, 1),
+            Range32.init(0x1eeab, 0x1eebb, 1),
         };
         break :init r[0..];
     },
+    .latin_offset = 1,
 };
 const _Other_Uppercase = RangeTable.{
     .r16 = init: {
@@ -6995,12 +7193,13 @@ const _Other_Uppercase = RangeTable.{
     },
     .r32 = init: {
         var r = []Range32.{
-            Range16.init(0x1f130, 0x1f149, 1),
-            Range16.init(0x1f150, 0x1f169, 1),
-            Range16.init(0x1f170, 0x1f189, 1),
+            Range32.init(0x1f130, 0x1f149, 1),
+            Range32.init(0x1f150, 0x1f169, 1),
+            Range32.init(0x1f170, 0x1f189, 1),
         };
         break :init r[0..];
     },
+    .latin_offset = 0,
 };
 const _Pattern_Syntax = RangeTable.{
     .r16 = init: {
@@ -7037,6 +7236,7 @@ const _Pattern_Syntax = RangeTable.{
         break :init r[0..];
     },
     .r32 = []Range32.{},
+    .latin_offset = 15,
 };
 const _Pattern_White_Space = RangeTable.{
     .r16 = init: {
@@ -7050,6 +7250,7 @@ const _Pattern_White_Space = RangeTable.{
         break :init r[0..];
     },
     .r32 = []Range32.{},
+    .latin_offset = 3,
 };
 const _Prepended_Concatenation_Mark = RangeTable.{
     .r16 = init: {
@@ -7062,9 +7263,10 @@ const _Prepended_Concatenation_Mark = RangeTable.{
         break :init r[0..];
     },
     .r32 = init: {
-        var r = []Range32.{Range16.init(0x110bd, 0x110bd, 1)};
+        var r = []Range32.{Range32.init(0x110bd, 0x110bd, 1)};
         break :init r[0..];
     },
+    .latin_offset = 0,
 };
 const _Quotation_Mark = RangeTable.{
     .r16 = init: {
@@ -7086,6 +7288,7 @@ const _Quotation_Mark = RangeTable.{
         break :init r[0..];
     },
     .r32 = []Range32.{},
+    .latin_offset = 4,
 };
 const _Radical = RangeTable.{
     .r16 = init: {
@@ -7097,13 +7300,15 @@ const _Radical = RangeTable.{
         break :init r[0..];
     },
     .r32 = []Range32.{},
+    .latin_offset = 0,
 };
 const _Regional_Indicator = RangeTable.{
     .r16 = []Range16.{},
     .r32 = init: {
-        var r = []Range32.{Range16.init(0x1f1e6, 0x1f1ff, 1)};
+        var r = []Range32.{Range32.init(0x1f1e6, 0x1f1ff, 1)};
         break :init r[0..];
     },
+    .latin_offset = 0,
 };
 const _Sentence_Terminal = RangeTable.{
     .r16 = init: {
@@ -7157,33 +7362,34 @@ const _Sentence_Terminal = RangeTable.{
     },
     .r32 = init: {
         var r = []Range32.{
-            Range16.init(0x10a56, 0x10a57, 1),
-            Range16.init(0x11047, 0x11048, 1),
-            Range16.init(0x110be, 0x110c1, 1),
-            Range16.init(0x11141, 0x11143, 1),
-            Range16.init(0x111c5, 0x111c6, 1),
-            Range16.init(0x111cd, 0x111cd, 1),
-            Range16.init(0x111de, 0x111df, 1),
-            Range16.init(0x11238, 0x11239, 1),
-            Range16.init(0x1123b, 0x1123c, 1),
-            Range16.init(0x112a9, 0x112a9, 1),
-            Range16.init(0x1144b, 0x1144c, 1),
-            Range16.init(0x115c2, 0x115c3, 1),
-            Range16.init(0x115c9, 0x115d7, 1),
-            Range16.init(0x11641, 0x11642, 1),
-            Range16.init(0x1173c, 0x1173e, 1),
-            Range16.init(0x11a42, 0x11a43, 1),
-            Range16.init(0x11a9b, 0x11a9c, 1),
-            Range16.init(0x11c41, 0x11c42, 1),
-            Range16.init(0x16a6e, 0x16a6f, 1),
-            Range16.init(0x16af5, 0x16af5, 1),
-            Range16.init(0x16b37, 0x16b38, 1),
-            Range16.init(0x16b44, 0x16b44, 1),
-            Range16.init(0x1bc9f, 0x1bc9f, 1),
-            Range16.init(0x1da88, 0x1da88, 1),
+            Range32.init(0x10a56, 0x10a57, 1),
+            Range32.init(0x11047, 0x11048, 1),
+            Range32.init(0x110be, 0x110c1, 1),
+            Range32.init(0x11141, 0x11143, 1),
+            Range32.init(0x111c5, 0x111c6, 1),
+            Range32.init(0x111cd, 0x111cd, 1),
+            Range32.init(0x111de, 0x111df, 1),
+            Range32.init(0x11238, 0x11239, 1),
+            Range32.init(0x1123b, 0x1123c, 1),
+            Range32.init(0x112a9, 0x112a9, 1),
+            Range32.init(0x1144b, 0x1144c, 1),
+            Range32.init(0x115c2, 0x115c3, 1),
+            Range32.init(0x115c9, 0x115d7, 1),
+            Range32.init(0x11641, 0x11642, 1),
+            Range32.init(0x1173c, 0x1173e, 1),
+            Range32.init(0x11a42, 0x11a43, 1),
+            Range32.init(0x11a9b, 0x11a9c, 1),
+            Range32.init(0x11c41, 0x11c42, 1),
+            Range32.init(0x16a6e, 0x16a6f, 1),
+            Range32.init(0x16af5, 0x16af5, 1),
+            Range32.init(0x16b37, 0x16b38, 1),
+            Range32.init(0x16b44, 0x16b44, 1),
+            Range32.init(0x1bc9f, 0x1bc9f, 1),
+            Range32.init(0x1da88, 0x1da88, 1),
         };
         break :init r[0..];
     },
+    .latin_offset = 3,
 };
 const _Soft_Dotted = RangeTable.{
     .r16 = init: {
@@ -7211,22 +7417,23 @@ const _Soft_Dotted = RangeTable.{
     },
     .r32 = init: {
         var r = []Range32.{
-            Range16.init(0x1d422, 0x1d423, 1),
-            Range16.init(0x1d456, 0x1d457, 1),
-            Range16.init(0x1d48a, 0x1d48b, 1),
-            Range16.init(0x1d4be, 0x1d4bf, 1),
-            Range16.init(0x1d4f2, 0x1d4f3, 1),
-            Range16.init(0x1d526, 0x1d527, 1),
-            Range16.init(0x1d55a, 0x1d55b, 1),
-            Range16.init(0x1d58e, 0x1d58f, 1),
-            Range16.init(0x1d5c2, 0x1d5c3, 1),
-            Range16.init(0x1d5f6, 0x1d5f7, 1),
-            Range16.init(0x1d62a, 0x1d62b, 1),
-            Range16.init(0x1d65e, 0x1d65f, 1),
-            Range16.init(0x1d692, 0x1d693, 1),
+            Range32.init(0x1d422, 0x1d423, 1),
+            Range32.init(0x1d456, 0x1d457, 1),
+            Range32.init(0x1d48a, 0x1d48b, 1),
+            Range32.init(0x1d4be, 0x1d4bf, 1),
+            Range32.init(0x1d4f2, 0x1d4f3, 1),
+            Range32.init(0x1d526, 0x1d527, 1),
+            Range32.init(0x1d55a, 0x1d55b, 1),
+            Range32.init(0x1d58e, 0x1d58f, 1),
+            Range32.init(0x1d5c2, 0x1d5c3, 1),
+            Range32.init(0x1d5f6, 0x1d5f7, 1),
+            Range32.init(0x1d62a, 0x1d62b, 1),
+            Range32.init(0x1d65e, 0x1d65f, 1),
+            Range32.init(0x1d692, 0x1d693, 1),
         };
         break :init r[0..];
     },
+    .latin_offset = 1,
 };
 const _Terminal_Punctuation = RangeTable.{
     .r16 = init: {
@@ -7299,43 +7506,44 @@ const _Terminal_Punctuation = RangeTable.{
     },
     .r32 = init: {
         var r = []Range32.{
-            Range16.init(0x1039f, 0x1039f, 1),
-            Range16.init(0x103d0, 0x103d0, 1),
-            Range16.init(0x10857, 0x10857, 1),
-            Range16.init(0x1091f, 0x1091f, 1),
-            Range16.init(0x10a56, 0x10a57, 1),
-            Range16.init(0x10af0, 0x10af5, 1),
-            Range16.init(0x10b3a, 0x10b3f, 1),
-            Range16.init(0x10b99, 0x10b9c, 1),
-            Range16.init(0x11047, 0x1104d, 1),
-            Range16.init(0x110be, 0x110c1, 1),
-            Range16.init(0x11141, 0x11143, 1),
-            Range16.init(0x111c5, 0x111c6, 1),
-            Range16.init(0x111cd, 0x111cd, 1),
-            Range16.init(0x111de, 0x111df, 1),
-            Range16.init(0x11238, 0x1123c, 1),
-            Range16.init(0x112a9, 0x112a9, 1),
-            Range16.init(0x1144b, 0x1144d, 1),
-            Range16.init(0x1145b, 0x1145b, 1),
-            Range16.init(0x115c2, 0x115c5, 1),
-            Range16.init(0x115c9, 0x115d7, 1),
-            Range16.init(0x11641, 0x11642, 1),
-            Range16.init(0x1173c, 0x1173e, 1),
-            Range16.init(0x11a42, 0x11a43, 1),
-            Range16.init(0x11a9b, 0x11a9c, 1),
-            Range16.init(0x11aa1, 0x11aa2, 1),
-            Range16.init(0x11c41, 0x11c43, 1),
-            Range16.init(0x11c71, 0x11c71, 1),
-            Range16.init(0x12470, 0x12474, 1),
-            Range16.init(0x16a6e, 0x16a6f, 1),
-            Range16.init(0x16af5, 0x16af5, 1),
-            Range16.init(0x16b37, 0x16b39, 1),
-            Range16.init(0x16b44, 0x16b44, 1),
-            Range16.init(0x1bc9f, 0x1bc9f, 1),
-            Range16.init(0x1da87, 0x1da8a, 1),
+            Range32.init(0x1039f, 0x1039f, 1),
+            Range32.init(0x103d0, 0x103d0, 1),
+            Range32.init(0x10857, 0x10857, 1),
+            Range32.init(0x1091f, 0x1091f, 1),
+            Range32.init(0x10a56, 0x10a57, 1),
+            Range32.init(0x10af0, 0x10af5, 1),
+            Range32.init(0x10b3a, 0x10b3f, 1),
+            Range32.init(0x10b99, 0x10b9c, 1),
+            Range32.init(0x11047, 0x1104d, 1),
+            Range32.init(0x110be, 0x110c1, 1),
+            Range32.init(0x11141, 0x11143, 1),
+            Range32.init(0x111c5, 0x111c6, 1),
+            Range32.init(0x111cd, 0x111cd, 1),
+            Range32.init(0x111de, 0x111df, 1),
+            Range32.init(0x11238, 0x1123c, 1),
+            Range32.init(0x112a9, 0x112a9, 1),
+            Range32.init(0x1144b, 0x1144d, 1),
+            Range32.init(0x1145b, 0x1145b, 1),
+            Range32.init(0x115c2, 0x115c5, 1),
+            Range32.init(0x115c9, 0x115d7, 1),
+            Range32.init(0x11641, 0x11642, 1),
+            Range32.init(0x1173c, 0x1173e, 1),
+            Range32.init(0x11a42, 0x11a43, 1),
+            Range32.init(0x11a9b, 0x11a9c, 1),
+            Range32.init(0x11aa1, 0x11aa2, 1),
+            Range32.init(0x11c41, 0x11c43, 1),
+            Range32.init(0x11c71, 0x11c71, 1),
+            Range32.init(0x12470, 0x12474, 1),
+            Range32.init(0x16a6e, 0x16a6f, 1),
+            Range32.init(0x16af5, 0x16af5, 1),
+            Range32.init(0x16b37, 0x16b39, 1),
+            Range32.init(0x16b44, 0x16b44, 1),
+            Range32.init(0x1bc9f, 0x1bc9f, 1),
+            Range32.init(0x1da87, 0x1da8a, 1),
         };
         break :init r[0..];
     },
+    .latin_offset = 5,
 };
 const _Unified_Ideograph = RangeTable.{
     .r16 = init: {
@@ -7354,14 +7562,15 @@ const _Unified_Ideograph = RangeTable.{
     },
     .r32 = init: {
         var r = []Range32.{
-            Range16.init(0x20000, 0x2a6d6, 1),
-            Range16.init(0x2a700, 0x2b734, 1),
-            Range16.init(0x2b740, 0x2b81d, 1),
-            Range16.init(0x2b820, 0x2cea1, 1),
-            Range16.init(0x2ceb0, 0x2ebe0, 1),
+            Range32.init(0x20000, 0x2a6d6, 1),
+            Range32.init(0x2a700, 0x2b734, 1),
+            Range32.init(0x2b740, 0x2b81d, 1),
+            Range32.init(0x2b820, 0x2cea1, 1),
+            Range32.init(0x2ceb0, 0x2ebe0, 1),
         };
         break :init r[0..];
     },
+    .latin_offset = 0,
 };
 const _Variation_Selector = RangeTable.{
     .r16 = init: {
@@ -7372,9 +7581,10 @@ const _Variation_Selector = RangeTable.{
         break :init r[0..];
     },
     .r32 = init: {
-        var r = []Range32.{Range16.init(0xe0100, 0xe01ef, 1)};
+        var r = []Range32.{Range32.init(0xe0100, 0xe01ef, 1)};
         break :init r[0..];
     },
+    .latin_offset = 0,
 };
 const _White_Space = RangeTable.{
     .r16 = init: {
@@ -7393,6 +7603,7 @@ const _White_Space = RangeTable.{
         break :init r[0..];
     },
     .r32 = []Range32.{},
+    .latin_offset = 4,
 };
 // These variables have type *RangeTable.
 pub const STerm = &_Sentence_Terminal; // STerm is an alias for Sentence_Terminal.
@@ -8264,6 +8475,7 @@ const foldL = RangeTable.{
         break :init r[0..];
     },
     .r32 = []Range32.{},
+    .latin_offset = 0,
 };
 const foldLl = RangeTable.{
     .r16 = init: {
@@ -8375,14 +8587,15 @@ const foldLl = RangeTable.{
     },
     .r32 = init: {
         var r = []Range32.{
-            Range16.init(0x10400, 0x10427, 1),
-            Range16.init(0x104b0, 0x104d3, 1),
-            Range16.init(0x10c80, 0x10cb2, 1),
-            Range16.init(0x118a0, 0x118bf, 1),
-            Range16.init(0x1e900, 0x1e921, 1),
+            Range32.init(0x10400, 0x10427, 1),
+            Range32.init(0x104b0, 0x104d3, 1),
+            Range32.init(0x10c80, 0x10cb2, 1),
+            Range32.init(0x118a0, 0x118bf, 1),
+            Range32.init(0x1e900, 0x1e921, 1),
         };
         break :init r[0..];
     },
+    .latin_offset = 0,
 };
 const foldLt = RangeTable.{
     .r16 = init: {
@@ -8400,6 +8613,7 @@ const foldLt = RangeTable.{
         break :init r[0..];
     },
     .r32 = []Range32.{},
+    .latin_offset = 0,
 };
 const foldLu = RangeTable.{
     .r16 = init: {
@@ -8511,14 +8725,15 @@ const foldLu = RangeTable.{
     },
     .r32 = init: {
         var r = []Range32.{
-            Range16.init(0x10428, 0x1044f, 1),
-            Range16.init(0x104d8, 0x104fb, 1),
-            Range16.init(0x10cc0, 0x10cf2, 1),
-            Range16.init(0x118c0, 0x118df, 1),
-            Range16.init(0x1e922, 0x1e943, 1),
+            Range32.init(0x10428, 0x1044f, 1),
+            Range32.init(0x104d8, 0x104fb, 1),
+            Range32.init(0x10cc0, 0x10cf2, 1),
+            Range32.init(0x118c0, 0x118df, 1),
+            Range32.init(0x1e922, 0x1e943, 1),
         };
         break :init r[0..];
     },
+    .latin_offset = 0,
 };
 const foldM = RangeTable.{
     .r16 = init: {
@@ -8529,6 +8744,7 @@ const foldM = RangeTable.{
         break :init r[0..];
     },
     .r32 = []Range32.{},
+    .latin_offset = 0,
 };
 const foldMn = RangeTable.{
     .r16 = init: {
@@ -8539,6 +8755,7 @@ const foldMn = RangeTable.{
         break :init r[0..];
     },
     .r32 = []Range32.{},
+    .latin_offset = 0,
 };
 // FoldScript maps a script name to a table of
 // code points outside the script that are equivalent under
@@ -8569,6 +8786,7 @@ const foldCommon = RangeTable.{
         break :init r[0..];
     },
     .r32 = []Range32.{},
+    .latin_offset = 0,
 };
 const foldGreek = RangeTable.{
     .r16 = init: {
@@ -8576,6 +8794,7 @@ const foldGreek = RangeTable.{
         break :init r[0..];
     },
     .r32 = []Range32.{},
+    .latin_offset = 0,
 };
 const foldInherited = RangeTable.{
     .r16 = init: {
@@ -8586,6 +8805,7 @@ const foldInherited = RangeTable.{
         break :init r[0..];
     },
     .r32 = []Range32.{},
+    .latin_offset = 0,
 };
 
 // Range entries: 3587 16-bit, 1554 32-bit, 5141 total.

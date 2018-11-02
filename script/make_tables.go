@@ -585,6 +585,7 @@ func dumpRangeTable(name string, table *unicode.RangeTable) {
 	} else {
 		println("  .r32=[]Range32.{},")
 	}
+	printf("  .latin_offset=%d,\n", table.LatinOffset)
 	println("};")
 }
 
