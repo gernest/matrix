@@ -274,3 +274,10 @@ pub fn isSymbol(r: u32) bool {
     }
     return letter.isExcludingLatin(tables.Symbol, r);
 }
+
+pub fn isDigit(r: u32) bool {
+    if (r <= base.max_latin1) {
+        return '0' <= r and r <= '9';
+    }
+    return letter.isExcludingLatin(tables.Digit, r);
+}
