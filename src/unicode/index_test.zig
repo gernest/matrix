@@ -232,3 +232,12 @@ test "toLower" {
         }
     }
 }
+
+test "to" {
+    for (case_test) |c| {
+        const r = unicode.to(c.case, c.in);
+        if (r != c.out) {
+            try t.terrorf("expected {} got {}\n", c.out, r);
+        }
+    }
+}
