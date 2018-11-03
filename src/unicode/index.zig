@@ -165,3 +165,111 @@ pub fn simpleFold(r: u32) u32 {
     }
     return toUpper(r);
 }
+
+const graphic_ranges = []*base.RangeTable.{
+    tables.L, tables.M, tables.N, tables.P, tables.S, tables.Zs,
+};
+
+const print_ranges = []*base.RangeTable.{
+    tables.L, tables.M, tables.N, tables.P, tables.S,
+};
+
+pub fn in(r: u32, ranges: []*base.RangeTable) bool {
+    for (ranges) |inside| {
+        if (letter.is(inside, r)) {
+            return true;
+        }
+    }
+    return false;
+}
+
+// IsGraphic reports whether the rune is defined as a Graphic by Unicode.
+// Such characters include letters, marks, numbers, punctuation, symbols, and
+// spaces, from categories L, M, N, P, S, Zs.
+pub fn isGraphic(r: u32) bool {
+    if (r < base.max_latin1) {
+        return tables.properties[@intCast(usize, r)] & base.pg != 0;
+    }
+    return in(r, graphic_ranges[0..]);
+}
+
+// IsPrint reports whether the rune is defined as printable by Go. Such
+// characters include letters, marks, numbers, punctuation, symbols, and the
+// ASCII space character, from categories L, M, N, P, S and the ASCII space
+// character. This categorization is the same as IsGraphic except that the
+// only spacing character is ASCII space, U+0020
+pub fn isPrint(r: u32) bool {
+    if (r < base.max_latin1) {
+        return tables.properties[@intCast(usize, r)] & base.pp != 0;
+    }
+    return in(r, print_ranges[0..]);
+}
+
+pub fn isOneOf(ranges: []*base.RangeTable, r: u32) bool {
+    return in(r, ranges);
+}
+
+// IsControl reports whether the rune is a control character.
+// The C (Other) Unicode category includes more code points
+// such as surrogates; use Is(C, r) to test for them.
+pub fn isControl(r: u32) bool {
+    if (r < base.max_latin1) {
+        return tables.properties[@intCast(usize, r)] & base.pC != 0;
+    }
+    return false;
+}
+
+// IsLetter reports whether the rune is a letter (category L).
+pub fn isLetter(r: u32) bool {
+    if (r < base.max_latin1) {
+        return tables.properties[@intCast(usize, r)] & base.pLmask != 0;
+    }
+    return letter.isExcludingLatin(tables.Letter, r);
+}
+
+// IsMark reports whether the rune is a mark character (category M).
+pub fn isMark(r: u32) bool {
+    // There are no mark characters in Latin-1.
+    return letter.isExcludingLatin(tables.Mark, r);
+}
+
+// IsNumber reports whether the rune is a number (category N).
+pub fn isNumber(r: u32) bool {
+    if (r < base.max_latin1) {
+        return tables.properties[@intCast(usize, r)] & base.pN != 0;
+    }
+    return letter.isExcludingLatin(tables.Number, r);
+}
+
+// IsPunct reports whether the rune is a Unicode punctuation character
+// (category P).
+pub fn isPunct(r: u32) bool {
+    if (r < base.max_latin1) {
+        return tables.properties[@intCast(usize, r)] & base.pP != 0;
+    }
+    return letter.is(tables.Punct, r);
+}
+
+// IsSpace reports whether the rune is a space character as defined
+// by Unicode's White Space property; in the Latin-1 space
+// this is
+//  '\t', '\n', '\v', '\f', '\r', ' ', U+0085 (NEL), U+00A0 (NBSP).
+// Other definitions of spacing characters are set by category
+// Z and property Pattern_White_Space.
+pub fn isSpace(r: u32) bool {
+    if (r < base.max_latin1) {
+        switch (r) {
+            '\t', '\n', 0x0B, 0x0C, '\r', ' ', 0x85, 0xA0 => return true,
+            else => return false,
+        }
+    }
+    return letter.isExcludingLatin(tables.White_Space, r);
+}
+
+// IsSymbol reports whether the rune is a symbolic character.
+pub fn isSymbol(r: u32) bool {
+    if (r < base.max_latin1) {
+        return tables.properties[@intCast(usize, r)] & base.pS != 0;
+    }
+    return letter.isExcludingLatin(tables.Symbol, r);
+}

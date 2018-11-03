@@ -241,3 +241,20 @@ test "to" {
         }
     }
 }
+
+test "isControlLatin1" {
+    var i: u32 = 0;
+    while (i < base.max_latin1) {
+        const got = unicode.isControl(i);
+        var want: bool = false;
+        if (0x00 <= i and i <= 0x1F) {
+            want = true;
+        } else if (0x7F <= i and i <= 0x9F) {
+            want = true;
+        }
+        if (got != want) {
+            _ = t.terrorf("{} got {} wanted {}\n", i, got, want);
+        }
+        i += 1;
+    }
+}
