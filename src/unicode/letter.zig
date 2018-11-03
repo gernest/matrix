@@ -59,9 +59,9 @@ pub fn is32(ranges: []base.Range32, r: u32) bool {
     return false;
 }
 
-pub fn is(range_tab: *base.RangeTable, r: u32) bool {
+pub fn is(range_tab: *const base.RangeTable, r: u32) bool {
     if (range_tab.r16.len > 0 and r <= range_tab.r16[range_tab.r16.len - 1].hi) {
-        var x: u16 = r;
+        var x = @intCast(u16, r);
         return is16(range_tab.r16, x);
     }
     if (range_tab.r32.len > 0 and r > range_tab.r32[0].lo) {
