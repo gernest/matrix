@@ -275,6 +275,7 @@ pub fn isSymbol(r: u32) bool {
     return letter.isExcludingLatin(tables.Symbol, r);
 }
 
+// isDigit reports whether the rune is a decimal digit.
 pub fn isDigit(r: u32) bool {
     if (r <= base.max_latin1) {
         return '0' <= r and r <= '9';
