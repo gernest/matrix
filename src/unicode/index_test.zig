@@ -253,7 +253,7 @@ test "isControlLatin1" {
             want = true;
         }
         if (got != want) {
-            _ = t.terrorf("{} got {} wanted {}\n", i, got, want);
+            try t.terrorf("{} got {} wanted {}\n", i, got, want);
         }
         i += 1;
     }
