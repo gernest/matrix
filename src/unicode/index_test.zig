@@ -333,3 +333,39 @@ test "isGraphicLatin1" {
         i += 1;
     }
 }
+
+test "isPunctLatin1" {
+    var i: u32 = 0;
+    while (i <= base.max_latin1) {
+        const got = unicode.isPunct(i);
+        const want = letter.is(tables.Punct, i);
+        if (got != want) {
+            try t.terrorf("{} got {} wanted {}\n", i, got, want);
+        }
+        i += 1;
+    }
+}
+
+test "isSpaceLatin1" {
+    var i: u32 = 0;
+    while (i <= base.max_latin1) {
+        const got = unicode.isSpace(i);
+        const want = letter.is(tables.White_Space, i);
+        if (got != want) {
+            try t.terrorf("{} got {} wanted {}\n", i, got, want);
+        }
+        i += 1;
+    }
+}
+
+test "isSymbolLatin1" {
+    var i: u32 = 0;
+    while (i <= base.max_latin1) {
+        const got = unicode.isSymbol(i);
+        const want = letter.is(tables.Symbol, i);
+        if (got != want) {
+            try t.terrorf("{} got {} wanted {}\n", i, got, want);
+        }
+        i += 1;
+    }
+}
