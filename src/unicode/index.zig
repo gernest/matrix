@@ -116,3 +116,52 @@ pub fn toTitle(rune: u32) u32 {
     }
     return to(base.Case.Title, rune);
 }
+
+// SimpleFold iterates over Unicode code points equivalent under
+// the Unicode-defined simple case folding. Among the code points
+// equivalent to rune (including rune itself), SimpleFold returns the
+// smallest rune > r if one exists, or else the smallest rune >= 0.
+// If r is not a valid Unicode code point, SimpleFold(r) returns r.
+//
+// For example:
+//  SimpleFold('A') = 'a'
+//  SimpleFold('a') = 'A'
+//
+//  SimpleFold('K') = 'k'
+//  SimpleFold('k') = '\u212A' (Kelvin symbol, K)
+//  SimpleFold('\u212A') = 'K'
+//
+//  SimpleFold('1') = '1'
+//
+//  SimpleFold(-2) = -2
+//
+pub fn simpleFold(r: u32) u32 {
+    if (r < 0 or r > base.max_rune) {
+        return r;
+    }
+    const idx = @intCast(usize, r);
+    if (idx < tables.asciiFold.len) {
+        return @intCast(u32, tables.asciiFold[idx]);
+    }
+    var lo: usize = 0;
+    var hi = caseOrbit.len;
+    while (lo < hi) {
+        const m = lo + (hi - lo) / 2;
+        if (@intCast(u32, tables.caseOrbit[m].from) < r) {
+            lo = m + 1;
+        } else {
+            hi = m;
+        }
+    }
+    if (lo < tables.caseOrbit.len and @intCast(tables.caseOrbit[lo].from) == r) {
+        return @intCast(u32, tables.caseOrbit[lo].to);
+    }
+    // No folding specified. This is a one- or two-element
+    // equivalence class containing rune and ToLower(rune)
+    // and ToUpper(rune) if they are different from rune
+    const l = toLower(r);
+    if (l != r) {
+        return l;
+    }
+    return toUpper(r);
+}
