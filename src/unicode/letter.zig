@@ -33,7 +33,7 @@ pub fn is16(ranges: []const base.Range16, r: u16) bool {
 pub fn is32(ranges: []base.Range32, r: u32) bool {
     if (ranges.len <= base.linear_max or r <= base.max_latin1) {
         for (ranges) |*range| {
-            if (r <= range.lo) {
+            if (r < range.lo) {
                 return false;
             }
             if (r <= range.hi) {
