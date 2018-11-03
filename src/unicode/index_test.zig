@@ -244,7 +244,7 @@ test "to" {
 
 test "isControlLatin1" {
     var i: u32 = 0;
-    while (i < base.max_latin1) {
+    while (i <= base.max_latin1) {
         const got = unicode.isControl(i);
         var want: bool = false;
         if (0x00 <= i and i <= 0x1F) {
@@ -261,9 +261,60 @@ test "isControlLatin1" {
 
 test "isLetterLatin1" {
     var i: u32 = 0;
-    while (i < base.max_latin1) {
+    while (i <= base.max_latin1) {
         const got = unicode.isLetter(i);
         const want = letter.is(tables.Letter, i);
+        if (got != want) {
+            try t.terrorf("{} got {} wanted {}\n", i, got, want);
+        }
+        i += 1;
+    }
+}
+
+test "isUpperLatin1" {
+    var i: u32 = 0;
+    while (i <= base.max_latin1) {
+        const got = unicode.isUpper(i);
+        const want = letter.is(tables.Upper, i);
+        if (got != want) {
+            try t.terrorf("{} got {} wanted {}\n", i, got, want);
+        }
+        i += 1;
+    }
+}
+
+test "isLowerLatin1" {
+    var i: u32 = 0;
+    while (i <= base.max_latin1) {
+        const got = unicode.isLower(i);
+        const want = letter.is(tables.Lower, i);
+        if (got != want) {
+            try t.terrorf("{} got {} wanted {}\n", i, got, want);
+        }
+        i += 1;
+    }
+}
+
+test "isNumberLatin1" {
+    var i: u32 = 0;
+    while (i <= base.max_latin1) {
+        const got = unicode.isNumber(i);
+        const want = letter.is(tables.Number, i);
+        if (got != want) {
+            try t.terrorf("{} got {} wanted {}\n", i, got, want);
+        }
+        i += 1;
+    }
+}
+
+test "isPrintLatin1" {
+    var i: u32 = 0;
+    while (i <= base.max_latin1) {
+        const got = unicode.isPrint(i);
+        var want = unicode.in(i, unicode.print_ranges[0..]);
+        if (i == ' ') {
+            want = true;
+        }
         if (got != want) {
             try t.terrorf("{} got {} wanted {}\n", i, got, want);
         }
