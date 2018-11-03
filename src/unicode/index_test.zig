@@ -477,3 +477,15 @@ test "isDigit" {
         }
     }
 }
+
+test "DigitOptimization" {
+    var i: u32 = 0;
+    while (i <= base.max_latin1) {
+        const got = unicode.isDigit(i);
+        const want = letter.is(tables.Digit, i);
+        if (got != want) {
+            try t.terrorf("{} got {} wanted {}\n", i, got, want);
+        }
+        i += 1;
+    }
+}
