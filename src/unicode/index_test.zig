@@ -321,3 +321,15 @@ test "isPrintLatin1" {
         i += 1;
     }
 }
+
+test "isGraphicLatin1" {
+    var i: u32 = 0;
+    while (i <= base.max_latin1) {
+        const got = unicode.isGraphic(i);
+        var want = unicode.in(i, unicode.graphic_ranges[0..]);
+        if (got != want) {
+            try t.terrorf("{} got {} wanted {}\n", i, got, want);
+        }
+        i += 1;
+    }
+}

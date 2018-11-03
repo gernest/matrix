@@ -167,7 +167,7 @@ pub fn simpleFold(r: u32) u32 {
     return toUpper(r);
 }
 
-pub const graphic_ranges = []*base.RangeTable.{
+pub const graphic_ranges = []*const base.RangeTable.{
     tables.L, tables.M, tables.N, tables.P, tables.S, tables.Zs,
 };
 
