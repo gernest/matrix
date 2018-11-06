@@ -284,6 +284,19 @@ pub const ImageFuncs = struct.{
     at_fn: fn (self: *ImageFuncs, x: isize, y: isize) color.Color,
     opaque_fn: ?fn (self: *ImageFuncs) bool,
     set_fn: ?fn (self: *ImageFuncs, x: isize, y: isize, c: color.ModelType) void,
+
+    //  sets the sub_image field. This is a workaround after failing to express
+    // the interface for returning sub image.
+    //
+    // The desired API is
+    //   sub_image: ?fn (self: *ImageFuncs, r: Rectangle) Image,
+    // However that code won't compile. unless we return *Image. which makes
+    // matters even more complicated because I don't know how to make that
+    // possible yet.
+    //
+    // TODO: Fix the API.
+    set_sub_image: ?fn (self: *ImageFuncs, r: Rectangle) void,
+    sub_image: ?*Image,
 };
 
 /// PalettedImage is an image whose colors may come from a limited palette.
@@ -331,6 +344,8 @@ pub const RGBA = struct.{
                 .at_fn = at,
                 .opaque_fn = opaqueFn,
                 .set_fn = setFn,
+                .set_sub_image = subImageFn,
+                .sub_image = null,
             },
         };
     }
@@ -364,9 +379,10 @@ pub const RGBA = struct.{
         return self.opaque();
     }
 
-    pub fn subImageFn(r: *ImageFuncs, rec: Rectangle) Image {
+    pub fn subImageFn(r: *ImageFuncs, rec: Rectangle) void {
         const self = @fieldParentPtr(RGBA, "image_fn", r);
-        return self.subImage(rec).image();
+        var img = self.subImage(rec).image();
+        r.sub_image = &img;
     }
 
     pub fn setFn(r: *ImageFuncs, x: isize, y: isize, c: color.ModelType) void {
@@ -419,11 +435,10 @@ pub const RGBA = struct.{
     /// through rec. The returned value shares pixels with the original image.
     pub fn subImage(r: *RGBA, rec: Rectangle) RGBA {
         const ri = rec.intersect(r.rect);
-
         if (ri.empty()) {
             return RGBA.zero();
         }
-        const i = r.pixOffset(x, y);
+        const i = r.pixOffset(ri.min.x, ri.min.y);
         const size = @intCast(usize, i);
         return RGBA.init(r.pix[size..], r.stride, ri);
     }

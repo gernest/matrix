@@ -163,7 +163,7 @@ fn newRGBA(a: *std.mem.Allocator, r: image.Rectangle) !TestImage {
     };
 }
 
-test "RGBA" {
+test "Image" {
     var allocator = std.debug.global_allocator;
     const rgb = try newRGBA(allocator, image.Rectangle.rect(0, 0, 10, 10));
     defer allocator.free(rgb.mem);
