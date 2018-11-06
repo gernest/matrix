@@ -36,9 +36,10 @@ pub const TestCase=struct.{
 };
 
 pub const all_cases=[]TestCase.{
- <<range .>>
+ <<range . ->>
 TestCase.{
-  .start_line=<<.StartLine>>,.end_line=<<.EndLine>>,.example=<<.Example>>,.sec=<<.Section|printf "%q">>,
+  .example=<<.Example>>,
+  .sec=<<.Section|printf "%q">>,
   .html=<<.HTML|printf "%q">>,
   .markdown=<<.Markdowm|printf "%q">>,
 },
@@ -55,10 +56,8 @@ TestCase.{
 }
 
 type testCase struct {
-	StartLine int64  `json:"start_line"`
-	EndLine   int64  `json:"end_line"`
-	Section   string `json:"section"`
-	HTML      string `json:"Html"`
-	Markdowm  string `json:"markdown"`
-	Example   int64  `json:"example"`
+	Section  string `json:"section"`
+	HTML     string `json:"Html"`
+	Markdowm string `json:"markdown"`
+	Example  int64  `json:"example"`
 }
