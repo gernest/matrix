@@ -53,3 +53,16 @@ pub const NotificationMessage = struct.{
 pub const CancelParam = struct.{
     id: ID,
 };
+
+/// Header is the first part of the lsp protocol message. This is delimited with
+/// \r\r.
+///
+/// It is a must to have at least one field.
+pub const Header = struct.{
+    /// The length of the content part in bytes
+    content_length: u64,
+
+    /// The mime type of the content part. Defaults to
+    /// application/vscode-jsonrpc; charset=utf-8
+    content_type: ?[]const u8,
+};
