@@ -465,7 +465,7 @@ func printCategories() {
 
 	if *tablelist == "all" {
 		println("// Categories is the set of Unicode category tables.")
-		println("pub const Category=enum.{")
+		println("pub const Category=enum{")
 		for _, k := range allCategories() {
 			printf("    %s,\n", k)
 		}
@@ -477,7 +477,7 @@ func printCategories() {
 		println("     else=> unreachable,")
 		print("  };\n}\n\n")
 		println("\npub fn list () []Category {")
-		println("  return []Category.{")
+		println("  return []Category{")
 		for i, k := range allCategories() {
 			if i == 0 {
 				printf("Category.%s", k)
@@ -562,10 +562,10 @@ const format32 = "     Range32.init(0x%04x, 0x%04x, %d),\n"
 const format16 = "    Range16.init(0x%04x, 0x%04x, %d),\n"
 
 func dumpRangeTable(name string, table *unicode.RangeTable) {
-	printf("%s = RangeTable.{\n", name)
+	printf("%s = RangeTable{\n", name)
 	if len(table.R16) != 0 {
 		println("  .r16=init:{")
-		println("  var r=[]Range16.{")
+		println("  var r=[]Range16{")
 		for _, v := range table.R16 {
 			printf(format16, v.Lo, v.Hi, v.Stride)
 		}
@@ -573,11 +573,11 @@ func dumpRangeTable(name string, table *unicode.RangeTable) {
 		println("break :init r[0..];")
 		println("},")
 	} else {
-		println("  .r16=[]Range16.{},")
+		println("  .r16=[]Range16{},")
 	}
 	if len(table.R32) != 0 {
 		println("  .r32=init:{")
-		println("  var r=[]Range32.{")
+		println("  var r=[]Range32{")
 		for _, v := range table.R32 {
 			printf(format32, v.Lo, v.Hi, v.Stride)
 		}
@@ -585,7 +585,7 @@ func dumpRangeTable(name string, table *unicode.RangeTable) {
 		println("break :init r[0..];")
 		println("},")
 	} else {
-		println("  .r32=[]Range32.{},")
+		println("  .r32=[]Range32{},")
 	}
 	printf("  .latin_offset=%d,\n", table.LatinOffset)
 	println("};")
@@ -861,10 +861,10 @@ func printScriptOrProperty(doProps bool) {
 	if flaglist == "all" {
 		if doProps {
 			println("// Properties is the set of Unicode property tables.")
-			println("pub const Property=enum.{")
+			println("pub const Property=enum{")
 		} else {
 			println("// Scripts is the set of Unicode script tables.")
-			println("pub const Script=enum.{")
+			println("pub const Script=enum{")
 			// println("pub fn scripts(name: []const u8)!*RangeTable{")
 		}
 		for _, k := range all(table) {
@@ -899,11 +899,11 @@ func printScriptOrProperty(doProps bool) {
 		print("  };\n}\n\n")
 		if doProps {
 			println("\npub fn list ()[]Property{")
-			println("  return []Property.{")
+			println("  return []Property{")
 
 		} else {
 			println("\npub fn list ()[]Script{")
-			println("  return []Script.{")
+			println("  return []Script{")
 		}
 		for i, k := range all(table) {
 			if doProps {
@@ -1140,7 +1140,7 @@ func printCases() {
 			"// CaseRanges is the table describing case mappings for all letters with\n"+
 			"// non-self mappings.\n"+
 			"pub const CaseRanges = _CaseRanges;\n"+
-			"const _CaseRanges = init:{\n var cs=[]CaseRange.{\n",
+			"const _CaseRanges = init:{\n var cs=[]CaseRange{\n",
 		*dataURL, *casefoldingURL)
 
 	var startState *caseState    // the start of a run; nil for not active
@@ -1174,14 +1174,14 @@ func printCaseRange(lo, hi *caseState) {
 	}
 	switch {
 	case hi.point > lo.point && lo.isUpperLower():
-		printf("  CaseRange.init(0x%04X, 0x%04X, []const i32.{base.upper_lower, base.upper_lower, base.upper_lower}),\n",
+		printf("  CaseRange.init(0x%04X, 0x%04X, []const i32{base.upper_lower, base.upper_lower, base.upper_lower}),\n",
 			lo.point, hi.point)
 	case hi.point > lo.point && lo.isLowerUpper():
 		logger.Fatalf("LowerUpper sequence: should not happen: %U.  If it's real, need to fix To()", lo.point)
-		printf("  CaseRange.init(0x%04X, 0x%04X, []const i32.{base.upper_lower, base.upper_lower, base.upper_lower}),\n",
+		printf("  CaseRange.init(0x%04X, 0x%04X, []const i32{base.upper_lower, base.upper_lower, base.upper_lower}),\n",
 			lo.point, hi.point)
 	default:
-		printf("  CaseRange.init(0x%04X, 0x%04X, []const i32.{%d, %d, %d}),\n",
+		printf("  CaseRange.init(0x%04X, 0x%04X, []const i32{%d, %d, %d}),\n",
 			lo.point, hi.point,
 			lo.deltaToUpper, lo.deltaToLower, lo.deltaToTitle)
 	}
@@ -1221,7 +1221,7 @@ func printLatinProperties() {
 		return
 	}
 	genProp := `pub const properties =init:{
-    var s=[]u8.{0}**%d;
+    var s=[]u8{0}**%d;
 `
 	max := unicode.MaxRune + 1
 	printf(genProp, max)
@@ -1415,7 +1415,7 @@ var comment = map[string]string{
 }
 
 func printAsciiFold() {
-	printf("pub const asciiFold = []u16.{\n")
+	printf("pub const asciiFold = []u16{\n")
 	for i := rune(0); i <= unicode.MaxASCII; i++ {
 		c := chars[i]
 		f := c.caseOrbit
@@ -1455,7 +1455,7 @@ func printCaseOrbit() {
 		return
 	}
 
-	printf("pub const caseOrbit = []base.FoldPair.{\n")
+	printf("pub const caseOrbit = []base.FoldPair{\n")
 	for i := range chars {
 		c := &chars[i]
 		if c.caseOrbit != 0 {
@@ -1509,12 +1509,12 @@ func printCatFold(name string, m map[string]map[rune]bool) {
 	}
 
 	print(comment[name])
-	printf("pub const %s = enum.{\n", name)
+	printf("pub const %s = enum{\n", name)
 	for _, name := range allCatFold(m) {
 		printf("  %s,\n", name)
 	}
 	printf("\npub fn list () []%s{\n", name)
-	printf("return []%s.{", name)
+	printf("return []%s{", name)
 	nx := 0
 	for _, n := range allCatFold(m) {
 		if nx == 0 {
