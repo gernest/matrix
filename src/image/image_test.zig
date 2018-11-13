@@ -21,7 +21,7 @@ fn in(f: image.Rectangle, g: image.Rectangle) bool {
     return true;
 }
 
-const rectangles = []image.Rectangle.{
+const rectangles = []image.Rectangle{
     image.Rectangle.rect(0, 0, 10, 10),
     image.Rectangle.rect(10, 0, 20, 10),
     image.Rectangle.rect(1, 2, 3, 4),
@@ -60,7 +60,7 @@ test "Rectangle" {
             if (is_zero == overlaps) {
                 try t.terrorf("\n Intersect: r={}, s={}, a={}: is_zero={} same as overlaps={}\n", r, s, a, is_zero, overlaps);
             }
-            const larger_than_a = []image.Rectangle.{
+            const larger_than_a = []image.Rectangle{
                 image.Rectangle.init(
                     a.min.x - 1,
                     a.min.y,
@@ -109,7 +109,7 @@ test "Rectangle" {
             if (a.empty()) {
                 continue;
             }
-            const smaller_than_a = []image.Rectangle.{
+            const smaller_than_a = []image.Rectangle{
                 image.Rectangle.init(
                     a.min.x + 1,
                     a.min.y,
@@ -144,7 +144,7 @@ test "Rectangle" {
     }
 }
 
-const TestImage = struct.{
+const TestImage = struct{
     name: []const u8,
     image: image.Image,
     mem: []u8,
@@ -156,7 +156,7 @@ fn newRGBA(a: *std.mem.Allocator, r: image.Rectangle) !TestImage {
     const size = 4 * w * h;
     var u = try a.alloc(u8, size);
     var m = &image.RGBA.init(u, 4 * r.dx(), r);
-    return TestImage.{
+    return TestImage{
         .name = "RGBA",
         .image = m.image(),
         .mem = u,
@@ -168,7 +168,7 @@ test "Image" {
     const rgb = try newRGBA(allocator, image.Rectangle.rect(0, 0, 10, 10));
     defer allocator.free(rgb.mem);
 
-    const test_images = []TestImage.{rgb};
+    const test_images = []TestImage{rgb};
 
     for (test_images) |tc| {
         const r = image.Rectangle.rect(0, 0, 10, 10);

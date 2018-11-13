@@ -225,11 +225,11 @@ fn escape(a: *std.Buffer, s: []const u8, mode:encoding) !void{
 //
 // The general form represented is:
 //
-//	[scheme:][//[userinfo@]host][/]path[?query][#fragment]
+// [scheme:][//[userinfo@]host][/]path[?query][#fragment]
 //
 // URLs that do not start with a slash after the scheme are interpreted as:
 //
-//	scheme:opaque[?query][#fragment]
+//scheme:opaque[?query][#fragment]
 //
 // Note that the Path field is stored in decoded form: /%47%6f%2f becomes /Go/.
 // A consequence is that it is impossible to tell which slashes in the Path were

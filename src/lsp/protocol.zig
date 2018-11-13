@@ -5,26 +5,26 @@ const warn = std.debug.warn;
 
 pub const json_rpc_version = "2.0";
 
-pub const RequestMessage = struct.{
+pub const RequestMessage = struct{
     jsonrpc: []const u8,
     id: ID,
     params: ?json.Value,
 };
 
-pub const ID = union(enum).{
+pub const ID = union(enum){
     String: []const u8,
     Number: i64,
     Null,
 };
 
-pub const ResponseMessage = struct.{
+pub const ResponseMessage = struct{
     jsonrpc: []const u8,
     id: ID,
     result: ?json.Value,
     error_value: ?ResponseError,
 };
 
-pub const ErrorCode = enum(i64).{
+pub const ErrorCode = enum(i64){
     ParseError = -32700,
     InvalidRequest = -32600,
     MethodNotFound = -32601,
@@ -37,20 +37,20 @@ pub const ErrorCode = enum(i64).{
     RequestCancelled = -32800,
 };
 
-pub const ResponseError = struct.{
+pub const ResponseError = struct{
     code: ErrorCode,
     message: []const u8,
     data: ?json.Value,
 };
 
-pub const NotificationMessage = struct.{
+pub const NotificationMessage = struct{
     jsonrpc: []const u8,
     id: ID,
     method: []const u8,
     params: ?json.Value,
 };
 
-pub const CancelParam = struct.{
+pub const CancelParam = struct{
     id: ID,
 };
 
@@ -58,7 +58,7 @@ pub const CancelParam = struct.{
 /// \r\r.
 ///
 /// It is a must to have at least one field.
-pub const Header = struct.{
+pub const Header = struct{
     /// The length of the content part in bytes
     content_length: u64,
 

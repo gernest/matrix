@@ -1,28 +1,28 @@
 const color = @import("./color/index.zig");
 
 /// A Point is an X, Y coordinate pair. The axes increase right and down.
-pub const Point = struct.{
+pub const Point = struct{
     x: isize,
     y: isize,
 
     pub fn init(x: isize, y: isize) Point {
-        return Point.{ .x = x, .y = y };
+        return Point{ .x = x, .y = y };
     }
 
     pub fn add(p: Point, q: Point) Point {
-        return Point.{ .x = p.x + q.x, .y = p.y + q.y };
+        return Point{ .x = p.x + q.x, .y = p.y + q.y };
     }
 
     pub fn sub(p: Point, q: Point) Point {
-        return Point.{ .x = p.x - q.x, .y = p.y - q.y };
+        return Point{ .x = p.x - q.x, .y = p.y - q.y };
     }
 
     pub fn mul(p: Point, q: Point) Point {
-        return Point.{ .x = p.x * q.x, .y = p.y * q.y };
+        return Point{ .x = p.x * q.x, .y = p.y * q.y };
     }
 
     pub fn div(p: Point, q: Point) Point {
-        return Point.{ .x = @divExact(p.x, q.x), .y = @divExact(p.y, q.y) };
+        return Point{ .x = @divExact(p.x, q.x), .y = @divExact(p.y, q.y) };
     }
 
     pub fn in(p: Point, r: Rectangle) bool {
@@ -50,17 +50,17 @@ pub const Point = struct.{
     }
 };
 
-pub const Rectangle = struct.{
+pub const Rectangle = struct{
     min: Point,
     max: Point,
 
     pub fn init(x0: isize, y0: isize, x1: isize, y1: isize) Rectangle {
-        return Rectangle.{
-            .min = Point.{
+        return Rectangle{
+            .min = Point{
                 .x = x0,
                 .y = y0,
             },
-            .max = Point.{
+            .max = Point{
                 .x = x1,
                 .y = y1,
             },
@@ -68,12 +68,12 @@ pub const Rectangle = struct.{
     }
 
     pub fn rect(x0: isize, y0: isize, x1: isize, y1: isize) Rectangle {
-        var r = Rectangle.{
-            .min = Point.{
+        var r = Rectangle{
+            .min = Point{
                 .x = x0,
                 .y = y0,
             },
-            .max = Point.{
+            .max = Point{
                 .x = x1,
                 .y = y1,
             },
@@ -107,7 +107,7 @@ pub const Rectangle = struct.{
 
     /// size returns r's width and height.
     pub fn size(r: Rectangle) Point {
-        return Point.{ .x = r.dx(), .y = r.dy() };
+        return Point{ .x = r.dx(), .y = r.dy() };
     }
 
     /// eEmpty reports whether the rectangle contains no points.
@@ -116,16 +116,16 @@ pub const Rectangle = struct.{
     }
 
     pub fn add(r: Rectangle, p: Point) Rectangle {
-        return Rectangle.{
-            .min = Point.{ .x = r.min.x + p.x, .y = r.min.y + p.y },
-            .max = Point.{ .x = r.max.x + p.x, .y = r.max.y + p.y },
+        return Rectangle{
+            .min = Point{ .x = r.min.x + p.x, .y = r.min.y + p.y },
+            .max = Point{ .x = r.max.x + p.x, .y = r.max.y + p.y },
         };
     }
 
     pub fn sub(r: Rectangle, p: Point) Rectangle {
-        return Rectangle.{
-            .min = Point.{ .x = r.min.x - p.x, .y = r.min.y - p.y },
-            .max = Point.{ .x = r.max.x - p.x, .y = r.max.y - p.y },
+        return Rectangle{
+            .min = Point{ .x = r.min.x - p.x, .y = r.min.y - p.y },
+            .max = Point{ .x = r.max.x - p.x, .y = r.max.y - p.y },
         };
     }
 
@@ -188,7 +188,7 @@ pub const Rectangle = struct.{
         if (s.empty()) {
             return r;
         }
-        var a = []isize.{ r.min.x, r.min.y, r.max.x, r.max.y };
+        var a = []isize{ r.min.x, r.min.y, r.max.x, r.max.y };
         if (a[0] > s.min.x) {
             a[0] = s.min.x;
         }
@@ -240,7 +240,7 @@ pub const Rectangle = struct.{
     }
 
     pub fn at(r: Rectangle, x: isize, y: isize) color.Color {
-        var p = Point.{ .x = x, .y = y };
+        var p = Point{ .x = x, .y = y };
         if (p.in(r)) {
             return color.Opaque.toColor();
         }
@@ -256,7 +256,7 @@ pub const Rectangle = struct.{
     }
 };
 
-pub const Config = struct.{
+pub const Config = struct{
     color_model: color.Model,
     width: isize,
     height: isize,
@@ -264,7 +264,7 @@ pub const Config = struct.{
 
 /// Image is a finite rectangular grid of color.Color values taken from a color
 /// model.
-pub const Image = struct.{
+pub const Image = struct{
     /// color_model is the Image's color model.
     color_model: color.Model,
 
@@ -277,7 +277,7 @@ pub const Image = struct.{
 
 /// ImageFuncs are futcion which statisfies different interfaces. Some are
 /// optional others are a must.
-pub const ImageFuncs = struct.{
+pub const ImageFuncs = struct{
     /// at returns the color of the pixel at (x, y).
     /// At(Bounds().Min.X, Bounds().Min.Y) returns the upper-left pixel of the grid.
     /// At(Bounds().Max.X-1, Bounds().Max.Y-1) returns the lower-right one.
@@ -304,18 +304,18 @@ pub const ImageFuncs = struct.{
 /// then m.At(x, y) should be equivalent to p[m.ColorIndexAt(x, y)]. If m's
 /// color model is not a color.Palette, then ColorIndexAt's behavior is
 /// undefined.
-pub const PalettedImage = struct.{
+pub const PalettedImage = struct{
     image: Image,
     color_index_at: fn (x: usize, y: usize) u8,
 };
 
-pub const Pix = struct.{
+pub const Pix = struct{
     r: u8,
     g: u8,
     b: u8,
     a: u8,
     pub fn init() Pix {
-        return Pix.{
+        return Pix{
             .r = 0,
             .g = 0,
             .b = 0,
@@ -324,7 +324,7 @@ pub const Pix = struct.{
     }
 };
 
-pub const RGBA = struct.{
+pub const RGBA = struct{
     /// Pix holds the image's pixels, in R, G, B, A order. The pixel at
     /// (x, y) starts at Pix[(y-Rect.Min.Y)*Stride + (x-Rect.Min.X)*4].
     pix: []u8,
@@ -336,11 +336,11 @@ pub const RGBA = struct.{
     rect: Rectangle,
     image_fn: ImageFuncs,
     pub fn init(pix: []u8, stride: isize, rect: Rectangle) RGBA {
-        return RGBA.{
+        return RGBA{
             .pix = pix,
             .stride = stride,
             .rect = rect,
-            .image_fn = ImageFuncs.{
+            .image_fn = ImageFuncs{
                 .at_fn = at,
                 .opaque_fn = opaqueFn,
                 .set_fn = setFn,
@@ -361,12 +361,12 @@ pub const RGBA = struct.{
     pub fn rgbaAt(r: *RGBA, x: isize, y: isize) color.RGBA {
         const p = Point.init(x, y);
         if (p.in(r.rect)) {
-            return color.RGBA.{ .r = 0, .g = 0, .b = 0, .a = 0 };
+            return color.RGBA{ .r = 0, .g = 0, .b = 0, .a = 0 };
         }
         const i = r.pixOffset(x, y);
         const size = @intCast(usize, i);
         const s = r.pix[size .. size + 4];
-        return color.RGBA.{ .r = s[0], .g = s[1], .b = s[2], .a = s[3] };
+        return color.RGBA{ .r = s[0], .g = s[1], .b = s[2], .a = s[3] };
     }
 
     pub fn at(r: *ImageFuncs, x: isize, y: isize) color.Color {
@@ -395,7 +395,7 @@ pub const RGBA = struct.{
     }
 
     pub fn image(r: *RGBA) Image {
-        return Image.{
+        return Image{
             .color_model = r.colorModel(),
             .image_fn = r.image_fn,
             .bounds = r.rect,

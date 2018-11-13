@@ -40,7 +40,7 @@ const s6: u8 = 0x04; // accept 0, size 4
 const s7: u8 = 0x44; // accept 4, size 4
 
 // first is information about the first byte in a UTF-8 sequence.
-const first = []u8.{
+const first = []u8{
     //   1   2   3   4   5   6   7   8   9   A   B   C   D   E   F
     as, as, as, as, as, as, as, as, as, as, as, as, as, as, as, as, // 0x00-0x0F
     as, as, as, as, as, as, as, as, as, as, as, as, as, as, as, as, // 0x10-0x1F
@@ -61,16 +61,16 @@ const first = []u8.{
     s5, s6, s6, s6, s7, xx, xx, xx, xx, xx, xx, xx, xx, xx, xx, xx, // 0xF0-0xFF
 };
 
-const acceptRange = struct.{
+const acceptRange = struct{
     lo: u8,
     hi: u8,
 
     fn init(lo: u8, hi: u8) acceptRange {
-        return acceptRange.{ .lo = lo, .hi = hi };
+        return acceptRange{ .lo = lo, .hi = hi };
     }
 };
 
-const accept_ranges = []acceptRange.{
+const accept_ranges = []acceptRange{
     acceptRange.init(locb, hicb),
     acceptRange.init(0xA0, hicb),
     acceptRange.init(locb, 0x9F),
@@ -97,7 +97,7 @@ pub fn fullRune(p: []const u8) bool {
     return false;
 }
 
-pub const Rune = struct.{
+pub const Rune = struct{
     value: u32,
     size: usize,
 };
@@ -114,7 +114,7 @@ pub fn decodeRune(p: []const u8) !Rune {
         // handling the ASCII and invalid cases accordingly. This mask-and-or
         // approach prevents an additional branch.
         const mask = @intCast(u32) << 31 >> 31;
-        return Rune.{
+        return Rune{
             .value = @intCast(u32, p[0]) & ~mask | rune_error & mask,
             .size = 1,
         };
@@ -129,7 +129,7 @@ pub fn decodeRune(p: []const u8) !Rune {
         return error.RuneError;
     }
     if (sz == 2) {
-        return Rune.{
+        return Rune{
             .value = @intCast(u32, p0 & mask2) << 6 | @intCast(u32, b1 & maskx),
             .size = 2,
         };
@@ -139,7 +139,7 @@ pub fn decodeRune(p: []const u8) !Rune {
         return error.RuneError;
     }
     if (sz == 3) {
-        return Rune.{
+        return Rune{
             .value = @intCast(u32, p0 & mask3) << 12 | @intCast(u32, b1 & maskx) << 6 | @intCast(u32, b2 & maskx),
             .size = 3,
         };
@@ -148,7 +148,7 @@ pub fn decodeRune(p: []const u8) !Rune {
     if (b3 < locb or hicb < be) {
         return error.RuneError;
     }
-    return Rune.{
+    return Rune{
         .value = @intCast(u32, p0 & mask4) << 18 | @intCast(u32, b1 & maskx) << 12 | @intCast(u32, b2 & maskx) << 6 | @intCast(u32, b3 & maskx),
         .size = 3,
     };
