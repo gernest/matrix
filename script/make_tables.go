@@ -438,11 +438,86 @@ const progHeader = `// Copyright 2013 The Go Authors. All rights reserved.
 // To regenerate, run:
 //  maketables --tables=%s --data=%s --casefolding=%s
 
-const base=@import("base.zig");
-const RangeTable=base.RangeTable;
-const Range16=base.Range16;
-const Range32=base.Range32;
-const CaseRange=base.CaseRange;
+pub const max_rune: i32 = 0x10ffff;
+pub const replacement_char: i32 = 0xfffd;
+pub const max_ascii: i32 = 0x7f;
+pub const max_latin1: i32 = 0xff;
+
+pub const pC: u8 = 1;
+pub const pP: u8 = 2;
+pub const pN: u8 = 4;
+pub const pS: u8 = 8;
+pub const pZ: u8 = 16;
+pub const pLu: u8 = 32;
+pub const pLl: u8 = 64;
+pub const pp: u8 = 128;
+pub const pg: u8 = 144;
+pub const pLo: u8 = 96;
+pub const pLmask: u8 = 96;
+
+/// If the Delta field of a CaseRange is UpperLower, it means
+/// this CaseRange represents a sequence of the form (say)
+/// Upper Lower Upper Lower.
+pub const upper_lower: i32 = @intCast(i32, max_rune) + 1;
+
+pub const RangeTable = struct {
+    r16: []Range16,
+    r32: []Range32,
+    latin_offset: usize,
+};
+
+pub const Range16 = struct {
+    lo: u16,
+    hi: u16,
+    stride: u16,
+
+    pub fn init(lo: u16, hi: u16, stride: u16) Range16 {
+        return Range16{ .lo = lo, .hi = hi, .stride = stride };
+    }
+};
+
+pub const Range32 = struct {
+    lo: u32,
+    hi: u32,
+    stride: u32,
+
+    pub fn init(lo: u32, hi: u32, stride: u32) Range32 {
+        return Range32{ .lo = lo, .hi = hi, .stride = stride };
+    }
+};
+
+pub const Case = enum(usize) {
+    Upper,
+    Lower,
+    Title,
+    Max,
+
+    pub fn rune(self: Case) i32 {
+        return @intCast(i32, @enumToInt(self));
+    }
+};
+
+pub const CaseRange = struct {
+    lo: u32,
+    hi: u32,
+    delta: []const i32,
+
+    pub fn init(lo: u32, hi: u32, delta: []const i32) CaseRange {
+        return CaseRange{ .lo = lo, .hi = hi, .delta = delta };
+    }
+};
+
+pub const linear_max: usize = 18;
+
+pub const FoldPair = struct {
+    from: u16,
+    to: u16,
+
+    pub fn init(from: u16, to: u16) FoldPair {
+        return FoldPair{ .from = from, .to = to };
+    }
+};
+
 `
 
 func printCategories() {
@@ -1174,11 +1249,11 @@ func printCaseRange(lo, hi *caseState) {
 	}
 	switch {
 	case hi.point > lo.point && lo.isUpperLower():
-		printf("  CaseRange.init(0x%04X, 0x%04X, []const i32{base.upper_lower, base.upper_lower, base.upper_lower}),\n",
+		printf("  CaseRange.init(0x%04X, 0x%04X, []const i32{upper_lower, upper_lower, upper_lower}),\n",
 			lo.point, hi.point)
 	case hi.point > lo.point && lo.isLowerUpper():
 		logger.Fatalf("LowerUpper sequence: should not happen: %U.  If it's real, need to fix To()", lo.point)
-		printf("  CaseRange.init(0x%04X, 0x%04X, []const i32{base.upper_lower, base.upper_lower, base.upper_lower}),\n",
+		printf("  CaseRange.init(0x%04X, 0x%04X, []const i32{upper_lower, upper_lower, upper_lower}),\n",
 			lo.point, hi.point)
 	default:
 		printf("  CaseRange.init(0x%04X, 0x%04X, []const i32{%d, %d, %d}),\n",
@@ -1230,29 +1305,29 @@ func printLatinProperties() {
 		var property string
 		switch chars[code].category {
 		case "Cc", "": // NUL has no category.
-			property = "base.pC"
+			property = "pC"
 		case "Cf": // soft hyphen, unique category, not printable.
 			property = "0"
 		case "Ll":
-			property = "base.pLl | base.pp"
+			property = "pLl | pp"
 		case "Lo":
-			property = "base.pLo | base.pp"
+			property = "pLo | pp"
 		case "Lu":
-			property = "base.pLu | base.pp"
+			property = "pLu | pp"
 		case "Nd", "No":
-			property = "base.pN | base.pp"
+			property = "pN | pp"
 		case "Pc", "Pd", "Pe", "Pf", "Pi", "Po", "Ps":
-			property = "base.pP | base.pp"
+			property = "pP | pp"
 		case "Sc", "Sk", "Sm", "So":
-			property = "base.pS | base.pp"
+			property = "pS | pp"
 		case "Zs":
-			property = "base.pZ"
+			property = "pZ"
 		default:
 			logger.Fatalf("%U has unknown category %q", code, chars[code].category)
 		}
 		// Special case
 		if code == ' ' {
-			property = "base.pZ | base.pp"
+			property = "pZ | pp"
 		}
 		printf("s[0x%02X]= %s; // %q\n", code, property, code)
 	}
@@ -1455,11 +1530,11 @@ func printCaseOrbit() {
 		return
 	}
 
-	printf("pub const caseOrbit = []base.FoldPair{\n")
+	printf("pub const caseOrbit = []FoldPair{\n")
 	for i := range chars {
 		c := &chars[i]
 		if c.caseOrbit != 0 {
-			printf("  base.FoldPair.init(0x%04X, 0x%04X),\n", i, c.caseOrbit)
+			printf("  FoldPair.init(0x%04X, 0x%04X),\n", i, c.caseOrbit)
 			counts.foldPairCount++
 		}
 	}
